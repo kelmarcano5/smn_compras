@@ -1,0 +1,10 @@
+<rows>
+dcc_fecha_registro="${fld:dcc_fecha_registro}"   
+ dcc_cant_ofertas="${fld:dcc_cant_ofertas}"   
+    dcc_cant_cotizaciones="${fld:dcc_cant_cotizaciones}"  
+     dcc_escotizacion="${fld:dcc_escotizacion}"     
+       trg_descripcion="${fld:trg_descripcion}"   
+        dcc_nombre="${fld:dcc_nombre}"    
+        dcc_codigo="${fld:dcc_codigo}"    
+        smn_tipo_documento_id="${fld:smn_tipo_documento_id}"    
+</rows>

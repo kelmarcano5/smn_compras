@@ -1,0 +1,10 @@
+select
+		smn_compras.smn_rel_proveedor_producto.smn_proveedor_rf,
+	smn_compras.smn_rel_proveedor_producto.rpp_id_producto,
+	smn_compras.smn_rel_proveedor_producto.rpp_tipo_producto,
+	smn_compras.smn_rel_proveedor_producto.rpp_producto_alterno,
+	smn_compras.smn_rel_proveedor_producto.rpp_fecha_registro
+from
+	smn_compras.smn_rel_proveedor_producto 
+where
+	smn_compras.smn_rel_proveedor_producto.smn_rel_proveedor_producto_id = ${fld:id}

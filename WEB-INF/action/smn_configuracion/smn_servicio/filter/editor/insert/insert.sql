@@ -1,0 +1,28 @@
+INSERT INTO smn_compras.smn_servicio
+(
+	smn_servicio_id,
+	sco_codigo,
+	sco_nombre,
+	sco_maneja_contrato,
+	sco_proveedor_exclusivo,
+	smn_area_servicio_id,
+	smn_unidades_servicios_id,
+	sco_idioma,
+	sco_usuario_id,
+	sco_fecha_registro,
+	sco_hora
+)
+VALUES
+(
+	${seq:currval@smn_compras.seq_smn_servicio},
+	${fld:sco_codigo},
+	${fld:sco_nombre},
+	${fld:sco_maneja_contrato},
+	${fld:sco_proveedor_exclusivo},
+	${fld:smn_area_servicio_id},
+	${fld:smn_unidades_servicios_id},
+	'${def:locale}',
+	'${def:user}',
+	'${def:date}',
+	'${def:time}'
+)

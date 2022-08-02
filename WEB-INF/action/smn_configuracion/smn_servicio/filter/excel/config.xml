@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnservicio.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="3" cellStep="0" name="${lbl:b_shopping_services}"/>
+	
+	<excel 
+		recordset='query-smnservicio.sql' 
+		sheetname='${lbl:b_shopping_services}' 
+		filename='${lbl:b_shopping_services}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='sco_codigo' label='${lbl:b_code}' />
+		<col id='sco_nombre' label='${lbl:b_name}' />
+		<col id='sco_maneja_contrato' label='${lbl:b_contract}' />
+		<col id='sco_proveedor_exclusivo' label='${lbl:b_provider_exclusive}' />
+		<col id='smn_area_servicio_id' label='${lbl:b_area_service}' />
+		<col id='smn_unidades_servicios_id' label='${lbl:b_united_service}' />
+		<col id='sco_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

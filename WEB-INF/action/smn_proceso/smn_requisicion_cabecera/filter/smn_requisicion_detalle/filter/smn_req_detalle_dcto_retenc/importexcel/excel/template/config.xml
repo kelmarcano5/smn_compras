@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnreqdetalledctoretenc.sql" source="session" scope="transaction" />
+		<recordset id='query-smndescuento.sql' source='sql' scope='transaction' />
+	
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_requisition_detail_discount_retention}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_requisition_detail_discount_retention}">
+				<col id='smn_requisicion_detalle_id' label='${lbl:b_requisition_detail}' />
+		<col id='smn_codigo_descuento_rf' label='${lbl:b_code_discount}' />
+		<col id='drc_monto_base' label='${lbl:b_base_amount}' />
+		<col id='drc_porcentaje' label='${lbl:b_percentage}' />
+		<col id='drc_monto_descuento' label='${lbl:b_discount_amount}' />
+		<col id='drc_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+		<sheet recordset='query-smndescuento.sql' sheetname=''>
+		<col id='drc_porcentaje' label='${lbl:}' />
+	</sheet>
+
+
+	</excel>
+
+</config>

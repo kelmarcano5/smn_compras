@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	<parameter id='rac_fecha_registro_desde' type='date' required='false' label='${lbl:b_store_date}'/>
+	<parameter id='rac_fecha_registro_hasta' type='date' required='false' label='${lbl:b_store_date}'/>
+	<parameter id='smn_rel_auxiliar_ceco_estorg_id' type='integer' required='false' label='ID ${lbl:b_rel_auxiliar_ceco_estorg}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliar}' maxlen='10'/>
+	<parameter id='smn_centro_costo_rf' type='integer' required='false' label='${lbl:b_center_cost}' maxlen='10'/>
+	<parameter id='smn_estructura_organizacional_rf' type='integer' required='false' label='${lbl:b_organizational_structure}' maxlen='10'/>
+
+	<parameter id='fdesde_filter' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta_filter' type='date' required='false' label='Fecha hasta'/>
+	<parameter id='rac_fecha_registro_desde_filter' type='date' required='false' label='${lbl:b_store_date}'/>
+	<parameter id='rac_fecha_registro_hasta_filter' type='date' required='false' label='${lbl:b_store_date}'/>
+	<parameter id='smn_rel_auxiliar_ceco_estorg_id_filter' type='integer' required='false' label='ID ${lbl:b_rel_auxiliar_ceco_estorg}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf_filter' type='integer' required='false' label='${lbl:b_auxiliar}' maxlen='10'/>
+	<parameter id='smn_centro_costo_rf_filter' type='integer' required='false' label='${lbl:b_center_cost}' maxlen='10'/>
+	<parameter id='smn_estructura_organizacional_rf_filter' type='integer' required='false' label='${lbl:b_organizational_structure}' maxlen='10'/>
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generaci�n del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

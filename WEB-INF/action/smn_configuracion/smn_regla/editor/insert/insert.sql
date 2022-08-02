@@ -1,0 +1,34 @@
+INSERT INTO smn_compras.smn_regla
+(
+	smn_regla_id,
+	rul_codigo,
+	rul_nombre,
+	rul_cantidad_desde,
+	rul_cantidad_hasta,
+	rul_var_cantidad,
+	smn_monedas_id,
+	rul_monto_desde,
+	rul_monto_hasta,
+	rul_var_monto,
+	rul_idioma,
+	rul_usuario_id,
+	rul_fecha_registro,
+	rul_hora
+)
+VALUES
+(
+	${seq:currval@smn_compras.seq_smn_regla},
+	${fld:rul_codigo},
+	${fld:rul_nombre},
+	${fld:rul_cantidad_desde},
+	${fld:rul_cantidad_hasta},
+	${fld:rul_var_cantidad},
+	${fld:smn_monedas_id},
+	${fld:rul_monto_desde},
+	${fld:rul_monto_hasta},
+	${fld:rul_var_monto},
+	'${def:locale}',
+	'${def:user}',
+	'${def:date}',
+	'${def:time}'
+)

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_ruta_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='rra_aprobacion' type='varchar' required='true' maxlen='2'/>
+	<parameter id='smn_lineas_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_roles_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_regla_id' type='integer' required='false' maxlen='10'/>
+
+
+
+</validator>

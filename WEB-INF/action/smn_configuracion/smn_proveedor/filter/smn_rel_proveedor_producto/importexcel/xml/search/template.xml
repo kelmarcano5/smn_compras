@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_rel_proveedor_producto>
+	<detail>
+		<rows>		
+		<record rpp_fecha_registro="${fld:rpp_fecha_registro}"    rpp_producto_alterno="${fld:rpp_producto_alterno}"    rpp_tipo_producto="${fld:rpp_tipo_producto}"    rpp_id_producto="${fld:rpp_id_producto}"    smn_proveedor_rf="${fld:smn_proveedor_rf}"    />
+		</rows>
+	</detail>
+</smn_rel_proveedor_producto>

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	
+	<parameter id='smn_requisicion_cabecera_id_name' type='varchar' required='false' label='${lbl:b_headboard_requisition}'/>
+	<parameter id='smn_requisicion_cabecera_id' type='integer' required='false' label='${lbl:b_headboard_requisition}' maxlen='10'/>
+	<parameter id='smn_cabecera_version_id' type='integer' required='false' label='${lbl:b_version_headboard}' maxlen='10'/>
+	<parameter id='smn_linea_id' type='integer' required='false' label='${lbl:b_lines}' maxlen='10'/>
+	<parameter id='smn_naturaleza_id' type='varchar' required='false' label='${lbl:b_nature}' maxlen='2'/>
+	<parameter id='smn_servicio_id' type='integer' required='false' label='${lbl:b_services}' maxlen='10'/>
+	<parameter id='smn_item_id' type='integer' required='false' label='${lbl:b_item}' maxlen='10'/>
+	<parameter id='smn_afijo_id' type='integer' required='false' label='${lbl:b_actfij}' maxlen='10'/>
+	<parameter id='rrs_producto_encontrado' type='varchar' required='false' label='${lbl:b_products_found}' maxlen='2'/>
+	<parameter id='smn_contrato_id' type='integer' required='false' label='${lbl:b_contract}' maxlen='10'/>
+	<parameter id='rrs_motivo_variacion' type='varchar' required='false' label='${lbl:b_var_motive}' maxlen='100'/>
+	<parameter id='rrs_porcentaje' type='double' required='false' label='${lbl:b_percentage}' maxlen='10'/>
+	<parameter id='rss_cantidad' type='integer' required='false' label='${lbl:b_quantity}' maxlen='10'/>
+	<parameter id='rrs_precio' type='double' required='false' label='${lbl:b_price}' maxlen='10'/>
+	<parameter id='rrs_monto' type='double' required='false' label='${lbl:b_mount}' maxlen='10'/>
+	<parameter id='smn_moneda_id' type='integer' required='false' label='${lbl:b_coins}' maxlen='10'/>
+	<parameter id='rrs_precio_moneda_alterna' type='double' required='false' label='${lbl:b_coins_price_altern}' maxlen='10'/>
+	<parameter id='rrs_monto_moneda_alterna' type='double' required='false' label='${lbl:b_coins_mount_altern}' maxlen='10'/>
+	<parameter id='smn_proveedor_id' type='integer' required='false' label='${lbl:b_providers}' maxlen='10'/>
+	<parameter id='rrs_especificaciones_del_requerimiento' type='varchar' required='false' label='${lbl:b_requirement_specification}' maxlen='256'/>
+	<parameter id='rrs_fecha_de_requerido' type='date' required='false' label='${lbl:b_date_required}' maxlen='10'/>
+	<parameter id='rrs_observaciones' type='varchar' required='false' label='${lbl:b_observations}' maxlen='256'/>
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='smn_requisicion_cabecera_id_name'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='smn_naturaleza_id'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='rrs_producto_encontrado'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='rrs_motivo_variacion'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='rrs_especificaciones_del_requerimiento'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='rrs_observaciones'
+		rule='contains' />
+
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generación del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

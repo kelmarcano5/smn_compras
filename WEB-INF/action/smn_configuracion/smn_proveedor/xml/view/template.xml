@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_proveedor>
+	<detail>
+		<rows>		
+		<record prv_fecha_registro="${fld:prv_fecha_registro}"    smn_clasificacion_abc_rf="${fld:smn_clasificacion_abc_rf}"    smn_auxiliar_rf="${fld:smn_auxiliar_rf}"    />
+		</rows>
+	</detail>
+</smn_proveedor>

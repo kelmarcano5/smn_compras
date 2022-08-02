@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_rel_linea_servicio>
+	<detail>
+		<rows>		
+		<record smn_servicio_id="${fld:smn_servicio_id}"    smn_lineas_id="${fld:smn_lineas_id}"    />
+		</rows>
+	</detail>
+</smn_rel_linea_servicio>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<title>${lbl:b_security_system}.</title>
+</head>
+
+<body>
+
+	<div class="welcome" style="padding-right:50px; margin-top: 20px;"><br>
+	<b>${lbl:b_welcome}</b> ${fld:fname} ${fld:lname}
+	<div class="" style="width: 100%; border-bottom: solid 6px #1d61a0; border-radius: 30px; margin-top: 4px;">
+	</div>
+	</div>
+<br>
+<div class="modulo">
+		<div class="tituloModulo">
+				<div class="tittlModContenedor">
+						<div class="ttlModTop">
+								<h2>Módulo de Compras</h2>
+								<div class="ttlModTopImg"><img src="${def:context}/images/mainFolder/talentoHumanoImg.jpg"></div><!--ttlModTopImg-->
+						</div><!--ttlModTop-->
+						<div class="ttlModBottom"><h3>&nbsp;</h3></div><!--ttlModTop-->
+						<div class="rightImg"><img src="${def:context}/images/mainFolder/modContAsis.png"></div><!--rightImg-->
+				</div><!--tittlModContenedor-->
+		</div><!--tituloModulo-->
+</div><!--modulo-->
+
+
+<br>
+
+<!--include al menu iconografico-->
+${inc:${def:actionroot}/panel/view}
+
+<!--tabla de ultimos logins-->
+<!-- <table class="datagrid" width="50%">
+
+	<tr>
+		<th colspan="4" style="font-weight:bold; font-size:10pt;">Sus últimos accesos al servidor</th>
+	</tr>
+
+	<tr>
+		<th width="25%">Fecha</th>
+		<th width="25%">Hora</th>
+		<th width="25%">Dirección IP</th>
+		<th width="25%">Aplicación</th>
+	</tr>
+
+	<rows>
+	<tr ${fld:_rowStyle}>
+		<td align="center">${fld:login_date}</td>
+		<td align="center">${fld:login_time}</td>
+		<td align="center">${fld:remote_addr}</td>
+		<td align="center">${fld:context}</td>
+	</tr>
+	</rows>
+
+</table>
+
+<br/>
+
+<table class="datagrid" width="50%">
+
+	<tr>
+		<th colspan="4" style="color:red; font-weight:bold; font-size:10pt;">Ingresos fallidos usando su Identificador</th>
+	</tr>
+
+	<tr>
+		<th width="25%">Fecha</th>
+		<th width="25%">Hora</th>
+		<th width="25%">Dirección IP</th>
+		<th width="25%">Aplicación</th>
+	</tr>
+
+	<rows2>
+	<tr ${fld:_rowStyle}>
+		<td align="center">${fld:login_date}</td>
+		<td align="center">${fld:login_time}</td>
+		<td align="center">${fld:remote_addr}</td>
+		<td align="center">${fld:context}</td>
+	</tr>
+	</rows2>
+
+</table> -->
+
+</body>
+
+</html>

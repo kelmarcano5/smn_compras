@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_tipo_documento_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='dcc_codigo' type='varchar' required='true' maxlen='16'/>
+	<parameter id='dcc_nombre' type='varchar' required='true' maxlen='64'/>
+	<parameter id='dcc_transaccion_id_desc_ref' type='varchar' required='false' maxlen='10'/>
+	<parameter id='dcc_recurrente' type='varchar' required='false' maxlen='2'/>
+	<parameter id='dcc_fecha_inicio' type='date' required='false' maxlen='10'/>
+	<parameter id='dcc_fecha_final' type='date' required='false' maxlen='10'/>
+	<parameter id='dcc_modalidad' type='varchar' required='false' maxlen='2'/>
+	<parameter id='dcc_escotizacion' type='varchar' required='true' maxlen='1'/>
+	<parameter id='dcc_cant_cotizaciones' type='integer' required='false' maxlen='10'/>
+	<parameter id='dcc_esoferta' type='varchar' required='false' maxlen='1'/>
+	<parameter id='dcc_cant_ofertas' type='integer' required='false' maxlen='10'/>
+
+	<parameter id='dcc_transaccion_id_ref' type='integer' required='false' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='dcc_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarNombre.sql'
+			id='dcc_nombre'/>
+
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: dcc_transaccion_id' 
+		parameter='dcc_transaccion_id_ref' 
+		sql='dcc_transaccion_id.sql' 
+		id='dcc_transaccion_id_ref'/>
+
+</validator>

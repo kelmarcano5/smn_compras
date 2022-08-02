@@ -1,0 +1,3 @@
+<rows>
+smn_afijo_id="${fld:smn_afijo_id}"    smn_lineas_id="${fld:smn_lineas_id}"    
+</rows>

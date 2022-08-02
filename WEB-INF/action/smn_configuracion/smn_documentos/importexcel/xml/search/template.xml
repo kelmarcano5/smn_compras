@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_documentos>
+	<detail>
+		<rows>		
+		<record dcc_fecha_registro="${fld:dcc_fecha_registro}"    dcc_cant_ofertas="${fld:dcc_cant_ofertas}"    dcc_esoferta="${fld:dcc_esoferta}"    dcc_cant_cotizaciones="${fld:dcc_cant_cotizaciones}"    dcc_escotizacion="${fld:dcc_escotizacion}"    dcc_modalidad="${fld:dcc_modalidad}"    dcc_fecha_final="${fld:dcc_fecha_final}"    dcc_fecha_inicio="${fld:dcc_fecha_inicio}"    dcc_recurrente="${fld:dcc_recurrente}"    dcc_transaccion_id="${fld:dcc_transaccion_id}"    dcc_nombre="${fld:dcc_nombre}"    dcc_codigo="${fld:dcc_codigo}"    smn_tipo_documento_id="${fld:smn_tipo_documento_id}"    />
+		</rows>
+	</detail>
+</smn_documentos>

@@ -1,0 +1,44 @@
+INSERT INTO smn_compras.smn_rel_proveedor_producto
+(
+	smn_rel_proveedor_producto_id,
+  	smn_proveedor_id,
+  	smn_item_rf,
+  	smn_servicios_compras_id,
+  	--smn_afijos_rf,
+  	rpp_tipo_producto,
+  	rpp_codigo_proveedor,
+  	rpp_descripcion_proveedor,
+  	rpp_producto_alterno,
+  	rpp_existencia_proveedor,
+  	rpp_precio_ml,
+  	rpp_precio_ma,
+  	smn_moneda_id,
+  	rpp_fecha_valides,
+  	rpp_estatus,
+  	rpp_idioma,
+  	rpp_usuario,
+  	rpp_fecha_registro,
+  	rpp_hora
+)
+VALUES
+(
+	${seq:currval@smn_compras.seq_smn_rel_proveedor_producto},
+	${fld:smn_proveedor_rf},
+	${fld:rpp_id_producto},
+	${fld:smn_servicio_id},
+	--${fld:smn_afijos_rf},
+	${fld:rpp_tipo_producto},
+	${fld:rpp_codigo_proveedor},
+	${fld:rpp_descripcion_proveedor},
+	${fld:rpp_producto_alterno},
+	${fld:rpp_existencia_proveedor},
+	${fld:rpp_precio_ml},
+	${fld:rpp_precio_ma},
+	${fld:smn_moneda_id},
+	${fld:rpp_fecha_valides},
+	${fld:rpp_estatus},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

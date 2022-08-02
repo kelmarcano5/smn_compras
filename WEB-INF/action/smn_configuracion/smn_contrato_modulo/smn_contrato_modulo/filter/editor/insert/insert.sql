@@ -1,0 +1,34 @@
+INSERT INTO smn_compras.smn_contrato_modulo
+(
+	smn_contrato_modulo_id,
+	smn_contrato_base_rf,
+	smn_documentos_id,
+	ctm_dia_factura,
+	ctm_cantidad,
+	ctm_precio,
+	ctm_monto,
+	ctm_porcentaje_incremento,
+	ctm_direccion_rf,
+	ctm_fecha_renovacion,
+	ctm_idioma,
+	ctm_usuario_id,
+	ctm_fecha_registro,
+	ctm_hora
+)
+VALUES
+(
+	${seq:currval@smn_compras.seq_smn_contrato_modulo},
+	${fld:smn_contrato_base_rf},
+	${fld:smn_documentos_id},
+	${fld:ctm_dia_factura},
+	${fld:ctm_cantidad},
+	${fld:ctm_precio},
+	${fld:ctm_monto},
+	${fld:ctm_porcentaje_incremento},
+	${fld:ctm_direccion_rf},
+	${fld:ctm_fecha_renovacion},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

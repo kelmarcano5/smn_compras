@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_contrato_base_rf' type='integer' required='true' label='${lbl:b_contrato_base}' maxlen='10'/>
+	<parameter id='smn_documentos_id' type='integer' required='true' label='${lbl:b_contrato_doc}' maxlen='10'/>
+	<parameter id='ctm_dia_factura' type='integer' required='true' label='${lbl:b_ctm_dia_factura}' maxlen='10'/>
+	<parameter id='ctm_cantidad' type='integer' required='true' label='${lbl:b_ctm_cantidad}' maxlen='10'/>
+	<parameter id='ctm_precio' type='double' required='true' label='${lbl:b_ctm_precio}' maxlen='10'/>
+	<parameter id='ctm_monto' type='double' required='true' label='${lbl:b_ctm_monto}' maxlen='10'/>
+	<parameter id='ctm_porcentaje_incremento' type='double' required='true' label='${lbl:b_ctm_porcentaje}' maxlen='10'/>
+	<parameter id='ctm_direccion_rf' type='integer' required='true' label='${lbl:b_ctm_direccion}' maxlen='10'/>
+	<parameter id='ctm_fecha_renovacion' type='date' required='false' label='${lbl:b_ctm_renovacion}' maxlen='10'/>
+
+
+</validator>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='sco_codigo' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='sco_nombre' type='varchar' required='true' label='${lbl:b_name}' maxlen='64'/>
+	<parameter id='sco_maneja_contrato' type='varchar' required='false' label='${lbl:b_contract}' maxlen='2'/>
+	<parameter id='sco_proveedor_exclusivo' type='varchar' required='false' label='${lbl:b_provider_exclusive}' maxlen='2'/>
+	<parameter id='smn_area_servicio_id' type='integer' required='false' label='${lbl:b_area_service}' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_id' type='integer' required='false' label='${lbl:b_united_service}' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='sco_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarNombre.sql'
+			id='sco_nombre'/>
+
+
+
+</validator>

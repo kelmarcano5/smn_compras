@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='true' label='${lbl:b_class_auxiliary}' maxlen='10'/>
+	<parameter id='smn_forma_pago_rf' type='integer' required='true' label='${lbl:b_way_pay}' maxlen='10'/>
+	<parameter id='smn_clasificacion_abc_rf' type='integer' required='true' label='${lbl:b_clasification}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_providers}' maxlen='10'/>
+	<parameter id='prv_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='10'/>
+	<parameter id='prv_anticipo' type='varchar' required='true' label='${lbl:b_anticipated}' maxlen='10'/>
+	<parameter id='prv_fecha_vigencia' type='date' required='true' label='${lbl:b_date_vig}' maxlen='10'/>
+	<parameter id='prv_fecha_vigencia_anticipo' type='date' required='false' label='${lbl:b_date_vig_anticipated}' maxlen='10'/>
+	<parameter id='prv_nacional_ext' type='varchar' required='true' label='${lbl:b_status}' maxlen='1'/>
+	
+	<parameter id='prv_empresa_relacionada' type='varchar' required='false' label='${lbl:b_entities_relationship}' maxlen='1'/>
+	<parameter id='smn_entidades_id' type='integer' required='false' label='${lbl:b_entities}' maxlen='10'/>
+	<parameter id='smn_documentos_id' type='integer' required='false' label='${lbl:b_document}' maxlen='10'/>
+		<parameter id='smn_codigos_impuestos_rf' type='integer' required='false' label='${lbl:b_document}' maxlen='10'/>
+	<parameter id='smn_condicion_financiera_rf' type='integer' required='false' label='${lbl:b_condicion_financiera}' maxlen='10'/>
+
+
+
+</validator>

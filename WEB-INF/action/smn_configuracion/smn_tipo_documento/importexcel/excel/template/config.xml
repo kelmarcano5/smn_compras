@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smntipodocumento.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_purchasing_documents_types}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_purchasing_documents_types}">
+				<col id='tdc_codigo' label='${lbl:b_code}' />
+		<col id='tdc_nombre' label='${lbl:b_name}' />
+		<col id='tdc_naturaleza' label='${lbl:b_nature}' />
+		<col id='dcc_codigo' label='${lbl:b_code}' />
+		<col id='dcc_nombre' label='${lbl:b_name}' />
+		<col id='dcc_modalidad' label='${lbl:b_modal}' />
+		<col id='dcc_escotizacion' label='${lbl:b_escot}' />
+		<col id='dcc_cant_cotizaciones' label='${lbl:b_cant_cot}' />
+		<col id='dcc_esoferta' label='${lbl:b_esoferta}' />
+		<col id='dcc_cant_ofertas' label='${lbl:b_cant_ofert}' />
+		<col id='tdc_codigo' label='${lbl:b_code}' />
+		<col id='tdc_nombre' label='${lbl:b_name}' />
+		<col id='tdc_naturaleza' label='${lbl:b_nature}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

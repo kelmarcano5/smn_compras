@@ -1,0 +1,66 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='14%'/>
+	<col width='10%'/>
+	<col width='8%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="15" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th>GE</th>
+		<th class='sortable' onclick='sortBy("numero_cotizacion","query-smnoferta.sql")'>N&deg; Oferta</th>
+		<th class='sortable' onclick='sortBy("numero_oferta","query-smncotizacion.sql")'>N&deg; ${lbl:b_quotation}</th>
+		<th class='sortable' onclick='sortBy("smn_proveedor_id","query-smncotizacion.sql")'>${lbl:b_providers}</th>
+		<th class='sortable' onclick='sortBy("smn_item_id","query-smnoferta.sql")'>${lbl:b_item}</th>
+		<th class='sortable' onclick='sortBy("precio","query-smnoferta.sql")'>${lbl:b_price}</th>
+		<th class='sortable' onclick='sortBy("cantidad","query-smnoferta.sql")'>${lbl:b_quantity}</th>
+		<th class='sortable' onclick='sortBy("monto_total_oferta","query-smnoferta.sql")'>${lbl:b_amount}</th>
+		<th class='sortable' onclick='sortBy("ofe_estatus","query-smnoferta.sql")'>${lbl:b_offer_status}</th>
+		<th class='sortable' onclick='sortBy("ofe_fecha_registro","query-smnoferta.sql")'>${lbl:b_store_date}</th>
+		<th>IDO</th>
+		<th>OFE</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_oferta_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_oferta_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_oferta_id}')" title="${lbl:b_edit_button}"></td>
+		<td><img src="${def:context}/images/icongrid/Generar.png" onclick="generar('${fld:smn_oferta_id}')" title="Generar"></td>
+		<td align="center">${fld:numero_cotizacion}</td>
+		<td align="center">${fld:numero_oferta}</td>
+		<td>${fld:smn_proveedor_id}</td>
+		<td>${fld:smn_item_id}</td>
+		<td align="right">${fld:precio@##,###,##0.00}</td>
+		<td>${fld:cantidad}</td>
+		<td align="right">${fld:monto_total_oferta@##,###,##0.00}</td>
+		<td align="center">${fld:ofe_estatus}</td>
+		<td>${fld:ofe_fecha_registro@dd-MM-yyyy}</td>
+	<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalleimpuesto('${fld:smn_oferta_id}')" title="${lbl:b_offer_deduction_tax}"></td>
+	<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalleentrega('${fld:smn_oferta_id}','${fld:smn_cotizacion_id}')" title="${lbl:b_offer_delivery_date}"></td>
+	</tr>
+	</rows>
+
+</table>

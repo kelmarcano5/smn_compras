@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_rel_ruta_aprobacion>
+	<detail>
+		<rows>		
+		<record rra_fecha_registro="${fld:rra_fecha_registro}"    smn_regla_id="${fld:smn_regla_id}"    smn_roles_id="${fld:smn_roles_id}"    smn_lineas_id="${fld:smn_lineas_id}"    rra_aprobacion="${fld:rra_aprobacion}"    smn_ruta_id="${fld:smn_ruta_id}"    smn_ruta_aprobacion_id="${fld:smn_ruta_aprobacion_id}"    />
+		</rows>
+	</detail>
+</smn_rel_ruta_aprobacion>

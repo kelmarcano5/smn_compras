@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="session" scope="transaction" />
+		<recordset id='detail-smndocumentos.sql' source='session' scope='transaction' />
+
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_purchasing_documents_types}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_purchasing_documents_types}.pdf</pdf-file-name>
+
+	<pdf-report pageSize="letter" rotate="false" footer="true" header="true">
+		<record recordset='query.sql' title='${lbl:b_purchasing_documents_types}' width='60' spacingBefore='40'>
+			<col name='tdc_codigo' title='${lbl:b_code}' align='left' />
+			<col name='tdc_nombre' title='${lbl:b_name}' align='left' />
+			<col name='tdc_naturaleza' title='${lbl:b_nature}' align='left' />
+			<col name='tdc_fecha_registro' title='${lbl:b_store_date}' align='left' format='dd-MM-yyyy' />
+		</record>
+		<!--
+		<table recordset='detail-smndocumentos.sql' width='100' spacingBefore='40'>
+			<col name='dcc_codigo' title='${lbl:b_code}' width='14' align='left' />
+			<col name='dcc_nombre' title='${lbl:b_name}' width='14' align='left' />
+			<col name='dcc_escotizacion' title='${lbl:b_escot}' width='14' align='left' />
+			<col name='dcc_cant_cotizaciones' title='${lbl:b_cant_cot}' width='14' align='left' format='######' />
+			<col name='dcc_esoferta' title='${lbl:b_esoferta}' width='14' align='left' />
+			<col name='dcc_cant_ofertas' title='${lbl:b_cant_ofert}' width='14' align='left' format='######' />
+			<col name='dcc_fecha_registro' title='${lbl:b_store_date}' width='14' align='left' format='dd-MM-yyyy' />
+		</table>-->
+
+
+	</pdf-report>
+</config>

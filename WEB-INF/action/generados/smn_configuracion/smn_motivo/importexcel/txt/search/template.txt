@@ -1,0 +1,3 @@
+<rows>
+mtv_fecha_registro="${fld:mtv_fecha_registro}"    mtv_nombre="${fld:mtv_nombre}"    mtv_codigo="${fld:mtv_codigo}"    mtv_tipo="${fld:mtv_tipo}"    smn_motivos_id="${fld:smn_motivos_id}"    
+</rows>

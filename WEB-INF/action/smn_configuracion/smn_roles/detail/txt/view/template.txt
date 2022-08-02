@@ -1,0 +1,3 @@
+<rows>
+rol_fecha_registro="${fld:rol_fecha_registro}"   smn_unidades_servicios_id="${fld:smn_unidades_servicios_id}"    smn_areas_servicios_id="${fld:smn_areas_servicios_id}"    smn_sucursales_id="${fld:smn_sucursales_id}"    smn_entidades_id="${fld:smn_entidades_id}"    smn_corporaciones_id="${fld:smn_corporaciones_id}"    rol_tipo="${fld:rol_tipo}"    
+</rows>

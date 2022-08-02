@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="false">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-table_stuck.sql" source="sql" scope="transaction" />
+		<recordset id="query-smn_item.sql" source="sql" scope="transaction" />
+		<recordset id="query-smn_proveedor.sql" source="sql" scope="transaction" />
+		<recordset id="query-smn_monedas.sql" source="sql" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.repgen.smn_configuracion.smn_rel_proveedor_producto.ExcelReportOutput</classname>
+	</output>
+		
+	<excel filename='${lbl:b_rel_providers_products}.xls' header-background='true'>
+		
+	<sheet recordset="query-table_stuck.sql" sheetname="${lbl:b_rel_providers_products}">
+		
+		<col id='smn_item_rf' label='${lbl:b_product}' />
+		<col id='smn_proveedor_id' label='${lbl:b_providers}' />
+		<col id='rpp_codigo_proveedor' label='${lbl:b_product_code}' />
+		<col id='rpp_descripcion_proveedor' label='${lbl:b_occ_descripcion} ${lbl:b_product}' />
+		<col id='rpp_existencia_proveedor' label='${lbl:b_existence}' />
+		<col id='rpp_precio_ml' label='${lbl:b_price_ml}' />
+		<col id='rpp_precio_ma' label='${lbl:b_price_ma}' />
+		<col id='smn_moneda_rf' label='${lbl:b_coin}' />
+		<col id='rpp_fecha_valides' label='${lbl:b_validation_date}' />
+		<col id='smn_item_reference' label='${lbl:b_product}' />
+		<col id='smn_proveedor_reference' label='${lbl:b_providers}' />
+		<col id='smn_moneda_reference' label='${lbl:b_coin}' />
+	</sheet>
+
+	<sheet recordset="query-smn_item.sql" sheetname="${lbl:b_smn_item_rf}">
+		<col id='itm_nombre' label='${lbl:b_name}' />
+	</sheet>
+	
+	<sheet recordset="query-smn_proveedor.sql" sheetname="${lbl:b_providers}">
+		<col id='aux_descripcion' label='${lbl:b_description}' />
+	</sheet>
+
+	<sheet recordset="query-smn_monedas.sql" sheetname="${lbl:b_coins}">
+		<col id='mon_codigo' label='${lbl:b_code}' />
+		<col id='mon_nombre' label='${lbl:b_name}' />
+
+	</sheet>
+
+	</excel>
+
+</config>

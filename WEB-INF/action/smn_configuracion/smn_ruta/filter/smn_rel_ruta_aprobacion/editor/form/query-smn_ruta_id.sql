@@ -1,0 +1,1 @@
+select smn_compras.smn_ruta.smn_ruta_id as id, smn_compras.smn_ruta.rut_codigo|| ' - ' || smn_compras.smn_ruta.rut_nombre as item from smn_compras.smn_ruta

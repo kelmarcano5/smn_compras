@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnrelrequisicionfentrega.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_rel_requisition_date_delivery}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_rel_requisition_date_delivery}">
+				<col id='smn_requisicion_detalle_id' label='${lbl:b_requisition_detail}' />
+		<col id='cfe_consecutivo' label='${lbl:b_consecutivel}' />
+		<col id='cfe_cantidad' label='${lbl:b_quantity}' />
+		<col id='cfe_fecha_de_entrega' label='${lbl:b_delivery_date}' />
+		<col id='cfe_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

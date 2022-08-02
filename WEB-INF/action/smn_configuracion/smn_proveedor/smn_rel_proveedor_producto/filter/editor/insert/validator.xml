@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_proveedor_rf' type='integer' required='false' label='${lbl:b_providers}' maxlen='10'/>
+	<parameter id='rpp_id_producto' type='integer' required='false' label='${lbl:b_product}' maxlen='10'/>
+	<parameter id='rpp_tipo_producto' type='varchar' required='true' label='${lbl:b_type_product}' maxlen='2'/>
+	<parameter id='rpp_producto_alterno' type='integer' required='false' label='${lbl:b_product_altern}' maxlen='60'/>
+	<parameter id='smn_servicio_id' type='integer' required='false' label='${lbl:b_services}' maxlen='10'/>
+	<parameter id='rpp_codigo_proveedor' type='varchar' required='false' label='${lbl:b_product_code}' maxlen='25'/>
+	<parameter id='rpp_descripcion_proveedor' type='varchar' required='false' label='${lbl:b_occ_descripcion} ${lbl:b_product}' maxlen='250'/>
+	<parameter id='rpp_existencia_proveedor' type='double' required='false' label='${lbl:b_existence}' maxlen='10'/>
+	<parameter id='rpp_precio_ml' type='double' required='false' label='${lbl:b_price_ml}' maxlen='20'/>
+	<parameter id='smn_moneda_id' type='integer' required='false' label='${lbl:b_coin}' maxlen='10'/>
+	<parameter id='rpp_precio_ma' type='double' required='false' label='${lbl:b_price_ma}' maxlen='20'/>
+	<parameter id='rpp_fecha_valides' type='date' required='true' label='${lbl:b_validation_date}' maxlen='10'/>
+	<parameter id='rpp_estatus' type='varchar' required='true' label='${lbl:b_status}' maxlen='2'/>
+</validator>

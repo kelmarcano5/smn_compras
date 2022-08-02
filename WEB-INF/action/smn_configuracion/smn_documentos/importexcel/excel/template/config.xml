@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smndocumentos.sql" source="session" scope="transaction" />
+		<recordset id='query-smntransacciongeneral.sql' source='sql' scope='transaction' />
+	
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_purchasing_documents}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_purchasing_documents}">
+				<col id='smn_tipo_documento_id' label='${lbl:b_types_documents}' />
+		<col id='dcc_codigo' label='${lbl:b_code}' />
+		<col id='dcc_nombre' label='${lbl:b_name}' />
+		<col id='dcc_escotizacion' label='${lbl:b_escot}' />
+		<col id='dcc_cant_cotizaciones' label='${lbl:b_cant_cot}' />
+		<col id='dcc_esoferta' label='${lbl:b_esoferta}' />
+		<col id='dcc_cant_ofertas' label='${lbl:b_cant_ofert}' />
+		<col id='dcc_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+		<sheet recordset='query-smntransacciongeneral.sql' sheetname=''>
+		<col id='trg_descripcion' label='${lbl:b_description}' />
+	</sheet>
+
+
+	</excel>
+
+</config>

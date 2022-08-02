@@ -1,0 +1,15 @@
+select
+		smn_compras.smn_req_detalle_impuesto.smn_requisicion_detalle_id,
+	smn_compras.smn_req_detalle_impuesto.rim_monto_base,
+	smn_compras.smn_req_detalle_impuesto.smn_cod_impuesto_deduc_rf,
+	smn_compras.smn_req_detalle_impuesto.smn_porcentaje_impuesto,
+	smn_compras.smn_req_detalle_impuesto.smn_sustraendo,
+	smn_compras.smn_req_detalle_impuesto.rim_monto_impuesto,
+	smn_compras.smn_req_detalle_impuesto.smn_moneda_rf,
+	smn_compras.smn_req_detalle_impuesto.smn_tasa_rf,
+	smn_compras.smn_req_detalle_impuesto.rim_monto_imp_moneda_alterna,
+	smn_compras.smn_req_detalle_impuesto.rim_fecha_registro
+from
+	smn_compras.smn_req_detalle_impuesto 
+where
+	smn_compras.smn_req_detalle_impuesto.smn_req_detalle_impuesto_id = ${fld:id}

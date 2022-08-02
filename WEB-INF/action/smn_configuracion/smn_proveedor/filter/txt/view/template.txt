@@ -1,0 +1,3 @@
+<rows>
+prv_fecha_registro="${fld:prv_fecha_registro}"    smn_clasificacion_abc_rf="${fld:smn_clasificacion_abc_rf}"    smn_auxiliar_rf="${fld:smn_auxiliar_rf}"    
+</rows>

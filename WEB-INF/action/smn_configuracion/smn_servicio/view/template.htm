@@ -1,0 +1,51 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("sco_codigo","query-smnservicio.sql")'>${lbl:b_code}</th>
+		<th class='sortable' onclick='sortBy("sco_nombre","query-smnservicio.sql")'>${lbl:b_name}</th>
+		<th class='sortable' onclick='sortBy("sco_maneja_contrato","query-smnservicio.sql")'>${lbl:b_contract}</th>
+		<th class='sortable' onclick='sortBy("sco_proveedor_exclusivo","query-smnservicio.sql")'>${lbl:b_provider_exclusive}</th>
+		<th class='sortable' onclick='sortBy("sco_fecha_registro","query-smnservicio.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_servicio_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_servicio_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_servicio_id}')" title="${lbl:b_edit_button}"></td>
+		<td align='left'>${fld:sco_codigo}</td>
+		<td align='left'>${fld:sco_nombre}</td>
+		<td align='left'>${fld:sco_maneja_contrato}</td>
+		<td align='center'>${fld:sco_proveedor_exclusivo}</td>
+		<td>${fld:sco_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,163 @@
+
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+		<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+
+	
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+	<script type="text/javascript">
+		//invoca la generacion de un PDF en un popup
+		function openPDF()
+		{
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a excel
+		function openExcel() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a xml
+		function openXml(id) {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/xml/search?id=" + id;
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a texto
+		function openTxt(id) {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/txt/search?id=" + id;
+			var w = window.open(url, null, features);
+		}
+		
+		//envio de emails
+		function openEmails() {
+			var uri = "${def:context}${def:actionroot}/email/form";					
+			openDialog("editor0", uri, 980, 600);	
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<!--banner-->
+	<div class="bannerDialog" id="encabezado_tabla">
+		${lbl:b_shopping_services}
+		<img src="${def:context}/images/pdf.png" onclick="openPDF()" title="${lbl:b_export_pdf}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/excel.png" onclick="openExcel()" title="${lbl:b_export_excel}" style="cursor:pointer; margin-left:3px;"/>
+		<!-- <img src="${def:context}/images/file-xml4.png" onclick="openXml('${fld:smn_servicio_id}')" title="${lbl:b_export_xml}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/file-text.png" onclick="openTxt('${fld:smn_servicio_id}')" title="${lbl:b_export_txt}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/emails.png" onclick="openEmails()" title="${lbl:s_profile_email}" style="cursor:pointer; margin-left:3px;"/> -->
+		<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="${lbl:b_close_button}" style="float:right; cursor:pointer;"/>
+	</div>
+
+	<table class="record" style="width:500px;">
+		<tr>
+			<td width="40%">${lbl:b_code}</td>
+			<td style="background-color: white">${fld:sco_codigo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_name}</td>
+			<td style="background-color: white">${fld:sco_nombre}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_contract}</td>
+			<td style="background-color: white">${fld:sco_maneja_contrato}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_provider_exclusive}</td>
+			<td style="background-color: white">${fld:sco_proveedor_exclusivo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_area_service}</td>
+			<td style="background-color: white">${fld:smn_area_servicio_id}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_united_service}</td>
+			<td style="background-color: white">${fld:smn_unidades_servicios_id}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_store_date}</td>
+			<td style="background-color: white">${fld:sco_fecha_registro@dd-MM-yyyy}</td>
+		</tr>
+
+	</table>
+
+	<!--toolbar
+	<table class="datagrid" width="600px">
+
+	<tr>
+		<th colspan="6" style="font-weight:bold;font-size:10pt;">
+			${lbl:b_rel_providers_products}
+		</th>
+	</tr>
+
+	<!--encabezados
+	<tr>
+		<th width="16%">${lbl:b_rel_providers_products}</th>
+		<th width="16%">${lbl:b_providers}</th>
+		<th width="16%">${lbl:b_item}</th>
+		<th width="16%">${lbl:b_afijo}</th>
+		<th width="16%">${lbl:b_item_altern}</th>
+		<th width="16%">${lbl:b_afijo_altern}</th>
+	</tr>
+
+	<!--data
+	<rows-smnrelproveedorproducto>
+	<tr>
+		<td align="center">${fld:smn_rel_proveedor_producto_id}</td>
+		<td>${fld:smn_proveedor_id}</td>
+		<td>${fld:smn_item_id}</td>
+		<td>${fld:smn_afijo_id}</td>
+		<td align="left">${fld:rpp_item_alterno}</td>
+		<td align="left">${fld:rpp_afijo_alterno}</td>
+	</tr>
+	</rows-smnrelproveedorproducto>
+
+</table>
+<!--
+<table class="datagrid" width="600px">
+
+	<!--toolbar
+	<tr>
+		<th colspan="2" style="font-weight:bold;font-size:10pt;">
+			${lbl:b_rel_lines_purchasing_services}
+		</th>
+	</tr>
+
+	<!--encabezados
+	<tr>
+		<th width="50%">${lbl:b_rel_lines_purchasing_services}</th>
+		<th width="50%">${lbl:b_lines}</th>
+	</tr>
+
+	<!--data
+	<rows-smnrellineaservicio>
+	<tr>
+		<td align="center">${fld:smn_rel_linea_servicio_id}</td>
+		<td>${fld:smn_lineas_id}</td>
+	</tr>
+	</rows-smnrellineaservicio>
+
+</table>
+-->
+	<br>
+	<div  align="center">
+		<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog()" class="button">
+	</div>
+
+</body>
+
+</html>

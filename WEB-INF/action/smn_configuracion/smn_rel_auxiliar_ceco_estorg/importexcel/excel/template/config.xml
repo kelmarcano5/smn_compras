@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnrelauxiliarcecoestorg.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_rel_auxiliar_ceco_estorg}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_rel_auxiliar_ceco_estorg}">
+				<col id='smn_auxiliar_rf_combo' label='${lbl:b_auxiliar}' />
+		<col id='smn_centro_costo_rf_combo' label='${lbl:b_left_cost}' />
+		<col id='smn_estructura_organizacional_rf_combo' label='${lbl:b_organizational_structure}' />
+		<col id='rac_idioma' label='${lbl:s_profile_lang}' />
+		<col id='rac_usuario' label='${lbl:b_user}' />
+		<col id='rac_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

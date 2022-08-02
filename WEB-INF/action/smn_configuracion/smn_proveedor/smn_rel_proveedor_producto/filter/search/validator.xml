@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_proveedor_rf_name' type='varchar' required='false' label='${lbl:b_providers}'/>
+	<parameter id='smn_proveedor_rf' type='integer' required='false' label='${lbl:b_providers}' maxlen='10'/>
+	<parameter id='rpp_id_producto' type='integer' required='false' label='${lbl:b_product}' maxlen='10'/>
+	<parameter id='rpp_tipo_producto' type='varchar' required='false' label='${lbl:b_type_product}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='rpp_tipo_producto' rule='like' />
+	<parameter id='rpp_fecha_registro_ini' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.DateRangeValidator' on-error-label='[${lbl:b_store_date} mayor o igual que] no puede ser mayor que [${lbl:b_store_date} menor o igual que].' date1='rpp_fecha_registro_ini' date2='rpp_fecha_registro_fin' id='rpp_fecha_registro_ini' />
+	<parameter id='rpp_fecha_registro_fin' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

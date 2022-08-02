@@ -1,0 +1,3 @@
+<rows>
+sco_fecha_registro="${fld:sco_fecha_registro}"    smn_unidades_servicios_id="${fld:smn_unidades_servicios_id}"    smn_area_servicio_id="${fld:smn_area_servicio_id}"    sco_proveedor_exclusivo="${fld:sco_proveedor_exclusivo}"    sco_maneja_contrato="${fld:sco_maneja_contrato}"    sco_nombre="${fld:sco_nombre}"    sco_codigo="${fld:sco_codigo}"    
+</rows>

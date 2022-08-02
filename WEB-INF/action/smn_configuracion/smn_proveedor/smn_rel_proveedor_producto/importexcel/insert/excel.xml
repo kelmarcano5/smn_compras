@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_item_desc' type='varchar' required='false' maxlen='100'/>
+	<parameter id='smn_proveedor_desc' type='varchar' required='true' maxlen='64'/>
+	<parameter id='rpp_codigo_proveedor' type='varchar' required='false' maxlen='25'/>
+	<parameter id='rpp_descripcion_proveedor' type='varchar' required='false' maxlen='250'/>
+	<parameter id='rpp_existencia_proveedor' type='double' required='false' maxlen='10'/>
+	<parameter id='rpp_precio_ml' type='double' required='false' maxlen='20'/>
+	<parameter id='rpp_precio_ma' type='double' required='false' maxlen='20'/>
+	<parameter id='smn_moneda_desc' type='varchar' required='false' maxlen='48'/>
+	<parameter id='rpp_fecha_valides' type='date' required='true' maxlen='10'/>
+
+	<parameter id='smn_item_ref' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_proveedor_ref' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_moneda_ref' type='integer' required='false' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.GetColValueValidator'
+		on-error-label='${lbl:b_unregistered_provider}'
+		parameter='smn_proveedor_ref'
+		sql='smn_proveedor.sql'
+		id='smn_proveedor_ref'
+	/>
+
+	<custom-validator
+		classname='dinamica.validators.GetColValueValidator'
+		on-error-label='${lbl:b_item_not_registered}'
+		parameter='smn_item_ref'
+		sql='smn_item.sql'
+		id='smn_item_ref'
+	/>
+
+	<custom-validator
+		classname='dinamica.validators.GetColValueValidator'
+		on-error-label='${lbl:b_unregistered_currency}'
+		parameter='smn_moneda_ref'
+		sql='smn_moneda.sql'
+		id='smn_moneda_ref'
+	/>
+</validator>

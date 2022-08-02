@@ -1,0 +1,22 @@
+INSERT INTO smn_compras.smn_tipo_linea
+(
+	smn_tipo_linea_id,
+	tlc_codigo,
+	tlc_nombre,
+	tlc_naturaleza,
+	tlc_idioma,
+	tlc_usuario_id,
+	tlc_fecha_registro,
+	tlc_hora
+)
+VALUES
+(
+	${seq:currval@smn_compras.seq_smn_tipo_linea},
+	${fld:tlc_codigo},
+	${fld:tlc_nombre},
+	${fld:tlc_naturaleza},
+	'${def:locale}',
+	'${def:user}',
+	'${def:date}',
+	'${def:time}'
+)

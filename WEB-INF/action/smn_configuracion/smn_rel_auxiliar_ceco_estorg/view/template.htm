@@ -1,0 +1,46 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="8" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf_combo","query-smnrelauxiliarcecoestorg.sql")'>${lbl:b_auxiliar}</th>
+		<th class='sortable' onclick='sortBy("smn_centro_costo_rf_combo","query-smnrelauxiliarcecoestorg.sql")'>${lbl:b_center_cost}</th>
+		<th class='sortable' onclick='sortBy("smn_estructura_organizacional_rf_combo","query-smnrelauxiliarcecoestorg.sql")'>${lbl:b_organizational_structure}</th>
+		<th class='sortable' onclick='sortBy("rac_fecha_registro","query-smnrelauxiliarcecoestorg.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_rel_auxiliar_ceco_estorg_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_rel_auxiliar_ceco_estorg_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_auxiliar_ceco_estorg_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_auxiliar_rf_combo}</td>
+		<td>${fld:smn_centro_costo_rf_combo}</td>
+		<td>${fld:smn_estructura_organizacional_rf_combo}</td>
+		<td>${fld:rac_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,69 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='3%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="16" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_entidad_id","query-smnrequisicioncabecera.sql")'>${lbl:b_entities}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_id","query-smnrequisicioncabecera.sql")'>${lbl:b_solicitante}</th>
+		<th class='sortable' onclick='sortBy("smn_documento_id","query-smnrequisicioncabecera.sql")'>${lbl:b_purchasing_documents}</th>
+		<th class='sortable' onclick='sortBy("req_numero","query-smnrequisicioncabecera.sql")'>${lbl:b_requisition_number}</th>
+		<th class='sortable' onclick='sortBy("req_cabecera_version","query-smnrequisicioncabecera.sql")'>${lbl:b_header_request_version}</th>
+		<th class='sortable' onclick='sortBy("req_descripcion","query-smnrequisicioncabecera.sql")'>${lbl:b_requisition_description}</th>
+		<th class='sortable' onclick='sortBy("req_fecha_requerido","query-smnrequisicioncabecera.sql")'>${lbl:b_date_required}</th>
+		<th class='sortable' onclick='sortBy("req_estatus","query-smnrequisicioncabecera.sql")'>${lbl:b_requisition_status}</th>
+		<th class='sortable' onclick='sortBy("req_fecha_registro","query-smnrequisicioncabecera.sql")'>${lbl:b_store_date}</th>
+		<th>RD</th>
+
+		
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_requisicion_cabecera_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_requisicion_cabecera_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_requisicion_cabecera_id}')" title="${lbl:b_edit_button}"></td>
+		<td><img src="${def:context}/images/icongrid/Generar.png" onclick="generar('${fld:smn_requisicion_cabecera_id}','${fld:smn_cabecera_version_id}')" title="Generar"></td>
+		<td>${fld:smn_entidad_id}</td>
+		<td>${fld:smn_auxiliar_id}</td>
+		<td>${fld:smn_documento_id}</td>
+		<td>${fld:req_numero}</td>
+		<td>${fld:req_cabecera_version}</td>
+		<td align='left'>${fld:req_descripcion}</td>
+		<td>${fld:req_fecha_requerido@dd-MM-yyyy}</td>
+		<td align='center'>${fld:req_estatus}</td>
+		<td>${fld:req_fecha_registro@dd-MM-yyyy}</td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalle('${fld:smn_requisicion_cabecera_id}','${fld:smn_cabecera_version_id}','${fld:req_descripcion}','${fld:req_numero}','${fld:empresa}','${fld:dcc_recurrente}')" title="${lbl:b_requisition_detail}"></td>
+		</td>
+		
+	</tr>
+	</rows>
+
+</table>

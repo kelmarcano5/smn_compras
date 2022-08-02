@@ -1,0 +1,50 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='33%'/>
+	<col width='33%'/>
+	<col width='33%'/>
+	<col width='33%'/>
+	<col width='33%'/>
+	<col width='3%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="9" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf","query-smnproveedor.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("smn_clasificacion_abc_rf","query-smnproveedor.sql")'>${lbl:b_clasification}</th>
+		<th class='sortable' onclick='sortBy("cfi_description","query-smnproveedor.sql")'>${lbl:b_condicion_financiera}</th>
+		<th class='sortable' onclick='sortBy("cop_descripcion","query-smnproveedor.sql")'>${lbl:b_condition_payment}</th>
+		<th class='sortable' onclick='sortBy("prv_fecha_registro","query-smnproveedor.sql")'>${lbl:b_store_date}</th>
+		<th>RPP</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_proveedor_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_proveedor_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_proveedor_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_auxiliar_rf}</td>
+		<td>${fld:smn_clasificacion_abc_rf}</td>
+		<td>${fld:cfi_description}</td>
+		<td>${fld:cop_descripcion}</td>
+		<td>${fld:prv_fecha_registro@dd-MM-yyyy}</td>
+		<td><img src="${def:context}/images/view-list-details.png" onclick="relacion('${fld:smn_proveedor_id}')" title="${lbl:b_rel_providers_products}"></td>
+	</tr>
+	</rows>
+
+</table>

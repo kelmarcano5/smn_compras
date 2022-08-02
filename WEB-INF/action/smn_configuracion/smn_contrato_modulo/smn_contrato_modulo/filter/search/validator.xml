@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_contrato_base_rf' type='integer' required='false' label='${lbl:b_contrato_base}' maxlen='10'/>
+	<parameter id='smn_documentos_id' type='integer' required='false' label='${lbl:b_contrato_doc}' maxlen='10'/>
+	<parameter id='ctm_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

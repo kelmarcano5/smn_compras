@@ -1,0 +1,52 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('smn_auxiliar_rf_combo','query-smnrelauxiliarcecoestorg.sql')" >${lbl:b_auxiliar}</th>
+		<th class='sortable' onclick="sortBy('smn_centro_costo_rf_combo','query-smnrelauxiliarcecoestorg.sql')" >${lbl:b_center_cost}</th>
+		<th class='sortable' onclick="sortBy('smn_estructura_organizacional_rf_combo','query-smnrelauxiliarcecoestorg.sql')" >${lbl:b_organizational_structure}</th>
+		<th class='sortable' onclick="sortBy('rac_idioma','query-smnrelauxiliarcecoestorg.sql')" >${lbl:s_profile_lang}</th>
+		<th class='sortable' onclick="sortBy('rac_usuario','query-smnrelauxiliarcecoestorg.sql')" >${lbl:b_user}</th>
+		<th class='sortable' onclick="sortBy('rac_fecha_registro','query-smnrelauxiliarcecoestorg.sql')" >${lbl:b_store_date}</th>
+		<th class='sortable' onclick="sortBy('rac_hora','query-smnrelauxiliarcecoestorg.sql')" >${lbl:s_loginhist_col2}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_rel_auxiliar_ceco_estorg_id}')" title="Ver detalle"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_rel_auxiliar_ceco_estorg_id}')" title="Eliminar"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_auxiliar_ceco_estorg_id}')" title="Editar"></td>
+		<td align="center">${fld:smn_auxiliar_rf_combo}</td>
+		<td align="center">${fld:smn_centro_costo_rf_combo}</td>
+		<td align="center">${fld:smn_estructura_organizacional_rf_combo}</td>
+		<td align="left">${fld:rac_idioma}</td>
+		<td align="left">${fld:rac_usuario}</td>
+		<td align="center">${fld:rac_fecha_registro@dd-MM-yyyy}</td>
+		<td align="left">${fld:rac_hora}</td>
+	</tr>
+	</rows>
+
+</table>

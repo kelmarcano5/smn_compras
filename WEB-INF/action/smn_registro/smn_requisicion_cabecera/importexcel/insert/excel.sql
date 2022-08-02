@@ -1,0 +1,30 @@
+INSERT INTO smn_compras.smn_requisicion_cabecera
+(
+	smn_requisicion_cabecera_id,
+	smn_cabecera_version_id,
+	req_numero,
+	req_estatus,
+	smn_tipo_documento_id,
+	smn_documento_id,
+	req_descripcion,
+	req_fecha_requerido,
+	req_estatus_ruta,
+	smn_entidad_id,
+	smn_sucursal_id,
+	req_fecha_registro
+)
+VALUES
+(
+	${seq:nextval@smn_compras.seq_smn_requisicion_cabecera},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	{d '${def:date}'}
+)

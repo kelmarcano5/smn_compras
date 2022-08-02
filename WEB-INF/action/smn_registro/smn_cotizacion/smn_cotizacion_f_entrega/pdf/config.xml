@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncotizacionfentrega.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_delivery_date_quote}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_delivery_date_quote}.pdf</pdf-file-name>
+
+	<pdf-report 
+		pageSize="letter" 
+		rotate="false"
+		footer="false" 
+		header="true">
+		<record recordset='query-smncotizacionfentrega.sql' width='100' spacingBefore='40'>
+			<col name='smn_cotizacion_id' title='${lbl:b_quotation}' width='20' align='left' format='######' />
+			<col name='cfe_consecutivo' title='${lbl:b_consecutivel}' width='20' align='left' format='######' />
+			<col name='cfe_cantidad' title='${lbl:b_quantity}' width='20' align='left' format='#,###,##0.00' />
+			<col name='cfe_fecha_entrega' title='${lbl:b_delivery_date}' width='20' align='left' format='dd-MM-yyyy' />
+			<col name='cfe_status' title='${lbl:b_status}' width='20' align='left' />
+
+		</record>
+
+	</pdf-report>
+</config>

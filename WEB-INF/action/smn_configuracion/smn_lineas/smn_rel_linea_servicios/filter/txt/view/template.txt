@@ -1,0 +1,3 @@
+<rows>
+smn_servicio_id="${fld:smn_servicio_id}"    smn_lineas_id="${fld:smn_lineas_id}"    
+</rows>

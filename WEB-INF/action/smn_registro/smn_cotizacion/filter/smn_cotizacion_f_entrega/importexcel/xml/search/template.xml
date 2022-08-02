@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_cotizacion_f_entrega>
+	<detail>
+		<rows>		
+		<record cfe_status="${fld:cfe_status}"    cfe_fecha_entrega="${fld:cfe_fecha_entrega}"    cfe_cantidad="${fld:cfe_cantidad}"    cfe_consecutivo="${fld:cfe_consecutivo}"    smn_cotizacion_id="${fld:smn_cotizacion_id}"    />
+		</rows>
+	</detail>
+</smn_cotizacion_f_entrega>

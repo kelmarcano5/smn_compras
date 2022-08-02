@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="session" scope="transaction" />
+		<recordset id='detail-smnrelrutaaprobacion.sql' source='session' scope='transaction' />
+
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_business_rules}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_business_rules}.pdf</pdf-file-name>
+
+	<pdf-report pageSize="letter" rotate="false" footer="true" header="true">
+		<record recordset='query.sql' title='${lbl:b_business_rules}' width='60' spacingBefore='40'>
+			<col name='rul_codigo' title='${lbl:b_code}' align='left' />
+			<col name='rul_nombre' title='${lbl:b_name}' align='left' />
+			<col name='rul_cantidad_desde' title='${lbl:b_cant_dsd}' align='left' format='######' />
+			<col name='rul_cantidad_hasta' title='${lbl:b_cant_hst}' align='left' format='######' />
+			<col name='rul_monto_desde' title='${lbl:b_max_ammount_init}' align='left' format='#,###,##0.00' />
+			<col name='rul_monto_hasta' title='${lbl:b_ammount_end}' align='left' format='#,###,##0.00' />
+			<col name='rul_fecha_registro' title='${lbl:b_store_date}' align='left' format='dd-MM-yyyy' />
+		</record>
+		<table recordset='detail-smnrelrutaaprobacion.sql' width='100' spacingBefore='40'>
+			<col name='smn_ruta_aprobacion_id' title='${lbl:b_rute_approbation}' width='16' align='left' format='######' />
+			<col name='smn_ruta_id_combo' title='${lbl:b_rute}' width='16' align='left' format='######' />
+			<col name='rra_aprobacion_combo' title='${lbl:b_approbation}' width='16' align='left' />
+			<col name='smn_lineas_id_combo' title='${lbl:b_lines}' width='16' align='left' format='######' />
+			<col name='smn_roles_id_combo' title='${lbl:b_roles}' width='16' align='left' format='######' />
+			<col name='rra_fecha_registro' title='${lbl:b_store_date}' width='16' align='left' format='dd-MM-yyyy' />
+		</table>
+
+
+	</pdf-report>
+</config>

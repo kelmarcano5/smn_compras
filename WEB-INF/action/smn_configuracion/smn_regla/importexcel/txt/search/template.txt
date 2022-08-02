@@ -1,0 +1,3 @@
+<rows>
+rul_fecha_registro="${fld:rul_fecha_registro}"    rul_var_monto="${fld:rul_var_monto}"    rul_monto_hasta="${fld:rul_monto_hasta}"    rul_monto_desde="${fld:rul_monto_desde}"    smn_monedas_id="${fld:smn_monedas_id}"    rul_var_cantidad="${fld:rul_var_cantidad}"    rul_cantidad_hasta="${fld:rul_cantidad_hasta}"    rul_cantidad_desde="${fld:rul_cantidad_desde}"    rul_nombre="${fld:rul_nombre}"    rul_codigo="${fld:rul_codigo}"    
+</rows>

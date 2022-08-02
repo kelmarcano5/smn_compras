@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncotizacionfentrega.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_delivery_date_quote}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_delivery_date_quote}">
+				<col id='smn_cotizacion_id' label='${lbl:b_quotation}' />
+		<col id='cfe_consecutivo' label='${lbl:b_consecutivel}' />
+		<col id='cfe_cantidad' label='${lbl:b_quantity}' />
+		<col id='cfe_fecha_entrega' label='${lbl:b_delivery_date}' />
+		<col id='cfe_status' label='${lbl:b_status}' />
+		<col id='smn_cotizacion_id' label='${lbl:b_quotation}' />
+		<col id='cfe_consecutivo' label='${lbl:b_consecutivel}' />
+		<col id='cfe_cantidad' label='${lbl:b_quantity}' />
+		<col id='cfe_fecha_entrega' label='${lbl:b_delivery_date}' />
+		<col id='cfe_status' label='${lbl:b_status}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

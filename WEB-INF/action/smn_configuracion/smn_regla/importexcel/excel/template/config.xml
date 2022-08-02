@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnregla.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_business_rules}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_business_rules}">
+				<col id='rul_codigo' label='${lbl:b_code}' />
+		<col id='rul_nombre' label='${lbl:b_name}' />
+		<col id='rul_cantidad_desde' label='${lbl:b_cant_dsd}' />
+		<col id='rul_cantidad_hasta' label='${lbl:b_cant_hst}' />
+		<col id='rul_monto_desde' label='${lbl:b_max_ammount_init}' />
+		<col id='rul_monto_hasta' label='${lbl:b_ammount_end}' />
+		<col id='rul_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

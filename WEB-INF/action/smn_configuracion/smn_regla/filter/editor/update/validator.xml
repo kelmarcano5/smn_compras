@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='rul_codigo' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='rul_nombre' type='varchar' required='true' label='${lbl:b_name}' maxlen='48'/>
+	<parameter id='rul_cantidad_desde' type='integer' required='true' label='${lbl:b_cant_dsd}' maxlen='10'/>
+	<parameter id='rul_cantidad_hasta' type='integer' required='true' label='${lbl:b_cant_hst}' maxlen='10'/>
+	<parameter id='rul_var_cantidad' type='integer' required='true' label='${lbl:b_var_qty}' maxlen='10'/>
+	<parameter id='smn_monedas_id' type='integer' required='true' label='${lbl:b_coins}' maxlen='10'/>
+	<parameter id='rul_monto_desde' type='double' required='true' label='${lbl:b_max_ammount_init}' maxlen='10'/>
+	<parameter id='rul_monto_hasta' type='double' required='true' label='${lbl:b_ammount_end}' maxlen='10'/>
+	<parameter id='rul_var_monto' type='double' required='true' label='${lbl:b_var_amount}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_business_rules}' maxlen='10'/>
+
+
+
+</validator>

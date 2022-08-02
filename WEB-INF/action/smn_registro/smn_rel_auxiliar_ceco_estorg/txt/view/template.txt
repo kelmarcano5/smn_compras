@@ -1,0 +1,3 @@
+<rows>
+rac_fecha_registro="${fld:rac_fecha_registro}"    smn_estructura_organizacional_rf="${fld:smn_estructura_organizacional_rf}"    smn_centro_costo_rf="${fld:smn_centro_costo_rf}"    smn_auxiliar_rf="${fld:smn_auxiliar_rf}"    
+</rows>

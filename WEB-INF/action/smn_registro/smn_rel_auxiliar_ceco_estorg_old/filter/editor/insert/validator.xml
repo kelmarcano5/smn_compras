@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' label='${lbl:b_auxiliar}' maxlen='10'/>
+	<parameter id='smn_centro_costo_rf' type='integer' required='true' label='${lbl:b_center_cost}' maxlen='10'/>
+	<parameter id='smn_estructura_organizacional_rf' type='integer' required='true' label='${lbl:b_organizational_structure}' maxlen='10'/>
+</validator>

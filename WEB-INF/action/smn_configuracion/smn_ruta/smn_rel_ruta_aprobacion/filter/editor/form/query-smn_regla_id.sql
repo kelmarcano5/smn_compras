@@ -1,0 +1,1 @@
+select smn_compras.smn_regla.smn_regla_id as id, smn_compras.smn_regla.rul_codigo|| ' - ' || smn_compras.smn_regla.rul_nombre as item from smn_compras.smn_regla

@@ -1,0 +1,23 @@
+INSERT INTO smn_compras.smn_servicio
+(
+	smn_servicio_id,
+	sco_codigo,
+	sco_nombre,
+	sco_maneja_contrato,
+	sco_proveedor_exclusivo,
+	smn_area_servicio_id,
+	smn_unidades_servicios_id,
+	sco_fecha_registro
+)
+VALUES
+(
+	${seq:nextval@smn_compras.seq_smn_servicio},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'${def:date
+}'
+)

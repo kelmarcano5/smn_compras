@@ -1,0 +1,1 @@
+select smn_compras.smn_contrato_modulo.smn_contrato_modulo_id as id, smn_compras.smn_contrato_modulo.smn_contrato_base_rf || ' - ' || smn_compras.smn_contrato_modulo.smn_documentos_id as item from smn_compras.smn_contrato_modulo order by smn_compras.smn_contrato_modulo.smn_documentos_id

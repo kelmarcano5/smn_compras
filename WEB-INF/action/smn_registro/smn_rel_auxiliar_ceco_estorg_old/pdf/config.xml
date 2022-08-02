@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnrelauxiliarcecoestorg.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_rel_auxiliar_ceco_estorg}</pdf-title>
+	<pdf-logo url='/images/logo-dinamica.png' scale='100' />
+
+	<pdf-report pageSize="letter" rotate="false">
+		<table recordset='query-smnrelauxiliarcecoestorg.sql' width='100' spacingBefore='40'>
+			<col name='smn_auxiliar_rf_combo' title='${lbl:b_auxiliar}' width='25' align='center' format='######' />
+			<col name='smn_centro_costo_rf_combo' title='${lbl:b_center_cost}' width='25' align='center' format='######' />
+			<col name='smn_estructura_organizacional_rf_combo' title='${lbl:b_organizational_structure}' width='25' align='center' format='######' />
+			<col name='rac_fecha_registro' title='${lbl:b_store_date}' width='25' align='center' format='dd-MM-yyyy' />
+		</table>
+
+	</pdf-report>
+</config>

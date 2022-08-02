@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncotizacion.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="4" cellStep="0" name="${lbl:b_quotation}"/>
+	
+	<excel 
+		recordset='query-smncotizacion.sql' 
+		sheetname='${lbl:b_quotation}' 
+		filename='${lbl:b_quotation}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_solicitante' label='Solicitante' />
+		<col id='smn_documento_id' label='${lbl:b_purchasing_documents}' />
+		<col id='numero_requisicion' label='Numero Requisicion' />
+		<col id='smn_item_rf' label='${lbl:b_item}' />
+		<col id='cantidad' label='${lbl:b_quantity}' />
+		<col id='fecha_requerida' label='Fecha Requerida' />
+		<col id='numero_cotizacion' label='Numero Cotizacion' />
+		<col id='smn_proveedor_id' label='Proveedor' />
+		<col id='cot_estatus' label='${lbl:b_status}' />
+		<col id='cot_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

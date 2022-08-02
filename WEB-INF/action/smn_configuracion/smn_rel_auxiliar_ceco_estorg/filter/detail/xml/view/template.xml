@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_rel_auxiliar_ceco_estorg>
+	<detail>
+		<rows>		
+		<record rac_fecha_registro="${fld:rac_fecha_registro}"    smn_estructura_organizacional_rf="${fld:smn_estructura_organizacional_rf}"    smn_centro_costo_rf="${fld:smn_centro_costo_rf}"    smn_auxiliar_rf="${fld:smn_auxiliar_rf}"    />
+		</rows>
+	</detail>
+</smn_rel_auxiliar_ceco_estorg>

@@ -1,0 +1,36 @@
+INSERT INTO smn_compras.smn_rel_proveedor_producto
+(
+	smn_rel_proveedor_producto_id,
+	smn_proveedor_id,
+	smn_item_rf,
+	rpp_codigo_proveedor,
+	rpp_descripcion_proveedor,
+	rpp_existencia_proveedor,
+	rpp_precio_ml,
+	rpp_precio_ma,
+	smn_moneda_id,
+	rpp_fecha_valides,
+	rpp_estatus,
+	rpp_idioma,
+	rpp_usuario,
+	rpp_fecha_registro,
+	rpp_hora
+)
+VALUES 
+(
+	${seq:nextval@smn_compras.seq_smn_rel_proveedor_producto},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'AC',
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

@@ -1,0 +1,3 @@
+<rows>
+tdc_fecha_registro="${fld:tdc_fecha_registro}"    tdc_naturaleza="${fld:tdc_naturaleza}"    tdc_nombre="${fld:tdc_nombre}"    tdc_codigo="${fld:tdc_codigo}"     
+</rows>

@@ -1,0 +1,11 @@
+select
+		smn_compras.smn_req_detalle_dcto_retenc.smn_requisicion_detalle_id,
+	smn_compras.smn_req_detalle_dcto_retenc.smn_codigo_descuento_rf,
+	smn_compras.smn_req_detalle_dcto_retenc.drc_monto_base,
+	smn_compras.smn_req_detalle_dcto_retenc.drc_porcentaje,
+	smn_compras.smn_req_detalle_dcto_retenc.drc_monto_descuento,
+	smn_compras.smn_req_detalle_dcto_retenc.drc_fecha_registro
+from
+	smn_compras.smn_req_detalle_dcto_retenc 
+where
+	smn_compras.smn_req_detalle_dcto_retenc.smn_req_detalle_dcto_retenc_id = ${fld:id}

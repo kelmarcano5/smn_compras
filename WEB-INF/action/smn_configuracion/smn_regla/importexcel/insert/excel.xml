@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='rul_codigo' type='varchar' required='true' maxlen='16'/>
+	<parameter id='rul_nombre' type='varchar' required='true' maxlen='48'/>
+	<parameter id='rul_cantidad_desde' type='integer' required='true' maxlen='10'/>
+	<parameter id='rul_cantidad_hasta' type='integer' required='true' maxlen='10'/>
+	<parameter id='rul_var_cantidad' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_monedas_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='rul_monto_desde' type='double' required='true' maxlen='10'/>
+	<parameter id='rul_monto_hasta' type='double' required='true' maxlen='10'/>
+	<parameter id='rul_var_monto' type='double' required='true' maxlen='10'/>
+
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='rul_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarNombre.sql'
+			id='rul_nombre'/>
+
+
+
+</validator>

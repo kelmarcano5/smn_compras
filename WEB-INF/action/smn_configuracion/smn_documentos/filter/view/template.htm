@@ -1,0 +1,50 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='3%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="9" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_tipo_documento_id","query-smndocumentos.sql")'>${lbl:b_types_documents}</th>
+		<th class='sortable' onclick='sortBy("dcc_codigo","query-smndocumentos.sql")'>${lbl:b_code}</th>
+		<th class='sortable' onclick='sortBy("dcc_nombre","query-smndocumentos.sql")'>${lbl:b_name}</th>
+		<th class='sortable' onclick='sortBy("dcc_cant_ofertas","query-smndocumentos.sql")'>${lbl:b_cant_ofert}</th>
+		<th class='sortable' onclick='sortBy("dcc_fecha_registro","query-smndocumentos.sql")'>${lbl:b_store_date}</th>
+		<th></th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_documentos_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_documentos_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_documentos_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_tipo_documento_id}</td>
+		<td align='left'>${fld:dcc_codigo}</td>
+		<td align='left'>${fld:dcc_nombre}</td>
+		<td>${fld:dcc_cant_ofertas}</td>
+		<td>${fld:dcc_fecha_registro@dd-MM-yyyy}</td>
+			<td><img src="${def:context}/images/view-list-details.png" onclick="relacion('${fld:smn_documentos_id}','${fld:dcc_codigo}','${fld:dcc_nombre}' )" title="${lbl:b_user_document}"></td>
+
+	</tr>
+	</rows>
+
+</table>

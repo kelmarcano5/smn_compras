@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_tipo_documento_id_name' type='varchar' required='true' label='${lbl:b_types_documents}'/>
+	<parameter id='smn_tipo_documento_id' type='integer' required='false' label='${lbl:b_types_documents}' maxlen='10'/>
+	<parameter id='dcc_codigo' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='dcc_nombre' type='varchar' required='true' label='${lbl:b_name}' maxlen='64'/>
+	<parameter id='dcc_transaccion_id' type='integer' required='false' label='${lbl:b_transaction}' maxlen='10'/>
+	<parameter id='dcc_recurrente' type='varchar' required='false' label='${lbl:b_recurrent}' maxlen='2'/>
+	<parameter id='dcc_fecha_inicio' type='date' required='false' label='${lbl:b_date_init}' maxlen='10'/>
+	<parameter id='dcc_fecha_final' type='date' required='false' label='${lbl:b_date_end}' maxlen='10'/>
+	<parameter id='dcc_modalidad' type='varchar' required='false' label='${lbl:b_modal}' maxlen='2'/>
+	<parameter id='dcc_esoferta' type='varchar' required='false' label='${lbl:b_esoferta}' maxlen='1'/>
+	<parameter id='dcc_cant_ofertas' type='integer' required='false' label='${lbl:b_cant_ofert}' maxlen='10'/>
+	<parameter id='dcc_moneda_alterna' type='varchar' required='false' label='${lbl:b_required_coins_altern}' maxlen='1'/>
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='dcc_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarNombre.sql'
+			id='dcc_nombre'/>
+
+	<parameter id='dcc_genera_pedido' type='varchar' required='false' label='${lbl:b_required_order_comercial}' maxlen='1'/>
+	<parameter id='dcc_cant_dias_cierre' type='varchar' required='false' label='${lbl:b_days_close}' maxlen='1'/>
+	<parameter id='dcc_hora_cierre' type='varchar' required='false' label='${lbl:b_time_close}' maxlen='1'/>
+
+
+</validator>

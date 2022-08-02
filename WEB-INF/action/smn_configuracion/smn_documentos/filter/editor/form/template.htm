@@ -1,0 +1,449 @@
+<!doctype html>
+<html>
+
+<head>
+
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_purchasing_documents}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+		<tr>
+			<td>${lbl:b_types_documents}*</td>
+			<td>
+				<select name="smn_tipo_documento_id" id="smn_tipo_documento_id" onchange="chgCombo(smn_tipo_documento_id.options[smn_tipo_documento_id.selectedIndex].text,'smn_tipo_documento_id_name');displayFields(smn_tipo_documento_id.options[smn_tipo_documento_id.selectedIndex].value);">
+					<option value="">[Cualquiera]</option>
+					<smn_tipo_documento_id_rows>
+					<option value="${fld:id}">${fld:item}</option>
+
+					</smn_tipo_documento_id_rows>
+				</select> 
+				<input id="smn_tipo_documento_id_name" name="smn_tipo_documento_id_name" type="hidden">
+			</td>
+			<!-- Incorporado manualmente para mostrar icono de inclusion de elementos al combo -->
+			<td>
+				<img src="${def:context}/images/list-add2.png" align="left" class="button" onclick="tipodocumento()" title="${lbl:b_types_documents}" >
+			</td>
+			<td>
+				&nbsp;&nbsp;
+			</td>
+		</tr>
+		<tr id="codigo">
+			<td>${lbl:b_code}*</td>
+			<td>
+				<input id="dcc_codigo" name="dcc_codigo" type="text" maxlength="16" >
+			</td>
+		</tr>
+		<tr id="nombre">
+			<td>${lbl:b_name}*</td>
+			<td>
+				<input id="dcc_nombre" name="dcc_nombre" type="text" maxlength="64" >
+			</td>
+		</tr>
+	<tr id="documentoGeneral">
+		<td>${lbl:b_general_document}</td>
+		<td>
+			<select name="dcc_transaccion_id" id="dcc_transaccion_id" onchange="chgCombo(dcc_transaccion_id.options[dcc_transaccion_id.selectedIndex].text,'dcc_transaccion_id_name');setRequiereMA(dcc_transaccion_id.options[dcc_transaccion_id.selectedIndex].value,smn_tipo_documento_id.options[smn_tipo_documento_id.selectedIndex].value);">
+				<option value="">[Cualquiera]</option>
+				<dcc_transaccion_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</dcc_transaccion_id_rows>
+			</select> 
+			<input id="dcc_transaccion_id_name" name="dcc_transaccion_id_name" type="hidden">
+		</td>
+		<!-- Incorporado manualmente para mostrar icono de inclusion de elementos al combo -->
+		<!-- <td>
+			<img src="${def:context}/images/list-add2.png" align="left" class="button" onclick="transation()" title="${lbl:b_transaction}" >
+		</td>
+		<td>
+			&nbsp;&nbsp;
+		</td> -->
+	</tr>
+		<tr id="recurrente">
+			<td>${lbl:b_recurrent}</td>
+			<td>
+				<select name="dcc_recurrente" id="dcc_recurrente" onchange="changeRequiereMA(dcc_recurrente.options[dcc_recurrente.selectedIndex].value);">
+					<option value="NO">${lbl:b_not}</option>
+					<option value="SI">${lbl:b_yes}</option>
+				</select> 
+			</td>
+		</tr>
+		<tr id="fecha_desde">
+			<td>${lbl:b_date_init}</td>
+			<td>
+				<input id="dcc_fecha_inicio" name="dcc_fecha_inicio" type="text" class="date" maxlength="10">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('dcc_fecha_inicio')">
+			</td>
+		</tr>
+		<tr id="fecha_hasta">
+			<td>${lbl:b_date_end}</td>
+			<td>
+				<input id="dcc_fecha_final" name="dcc_fecha_final" type="text" class="date" maxlength="10">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('dcc_fecha_final')">
+			</td>
+		</tr>
+		<tr id="modalidad">
+			<td>${lbl:b_modal}</td>
+			<td>
+				<select name="dcc_modalidad" id="dcc_modalidad">
+				<option value="MA">${lbl:b_manual}</option>
+				<option value="AU">${lbl:b_automatico}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr id="requiere_ma">
+			<td>${lbl:b_required_coins_altern}*</td>
+			<td>
+				<select name="dcc_moneda_alterna" id="dcc_moneda_alterna">
+				<option value="N">${lbl:b_not}</option>
+				<option value="S">${lbl:b_yes}</option>
+				</select> 
+			</td>
+		</tr>
+		<tr id="requiere_ofe">
+			<td>${lbl:b_esoferta}</td>
+			<td>
+				<select name="dcc_esoferta" id="dcc_esoferta"  onchange="requiereoferta();">
+				<option value="N">${lbl:b_not}</option>
+				<option value="S">${lbl:b_yes}</option>
+				</select> 
+			</td>
+		</tr>
+		<tr id="cantidad_ofe">
+			<td>${lbl:b_cant_ofert}</td>
+			<td>
+				<input id="dcc_cant_ofertas" name="dcc_cant_ofertas" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="generaPedido">
+			<td>${lbl:b_required_order_comercial}*</td>
+			<td>
+				<select name="dcc_genera_pedido" id="dcc_genera_pedido" onchange="cierre();" >
+				<option value="N">${lbl:b_not}</option>
+				<option value="S">${lbl:b_yes}</option>
+				</select> 
+			</td>
+		</tr>
+		<tr style="display: none" id="dia_cierre">
+			<td>${lbl:b_days_close}</td>
+			<td>
+				<input id="dcc_cant_dias_cierre" name="dcc_cant_dias_cierre" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr style="display: none" id="hora_cierre">
+			<td>${lbl:b_time_close}</td>
+			<td>
+				<input id="dcc_hora_cierre" name="dcc_hora_cierre" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{	
+		document.getElementById('codigo').style.display = 'none';
+		document.getElementById('nombre').style.display = 'none';
+		document.getElementById('documentoGeneral').style.display = 'none';
+		document.getElementById('recurrente').style.display = 'none';
+		document.getElementById('modalidad').style.display = 'none';
+		document.getElementById('requiere_ma').style.display = 'none';
+		document.getElementById('requiere_ofe').style.display = 'none';
+		document.getElementById('cantidad_ofe').style.display = 'none';
+		document.getElementById('generaPedido').style.display = 'none';
+		document.getElementById('fecha_desde').style.display = 'none';
+		document.getElementById('fecha_hasta').style.display = 'none';
+
+		addNew();
+		
+		if (id!="")
+			edit(id);
+	} 
+
+	function cierre() {
+		var gen = document.getElementById('dcc_genera_pedido').value;
+
+
+		if (gen == 'S') {
+			document.getElementById("dia_cierre").style.display='';
+				document.getElementById("hora_cierre").style.display='';
+		} else {
+			document.getElementById("dia_cierre").style.display='none';
+				document.getElementById("hora_cierre").style.display='none';
+		}
+	}
+
+	function requiereoferta(){
+			if(document.getElementById("dcc_esoferta").value=='S'){
+				document.getElementById("cantidad_ofe").style.display='';
+			}else{
+				document.getElementById("cantidad_ofe").style.display='none';
+				document.getElementById("dcc_cant_ofertas").value='';
+			}
+	}
+	
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		//document.getElementById("dcc_cant_ofertas").disabled=true;
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	function tipodocumento()
+			{
+			//alert ('Colocar su código aquí­.')
+				var uri = "/smn_compras/action/smn_configuracion/smn_tipo_documento/editor/form";	
+				openDialog("editor20", uri, 650, 580);
+			}
+
+	function transation()
+		{
+		//alert ('Colocar su código aquí­.')
+			var uri = "/smn_base/action/smn_configuracion/smn_financiera/smn_transaccion_general/editor/form";	
+			openDialog("editor21", uri, 650, 580);
+		}
+
+	//Creada por: Engellbert Torrealba. 
+	//Funcion: Valida los campos a mostrar dependiendo del tipo de documento.
+	//tipoDocumentoId: valor (ID) del tipo de documento.
+	//Fecha de modificacion: 10-08-2020.
+	//Modificado por: Engellbert Torrealba.
+	function displayFields(tipoDocumentoId)
+	{
+		if(tipoDocumentoId != null && tipoDocumentoId != '')
+		{
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/displayFields?id=" + tipoDocumentoId, 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);
+		}
+		else
+		{
+			document.getElementById('codigo').style.display = 'none';
+			document.getElementById('nombre').style.display = 'none';
+			document.getElementById('documentoGeneral').style.display = 'none';
+			document.getElementById('recurrente').style.display = 'none';
+			document.getElementById('modalidad').style.display = 'none';
+			document.getElementById('requiere_ma').style.display = 'none';
+			document.getElementById('dcc_moneda_alterna').disabled = false; // activa/desactiva el campo de moneda alterna
+			document.getElementById('requiere_ofe').style.display = 'none';
+			document.getElementById('cantidad_ofe').style.display = 'none';
+			document.getElementById('generaPedido').style.display = 'none';
+			document.getElementById('fecha_desde').style.display = 'none';
+			document.getElementById('fecha_hasta').style.display = 'none';
+		}
+	}
+
+	//Creada por: Engellbert Torrealba. 
+	//Funcion: Habilita o desabilita el campo requiere moneda alterna.
+	//recurrente: valor que permite comparar si es recurrente o no.
+	//Fecha de modificacion: 10-08-2020.
+	//Modificado por: Engellbert Torrealba.
+	function changeRequiereMA(recurrente)
+	{
+		if(recurrente == 'SI')
+		{
+			document.getElementById('requiere_ma').style.display = '';
+		}
+		else
+		if(recurrente == 'NO')
+		{
+			document.getElementById('requiere_ma').style.display = 'none';
+		}
+	}
+
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndexValue(value, combo) 
+			{
+				for (var i = 0; i < combo.options.length; i++) 
+				{					
+					if (combo.options[i].text == value) 
+					{
+						combo.options[i].selected = true;
+						return;
+					}
+				} 
+			}
+	
+	//Creada por: Engellbert Torrealba. 
+	//Funcion: selecciona si requiere o no moneda alterna partiendo del documento de transaccion.
+	//documento: valor(PK/ID) del documento general.
+	//tipo de documento: valor(PK/ID) del tipo de documento.
+	//Fecha de modificacion: 11-08-2020.
+	//Modificado por: Engellbert Torrealba.
+	function setRequiereMA(documento,tipoDocumento) 
+	{
+		if(documento != '' && tipoDocumento != '')
+		{
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/requiereMA?id2=" + documento + "&id=" + tipoDocumento, 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);
+		}
+		else
+		{
+			setComboValue('dcc_moneda_alterna','N','form1');
+		}
+	}
+
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndex(code, combo, description) 
+	{
+		//alert(code, combo, descripcion);
+		//alert('text = ' + combo.options[i].text + ' value = ' + combo.options[i].value)
+		for (var i = 0; i < combo.options.length; i++) 
+		{
+			var valueText = code;
+			if(description != null)
+			{
+				valueText = valueText + ' - ' + description;
+			}
+	    	
+	    	if (combo.options[i].text == valueText) 
+			{
+	        	combo.options[i].selected = true;
+				return;
+	        }
+	    }  
+	}	
+
+</script>	
+</body>
+</html>

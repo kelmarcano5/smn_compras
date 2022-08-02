@@ -1,0 +1,49 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="8" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('smn_proveedor_rf_combo','query-smnrelproveedorproducto.sql')" >${lbl:b_providers}</th>
+		<th class='sortable' onclick="sortBy('rpp_id_producto','query-smnrelproveedorproducto.sql')" >${lbl:b_product}</th>
+		<th class='sortable' onclick="sortBy('rpp_tipo_producto_combo','query-smnrelproveedorproducto.sql')" >${lbl:b_type_product}</th>
+		<th class='sortable' onclick="sortBy('rpp_producto_alterno','query-smnrelproveedorproducto.sql')" >${lbl:b_product_altern}</th>
+		<th class='sortable' onclick="sortBy('rpp_fecha_registro','query-smnrelproveedorproducto.sql')" >${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_rel_proveedor_producto_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_rel_proveedor_producto_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_proveedor_producto_id}')" title="${lbl:b_edit_button}"></td>
+		<td align="center">${fld:smn_proveedor_rf_combo}</td>
+		<td align="center">${fld:rpp_id_producto}</td>
+		<td align="left">${fld:rpp_tipo_producto_combo}</td>
+		<td align="left">${fld:rpp_producto_alterno}</td>
+		<td align="center">${fld:rpp_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

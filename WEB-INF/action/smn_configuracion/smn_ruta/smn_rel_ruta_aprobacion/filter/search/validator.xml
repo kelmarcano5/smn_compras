@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='rra_aprobacion' type='varchar' required='false' label='${lbl:b_approbation}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='rra_aprobacion' rule='like' />
+	<parameter id='smn_lineas_id' type='varchar' required='false' label='${lbl:b_lines}'/>
+	<parameter id='smn_lineas_id_text' type='varchar' required='false' label='${lbl:b_lines}'/>
+	<custom-validator classname='dinamica.validators.StringToRecordset' paramName='smn_lineas_id' recordsetId='smn_lineas_id' separatorChar=';' colName='smn_lineas_id' colType='varchar' />
+	<parameter id='smn_ruta_id' type='varchar' required='false' label='${lbl:b_rute}'/>
+	<parameter id='smn_ruta_id_text' type='varchar' required='false' label='${lbl:b_rute}'/>
+	<custom-validator classname='dinamica.validators.StringToRecordset' paramName='smn_ruta_id' recordsetId='smn_ruta_id' separatorChar=';' colName='smn_ruta_id' colType='varchar' />
+</validator>
