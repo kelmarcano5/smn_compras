@@ -75,24 +75,10 @@
 	{ 
 		addNew();
 
-		document.getElementById("smn_cotizacion_id").value='${fld:id2}';
-		document.getElementById("smn_cotizacion_id").disabled=true;
-
 		if (id!="")
 			edit(id);
 	} 
 	
-	function search()
-	{
-		addNew();
-
-		document.getElementById("smn_cotizacion_id").value='${fld:id2}';
-		document.getElementById("smn_cotizacion_id").disabled=true;
-
-		if (id!="")
-			edit(id);
-	}
-
 	function chgCombo(text,id)
 	{
 		document.getElementById(id).value = text;

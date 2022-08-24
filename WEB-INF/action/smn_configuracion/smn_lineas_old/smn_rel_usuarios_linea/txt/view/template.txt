@@ -1,3 +1,0 @@
-<rows>
-smn_lineas_id="${fld:smn_lineas_id}"   smn_usuarios_id="${fld:smn_usuarios_id}"    
-</rows>

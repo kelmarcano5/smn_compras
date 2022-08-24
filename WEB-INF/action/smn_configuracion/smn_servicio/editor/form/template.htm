@@ -56,18 +56,16 @@
 				</select> 
 			</td>
 		</tr>
-	<tr>
-		<td>${lbl:b_exclusive_provider}</td>
-		<td>
-			<select name="sco_proveedor_exclusivo" id="sco_proveedor_exclusivo" onchange="chgCombo(sco_proveedor_exclusivo.options[sco_proveedor_exclusivo.selectedIndex].text,'sco_proveedor_exclusivo_name');">
-			<option value="">${lbl:b_not}</option>
-			<smn_proveedor_rf_rows>
-				<option value="${fld:id}">${fld:item}</option>
-			</smn_proveedor_rf_rows>
-			</select> 
-			<input id="sco_proveedor_exclusivo_name" name="sco_proveedor_exclusivo_name" type="hidden">
-		</td>
-	</tr>
+		<tr>
+			<td>${lbl:b_provider_exclusive}</td>
+			<td>
+				<select name="sco_proveedor_exclusivo" id="sco_proveedor_exclusivo">
+				<option value="SI">${lbl:b_yes}</option>
+				<option value="NO">${lbl:b_not}</option>
+
+				</select> 
+			</td>
+		</tr>
 	<tr>
 		<td>${lbl:b_area_service}</td>
 		<td>

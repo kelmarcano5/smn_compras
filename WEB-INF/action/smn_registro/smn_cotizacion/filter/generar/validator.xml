@@ -20,14 +20,8 @@
 	<parameter id='rrs_precio'   type='double' required='false' label='${fld:rrs_precio}'   maxlen='10' />
 	<parameter id='rrs_monto'    type='double' required='false' label='${fld:rrs_monto}'    maxlen='10' />
 	
-<!-- Valores provenientes de la tabla smn_compras.smn_rel_proveedor_producto -->	
-	
-	<parameter id='rpp_precio_ml' type='double' required='false' label='${lbl:b_price_ml}' maxlen='20' />
-	<parameter id='rpp_precio_ma'   type='double' required='false' label='${lbl:b_price_ma}'   maxlen='20' />
-	
 <!-- otros valores -->
 
 	<parameter id='dcc_secuencia'   type='integer' required='false' label='${fld:dcc_secuencia}' maxlen='10' />		
 	<parameter id='producto'        type='integer' required='false' label='${fld:producto}'      maxlen='10' />	
-	<parameter id='smn_condicion_financiera_rf' type='integer' required='false' label='${fld:smn_condicion_financiera_rf}' maxlen='10' />	
 </validator>

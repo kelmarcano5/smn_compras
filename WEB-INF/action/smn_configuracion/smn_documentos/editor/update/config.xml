@@ -21,6 +21,8 @@
 			<colname>dcc_fecha_inicio</colname>
 			<colname>dcc_fecha_final</colname>
 			<colname>dcc_modalidad</colname>
+			<colname>dcc_escotizacion</colname>
+			<colname>dcc_cant_cotizaciones</colname>
 			<colname>dcc_esoferta</colname>
 			<colname>dcc_cant_ofertas</colname>
 		

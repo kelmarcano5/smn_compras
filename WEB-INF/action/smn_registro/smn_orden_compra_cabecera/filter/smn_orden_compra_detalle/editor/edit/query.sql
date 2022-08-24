@@ -1,6 +1,5 @@
 select	
 	ocd.*,
-	occ.occ_orden_compra_numero,
 	req.req_cabecera_version
 from 
 	smn_compras.smn_orden_compra_detalle AS ocd

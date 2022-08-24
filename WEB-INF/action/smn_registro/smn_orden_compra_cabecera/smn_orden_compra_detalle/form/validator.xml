@@ -3,5 +3,4 @@
 	<parameter id='id' type='integer' required='false' label='ID' maxlen='10'/>
 	<parameter id='id2' type='integer' required='false' label='ID2' maxlen='10'/>
 	<parameter id='descripcion' type='varchar' required='false' label='descripcion' maxlen='64'/>
-	<parameter id='occ_numero' type='integer' required='false' label='${lbl:b_purchase_order_number}' maxlen='10'/>
 </validator>

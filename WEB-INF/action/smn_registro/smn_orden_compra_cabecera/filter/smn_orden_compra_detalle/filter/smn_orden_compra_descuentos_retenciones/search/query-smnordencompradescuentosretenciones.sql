@@ -7,8 +7,7 @@ select
 	smn_compras.smn_orden_compra_descuentos_retenciones.ocd_monto_base,
 	smn_compras.smn_orden_compra_descuentos_retenciones.ocd_porcentaje,
 	smn_compras.smn_orden_compra_descuentos_retenciones.ocd_monto_descuento,
-	smn_compras.smn_orden_compra_descuentos_retenciones.ocd_fecha_registro,
-		smn_compras.smn_orden_compra_descuentos_retenciones.smn_orden_compra_detalle_id
+	smn_compras.smn_orden_compra_descuentos_retenciones.ocd_fecha_registro
 	
 from
 	smn_compras.smn_orden_compra_descuentos_retenciones

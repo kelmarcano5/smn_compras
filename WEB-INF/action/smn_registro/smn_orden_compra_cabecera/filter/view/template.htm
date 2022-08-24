@@ -3,15 +3,11 @@
 
 	<col width='3%'/>
 	<col width='3%'/>
-	<col width='3%'/>
-	<col width='3%'/>
 	<col width='8%'/>
 	<col width='15%'/>
 	<col width='15%'/>
 	<col width='15%'/>
 	<col width='8%'/>
-	<col width='15%'/>
-	<col width='15%'/>
 	<col width='15%'/>
 	<col width='15%'/>
 	<col width='15%'/>
@@ -24,15 +20,13 @@
 
 	<!--toolbar-->
 	<tr>
-		<th colspan="19" id="encabezado_tabla">
+		<th colspan="13" id="encabezado_tabla">
 			${req:controls} 
 		</th>
 	</tr>
 
 	<!--encabezados-->
 	<tr>
-		<th></th>
-		<th></th>
 		<th></th>
 		<th></th>
 		<th class='sortable' onclick='sortBy("smn_requisicion_cabecera_id","query-smnordencompracabecera.sql")'>${lbl:b_requisition_number}</th>
@@ -42,13 +36,10 @@
 		<th class='sortable' onclick='sortBy("occ_orden_compra_numero","query-smnordencompracabecera.sql")'>${lbl:b_occ_orden_compra_numero}</th>
 		<th class='sortable' onclick='sortBy("ofe_numero_documento","query-smnordencompracabecera.sql")'>N&deg; ${lbl:b_oferta}</th>
 		<th class='sortable' onclick='sortBy("ofe_monto_ml","query-smnordencompracabecera.sql")'>${lbl:b_amount} ${lbl:b_oferta}</th>
-		<th class='sortable' onclick='sortBy("occ_monto_ml","query-smnordencompracabecera.sql")'>${lbl:b_monto_base} ${lbl:b_orden_compra}</th>
-		<th class='sortable' onclick='sortBy("occ_monto_neto_ml","query-smnordencompracabecera.sql")'>${lbl:b_occ_monto_neto_ml} ${lbl:b_orden_compra}</th>
-		<th class='sortable' onclick='sortBy("occ_monto_neto_ma","query-smnordencompracabecera.sql")'>${lbl:b_occ_monto_neto_ma} ${lbl:b_orden_compra}</th>
 		<th class='sortable' onclick='sortBy("smn_proveedor_id_combo","query-smnordencompracabecera.sql")'>${lbl:b_smn_proveedor_id}</th>
 		<th class='sortable' onclick='sortBy("occ_estatus_combo","query-smnordencompracabecera.sql")'>${lbl:b_status}</th>
 		<th class='sortable' onclick='sortBy("occ_fecha_registro","query-smnordencompracabecera.sql")'>${lbl:b_store_date}</th>
-		<th>OCD</th>
+		<th>OC</th>
 	
 	</tr>
 
@@ -56,23 +47,18 @@
 	<rows>
 	<tr>
 		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_orden_compra_cabecera_id}')" title="${lbl:b_view_detail}"></td>
-		<td><img src="${def:context}/images/accept.png" onclick="validarAprobar('${fld:smn_orden_compra_cabecera_id}')" title="Aprobar"></td>
-		<td><img style="width: 25px" src="${def:context}/images/panel/printmgr.png"  onclick="imprimir('${fld:smn_orden_compra_cabecera_id}')" title="imprimir"></td>
-		<td><img src="${def:context}/images/email.png" onclick="enviar('${fld:smn_orden_compra_cabecera_id}')" title="enviar a proveedor"></td>
+		<td><img src="${def:context}/images/accept.png" onclick="aprobar('${fld:smn_orden_compra_cabecera_id}')" title="Aprobar"></td>
 		<td>${fld:smn_requisicion_cabecera_id}</td>
 		<td>${fld:smn_entidad_rf_combo}</td>
 		<td>${fld:smn_sucursal_rf_combo}</td>
 		<td>${fld:smn_documento_id_combo}</td>
 		<td>${fld:occ_orden_compra_numero}</td>
 		<td>${fld:ofe_numero_documento}</td>
-		<td>${fld:ofe_monto_ml@#,###,###}</td>
-		<td>${fld:occ_monto_ml@#,###,###}</td>
-		<td>${fld:occ_monto_neto_ml@#,###,###}</td>
-		<td>${fld:occ_monto_neto_ma@#,###,###}</td>
+		<td>${fld:ofe_monto_ml}</td>
 		<td>${fld:smn_proveedor_id_combo}</td>
 		<td>${fld:occ_estatus_combo}</td>
 		<td>${fld:occ_fecha_registro@dd-MM-yyyy}</td>
-		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalle('${fld:smn_orden_compra_cabecera_id}','${fld:occ_descripcion}','${fld:occ_orden_compra_numero}')" title="${lbl:b_smn_orden_compra_detalle_id}"></td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalle('${fld:smn_orden_compra_cabecera_id}','${fld:occ_descripcion}')" title="${lbl:b_smn_orden_compra_detalle_id}"></td>
 
 	</tr>
 	</rows>

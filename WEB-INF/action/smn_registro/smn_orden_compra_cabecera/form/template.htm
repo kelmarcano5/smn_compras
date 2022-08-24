@@ -133,56 +133,15 @@
 								onErrorFn=null);	
 		}
 		
-		function detalle(id2, descripcion, occ_numero){
-			uri= "${def:context}${def:actionroot}/smn_orden_compra_detalle/form?id2="+id2+"&descripcion="+descripcion+"&occ_numero="+occ_numero;
+		function detalle(id2, descripcion){
+			uri= "${def:context}${def:actionroot}/smn_orden_compra_detalle/form?id2="+id2+"&descripcion="+descripcion;
 			//alert(uri);
-			openDialog("dialog",uri,1150,700);
+			openDialog("dialog",uri,1250,700);
 		}
-
-		function validarAprobar(id_cabecera)
-		{
-			ajaxCall(httpMethod="GET", 
-								uri="${def:actionroot}/form/validarRol?id=" + id_cabecera,
-								divResponse=null, 
-								divProgress="status", 
-								formName=null, 
-								afterResponseFn=null, 
-								onErrorFn=null);
-		}
-
-		function validarAprobar(id_cabecera)
-		{
-			ajaxCall(httpMethod="GET", 
-								uri="${def:actionroot}/form/validarRol?id=" + id_cabecera,
-								divResponse=null, 
-								divProgress="status", 
-								formName=null, 
-								afterResponseFn=null, 
-								onErrorFn=null);
-		}
-
 		function aprobar(id_cabecera)
 		{
-			uri = "${def:context}${def:actionroot}/aprobar?smn_orden_compra_cabecera_id="+id_cabecera;
-			openDialog("dialog", uri, 1150, 700);
-		}
-
-		function imprimir(id_cabecera)
-		{
-			alert("*en desarrollo*");
-			/*
 			uri = "${def:context}${def:actionroot}/aprobar?smn_orden_compra_cabecera_id="+ id_cabecera;
 			openDialog("dialog", uri, 1150, 700);
-			*/
-		}
-
-		function enviar(id_cabecera)
-		{
-			alert("*en desarrollo*");
-			/*
-			uri = "${def:context}${def:actionroot}/aprobar?smn_orden_compra_cabecera_id="+ id_cabecera;
-			openDialog("dialog", uri, 1150, 700);
-			*/
 		}
 	</script>
 	</script>

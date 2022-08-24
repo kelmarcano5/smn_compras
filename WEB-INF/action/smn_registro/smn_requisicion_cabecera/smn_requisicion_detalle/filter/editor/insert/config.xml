@@ -14,7 +14,6 @@
 		<!--que campos extrae para el registro descriptivo-->
 		<cols>
 			<colname>smn_requisicion_cabecera_id</colname>
-			<colname>smn_cabecera_version_id</colname>
 			<colname>smn_linea_id</colname>
 			<colname>smn_naturaleza_id</colname>
 			<colname>smn_servicio_id</colname>

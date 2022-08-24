@@ -5,6 +5,8 @@ select
 	smn_compras.smn_tipo_documento.tdc_nombre as tdc_nombre_pl0,
 	smn_compras.smn_documentos.dcc_codigo,
 	smn_compras.smn_documentos.dcc_nombre,
+	smn_compras.smn_documentos.dcc_escotizacion,
+	smn_compras.smn_documentos.dcc_cant_cotizaciones,
 	smn_compras.smn_documentos.dcc_cant_ofertas,
 	smn_compras.smn_documentos.dcc_fecha_registro
 	

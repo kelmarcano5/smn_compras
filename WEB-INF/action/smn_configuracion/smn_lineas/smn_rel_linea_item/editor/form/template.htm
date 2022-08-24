@@ -55,7 +55,7 @@
 	</tr>
 	<tr>
 		<td>${lbl:b_item}*</td>
-		<!--<td>
+		<td>
 			<select name="smn_item_id" id="smn_item_id" onchange="chgCombo(smn_item_id.options[smn_item_id.selectedIndex].text,'smn_item_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_item_id_rows>
@@ -64,26 +64,14 @@
 				</smn_item_id_rows>
 			</select> 
 			<input id="smn_item_id_name" name="smn_item_id_name" type="hidden">
-		</td>-->
-		<td>
-			<select id="item" name="item" size="5" style="width:95%;"></select>
-			<br>
-	 		<div style="float:right;margin-right:12px; padding-top:7px">
-	 			[<a href="javascript:pickItems()" title="Agregar items a la lista">Agregar</a>]
-	 			[<a href="javascript:removeItems()" title="Remover un item de la lista">Remover</a>]
-	 		</div>
-	 		<input type="hidden" name="items_id" id="items_id">
-	 		<input type="hidden" name="smn_item_id" id="smn_item_id">
- 		</td>
-		
+		</td>
 		<!-- Incorporado manualmente para mostrar icono de inclusion de elementos al combo -->
-
-		<!--<td>
+		<td>
 			<img src="${def:context}/images/list-add2.png" align="left" class="button" onclick="item()" title="${lbl:b_item}" >
 		</td>
 		<td>
 			&nbsp;&nbsp;
-		</td>-->
+		</td>
 	</tr>
 
 
@@ -120,31 +108,6 @@
 			edit(id);
 	} 
 	
-	//desplegar picklist de seleccion multiple
-	function pickItems()
-	{
- 		var url = "${def:context}${def:actionroot}/picklist/form";
- 		pickOpen ('item','items_id',url,'600','300',true);
- 	}
-	
-	//llamada por el picklist para añadir un item al listbox
-	function selectItems(id, title) 
-	{
- 		listboxAddItem("item", id, title);
- 	}
-
-	//remover un item del listbox
-	function removeItems() 
-	{
- 		if (document.form1.item.selectedIndex == -1) 
- 		{
- 			alertBox('Por favor seleccione el item de la lista que desea remover.', 'Aceptar', null, null);
- 			return;
- 		}
-
- 		listboxRemoveItem("item");
- 	}
-
 	function chgCombo(text,id)
 	{
 		document.getElementById(id).value = text;
@@ -170,23 +133,17 @@
 	//mostrar la actualizacion de un registro
 	function insert()
 	{		
-		clearErrorMessages();
-		document.getElementById("grabar").disabled=true;
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
 			
-			/*llamada Ajax...
+			//llamada Ajax...
 			return ajaxCall(httpMethod="POST", 
 							uri="${def:actionroot}/insert", 
 							divResponse=null, 
 							divProgress="status", 
 							formName="form1", 
 							afterResponseFn=null, 
-							onErrorFn=retryAddnewOrEdit);*/
-
-		var lineas_id = document.form1.smn_lineas_id.value;
-		var itms_id = document.form1.items_id.value;
-
-		uri = "${def:context}${def:actionroot}/insert?smn_lineas_id="+ lineas_id + "&smn_item_id="+itms_id;
-		openDialog("dialog", uri, 500, 200);
+							onErrorFn=retryAddnewOrEdit);	
 	}
 	
 	//restaurar el formulario en caso de error
@@ -200,30 +157,11 @@
 	//grabar el formulario
 	function save()
 	{
-		//convertir los IDs de los items
-		//del listbox a una lista de valores separados por ";"
-		document.form1.items_id.value = listboxGetItemValues("item");
-
 		//determina si es un insert o un update
 		if (document.form1.id.value=="")
 			return insert();
 		else
 			return update();
-
-		/*transforma el campo que contiene los IDs separados por ";" en un vector
-		var items = document.form1.items_id.value.split(";");*/
-		
-		/*Recorre el vector para registrar cada item previamente seleccionados.
-		for(var p=0; p<items.length; p++)
-		{
-			document.form1.smn_item_id.value = items[p];
-			
-			//determina si es un insert o un update
-			if (document.form1.id.value=="")
-				return insert();
-			else
-				return update();	
-		}*/
 	}
 	
 	//editar registro en formulario

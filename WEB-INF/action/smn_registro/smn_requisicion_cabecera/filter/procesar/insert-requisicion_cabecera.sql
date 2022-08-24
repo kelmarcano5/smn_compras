@@ -15,8 +15,7 @@ INSERT INTO smn_compras.smn_requisicion_cabecera (
   	req_fecha_registro,
  	req_hora,
   	req_cabecera_version,
-  	smn_modulo_rf,
-  	req_version_descripcion
+  	smn_modulo_rf
 )VALUES(
 	nextval('smn_compras.seq_smn_requisicion_cabecera'),
 	${fld:smn_requisicion_cabecera_id},
@@ -46,8 +45,7 @@ INSERT INTO smn_compras.smn_requisicion_cabecera (
      	smn_base.smn_modulos
      WHERE
      	mod_codigo = 'COM'
-    ),
-    ${fld:req_version_descripcion} --req_version_descripcion
+    )
 )
 
 RETURNING smn_requisicion_cabecera_id as id_cabecera;

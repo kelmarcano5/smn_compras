@@ -3,13 +3,13 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-
 	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
 	
 	<!--biblioteca generica JS/Dinamica-->
-	<script type="text/javascript" src="${def:context}/action/script">
-	</script>
-
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 </head>
 
 <body>
@@ -42,7 +42,7 @@
 	<tr>
 		<td>${lbl:b_providers}*</td>
 		<td>
-			<select name="smn_proveedor_id" id="smn_proveedor_id" onchange="chgCombo(smn_proveedor_id.options[smn_proveedor_id.selectedIndex].text,'smn_proveedor_id_name');">
+			<select class="proveedor" name="smn_proveedor_id" id="smn_proveedor_id" onchange="chgCombo(smn_proveedor_id.options[smn_proveedor_id.selectedIndex].text,'smn_proveedor_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_proveedor_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -75,6 +75,7 @@
 	{ 
 		addNew();
 
+		$('.proveedor').select2();
 		document.getElementById("smn_cotizacion_id").value='${fld:id2}';
 		document.getElementById("smn_cotizacion_id").disabled=true;
 

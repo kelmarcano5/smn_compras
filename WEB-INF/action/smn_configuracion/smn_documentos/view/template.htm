@@ -9,11 +9,13 @@
 	<col width='14%'/>
 	<col width='14%'/>
 	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
 	<col width='3%'/>
 
 	<!--toolbar-->
 	<tr>
-		<th colspan="9" id="encabezado_tabla">
+		<th colspan="11" id="encabezado_tabla">
 			${req:controls} 
 		</th>
 	</tr>
@@ -26,6 +28,8 @@
 		<th class='sortable' onclick='sortBy("smn_tipo_documento_id","query-smndocumentos.sql")'>${lbl:b_types_documents}</th>
 		<th class='sortable' onclick='sortBy("dcc_codigo","query-smndocumentos.sql")'>${lbl:b_code}</th>
 		<th class='sortable' onclick='sortBy("dcc_nombre","query-smndocumentos.sql")'>${lbl:b_name}</th>
+		<th class='sortable' onclick='sortBy("dcc_escotizacion","query-smndocumentos.sql")'>${lbl:b_escot}</th>
+		<th class='sortable' onclick='sortBy("dcc_cant_cotizaciones","query-smndocumentos.sql")'>${lbl:b_cant_cot}</th>
 		<th class='sortable' onclick='sortBy("dcc_cant_ofertas","query-smndocumentos.sql")'>${lbl:b_cant_ofert}</th>
 		<th class='sortable' onclick='sortBy("dcc_fecha_registro","query-smndocumentos.sql")'>${lbl:b_store_date}</th>
 		<th></th>
@@ -40,6 +44,8 @@
 		<td>${fld:smn_tipo_documento_id}</td>
 		<td align='left'>${fld:dcc_codigo}</td>
 		<td align='left'>${fld:dcc_nombre}</td>
+		<td>${fld:dcc_escotizacion}</td>
+		<td>${fld:dcc_cant_cotizaciones}</td>
 		<td>${fld:dcc_cant_ofertas}</td>
 		<td>${fld:dcc_fecha_registro@dd-MM-yyyy}</td>
 			<td><img src="${def:context}/images/view-list-details.png" onclick="relacion('${fld:smn_documentos_id}','${fld:dcc_codigo}','${fld:dcc_nombre}' )" title="${lbl:b_user_document}"></td>

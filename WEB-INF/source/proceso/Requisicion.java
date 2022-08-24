@@ -33,15 +33,7 @@ public class Requisicion extends GenericTransaction
 		int contDetalles = 0;
 		String version;
 		String fechaActual= new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-
-		String sistemaOperativo = System.getProperty("os.name");
-		String file;
-		  
-		if(sistemaOperativo.equals("Windows 7") || sistemaOperativo.equals("Windows 8") || sistemaOperativo.equals("Windows 10")) 
-			file =  "C:/log/logRequisiciones_"+fechaActual+".txt";
-		else
-			file = "./logRequisiciones_"+fechaActual+".txt";
-		
+		String file = "../logRequisiciones_"+fechaActual+".txt";
 		File newLogFile = new File(file);
 		FileWriter fw;
 		String str="";
@@ -226,9 +218,6 @@ public class Requisicion extends GenericTransaction
 													
 													String prov_exclusivo = rsItem.getString("cit_proveedor_exclusivo"); 
 													
-													if(prov_exclusivo != null)
-														inputParams.setValue("smn_proveedor_id", rsItem.getInt("cit_proveedor_exclusivo"));
-													
 													String sqlCR = getSQL(getResource("select-compania_relacionada_item.sql"),inputParams);
 													Recordset rsCR = db.get(sqlCR); //consulta de la compañia relacionada.
 													
@@ -239,16 +228,34 @@ public class Requisicion extends GenericTransaction
 													
 													if(modalidad.equals("AU"))
 													{
-														if(prov_exclusivo == null)
+														if(prov_exclusivo.equals("NO"))
 														{
 															version = "D";
 														}
 														else
+														if(prov_exclusivo.equals("SI"))
 														{
 															if(rsCR.getRecordCount()>0)
+															{
+																rsCR.first();
 																version = "A";
+																if(rsCR.getString("smn_proveedor_id") != null)
+																	inputParams.setValue("smn_proveedor_id", rsCR.getInt("smn_proveedor_id"));
+																else
+																{
+																	str = "-*No existe proveedor exclusivo relacionado al item*";
+																	bw.write(str);
+																	bw.flush();
+																	bw.newLine();
+																	bw.close();
+																	
+																	return 1;
+																}
+															}
 															else
+															{
 																version = "C";
+															}
 														}
 													}
 													else
@@ -265,34 +272,13 @@ public class Requisicion extends GenericTransaction
 															{
 																rsExistencia.first();
 																
-																double coi_saldo_final_existencia;
-																double rss_cantidad;
-																
-																if(!rsExistencia.getString("coi_saldo_final_existencia").equals(null))
-																	coi_saldo_final_existencia = rsExistencia.getDouble("coi_saldo_final_existencia");
-																else
-																	coi_saldo_final_existencia = 0.0;
-																
-																if(!rsReq_detalle.getString("rss_cantidad").equals(null))
-																	rss_cantidad = rsReq_detalle.getDouble("rss_cantidad");
-																else
-																	rss_cantidad = 0.0;
-															
-																if(prov_exclusivo == null)
-																	prov_exclusivo = "NO";
-																
-																if(!rsReq_detalle.getString("rss_cantidad").equals(null))
-																	rss_cantidad = rsReq_detalle.getDouble("rss_cantidad");
-																else
-																	rss_cantidad = 0.0;
-															
-																if(coi_saldo_final_existencia >= rss_cantidad)
+																if(rsExistencia.getDouble("coi_saldo_final_existencia") >= rsReq_detalle.getDouble("rss_cantidad"))
 																	version = "B";
 																else
-																if((coi_saldo_final_existencia < rss_cantidad) && prov_exclusivo.equals("NO"))
+																if(rsExistencia.getDouble("coi_saldo_final_existencia") < rsReq_detalle.getDouble("rss_cantidad") && prov_exclusivo.equals("NO"))
 																	version = "D";
 																else
-																if((coi_saldo_final_existencia < rss_cantidad) && prov_exclusivo.equals("SI"))
+																if(rsExistencia.getDouble("coi_saldo_final_existencia") < rsReq_detalle.getDouble("rss_cantidad") && prov_exclusivo.equals("SI"))
 																	version = "A";
 															}
 															else
@@ -303,16 +289,33 @@ public class Requisicion extends GenericTransaction
 														else
 														if(IT_almacenado.equals("NO"))
 														{
-															if(prov_exclusivo == null)
+															if(prov_exclusivo.equals("NO"))
 															{
 																version = "D";
 															}
 															else
+															if(prov_exclusivo.equals("SI"))
 															{
 																if(rsCR.getRecordCount()>0)
+																{
+																	rsCR.first();
 																	version = "A";
+																	if(rsCR.getString("smn_proveedor_id") != null)
+																		inputParams.setValue("smn_proveedor_id", rsCR.getInt("smn_proveedor_id"));
+																	else
+																	{
+																		str = "-*No existe proveedor exclusivo relacionado al item*";
+																		bw.write(str);
+																		bw.flush();
+																		bw.newLine();
+																		bw.close();
+																		return 1;
+																	}
+																}
 																else
+																{
 																	version = "C";
+																}
 															}
 														}
 													}	
@@ -358,9 +361,6 @@ public class Requisicion extends GenericTransaction
 												
 												String prov_exclusivo = rsServicio.getString("sco_proveedor_exclusivo"); 
 												
-												if(prov_exclusivo != null)
-													inputParams.setValue("smn_proveedor_id", rsServicio.getInt("sco_proveedor_exclusivo"));
-												
 												String sqlCR = getSQL(getResource("select-compania_relacionada_serv.sql"),inputParams);
 												Recordset rsCR = db.get(sqlCR); //consulta de la compañia relacionada.
 												
@@ -369,17 +369,52 @@ public class Requisicion extends GenericTransaction
 												bw.flush();
 												bw.newLine();
 												
-												
-												if(prov_exclusivo == null)
+												if(modalidad.equals("AU"))
 												{
-													version = "D";
+													if(prov_exclusivo.equals("NO"))
+													{
+														version = "D";
+													}
+													else
+													if(prov_exclusivo.equals("SI"))
+													{
+														if(rsCR.getRecordCount()>0)
+														{
+															rsCR.first();
+															version = "A";
+															if(rsCR.getString("smn_proveedor_id") != null)
+																inputParams.setValue("smn_proveedor_id", rsCR.getInt("smn_proveedor_id"));
+															else
+															{
+																str = "-*No existe proveedor exclusivo relacionado al servicio*";
+																bw.write(str);
+																bw.flush();
+																bw.newLine();
+																bw.close();
+																return 1;
+															}
+														}
+														else
+														{
+															version = "C";
+														}
+													}
 												}
 												else
+												if(modalidad.equals("MA"))
 												{
-													if(rsCR.getRecordCount()>0)
-														version = "A";
+													if(prov_exclusivo.equals("NO"))
+													{
+														version = "D";
+													}
 													else
-														version = "C";	
+													if(prov_exclusivo.equals("SI"))
+													{
+														if(rsCR.getRecordCount()>0)
+															version = "D";
+														else
+															version = "C";
+													}
 												}
 											}
 										}
@@ -417,17 +452,55 @@ public class Requisicion extends GenericTransaction
 												bw.flush();
 												bw.newLine();
 												
-												if(prov_exclusivo == null)
+												if(modalidad.equals("AU"))
 												{
-													version = "D";
+													if(prov_exclusivo.equals("NO"))
+													{
+														version = "D";
+													}
+													else
+													if(prov_exclusivo.equals("SI"))
+													{
+														if(rsCR.getRecordCount()>0)
+														{
+															rsCR.first();
+															version = "A";
+															if(rsCR.getString("smn_proveedor_id") != null)
+																inputParams.setValue("smn_proveedor_id", rsCR.getInt("smn_proveedor_id"));
+															else
+															{
+																str = "-*No existe proveedor exclusivo relacionado al activo fijo*";
+																bw.write(str);
+																bw.flush();
+																bw.newLine();
+																bw.close();
+																
+																return 1;
+															}
+														}
+														else
+														{
+															version = "C";
+														}
+													}
 												}
 												else
+												if(modalidad.equals("MA"))
 												{
-													if(rsCR.getRecordCount()>0)
-														version = "C";
-													else
+													if(prov_exclusivo.equals("NO"))
+													{
 														version = "D";
+													}
+													else
+													if(prov_exclusivo.equals("SI"))
+													{
+														if(rsCR.getRecordCount()>0)
+															version = "C";
+														else
+															version = "D";
+													}
 												}
+												
 											}
 										}
 										else

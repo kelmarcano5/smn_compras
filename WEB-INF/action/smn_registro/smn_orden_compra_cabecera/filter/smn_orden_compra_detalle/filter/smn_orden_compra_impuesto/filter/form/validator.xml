@@ -6,6 +6,4 @@
 	<parameter id='cantidad' type='double' required='false' label='descripcion' maxlen='200'/>
 	<parameter id='montoml' type='double' required='false' label='descripcion' maxlen='30'/>
 	<parameter id='montoma' type='double' required='false' label='descripcion' maxlen='30'/>
-	<parameter id='smn_item_rf' type='integer' required='false' label='${lbl:b_item}' maxlen='10'/>
-	<parameter id='smn_servicios_id' type='integer' required='false' label='${lbl:b_service}' maxlen='10'/>
 </validator>

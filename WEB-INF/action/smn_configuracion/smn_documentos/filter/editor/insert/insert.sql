@@ -9,16 +9,15 @@ INSERT INTO smn_compras.smn_documentos
 	dcc_fecha_inicio,
 	dcc_fecha_final,
 	dcc_modalidad,
+	dcc_escotizacion,
+	dcc_moneda_alterna,
+	dcc_cant_cotizaciones,
 	dcc_esoferta,
 	dcc_cant_ofertas,
-	dcc_moneda_alterna,
 	dcc_idioma,
 	dcc_usuario_id,
 	dcc_fecha_registro,
-	dcc_hora,
-	dcc_genera_pedido,
-	dcc_cant_dias_cierre,
-	dcc_hora_cierre
+	dcc_hora
 )
 VALUES
 (
@@ -31,14 +30,13 @@ VALUES
 	${fld:dcc_fecha_inicio},
 	${fld:dcc_fecha_final},
 	${fld:dcc_modalidad},
+	${fld:dcc_escotizacion},
+	${fld:dcc_moneda_alterna},
+	${fld:dcc_cant_cotizaciones},
 	${fld:dcc_esoferta},
 	${fld:dcc_cant_ofertas},
-	${fld:dcc_moneda_alterna},
 	'${def:locale}',
 	'${def:user}',
 	'${def:date}',
-	'${def:time}',
-	${fld:dcc_genera_pedido},
-	${fld:dcc_cant_dias_cierre},
-	${fld:dcc_hora_cierre}
+	'${def:time}'
 )

@@ -1,6 +1,6 @@
 select
 	smn_compras.smn_orden_compra_detalle.smn_orden_compra_detalle_id,
-	(select smn_compras.smn_lineas.lin_nombre|| ' - ' || smn_compras.smn_lineas.lin_codigo from  smn_compras.smn_lineas where smn_compras.smn_lineas.smn_lineas_id is not null  and smn_compras.smn_lineas.smn_lineas_id=smn_compras.smn_orden_compra_detalle.smn_linea_id) as smn_linea_id_combo,
+		(select smn_compras.smn_lineas.lin_nombre|| ' - ' || smn_compras.smn_lineas.lin_codigo from  smn_compras.smn_lineas where smn_compras.smn_lineas.smn_lineas_id is not null  and smn_compras.smn_lineas.smn_lineas_id=smn_compras.smn_orden_compra_detalle.smn_linea_id) as smn_linea_id_combo,
 	(select smn_compras.smn_servicio.sco_nombre|| ' - ' || smn_compras.smn_servicio.sco_codigo from  smn_compras.smn_servicio where smn_compras.smn_servicio.smn_servicio_id is not null and smn_compras.smn_servicio.smn_servicio_id=smn_compras.smn_orden_compra_detalle.smn_servicios_id) as smn_servicios_id_combo,
 	(select smn_base.smn_item.itm_nombre|| ' - ' || smn_base.smn_item.itm_codigo from  smn_base.smn_item where smn_base.smn_item.smn_item_id is not null and smn_base.smn_item.smn_item_id=smn_compras.smn_orden_compra_detalle.smn_item_rf) as smn_item_rf_combo,
 	(select smn_base.smn_monedas.mon_codigo|| ' - ' || smn_base.smn_monedas.mon_nombre from smn_base.smn_monedas where smn_base.smn_monedas.smn_monedas_id=smn_compras.smn_orden_compra_detalle.smn_moneda_rf) as smn_moneda_rf_combo,
@@ -15,14 +15,12 @@ select
 	smn_compras.smn_orden_compra_detalle.ocd_monto_neto_ml,
 	smn_compras.smn_orden_compra_detalle.ocd_monto_neto_ma,
 	smn_compras.smn_orden_compra_detalle.ocd_descripcion,
-	smn_compras.smn_orden_compra_detalle.ocd_fecha_registro,
-	smn_compras.smn_orden_compra_detalle.smn_item_rf,
-	smn_compras.smn_orden_compra_detalle.smn_servicios_id
+	smn_compras.smn_orden_compra_detalle.ocd_fecha_registro
 from
 	smn_compras.smn_orden_compra_detalle
 where
 	smn_orden_compra_detalle_id is not null
 	and smn_compras.smn_orden_compra_detalle.smn_orden_compra_cabecera_id=${fld:id2}
 	${filter}
-order by 
-	smn_compras.smn_orden_compra_detalle.ocd_fecha_registro desc
+order by
+		smn_orden_compra_detalle_id

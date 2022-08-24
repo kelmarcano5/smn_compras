@@ -32,14 +32,7 @@ public class Aprobar extends GenericTransaction
 		//**
 			
 			String fechaActual= new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-			String sistemaOperativo = System.getProperty("os.name");
-			String file;
-			
-			if(sistemaOperativo.equals("Windows 7") || sistemaOperativo.equals("Windows 8") || sistemaOperativo.equals("Windows 10")) 
-				file =  "C:/log/logAprobarRequisiciones_"+fechaActual+".txt";
-			else
-				file = "./logAprobarRequisiciones_"+fechaActual+".txt";
-			
+			String file = "../logAprobarRequisicion_"+fechaActual+".txt";
 			File newLogFile = new File(file);
 			FileWriter fw;
 			String str="";
@@ -188,7 +181,7 @@ public class Aprobar extends GenericTransaction
 			else
 			{
 				rc = 1; //no se encontro el registro ya que el usuario no es aprobador.
-				mensajeError = "* El usuario debe ser aprobador *";
+				mensajeError = "* El usuario debe ser comprador *";
 				str = mensajeError;	
 				bw.write(str);
 				bw.flush();
@@ -273,21 +266,10 @@ public class Aprobar extends GenericTransaction
 					bw.flush();
 					bw.newLine();
 					
-					if(rsProducto.getString("smn_naturaleza_id").equals("IT"))
-					{
-						String sql = getSQL(getResource("select-modalidad.sql"),inputParams); 
-						Recordset rsModalidad = db.get(sql); //consultar la modalidad de la requisicion.
-						
-						if(rsModalidad.getRecordCount() > 0)
-						{
-							rsModalidad.first();
-							
-							if(rsModalidad.getString("dcc_modalidad").equals("MA"))
-								inputParams.setValue("rss_estatus_existencia", "ER");
-							else
-								inputParams.setValue("rss_estatus_existencia", "EX");
-						}
-					}
+					if(rsProducto.getString("producto") != null)
+						inputParams.setValue("rpp_id_producto", rsProducto.getInt("producto"));
+					else
+						inputParams.setValue("rpp_id_producto", 0);
 					
 					if(rsProducto.getString("smn_item_id") != null)
 						inputParams.setValue("smn_item_id", rsProducto.getInt("smn_item_id"));
@@ -322,7 +304,7 @@ public class Aprobar extends GenericTransaction
 					String sqlProveedores   = getSQL(getResource("select-proveedor_producto.sql"),inputParams);
 					Recordset rsProveedores = db.get(sqlProveedores); //CONSULTA LOS POSIBLES PROVEEDORES DEL PRODUCTO.
 					
-					str = "-Buscando posibles proveedores del producto...";	
+					str = "-Buscando posibles proveedores del producto id = "+inputParams.getValue("rpp_id_producto")+"...";	
 					bw.write(str);
 					bw.flush();
 					bw.newLine();
@@ -470,19 +452,6 @@ public class Aprobar extends GenericTransaction
 							
 							if(rsUpdateDoc.getRecordCount()>0)
 							{
-								str = "*Actualizando estatus existencia del detalle de la requisicion...";
-								bw.write(str);
-								bw.flush();
-								bw.newLine();
-								
-								String sql = getSQL(getResource("update-smn_requisicion_detalle.sql"),inputParams);
-								db.exec(sql); //actualiza el estatus de existencia de la tabla smn_requisicion_detalle.
-								
-								str = "*Se actualizo el estatus existencia exitosamente";
-								bw.write(str);
-								bw.flush();
-								bw.newLine();
-								
 								registrarFecha_entrega(inputParams,conn,"D",str,bw); //registra fecha entrega.
 							}
 							else
@@ -680,8 +649,6 @@ public class Aprobar extends GenericTransaction
 							bw.flush();
 							bw.newLine();
 							
-							inputParams.setValue("smn_requisicion_detalle_id", rsRequisicion_detalle.getInt("smn_requisicion_detalle_id"));
-							
 							if(rsRequisicion_detalle.getString("smn_item_id") != null)
 								inputParams.setValue("smn_item_id", rsRequisicion_detalle.getInt("smn_item_id"));
 							else
@@ -691,141 +658,6 @@ public class Aprobar extends GenericTransaction
 								inputParams.setValue("rss_cantidad", rsRequisicion_detalle.getDouble("rss_cantidad"));
 							else
 								inputParams.setValue("rss_cantidad", 0);
-							
-							String sql = getSQL(getResource("select-smn_control_item.sql"),inputParams);
-							Recordset rsExistencia = db.get(sql);
-							
-							if(rsExistencia.getRecordCount() > 0)
-							{
-								double coi_cantidad_reserva;
-								double coi_cantidad_espera_recepcion;
-								double coi_saldo_inicial_existencia;
-								double coi_saldo_final_existencia;
-								double coi_cantidad_entradas;
-								double coi_cantidad_salidas;
-								double rss_cantidad;
-								String fechaActual= new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-								
-								rsExistencia.first();
-								
-								if(rsExistencia.getString("coi_cantidad_reserva")!=null)
-									coi_cantidad_reserva=inputParams.getDouble("coi_cantidad_reserva");
-								else
-									coi_cantidad_reserva=0.0;
-								
-								if(rsExistencia.getString("coi_cantidad_espera_recepcion")!=null)
-									coi_cantidad_espera_recepcion=inputParams.getDouble("coi_cantidad_espera_recepcion");
-								else
-									coi_cantidad_espera_recepcion=0.0;
-								
-								if(rsExistencia.getString("coi_saldo_inicial_existencia")!=null)
-									coi_saldo_inicial_existencia=inputParams.getDouble("coi_saldo_inicial_existencia");
-								else
-									coi_saldo_inicial_existencia=0.0;
-								
-								if(rsExistencia.getString("coi_saldo_final_existencia")!=null)
-									coi_saldo_final_existencia=inputParams.getDouble("coi_saldo_final_existencia");
-								else
-									coi_saldo_final_existencia=0.0;
-								
-								if(rsExistencia.getString("coi_cantidad_entradas")!=null)
-									coi_cantidad_entradas=inputParams.getDouble("coi_cantidad_entradas");
-								else
-									coi_cantidad_entradas=0.0;
-								
-								if(rsExistencia.getString("coi_cantidad_salidas")!=null)
-									coi_cantidad_salidas=inputParams.getDouble("coi_cantidad_salidas");
-								else
-									coi_cantidad_salidas=0.0;
-								
-								if(rsExistencia.getString("rss_cantidad")!=null)
-									rss_cantidad=inputParams.getDouble("rss_cantidad");
-								else
-									rss_cantidad=0.0;
-								
-								inputParams.setValue("smn_control_item_id",rsExistencia.getInt("smn_control_item_id"));
-								inputParams.setValue("coi_fecha_movimiento", rsExistencia.getDate("coi_fecha_movimiento"));
-								inputParams.setValue("smn_almacen_id", rsExistencia.getInt("smn_almacen_id"));
-								inputParams.setValue("coi_precio", rsExistencia.getDouble("coi_precio"));
-								inputParams.setValue("coi_valor_inicial", rsExistencia.getDouble("coi_valor_inicial"));
-								inputParams.setValue("coi_valor_entrada", rsExistencia.getDouble("coi_valor_entrada"));
-								inputParams.setValue("coi_valor_salida", rsExistencia.getDouble("coi_valor_salida"));
-								inputParams.setValue("coi_valor_final", rsExistencia.getDouble("coi_valor_final"));
-								inputParams.setValue("coi_costo_promedio", rsExistencia.getDouble("coi_costo_promedio"));
-								inputParams.setValue("coi_ultimo_costo", rsExistencia.getDouble("coi_ultimo_costo"));
-								inputParams.setValue("coi_costo_reposicion", rsExistencia.getDouble("coi_costo_reposicion"));
-								inputParams.setValue("coi_costo_mas_alto", rsExistencia.getDouble("coi_costo_mas_alto"));
-								inputParams.setValue("coi_costo_promedio_ponderado", rsExistencia.getDouble("coi_costo_promedio_ponderado"));
-								inputParams.setValue("coi_valor_inicial_ma", rsExistencia.getDouble("coi_valor_inicial_ma"));
-								inputParams.setValue("coi_compras_acordadas", rsExistencia.getDouble("coi_compras_acordadas"));
-								inputParams.setValue("coi_valor_entradas_ma", rsExistencia.getDouble("coi_valor_entradas_ma"));
-								inputParams.setValue("coi_valor_salidas_ma", rsExistencia.getDouble("coi_valor_salidas_ma"));
-								inputParams.setValue("coi_costo_promedio_ma", rsExistencia.getDouble("coi_costo_promedio_ma"));
-								inputParams.setValue("coi_ultimo_costo_ma", rsExistencia.getDouble("coi_ultimo_costo_ma"));
-								inputParams.setValue("coi_costo_reposicion_ma", rsExistencia.getDouble("coi_costo_reposicion_ma"));
-								inputParams.setValue("coi_costo_mas_alto_ma", rsExistencia.getDouble("coi_costo_mas_alto_ma"));
-								inputParams.setValue("coi_costo_promedio_ponderado_ma", rsExistencia.getDouble("coi_costo_promedio_ponderado_ma"));
-								inputParams.setValue("coi_precio_ma", rsExistencia.getDouble("coi_precio_ma"));
-								inputParams.setValue("coi_valor_final_ma", rsExistencia.getDouble("coi_valor_final_ma"));
-								
-								if(coi_saldo_final_existencia >= rss_cantidad)
-								{
-									coi_cantidad_reserva += coi_cantidad_espera_recepcion-rss_cantidad;
-									coi_saldo_final_existencia = coi_saldo_inicial_existencia+coi_cantidad_entradas-coi_cantidad_salidas-coi_cantidad_reserva;
-									inputParams.setValue("coi_cantidad_reserva", coi_cantidad_reserva);
-									inputParams.setValue("coi_saldo_final_existencia", coi_saldo_final_existencia);
-									
-									if(rsExistencia.getString("coi_fecha_movimiento").equals(fechaActual))
-									{
-										str = "-Actualizando existencia en control de inventario...";	
-										bw.write(str);
-										bw.flush();
-										bw.newLine();
-										
-										sql = getSQL(getResource("update-smn_control_item.sql"),inputParams);
-										db.exec(sql);
-										
-										str = "-Se actualizo la existencia exitosamente...";	
-										bw.write(str);
-										bw.flush();
-										bw.newLine();
-									}
-									else
-									{
-										str = "-Registrando existencia en control de inventario...";	
-										bw.write(str);
-										bw.flush();
-										bw.newLine();
-										
-										sql = getSQL(getResource("insert-smn_control_item.sql"),inputParams);
-										db.exec(sql);
-										
-										str = "-Se Registro la existencia exitosamente...";	
-										bw.write(str);
-										bw.flush();
-										bw.newLine();
-									}
-									
-									inputParams.setValue("rss_estatus_existencia", "EX");
-								}
-								else
-								{
-									inputParams.setValue("rss_estatus_existencia", "ER");
-								}
-								
-								str = "*Actualizando el estatus de existencia del detalle de la requisicion...";
-								bw.write(str);
-								bw.flush();
-								bw.newLine();
-								
-								sql = getSQL(getResource("update-smn_requisicion_detalle.sql"),inputParams);
-								db.exec(sql); //actualiza el estatus de existencia de la tabla smn_requisicion_detalle.
-								
-								str = "*Se actualizo a "+inputParams.getString("rss_estatus_existencia")+" el estatus de existencia exitosamente";
-								bw.write(str);
-								bw.flush();
-								bw.newLine();
-							}
 							
 							if(rsRequisicion_detalle.getString("rrs_monto") != null)
 								inputParams.setValue("rrs_monto", rsRequisicion_detalle.getDouble("rrs_monto"));
@@ -1387,7 +1219,6 @@ public class Aprobar extends GenericTransaction
 				double ac_monto_ma          = 0.0;
 				double ac_monto_impuesto_ma = 0.0;
 				double ac_monto_neto_ma     = 0.0;
-				String naturaleza;
 				
 				while(rsReq_detalle.next() != false) //recorre todos los detalles de esa requisicion
 				{
@@ -1407,24 +1238,6 @@ public class Aprobar extends GenericTransaction
 						inputParams.setValue("smn_linea_id", rsReq_detalle.getInt("smn_linea_id"));
 					else
 						inputParams.setValue("smn_linea_id", 0);
-					
-					naturaleza = rsReq_detalle.getString("smn_naturaleza_id");
-					
-					if(naturaleza.equals("IT"))
-					{
-						String sql = getSQL(getResource("select-modalidad.sql"),inputParams); 
-						Recordset rsModalidad = db.get(sql); //consultar la modalidad de la requisicion.
-						
-						if(rsModalidad.getRecordCount() > 0)
-						{
-							rsModalidad.first();
-							
-							if(rsModalidad.getString("dcc_modalidad").equals("MA"))
-								inputParams.setValue("rss_estatus_existencia", "ER");
-							else
-								inputParams.setValue("rss_estatus_existencia", "EX");
-						}
-					}
 					
 					if(rsReq_detalle.getString("smn_servicio_id") != null)
 						inputParams.setValue("smn_servicio_id", rsReq_detalle.getInt("smn_servicio_id"));
@@ -1537,8 +1350,6 @@ public class Aprobar extends GenericTransaction
 					{
 						//instrucciones si existe la occ (orden de compra cabecera) con ese proveedor.
 						
-						rsexistProv_occ.first();
-						
 						//inyeccion del id encontrado de occ en el validator.
 						inputParams.setValue("smn_orden_compra_cabecera_id", rsexistProv_occ.getInt("smn_orden_compra_cabecera_id"));
 					
@@ -1549,6 +1360,8 @@ public class Aprobar extends GenericTransaction
 						bw.write(str);
 						bw.flush();
 						bw.newLine();
+						
+						rsexistProv_occ.first();
 						
 						if(rsOrden_compra_detalle.getRecordCount()>0)
 						{
@@ -1849,8 +1662,8 @@ public class Aprobar extends GenericTransaction
 									
 									rsProveedor.first();
 									
-									if(rsProveedor.getString("smn_proveedor_id") != null)
-										inputParams.setValue("smn_proveedor_rf", rsProveedor.getInt("smn_proveedor_id"));
+									if(rsProveedor.getString("smn_proveedor_rf") != null)
+										inputParams.setValue("smn_proveedor_rf", rsProveedor.getInt("smn_proveedor_rf"));
 									else
 									{
 										mensaje = "*El proveedor relacionado al producto esta vacio*";
@@ -2188,21 +2001,6 @@ public class Aprobar extends GenericTransaction
 					
 					if(rc == 0)
 					{
-						str = "*Actualizando estatus existencia del detalle de la requisicion...";
-						bw.write(str);
-						bw.flush();
-						bw.newLine();
-						
-						inputParams.setValue("rss_estatus_existencia", "EX");
-						
-						sql = getSQL(getResource("update-smn_requisicion_detalle.sql"),inputParams);
-						db.exec(sql); //actualiza el estatus de existencia de la tabla smn_requisicion_detalle.
-						
-						str = "*Se actualizo el estatus existencia exitosamente";
-						bw.write(str);
-						bw.flush();
-						bw.newLine();
-						
 						String sqlCabecera_oc  = getSQL(getResource("update-orden_compra_cabecera.sql"),inputParams);
 						Recordset rsCabecera_oc = db.get(sqlCabecera_oc); //actualiza los campos calculados de la tabla smn_orden_compra_cabecera.
 						

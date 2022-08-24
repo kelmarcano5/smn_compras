@@ -15,7 +15,6 @@
 		<transaction>false</transaction>
 		<jdbc-log>false</jdbc-log>
 		<recordset id='query-smn_area_servicio_id.sql' source='sql' scope='transaction'/><recordset id='query-smn_unidades_servicios_id.sql' source='sql' scope='transaction'/>
-		<recordset id='query-smn_proveedor_rf.sql' source='sql' scope='transaction'/>
 	</transaction>
 
 	<output>
@@ -24,7 +23,6 @@
 		<set-http-headers>true</set-http-headers>
 		<content-type>text/html</content-type>
 		<print mode='table' recordset='query-smn_area_servicio_id.sql' tag='smn_area_servicio_id_rows'/><print mode='table' recordset='query-smn_unidades_servicios_id.sql' tag='smn_unidades_servicios_id_rows'/>
-		<print mode='table' recordset='query-smn_proveedor_rf.sql' tag='smn_proveedor_rf_rows'/>
 		<print mode="form" recordset="_request" /> 
 	</output>
 

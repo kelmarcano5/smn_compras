@@ -1,5 +1,1 @@
-SELECT
-	smn_entidades_id AS id,
-	ent_codigo || ' - ' || ent_descripcion_corta AS item
-FROM
-	smn_base.smn_entidades
+select smn_base.smn_entidades.smn_entidades_id as id, smn_base.smn_entidades.ent_codigo|| ' - ' || smn_base.smn_entidades.ent_descripcion_corta as item from smn_base.smn_entidades

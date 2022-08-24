@@ -116,22 +116,6 @@
 			
 		}
 
-		function addItem(id,producto)
-		{
-			if(producto != '')
-				alertBox('No se puede añadir un item', 'Aceptar', null, null);
-			else
-			{
-				var uri = "";
-				if (id==null)
-					uri = "${def:context}${def:actionroot}/editor/form";
-				else
-					uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
-					
-				openDialog("editor5", uri, 950, 580);
-			}
-		}
-
 		function deleteRecord(id) {
 //			//alert('Colocar su código aquí.')
 			
@@ -162,6 +146,7 @@
 		function generar(cotizacion_id)
 		{
 			uri = "${def:context}${def:actionroot}/generar?smn_cotizacion_id="+cotizacion_id;
+			alert(uri);	
 			openDialog("dialog", uri, 1250, 700);
 		}
 
@@ -172,7 +157,6 @@
 			// alert(uri);	
 			openDialog("dialog", uri, 1250, 700);
 		}
-
 	</script>
 
 </head>

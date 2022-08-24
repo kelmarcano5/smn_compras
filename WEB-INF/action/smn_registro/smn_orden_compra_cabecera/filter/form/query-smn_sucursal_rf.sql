@@ -1,5 +1,1 @@
-SELECT 
-	smn_sucursales_id AS id, 
-	suc_codigo || ' - ' || suc_nombre AS item 
-FROM 
-	smn_base.smn_sucursales
+select smn_base.smn_sucursales.smn_sucursales_id as id, smn_base.smn_sucursales.suc_codigo|| ' - ' || smn_base.smn_sucursales.suc_nombre as item from smn_base.smn_sucursales

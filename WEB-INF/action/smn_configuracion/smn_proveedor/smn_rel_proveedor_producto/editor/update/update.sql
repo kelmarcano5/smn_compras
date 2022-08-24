@@ -2,7 +2,7 @@ UPDATE smn_compras.smn_rel_proveedor_producto SET
 	smn_proveedor_id=${fld:smn_proveedor_rf},
 	smn_item_rf=${fld:rpp_id_producto},
 	smn_servicios_compras_id=${fld:smn_servicio_id},
-	--smn_afijos_rf=${fld:smn_afijos_rf},
+	smn_afijos_rf=${fld:smn_afijos_rf},
 	rpp_tipo_producto=${fld:rpp_tipo_producto},
 	rpp_producto_alterno=${fld:rpp_producto_alterno},
 	rpp_codigo_proveedor=${fld:rpp_codigo_proveedor},

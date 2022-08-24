@@ -122,7 +122,7 @@
 			<input id="smn_moneda_rf_name" name="smn_moneda_rf_name" type="hidden">
 		</td>
 	</tr>
-	<tr id="tasa" style="display: none">
+	<tr>
 		<td>${lbl:b_exchange_rate}</td>
 		<td>
 			<select name="smn_tasa_rf" id="smn_tasa_rf" onchange="chgCombo(smn_tasa_rf.options[smn_tasa_rf.selectedIndex].text,'smn_tasa_rf_name');">
@@ -135,7 +135,7 @@
 			<input id="smn_tasa_rf_name" name="smn_tasa_rf_name" type="hidden">
 		</td>
 	</tr>
-		<tr id="montoma" style="display: none">
+		<tr>
 			<td>${lbl:b_tax_amount_ma}</td>
 			<td>
 				<input id="rim_monto_imp_moneda_alterna" name="rim_monto_imp_moneda_alterna" type="text" maxlength="10" class="numeric">
@@ -164,11 +164,9 @@
 	{ 
 		addNew();
 
-		//validarmoneda();
-
 		document.getElementById("smn_requisicion_detalle_id").value='${fld:id3}';
 		document.getElementById("smn_requisicion_detalle_id").disabled=true;
-		document.getElementById("rim_monto_base").value=formatear_monto('${fld:monto@#,###,##0.00}');
+		document.getElementById("rim_monto_base").value='${fld:monto}';
 		document.getElementById("rim_monto_base").disabled=true;
 		if (id!="")
 			edit(id);
@@ -386,7 +384,7 @@
 			//var valueCombo = getIDSelectedIndex(combo);
 			//desc = valueCombo;
 			var uri="${def:actionroot}/imp?id=" + valueCombo;
-			
+			alert(uri);
 			if (id!=null && id!="") {
 				 ajaxCall(	
 								httpMethod="GET", 
@@ -400,15 +398,6 @@
 		
 	}
 
-	function formatear_monto(monto)
-	{
-		var base = monto;
-		base1 = base.replace('.','');
-		base = base1.replace('.','');
-		base1 = base.replace(',','.');
-		
-		return base1;
-	}
 	
 </script>	
 </body>

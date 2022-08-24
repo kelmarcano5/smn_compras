@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<config>
+<config nodb="false">
 
 	<summary>
-		${lbl:b_rel_providers_products}
+		PagedView generic configuration
 	</summary>
 
 	<log>false</log>
@@ -14,8 +14,9 @@
 		<validator>true</validator>
 		<transaction>false</transaction>
 		<jdbc-log>false</jdbc-log>
-		<recordset id='query-smn_proveedor_rf.sql' source='sql' scope='transaction'/>
+		<recordset id="user-info.sql" source="sql" scope="session" />
 		<recordset id="smn_relacion_id" source="session" scope="transaction" />
+		<recordset id="query-proveedor.sql" source="sql" scope="transaction" />
 	</transaction>
 
 	<output>
@@ -23,8 +24,9 @@
 		<template>template.htm</template>
 		<set-http-headers>true</set-http-headers>
 		<content-type>text/html</content-type>
-		<print mode='table' recordset='query-smn_proveedor_rf.sql' tag='smn_proveedor_rf_rows'/>
+		<print mode="form" recordset="user-info.sql" />
 		<print mode="form" recordset="smn_relacion_id"/>
+		<print mode="form" recordset="query-proveedor.sql" />
 	</output>
 
 </config>

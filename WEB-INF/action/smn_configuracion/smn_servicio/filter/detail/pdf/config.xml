@@ -36,7 +36,6 @@
 			<col name='smn_unidades_servicios_id' title='${lbl:b_united_service}' align='left' format='######' />
 			<col name='sco_fecha_registro' title='${lbl:b_store_date}' align='left' format='dd-MM-yyyy' />
 		</record>
-		<!--
 		<table recordset='detail-smnrelproveedorproducto.sql' width='100' spacingBefore='40'>
 			<col name='smn_rel_proveedor_producto_id' title='${lbl:b_rel_providers_products}' width='16' align='left' format='######' />
 			<col name='smn_proveedor_id' title='${lbl:b_providers}' width='16' align='left' format='######' />
@@ -49,7 +48,7 @@
 			<col name='smn_rel_linea_servicio_id' title='${lbl:b_rel_lines_purchasing_services}' width='50' align='left' format='######' />
 			<col name='smn_lineas_id' title='${lbl:b_lines}' width='50' align='left' format='######' />
 		</table>
--->
+
 
 	</pdf-report>
 </config>

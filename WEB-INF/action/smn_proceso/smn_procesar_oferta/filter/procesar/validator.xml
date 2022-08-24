@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+
+<validator onerror="/action/error/validation/alert">
+	<parameter id='mensaje'       type='varchar' required='false' label='${fld:mensaje}'       maxlen='100' />
+	<parameter id='smn_oferta_id' type='integer' required='false'  label='${fld:smn_oferta_id}' maxlen='10' />
+	
+	<!-- valores provenientes de la tabla smn_oferta -->
+	
+	<parameter id='smn_proveedor_id'            type='integer' required='false'  label='${fld:smn_proveedor_id}'            maxlen='10' />
+	<parameter id='smn_condicion_financiera_rf' type='integer' required='false'  label='${fld:smn_condicion_financiera_rf}' maxlen='10' />
+	<parameter id='ofe_aplica_anticipo'         type='varchar' required='false'  label='${fld:ofe_aplica_anticipo}'         maxlen='2' />
+	<parameter id='ofe_porcentaje_anticipo'     type='double'  required='false'  label='${fld:ofe_porcentaje_anticipo}'     maxlen='10' />
+	<parameter id='ofe_monto_anticipo'          type='double'  required='false'  label='${fld:ofe_monto_anticipo}'          maxlen='10' />
+	<parameter id='smn_item_compras_id'         type='integer' required='false'  label='${fld:smn_item_compras_id}'         maxlen='10' />
+	<parameter id='smn_servicios_compras_id'    type='integer' required='false'  label='${fld:smn_servicios_compras_id}'    maxlen='10' />
+	<parameter id='smn_activo_fijo_compras_id'  type='integer' required='false'  label='${fld:smn_activo_fijo_compras_id}'  maxlen='10' />
+	<parameter id='ofe_cantidad'                type='double'  required='false'  label='${fld:ofe_cantidad}'                maxlen='10' />
+	<parameter id='ofe_precio_ml'               type='double'  required='false'  label='${fld:ofe_precio_ml}'               maxlen='20' />
+	<parameter id='ofe_monto_ml'                type='double'  required='false'  label='${fld:ofe_monto_ml}'                maxlen='20' />
+	<parameter id='ofe_moneda_id'               type='integer' required='false'  label='${fld:ofe_moneda_id}'               maxlen='10' />
+	<parameter id='ofe_tasa'                    type='integer' required='false'  label='${fld:ofe_tasa}'                    maxlen='10' />
+	<parameter id='ofe_precio_ma'               type='double'  required='false'  label='${fld:ofe_precio_ma}'               maxlen='20' />
+	<parameter id='ofe_monto_ma'                type='double'  required='false'  label='${fld:ofe_monto_ma}'                maxlen='20' />
+	<parameter id='smn_cotizacion_id'           type='integer' required='false'  label='${fld:smn_cotizacion_id}'           maxlen='10' />
+
+	<!-- valores provenientes de la tabla smn_oferta_f_entrega -->
+	
+	<parameter id='ofe_consecutivo'   type='integer' required='false'  label='${fld:ofe_consecutivo}'   maxlen='10' />
+	<parameter id='ofe_cantidad'      type='double'  required='false'  label='${fld:ofe_cantidad}'      maxlen='10' />
+	<parameter id='ofe_fecha_entrega' type='date'    required='false'  label='${fld:ofe_fecha_entrega}' maxlen='10' />
+	<parameter id='ofe_estatus'       type='varchar' required='false'  label='${fld:ofe_estatus}'       maxlen='2' />
+	
+	<!-- valores provenientes de la tabla smn_compras.smn_orden_compra_cabecera -->
+	
+	<parameter id='occ_descripcion' type='varchar' required='false' label='${fld:occ_descripcion}' maxlen='100' />
+	
+	<!-- valores provenientes de la tabla smn_compras.smn_orden_compra_detalle -->
+	
+	<parameter id='ocd_cantidad_pedida'     type='double' required='false' label='${fld:ocd_cantidad_pedida}'      maxlen='10' />
+	<parameter id='ocd_monto_base'          type='double'  required='false' label='${fld:ocd_monto_base}'          maxlen='20' />
+	<parameter id='ocd_porcentaje'          type='double'  required='false' label='${fld:ocd_porcentaje}'          maxlen='10' />
+	<parameter id='ocd_monto_descuento'     type='double'  required='false' label='${fld:ocd_monto_descuento}'     maxlen='20' />
+	<parameter id='ocd_monto_base_ma'       type='double'  required='false' label='${fld:ocd_monto_base_ma}'       maxlen='20' />
+	<parameter id='ocd_monto_descuento_ma'  type='double'  required='false' label='${fld:ocd_monto_descuento_ma}'  maxlen='20' />
+	<parameter id='ocd_monto_descuento_ml'  type='double'  required='false' label='${fld:ocd_monto_descuento_ml}'  maxlen='20' />
+	<parameter id='ocd_monto_descuento_ma'  type='double'  required='false' label='${fld:ocd_monto_descuento_ma}'  maxlen='20' />
+	<parameter id='ocd_monto_neto_ml'       type='double'  required='false' label='${fld:ocd_monto_neto_ml}'       maxlen='20' />
+	<parameter id='ocd_monto_neto_ma'       type='double'  required='false' label='${fld:ocd_monto_neto_ma}'       maxlen='20' />
+		
+	<!-- valores provenientes de la tabla smn_compras.smn_orden_compra_impuesto -->	
+		
+	<parameter id='oci_monto_base_ml'         type='double'  required='false' label='${fld:oci_monto_base_ml}'         maxlen='20' />
+	<parameter id='oci_monto_base_ma'         type='double'  required='false' label='${fld:oci_monto_base_ma}'         maxlen='20' />
+	<parameter id='oci_monto_impuesto_ml'     type='double'  required='false' label='${fld:oci_monto_impuesto_ml}'     maxlen='20' />
+	<parameter id='oci_monto_impuesto_ma'     type='double'  required='false' label='${fld:oci_monto_impuesto_ma}'     maxlen='20' />	
+		
+	<!-- valores provenientes de la tabla smn_base.smn_codigo_impuesto -->		
+	
+	<parameter id='imp_porcentaje_base'    type='double'  required='false' label='${fld:imp_porcentaje_calculo}' maxlen='10' />
+	<parameter id='imp_porcentaje_calculo' type='double'  required='false' label='${fld:imp_porcentaje_base}'    maxlen='10' />
+	<parameter id='imp_ui_sustraendo'      type='double'  required='false' label='${fld:imp_ui_sustraendo}'      maxlen='10' />
+	<parameter id='imp_tipo_codigo'        type='varchar' required='false' label='${fld:imp_tipo_codigo}'        maxlen='10' />
+
+	<!-- llaves primarias despues de insert/update -->
+	
+	<parameter id='smn_orden_compra_cabecera_id'  type='integer' required='false' label='${fld:smn_orden_compra_cabecera_id}'  maxlen='10' />
+	<parameter id='smn_orden_compra_detalle_id'   type='integer' required='false' label='${fld:smn_orden_compra_detalle_id}'   maxlen='10' />
+	<parameter id='smn_descuento_retencion_oc_id' type='integer' required='false' label='${fld:smn_descuento_retencion_oc_id}' maxlen='10' />
+	
+	<!-- valores provenientes de la tabla smn_compras.smn_impto_deduc_oferta -->
+	
+	<parameter id='rio_moneda_rf' type='integer' required='false' label='${fld:rio_moneda_rf}' maxlen='10' />
+	<parameter id='rio_tasa_rf'   type='integer' required='false' label='${fld:rio_tasa_rf}'   maxlen='10' />
+	
+	<!-- otros valores -->
+	
+	<parameter id='smn_entidad_id'              type='integer' required='false' label='${fld:smn_entidad_id}'              maxlen='10' />
+	<parameter id='smn_sucursal_id'             type='integer' required='false' label='${fld:smn_sucursal_id}'             maxlen='10' />
+	<parameter id='smn_auxiliar_rf'             type='integer' required='false' label='${fld:smn_auxiliar_rf}'             maxlen='10' />
+	<parameter id='smn_forma_pago_rf'           type='integer' required='false' label='${fld:smn_forma_pago_rf}'           maxlen='10' />
+	<parameter id='smn_documento_id'            type='integer' required='false' label='${fld:smn_documento_id}'            maxlen='10' />
+	<parameter id='smn_linea_id'                type='integer' required='false' label='${fld:smn_linea_id}'                maxlen='10' />
+	<parameter id='smn_requisicion_cabecera_id' type='integer' required='false' label='${fld:smn_requisicion_cabecera_id}' maxlen='10' />
+	<parameter id='smn_unidad_medida_rf'        type='integer' required='false' label='${fld:smn_unidad_medida_rf}'        maxlen='10' />
+	<parameter id='smn_cod_impuesto_deduc_rf'   type='integer' required='false' label='${fld:smn_cod_impuesto_deduc_rf}'   maxlen='10' />
+	<parameter id='smn_moneda'                  type='integer' required='false' label='${fld:smn_moneda}'                  maxlen='10' />
+	<parameter id='smn_tasa'                    type='integer' required='false' label='${fld:smn_tasa}'                    maxlen='10' />
+	<parameter id='tca_tasa_cambio'             type='integer' required='false' label='${fld:tca_tasa_cambio}'             maxlen='20' />
+</validator>

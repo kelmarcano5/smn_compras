@@ -3,12 +3,14 @@
 
 <head>
 
-<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
-
-<!--biblioteca generica JS/Dinamica-->
-<script type="text/javascript" src="${def:context}/action/script">
-</script>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -175,7 +177,7 @@
 //		//alert('Colocar su código aquí.')
 		
 		var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
-		openDialog("dialog", uri, 650, 180);
+		openDialog("dialog", uri, 650, 380);
 		
 	}
 	
@@ -190,7 +192,7 @@
 		else
 			uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
 			
-		openDialog("editor", uri, 650, 180);
+		openDialog("editor", uri, 650, 380);
 		
 	}
 			

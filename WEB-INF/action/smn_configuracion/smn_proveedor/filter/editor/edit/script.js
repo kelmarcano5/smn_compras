@@ -1,3 +1,22 @@
+
+var smn_clase_auxiliar_rf = '${fld:smn_clase_auxiliar_rf}';
+$('#smn_clase_auxiliar_rf').val(smn_clase_auxiliar_rf).trigger('change');
+
+var smn_auxiliar_rf = '${fld:smn_auxiliar_rf}';
+$('#smn_auxiliar_rf').val(smn_auxiliar_rf).trigger('change');
+
+var smn_condicion_financiera_rf = '${fld:smn_condicion_financiera_rf}';
+$('#smn_condicion_financiera_rf').val(smn_condicion_financiera_rf).trigger('change');
+
+var smn_forma_pago_rf = '${fld:smn_forma_pago_rf}';
+$('#smn_forma_pago_rf').val(smn_forma_pago_rf).trigger('change');
+
+var smn_codigos_impuestos_rf = '${fld:smn_codigos_impuestos_rf}';
+$('#smn_codigos_impuestos_rf').val(smn_codigos_impuestos_rf).trigger('change');
+
+var smn_clasificacion_abc_rf = '${fld:smn_clasificacion_abc_rf}';
+$('#smn_clasificacion_abc_rf').val(smn_clasificacion_abc_rf).trigger('change');
+
 setComboValue('smn_clase_auxiliar_rf','${fld:smn_clase_auxiliar_rf}','form1');
 setComboValue('smn_auxiliar_rf','${fld:smn_auxiliar_rf}','form1');
 setComboValue('smn_condicion_financiera_rf','${fld:smn_condicion_financiera_rf}','form1');

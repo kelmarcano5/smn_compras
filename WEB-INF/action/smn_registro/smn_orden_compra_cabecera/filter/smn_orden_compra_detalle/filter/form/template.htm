@@ -140,7 +140,7 @@
 	{ 
 		showFilter();
 		document.form1.ocd_fecha_registro_ini.onkeypress = keypressDate;
-		document.form1.ocd_fecha_registro_fin.onkeypress = keypressDate;
+	document.form1.ocd_fecha_registro_fin.onkeypress = keypressDate;
 
 		search();
 	} 
@@ -278,11 +278,11 @@
 			//alert(uri);
 			openDialog("dialog",uri,1100,650);
 		}
-	function relacion1(id2, descripcion, cantidad, montoml, montoma, item, servicio){
-			uri= "${def:context}${def:actionroot}/smn_orden_compra_impuesto/form?id2="+id2+"&descripcion="+descripcion+"&cantidad="+cantidad+"&montoml="+montoml+"&montoma="+montoma+"&smn_item_rf="+item+"&smn_servicios_id="+servicio;
-			//alert(uri);
-			openDialog("dialog",uri,1100,650);
-		}
+	function relacion1(id2, descripcion, cantidad, montoml, montoma){
+		uri= "${def:context}${def:actionroot}/smn_orden_compra_impuesto/form?id2="+id2+"&descripcion="+descripcion+"&cantidad="+cantidad+"&montoml="+montoml+"&montoma="+montoma;
+		//alert(uri);
+		openDialog("dialog",uri,1100,650);
+	}
 	function relacion2(id2, descripcion, cantidad, montoml, montoma){
 		uri= "${def:context}${def:actionroot}/smn_orden_compra_fecha_entrega/form?id2="+id2+"&descripcion="+descripcion+"&cantidad="+cantidad+"&montoml="+montoml+"&montoma="+montoma;
 		//alert(uri);

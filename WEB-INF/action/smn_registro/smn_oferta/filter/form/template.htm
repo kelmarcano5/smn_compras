@@ -5,10 +5,12 @@
 
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
 	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
-
-<!--biblioteca generica JS/Dinamica-->
-<script type="text/javascript" src="${def:context}/action/script">
-</script>
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -36,7 +38,7 @@
 	<tr>
 		<td>${lbl:b_entities}*</td>
 		<td>
-			<select name="smn_entidad_id" id="smn_entidad_id" onchange="chgCombo1(smn_entidad_id.options[smn_entidad_id.selectedIndex].text,'smn_entidad_id_name');">
+			<select class="entidad" name="smn_entidad_id" id="smn_entidad_id" onchange="chgCombo1(smn_entidad_id.options[smn_entidad_id.selectedIndex].text,'smn_entidad_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_entidad_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -49,7 +51,7 @@
 	<tr>
 		<td>${lbl:b_solicitante}*</td>
 		<td>
-			<select name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo1(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
+			<select class="auxiliar" name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo1(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_auxiliar_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -62,7 +64,7 @@
 		<tr>
 		<td>${lbl:b_quotation}*</td>
 		<td>
-			<select name="smn_cotizacion_id" id="smn_cotizacion_id" onchange="chgCombo(smn_cotizacion_id.options[smn_cotizacion_id.selectedIndex].text,'smn_cotizacion_id_name');">
+			<select class="cotizacion" name="smn_cotizacion_id" id="smn_cotizacion_id" onchange="chgCombo(smn_cotizacion_id.options[smn_cotizacion_id.selectedIndex].text,'smn_cotizacion_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_cotizacion_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -94,7 +96,7 @@
 	<tr>
 		<td>${lbl:b_item}*</td>
 		<td>
-			<select name="smn_item_compras_id" id="smn_item_compras_id" onchange="chgCombo(smn_item_compras_id.options[smn_item_compras_id.selectedIndex].text,'smn_item_compras_id_name');">
+			<select class="item" name="smn_item_compras_id" id="smn_item_compras_id" onchange="chgCombo(smn_item_compras_id.options[smn_item_compras_id.selectedIndex].text,'smn_item_compras_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_item_compras_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -133,9 +135,9 @@
 	<tr>
 			<td>${lbl:b_offer_status}*</td>
 			<td>
-				<select name="ofe_estatus" id="ofe_estatus">
+				<select class="estatus" name="ofe_estatus" id="ofe_estatus">
 				<option value="">[Cualquiera]</option>
-				<option value="RE">${lbl:b_received}</option>
+				<!-- <option value="RE">${lbl:b_received}</option> -->
 				<option value="AN">${lbl:b_analyzed}</option>
 				<option value="AP">${lbl:b_aprobated}</option>
 				<option value="RZ">${lbl:b_rejected}</option>
@@ -184,13 +186,23 @@
 	onload = function()
 	{ 
 		showFilter();
-		document.form1.ofe_fecha_registro_ini.onkeypress = keypressDate;
-	document.form1.ofe_fecha_registro_fin.onkeypress = keypressDate;
+
+		$('.entidad').select2();
+		$('.auxiliar').select2();
+		$('.cotizacion').select2();
+		$('.item').select2();
+		$('.estatus').select2();
+		//document.form1.ofe_fecha_registro_ini.onkeypress = keypressDate;
+		//document.form1.ofe_fecha_registro_fin.onkeypress = keypressDate;
 
 		search();
 	} 
 	
 	
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
 		
 	//mostrar filtro de busqueda
 	function showFilter()
@@ -294,7 +306,7 @@
 			//editor a nivel de panel iconográfico
 			if (id == 'editor')
 			{					
-				var uri = "${def:context}${def:actionroot}/editor/form";					
+				var uri = "${def:context}${def:actionroot}/../editor/form";					
 				openDialog("editor1", uri, 650, 580);					
 			}
 			else if (id == 'filter')
@@ -318,9 +330,9 @@
 				{
 					var uri = "";
 					if (id==null)
-						uri = "${def:context}${def:actionroot}/editor/form";
+						uri = "${def:context}${def:actionroot}/../editor/form";
 					else
-						uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
+						uri = "${def:context}${def:actionroot}/../editor/form?id=" + id;
 					
 					openDialog("editor5", uri, 650, 580);
 				}	
@@ -354,14 +366,14 @@
 		function detalleimpuesto(id3){
 			//&source=smn_clase_auxiliar_rf  alert(id,clase);
 			// alert(id3);
-			uri = "${def:context}${def:actionroot}/smn_impto_deduc_oferta/form?id3="+ id3;
+			uri = "${def:context}${def:actionroot}/../smn_impto_deduc_oferta/form?id3="+ id3;
 			// alert(uri);	
 			openDialog("dialog", uri, 1150, 700);
 		}
 		function detalleentrega(id3, id4){
 			//&source=smn_clase_auxiliar_rf  alert(id,clase);
 			// alert(id3);
-			uri = "${def:context}${def:actionroot}/smn_oferta_f_entrega/form?id4="+ id4;
+			uri = "${def:context}${def:actionroot}/../smn_oferta_f_entrega/form?id4="+ id4;
 			// alert(uri);	
 			openDialog("dialog", uri, 1150, 700);
 		}
@@ -370,7 +382,7 @@
 			//alert(estatus);
 			if(estatus=='AP'){
 				//alert("llego");
-				uri = "${def:context}${def:actionroot}/generar?smn_oferta_id="+ oferta_id;
+				uri = "${def:context}${def:actionroot}/../generar?smn_oferta_id="+ oferta_id;
 			//alert(uri);	
 				openDialog("dialog", uri, 1150, 700);
 			}else{
@@ -385,7 +397,7 @@
 				estatus = 'GE';
 			
 			ajaxCall(httpMethod="GET", 
-					uri="${def:actionroot}/generar?id="+oferta_id+"&ofe_estatus="+estatus, 
+					uri="${def:actionroot}/../generar?id="+oferta_id+"&ofe_estatus="+estatus, 
 					divResponse="response", 
 					divProgress="status", 
 					formName=null, 

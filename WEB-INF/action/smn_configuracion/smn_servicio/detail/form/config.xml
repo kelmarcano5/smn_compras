@@ -13,6 +13,8 @@
 		<transaction>false</transaction>
 		<jdbc-log>false</jdbc-log>
 		<recordset id="query.sql" source="sql" scope="session" />
+		<recordset id='detail-smnrelproveedorproducto.sql' source='sql' scope='session' />
+		<recordset id='detail-smnrellineaservicio.sql' source='sql' scope='session' />
 
 	</transaction>
 
@@ -21,6 +23,8 @@
 		<template>template.htm</template>
 		<set-http-headers>true</set-http-headers>
 		<content-type>text/html</content-type>
+		<print mode='table' recordset='detail-smnrelproveedorproducto.sql' tag='rows-smnrelproveedorproducto' alternate-colors='true' />
+		<print mode='table' recordset='detail-smnrellineaservicio.sql' tag='rows-smnrellineaservicio' alternate-colors='true' />
 
 		<print mode="form" recordset="query.sql" />
 	</output>

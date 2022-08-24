@@ -15,7 +15,6 @@ document.form1.ocd_monto_bruto_ma.value='${fld:ocd_monto_bruto_ma@#,###,##0.00}'
 document.form1.ocd_monto_impuesto_ma.value='${fld:ocd_monto_impuesto_ma@#,###,##0.00}';
 document.form1.ocd_monto_desc_reten_ma.value='${fld:ocd_monto_desc_reten_ma@#,###,##0.00}';
 document.form1.id.value='${fld:smn_orden_compra_detalle_id@#,###,###}';
-document.form1.occ_orden_compra_numero.value='${fld:occ_orden_compra_numero@#,###,###}';
  
 document.getElementById("formTitle").innerHTML = "${lbl:b_edit_record}";
 document.getElementById("grabar").disabled=false;
@@ -39,7 +38,6 @@ if ('${fld:ocd_costo_ma}' == '') {
 	document.form1.ocd_precio_ma.value='${fld:ocd_costo_ma@#,###,##0.00}';
 }
 
-getImpuestos();
 
 document.form1.smn_linea_id.disabled=true; 
 document.form1.smn_servicios_id.disabled=true; 

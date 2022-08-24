@@ -37,7 +37,7 @@ select
 	inner join smn_compras.smn_requisicion_cabecera on smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = smn_compras.smn_requisicion_detalle.smn_requisicion_cabecera_id
 WHERE
 	smn_compras.smn_oferta.ofe_estatus IN ('RE')
-order by smn_compras.smn_oferta.ofe_fecha_registro desc
+order by  smn_base.smn_item.smn_item_id desc
 
 	
 	

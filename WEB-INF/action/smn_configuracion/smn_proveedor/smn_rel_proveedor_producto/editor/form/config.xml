@@ -19,6 +19,7 @@
 		<recordset id='query-rpp_producto_alterno.sql' source='sql' scope='transaction'/>
 		<recordset id='query-smn_servicio_id.sql' source='sql' scope='transaction'/>
 		<recordset id='query-smn_moneda_id.sql' source='sql' scope='transaction'/>
+		<recordset id='query-smn_afijos_rf.sql' source='sql' scope='transaction'/>
 	</transaction>
 
 
@@ -32,6 +33,7 @@
 		<print mode='table' recordset='query-rpp_producto_alterno.sql' tag='rpp_producto_alterno_rows'/>
 		<print mode='table' recordset='query-smn_servicio_id.sql' tag='smn_servicio_id_rows'/>
 		<print mode='table' recordset='query-smn_moneda_id.sql' tag='smn_moneda_id_rows'/>
+		<print mode='table' recordset='query-smn_afijos_rf.sql' tag='smn_afijos_rf_rows'/>
 		<print mode="form" recordset="_request" /> 
 	</output>
 

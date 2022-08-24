@@ -133,13 +133,13 @@
 								onErrorFn=null);	
 		}
 
-		function relacion(id2, descripcion, cantidad, montoml, montoma, item, servicio){
-			uri= "${def:context}${def:actionroot}/smn_orden_compra_descuentos_retenciones/form?id2="+id2+"&descripcion="+descripcion+"&cantidad="+cantidad+"&montoml="+montoml+"&montoma="+montoma+"&smn_item_rf="+item+"&smn_servicios_id="+servicio;
+		function relacion(id2, descripcion, cantidad, montoml, montoma){
+			uri= "${def:context}${def:actionroot}/smn_orden_compra_descuentos_retenciones/form?id2="+id2+"&descripcion="+descripcion+"&cantidad="+cantidad+"&montoml="+montoml+"&montoma="+montoma;
 			//alert(uri);
 			openDialog("dialog",uri,1200,600);
 		}
-		function relacion1(id2, descripcion, cantidad, montoml, montoma, item, servicio){
-			uri= "${def:context}${def:actionroot}/smn_orden_compra_impuesto/form?id2="+id2+"&descripcion="+descripcion+"&cantidad="+cantidad+"&montoml="+montoml+"&montoma="+montoma+"&smn_item_rf="+item+"&smn_servicios_id="+servicio;
+		function relacion1(id2, descripcion, cantidad, montoml, montoma){
+			uri= "${def:context}${def:actionroot}/smn_orden_compra_impuesto/form?id2="+id2+"&descripcion="+descripcion+"&cantidad="+cantidad+"&montoml="+montoml+"&montoma="+montoma;
 			//alert(uri);
 			openDialog("dialog",uri,1200,600);
 		}
@@ -172,7 +172,7 @@
 	<table class="record" style="width: 500px">
 		<tr>
 			<td width="40%">${lbl:smn_orden_compra_cabecera_id}</td>
-			<td style="background-color: white">${fld:occ_numero} - ${fld:descripcion}</td>
+			<td style="background-color: white">${fld:descripcion}</td>
 		</tr>
 		
 	</table>

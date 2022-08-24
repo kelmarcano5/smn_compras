@@ -2,9 +2,9 @@
 <validator onerror='/action/error/validation/ajax'>
 	<parameter id='smn_requisicion_detalle_id' type='integer' required='true' label='${lbl:b_requisition_detail}' maxlen='10'/>
 	<parameter id='smn_codigo_descuento_rf' type='integer' required='true' label='${lbl:b_code_discount}' maxlen='10'/>
-	<parameter id='drc_monto_base' type='double' required='true' label='${lbl:b_base_amount}' maxlen='20'/>
+	<parameter id='drc_monto_base' type='double' required='true' label='${lbl:b_base_amount}' maxlen='10'/>
 	<parameter id='drc_porcentaje' type='double' required='true' label='${lbl:b_percentage}' maxlen='10'/>
-	<parameter id='drc_monto_descuento' type='double' required='true' label='${lbl:b_discount_amount}' maxlen='20'/>
+	<parameter id='drc_monto_descuento' type='double' required='true' label='${lbl:b_discount_amount}' maxlen='10'/>
 	<parameter id='id' type='integer' required='true' label='${lbl:b_requisition_detail_discount_retention}' maxlen='10'/>
 
 

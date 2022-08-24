@@ -8,7 +8,6 @@
 	<col width='11%'/>
 	<col width='11%'/>
 	<col width='11%'/>
-	<col width='30%'/>
 	<col width='11%'/>
 	<col width='11%'/>
 	<col width='11%'/>
@@ -22,7 +21,7 @@
 
 	<!--toolbar-->
 	<tr>
-		<th colspan="17" id="encabezado_tabla">
+		<th colspan="16" id="encabezado_tabla">
 			${req:controls} 
 		</th>
 	</tr>
@@ -36,8 +35,7 @@
 		<th class='sortable' onclick='sortBy("smn_solicitante","query-smncotizacion.sql")'>Solicitante</th>
 		<th class='sortable' onclick='sortBy("smn_documento_id","query-smncotizacion.sql")'>${lbl:b_purchasing_documents}</th>
 		<th class='sortable' onclick='sortBy("numero_requisicion","query-smncotizacion.sql")'>Numero Requisicion</th>
-		<th class='sortable' onclick='sortBy("cot_producto","query-smncotizacion.sql")'>${lbl:b_item} / ${lbl:b_servicios} / ${lbl:b_fixed_assets}</th>
-		<th class='sortable' onclick='sortBy("descripcion","query-smncotizacion.sql")'>${lbl:b_description}</th>
+		<th class='sortable' onclick='sortBy("smn_item_rf","query-smncotizacion.sql")'>${lbl:b_item}</th>
 		<th class='sortable' onclick='sortBy("cantidad","query-smncotizacion.sql")'>Cantidad</th>
 		<th class='sortable' onclick='sortBy("fecha_requerida","query-smncotizacion.sql")'>Fecha Requerida</th>
 		<th class='sortable' onclick='sortBy("numero_cotizacion","query-smncotizacion.sql")'>Numero Cotizacion</th>
@@ -54,14 +52,13 @@
 	<tr>
 		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_cotizacion_id}')" title="${lbl:b_view_detail}"></td>
 		<!-- <td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_cotizacion_id}')" title="${lbl:b_delete_button}"></td> -->
-		<td><img src="${def:context}/images/list-add2-18x18.png"  onclick="addItem('${fld:smn_cotizacion_id}','${fld:cot_producto}')" title="Añadir Item"></td>
+		<td><img src="${def:context}/images/list-add2-18x18.png"  onclick="showEditor('${fld:smn_cotizacion_id}')" title="Añadir Item"></td>
 		<td><img src="${def:context}/images/email.png" onclick="openEmails('${fld:smn_cotizacion_id}')" title="Enviar Correo"></td>
 		<td><img src="${def:context}/images/icongrid/Generar.png" onclick="generar('${fld:smn_cotizacion_id}')" title="Generar oferta"></td>
 		<td>${fld:smn_solicitante}</td>
 		<td>${fld:smn_documento_id}</td>
 		<td>${fld:numero_requisicion}</td>
-		<td>${fld:cot_producto}</td>
-		<td>${fld:descripcion}</td>
+		<td>${fld:smn_item_rf}</td>
 		<td>${fld:cantidad}</td>
 		<td>${fld:fecha_requerida@dd-MM-yyyy}</td>
 		<td>${fld:numero_cotizacion}</td>

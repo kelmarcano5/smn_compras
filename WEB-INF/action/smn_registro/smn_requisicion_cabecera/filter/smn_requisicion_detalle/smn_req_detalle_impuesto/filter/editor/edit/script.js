@@ -1,5 +1,5 @@
 setComboValue('smn_requisicion_detalle_id','${fld:smn_requisicion_detalle_id}','form1');
-document.form1.rim_monto_base.value='${fld:rim_monto_base@######0.00}';
+document.form1.rim_monto_base.value='${fld:rim_monto_base@#,###,##0.00}';
 setComboValue('smn_cod_impuesto_deduc_rf','${fld:smn_cod_impuesto_deduc_rf}','form1');
 setComboValue('smn_porcentaje_impuesto','${fld:smn_porcentaje_impuesto}','form1');
 setComboValue('smn_sustraendo','${fld:smn_sustraendo}','form1');

@@ -29,8 +29,7 @@ INSERT INTO smn_inventario.smn_movimiento_detalle
 	mde_idioma,
 	mde_usuario,
 	mde_fecha_registro,
-  	mde_hora,
-  	mde_estatus_existencia
+  	mde_hora
 )
 VALUES
 (
@@ -40,7 +39,7 @@ VALUES
 	'0',--smn_centro_costo_rf
 	'N', --mde_es_bonificacion
 	0, --mde_cantidad_recibida
-	${fld:ocd_cantidad_recibida}, --mde_cantidad_solicitada
+	${fld:ocd_cantidad_pedida}, --mde_cantidad_solicitada
 	0, --mde_cantidad_por_recibir
 	null, --mde_lote
 	null, --mde_fecha_vencimiento_lote
@@ -63,8 +62,7 @@ VALUES
 	'${def:locale}', --mde_idioma
 	'${def:user}', --mde_usuario
 	{d '${def:date}'}, --mde_fecha_registro
-  	'${def:time}', --mde_hora	
-  	${fld:mde_estatus_existencia} --mde_estatus_existencia
+  	'${def:time}' --mde_hora	
 )
 
 RETURNING smn_movimiento_detalle_id;

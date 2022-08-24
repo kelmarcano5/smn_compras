@@ -166,41 +166,27 @@
 			}
 		}
 
-		function detalleimpuesto(id3, monto, recurrente){
+		function detalleimpuesto(id3, monto){
 			//&source=smn_clase_auxiliar_rf  alert(id,clase);
 			// alert(id3);
 			var st = '${fld:status}';
 			if (st == 'Generada' || st == 'Aprobada') {
-						alertBox('No se permite agregar con estatus generado o aprobado', 'Aceptar', null, null);
+						alertBox('No se permite agregar con estatus generado o aprobado', 'Aceptar', null, null)
 			}else{
-				if(recurrente == 'SI')
-				{
-					uri = "${def:context}${def:actionroot}/smn_req_detalle_impuesto/form?id3="+ id3 + "&monto="+ monto;	
-					openDialog("dialog", uri, 1150, 700);
-				}
-				else
-				{
-					alertBox('La requisicion no es recurrente', 'Aceptar', null, null);
-				}
+				uri = "${def:context}${def:actionroot}/smn_req_detalle_impuesto/form?id3="+ id3 + "&monto="+ monto;	
+				openDialog("dialog", uri, 1150, 700);
 			}
 		}
 		
-		function detalledescuento(id5, monto, recurrente){
+		function detalledescuento(id5, monto){
 			//&source=smn_clase_auxiliar_rf  alert(id,clase);
 			// alert(id5);
 			var st = '${fld:status}';
 			if (st == 'Generada' || st == 'Aprobada') {
 				alertBox('No se permite agregar con estatus generado o aprobado', 'Aceptar', null, null)
 			}else{
-				if (recurrente == 'SI') 
-				{
-					uri = "${def:context}${def:actionroot}/smn_req_detalle_dcto_retenc/form?id5="+ id5 + "&monto="+ monto;	
-					openDialog("dialog", uri, 1150, 700);
-				}
-				else
-				{
-					alertBox('La requisicion no es recurrente', 'Aceptar', null, null);
-				}
+				uri = "${def:context}${def:actionroot}/smn_req_detalle_dcto_retenc/form?id5="+ id5 + "&monto="+ monto;	
+				openDialog("dialog", uri, 1150, 700);
 			}
 		}
 		

@@ -1,0 +1,19 @@
+SELECT
+	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id,
+	smn_compras.smn_requisicion_cabecera.req_numero
+FROM
+	smn_compras.smn_oferta
+INNER JOIN
+	smn_compras.smn_cotizacion
+ON
+	smn_compras.smn_oferta.smn_cotizacion_id = smn_compras.smn_cotizacion.smn_cotizacion_id
+INNER JOIN
+	smn_compras.smn_requisicion_detalle
+ON
+	smn_compras.smn_cotizacion.smn_requisicion_detalle_id = smn_compras.smn_requisicion_detalle.smn_requisicion_detalle_id
+INNER JOIN
+	smn_compras.smn_requisicion_cabecera
+ON
+	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = smn_compras.smn_requisicion_detalle.smn_requisicion_cabecera_id
+WHERE
+	smn_compras.smn_oferta.smn_oferta_id = ${fld:smn_oferta_id}

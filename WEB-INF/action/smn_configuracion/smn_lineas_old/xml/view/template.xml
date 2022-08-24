@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
-<smn_lineas>
-	<detail>
-		<rows>		
-		<record lin_fecha_registro="${fld:lin_fecha_registro}"    lin_nombre="${fld:lin_nombre}"    lin_codigo="${fld:lin_codigo}"    smn_tipo_linea_id="${fld:smn_tipo_linea_id}"    />
-		</rows>
-	</detail>
-</smn_lineas>

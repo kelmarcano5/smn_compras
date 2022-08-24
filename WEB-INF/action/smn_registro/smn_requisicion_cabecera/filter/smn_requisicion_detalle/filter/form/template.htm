@@ -3,12 +3,15 @@
 
 <head>
 
-	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
 
-<!--biblioteca generica JS/Dinamica-->
-<script type="text/javascript" src="${def:context}/action/script">
-</script>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -62,7 +65,7 @@
 	<tr>
 		<td>${lbl:b_item}*</td>
 		<td>
-			<select name="smn_item_rf" id="smn_item_rf" onchange="chgCombo(smn_item_rf.options[smn_item_rf.selectedIndex].text,'smn_item_rf_name');">
+			<select class="item" name="smn_item_rf" id="smn_item_rf" onchange="chgCombo(smn_item_rf.options[smn_item_rf.selectedIndex].text,'smn_item_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_item_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -140,6 +143,8 @@
 		showFilter();
 		
 		search();
+
+		$('.item').select2();
 
 		if('${fld:source}' == 'smn_detalle'){ 
 			//alert('${fld:id2}-${fld:descripcion}');
@@ -453,41 +458,27 @@
 			}
 		}
 
-		function detalleimpuesto(id3, monto, recurrente){
+		function detalleimpuesto(id3){
 			//&source=smn_clase_auxiliar_rf  alert(id,clase);
 			// alert(id3);
 			var st = '${fld:status}';
 			if (st == 'Generada' || st == 'Aprobada') {
-						alertBox('No se permite agregar con estatus generado o aprobado', 'Aceptar', null, null);
+						alertBox('No se permite agregar con estatus generado o aprobado', 'Aceptar', null, null)
 			}else{
-				if(recurrente == 'SI')
-				{
-					uri = "${def:context}${def:actionroot}/smn_req_detalle_impuesto/form?id3="+ id3 + "&monto="+ monto;	
-					openDialog("dialog", uri, 1150, 700);
-				}
-				else
-				{
-					alertBox('La requisicion no es recurrente', 'Aceptar', null, null);
-				}
+				uri = "${def:context}${def:actionroot}/smn_req_detalle_impuesto/form?id3="+ id3;	
+				openDialog("dialog", uri, 1150, 700);
 			}
 		}
 		
-		function detalledescuento(id5, monto, recurrente){
+		function detalledescuento(id5){
 			//&source=smn_clase_auxiliar_rf  alert(id,clase);
 			// alert(id5);
 			var st = '${fld:status}';
 			if (st == 'Generada' || st == 'Aprobada') {
-				alertBox('No se permite agregar con estatus generado o aprobado', 'Aceptar', null, null)
+						alertBox('No se permite agregar con estatus generado o aprobado', 'Aceptar', null, null)
 			}else{
-				if (recurrente == 'SI') 
-				{
-					uri = "${def:context}${def:actionroot}/smn_req_detalle_dcto_retenc/form?id5="+ id5 + "&monto="+ monto;	
-					openDialog("dialog", uri, 1150, 700);
-				}
-				else
-				{
-					alertBox('La requisicion no es recurrente', 'Aceptar', null, null);
-				}
+				uri = "${def:context}${def:actionroot}/smn_req_detalle_dcto_retenc/form?id5="+ id5;	
+				openDialog("dialog", uri, 1150, 700);
 			}
 		}
 

@@ -1,0 +1,15 @@
+SELECT
+	SUM(smn_compras.smn_req_detalle_impuesto.rim_monto_impuesto) AS rim_monto_impuesto,
+	SUM(smn_compras.smn_req_detalle_dcto_retenc.drc_monto_descuento) AS drc_monto_descuento
+FROM
+	smn_compras.smn_requisicion_detalle
+INNER JOIN
+	smn_compras.smn_req_detalle_impuesto
+ON
+	smn_compras.smn_req_detalle_impuesto.smn_requisicion_detalle_id = smn_compras.smn_requisicion_detalle.smn_requisicion_detalle_id
+INNER JOIN
+	smn_compras.smn_req_detalle_dcto_retenc
+ON
+	smn_compras.smn_req_detalle_dcto_retenc.smn_requisicion_detalle_id = smn_compras.smn_requisicion_detalle.smn_requisicion_detalle_id
+WHERE
+	smn_compras.smn_requisicion_detalle.smn_requisicion_detalle_id = ${fld:smn_requisicion_detalle_id}

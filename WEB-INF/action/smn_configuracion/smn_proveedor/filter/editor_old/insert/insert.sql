@@ -1,0 +1,44 @@
+INSERT INTO smn_compras.smn_proveedor
+(
+	smn_proveedor_id,
+	smn_clase_auxiliar_rf,
+	smn_auxiliar_rf,
+	smn_forma_pago_rf,
+	smn_clasificacion_abc_rf,
+	prv_estatus,
+	prv_fecha_vigencia,
+	prv_anticipo,
+	prv_fecha_vigencia_anticipo,
+	prv_nacional_ext,
+	prv_idioma,
+	prv_usuario_id,
+	prv_fecha_registro,
+	prv_hora,
+	prv_empresa_relacionada,
+	smn_entidades_id,
+	smn_documentos_id,
+	smn_codigos_impuestos_rf,
+	smn_condicion_financiera_rf
+)
+VALUES
+(
+	${seq:currval@smn_compras.seq_smn_proveedor},
+	${fld:smn_clase_auxiliar_rf},
+	${fld:smn_auxiliar_rf},
+	${fld:smn_forma_pago_rf},
+	${fld:smn_clasificacion_abc_rf},
+	${fld:prv_estatus},
+	${fld:prv_fecha_vigencia},
+	${fld:prv_anticipo},
+	${fld:prv_fecha_vigencia_anticipo},
+	${fld:prv_nacional_ext},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}',
+	${fld:prv_empresa_relacionada},
+	${fld:smn_entidades_id},
+	${fld:smn_documentos_id},
+	${fld:smn_codigos_impuestos_rf},
+	${fld:smn_condicion_financiera_rf}
+)

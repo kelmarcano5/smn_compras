@@ -23,9 +23,7 @@ INSERT INTO smn_pagos.smn_orden_compra
 	ocp_idioma,
 	ocp_usuario,
 	ocp_fecha_registro,
-	ocp_hora,
-	smn_entidad_rf,
-	smn_sucursal_rf
+	ocp_hora
 )
 VALUES
 (
@@ -46,10 +44,10 @@ VALUES
 	 WHERE	
 	 	smn_seguridad.s_user.userlogin = '${def:user}'
 	), --smn_usuario_rf
-	${fld:occ_monto_ml}, --ocp_monto_ml
+	${fld:occ_monto_neto_ml}, --ocp_monto_ml
 	${fld:occ_monto_impuesto_ml}, --ocp_impuesto_ml
 	${fld:smn_moneda_rf}, --smn_moneda_rf
-	${fld:occ_monto_ma}, --ocp_monto_ma
+	${fld:occ_monto_neto_ma}, --ocp_monto_ma
 	${fld:occ_monto_impuesto_ma}, --ocp_monto_impuestos_ma
 	0.0, --ocp_monto_usado_ml
 	0.0, --ocp_impuesto_usado_ml
@@ -63,9 +61,7 @@ VALUES
 	'${def:locale}', --ocp_idioma 
 	'${def:user}', --ocp_usuario
 	{d '${def:date}'}, --ocp_fecha_registro
-  	'${def:time}', --ocp_hora
-  	${fld:smn_entidad_rf}, --smn_entidad_rf
-  	${fld:smn_sucursal_rf} --smn_sucursal_rf
+  	'${def:time}' --ocp_hora
 )
 
 RETURNING smn_orden_compra_op_id;

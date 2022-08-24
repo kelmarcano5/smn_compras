@@ -20,13 +20,11 @@
 	<parameter id='occ_monto_neto_ma'       type='double'  required='false' label='${fld:occ_monto_neto_ma}'       maxlen='10' />
 	<parameter id='smn_moneda_rf'           type='integer' required='false' label='${fld:smn_moneda_rf}'           maxlen='10' />
 	<parameter id='smn_tasa_rf'             type='integer' required='false' label='${fld:smn_tasa_rf}'             maxlen='10' />
-	<parameter id='smn_auxiliar_rf'         type='integer' required='false' label='${fld:smn_auxiliar_rf}'             maxlen='10' />
 	<parameter id='occ_fecha_orde_compra'   type='date'    required='false' label='${fld:occ_fecha_orde_compra}'   maxlen='10' />
 
 <!-- valores provenientes de la tabla: smn_orden_compra_detalle -->
 
 	<parameter id='smn_orden_compra_detalle_id' type='integer' required='false' label='${fld:smn_orden_compra_detalle_id}' maxlen='10' />
-	<parameter id='smn_servicios_id'        type='integer' required='false' label='${fld:smn_servicios_id}'        maxlen='10' />
 	<parameter id='smn_item_id'             type='integer' required='false' label='${fld:smn_item_id}'             maxlen='10' />
 	<parameter id='ocd_cantidad_pedida'     type='double'  required='false' label='${fld:ocd_cantidad_pedida}'     maxlen='10' />
 	<parameter id='ocd_descripcion'         type='varchar' required='false' label='${fld:ocd_descripcion}'         maxlen='200' />
@@ -89,11 +87,6 @@
 	<parameter id='smn_documentos_generales_id'   type='integer' required='false' label='${fld:smn_documentos_generales_id}'  maxlen='10' />
 	<parameter id='secuencia'                     type='integer' required='false' label='${fld:secuencia}'                    maxlen='10' />
 	<parameter id='smn_almacen_rf'                type='integer' required='false' label='${fld:smn_almacen_rf}'               maxlen='10' />    
-	<parameter id='smn_tipo_documento_id'         type='integer' required='false' label='${fld:smn_tipo_documento_id}'        maxlen='10' />  
-	<parameter id='smn_centro_costo_rf'           type='integer' required='false' label='${fld:smn_centro_costo_rf}'          maxlen='10' />
-	<parameter id='smn_documento_id_pago'         type='integer' required='false' label='${fld:smn_documento_id_pago}'        maxlen='10' />                  
-	<parameter id='smn_clase_rf'                  type='integer' required='false' label='${fld:smn_clase_rf}'                 maxlen='10' />
-	<parameter id='smn_usuarios_id'               type='integer' required='false' label='${fld:smn_usuarios_id}'              maxlen='10' />
-	<parameter id='nrs_monto_ml'                  type='double'  required='false' label='${fld:nrs_monto_ml}'                 maxlen='10' />
-	<parameter id='nrs_monto_ma'                  type='double'  required='false' label='${fld:nrs_monto_ma}'                 maxlen='10' />
+	<parameter id='smn_tipo_documento_id'         type='integer' required='false' label='${fld:smn_tipo_documento_id}'        maxlen='10' />          
+	
 </validator>

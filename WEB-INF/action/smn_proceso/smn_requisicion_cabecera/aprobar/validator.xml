@@ -103,4 +103,14 @@
 	<parameter id='coi_costo_promedio_ponderado_ma' type='double'  required='false' label='${fld:coi_costo_promedio_ponderado_ma}' maxlen='20' />
 	<parameter id='coi_precio_ma'                   type='double'  required='false' label='${fld:coi_precio_ma}'                   maxlen='20' />
 	<parameter id='coi_valor_final_ma'              type='double'  required='false' label='${fld:coi_valor_final_ma}'              maxlen='20' />
+	
+	<parameter id='secuencia' type='integer' required='false' label='secuencia' maxlen='10' />
+	<parameter id='rpp_producto_alterno' type='varchar' required='false' label='producto alterno' maxlen='250' />
+	<parameter id='rpp_precio_ml' type='double' required='false' label='precio ml' maxlen='20' />
+	<parameter id='ofe_monto_ml' type='double' required='false' label='monto ml' maxlen='20' />
+	<parameter id='rpp_precio_ma' type='double' required='false' label='precio ma' maxlen='20' />
+	<parameter id='ofe_monto_ma' type='double' required='false' label='monto ma' maxlen='20' />
+	<parameter id='rrs_observaciones' type='varchar' required='false' label='observacion' maxlen='256' />
+	<parameter id='smn_condicion_financiera_rf' type='integer' required='false' label='condicion financiera proveedor' maxlen='10' />
+	<parameter id='prv_anticipo' type='varchar' required='false' label='anticipo' maxlen='2' />
 </validator>

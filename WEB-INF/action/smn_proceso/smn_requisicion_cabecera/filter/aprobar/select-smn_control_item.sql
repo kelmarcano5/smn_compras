@@ -1,5 +1,6 @@
 SELECT
-	control_item.*
+	control_item.*,
+	almacen.smn_almacen_id
 FROM
 	smn_inventario.smn_control_item AS control_item
 INNER JOIN

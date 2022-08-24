@@ -17,12 +17,7 @@ select distinct
 	--smn_base.smn_auxiliar.aux_codigo || ' - ' || smn_base.smn_auxiliar.aux_descripcion as smn_proveedor_id,
 	smn_compras.smn_cotizacion.cot_fecha_registro,
 	smn_compras.smn_requisicion_detalle.rss_cantidad as cantidad,
-	smn_compras.smn_requisicion_detalle.rrs_especificaciones_del_requerimiento as descripcion,
-	case
-		when smn_compras.smn_cotizacion.smn_item_id != 0 then smn_base.smn_item.itm_codigo ||' - '|| smn_base.smn_item.itm_nombre
-		when smn_compras.smn_cotizacion.smn_servicio_id != 0 then smn_compras.smn_servicio.sco_codigo ||' - '|| smn_compras.smn_servicio.sco_nombre
-		when smn_compras.smn_cotizacion.smn_activo_fijo_rf != 0 then smn_base.smn_activo_fijo.acf_codigo ||' - '|| smn_base.smn_activo_fijo.acf_nombre
-	end as cot_producto,
+	smn_base.smn_item.itm_codigo ||' - '|| smn_base.smn_item.itm_nombre as smn_item_rf,
 	usuarios.aux_descripcion as smn_solicitante
 from
 	smn_compras.smn_cotizacion
@@ -34,8 +29,6 @@ from
 	inner join smn_compras.smn_roles on smn_compras.smn_roles.smn_usuarios_id = smn_base.smn_usuarios.smn_usuarios_id
 	left outer join smn_base.smn_auxiliar usuarios on usuarios.smn_auxiliar_id = smn_base.smn_usuarios.smn_auxiliar_rf
 	left join smn_base.smn_item on smn_base.smn_item.smn_item_id = smn_compras.smn_cotizacion.smn_item_id
-	left join smn_compras.smn_servicio on smn_compras.smn_servicio.smn_servicio_id = smn_compras.smn_cotizacion.smn_servicio_id
-	left join smn_base.smn_activo_fijo on smn_base.smn_activo_fijo.smn_afijo_id = smn_compras.smn_cotizacion.smn_activo_fijo_rf
 	--left join smn_compras.smn_rel_cotizacion_proveedor on smn_compras.smn_rel_cotizacion_proveedor.smn_cotizacion_id = smn_compras.smn_cotizacion.smn_cotizacion_id
 	--left outer join smn_compras.smn_proveedor on smn_compras.smn_proveedor.smn_proveedor_id = smn_compras.smn_rel_cotizacion_proveedor.smn_proveedor_id
 	--left outer join smn_base.smn_auxiliar on smn_base.smn_auxiliar.smn_auxiliar_id = smn_compras.smn_proveedor.smn_auxiliar_rf

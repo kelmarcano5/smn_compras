@@ -92,6 +92,19 @@
 				<input id="smn_servicio_id_name" name="smn_servicio_id_name" type="hidden">
 			</td>
 		</tr>
+		<tr id="afijo">
+			<td>${lbl:b_afijo}</td>
+			<td>
+				<select name="smn_afijos_rf" id="smn_afijos_rf" onchange="chgCombo(smn_afijos_rf.options[smn_afijos_rf.selectedIndex].text,'smn_afijos_rf_name');">
+					<option value="">[Cualquiera]</option>
+					<smn_afijos_rf_rows>
+					<option value="${fld:id}">${fld:item}</option>
+	
+					</smn_afijos_rf_rows>
+				</select> 
+				<input id="smn_afijos_rf_name" name="smn_afijos_rf_name" type="hidden">
+			</td>
+		</tr>
 		<tr>
 			<td>${lbl:b_product_altern}</td>
 			<td>
@@ -219,6 +232,11 @@
 			 document.getElementById('item').style.display='none';
 		}
 
+		if (tp == 'AF') {
+			 document.getElementById('afijo').style.display='';
+		}else{
+			 document.getElementById('afijo').style.display='none';
+		}
 
 	}
 	

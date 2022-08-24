@@ -5,10 +5,12 @@
 
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
 	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
 	
 	<!--biblioteca generica JS/Dinamica-->
-	<script type="text/javascript" src="${def:context}/action/script">
-	</script>
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -36,7 +38,7 @@
 			<tr>
 		<td>${lbl:b_auxiliar}*</td>
 		<td>
-			<select name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
+			<select class="aux" name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_auxiliar_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -49,7 +51,7 @@
 	<tr>
 		<td>${lbl:b_center_cost}*</td>
 		<td>
-			<select name="smn_centro_costo_rf" id="smn_centro_costo_rf" onchange="chgCombo(smn_centro_costo_rf.options[smn_centro_costo_rf.selectedIndex].text,'smn_centro_costo_rf_name');">
+			<select class="centro" name="smn_centro_costo_rf" id="smn_centro_costo_rf" onchange="chgCombo(smn_centro_costo_rf.options[smn_centro_costo_rf.selectedIndex].text,'smn_centro_costo_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_centro_costo_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -62,7 +64,7 @@
 	<tr>
 		<td>${lbl:b_organizational_structure}*</td>
 		<td>
-			<select name="smn_estructura_organizacional_rf" id="smn_estructura_organizacional_rf" onchange="chgCombo(smn_estructura_organizacional_rf.options[smn_estructura_organizacional_rf.selectedIndex].text,'smn_estructura_organizacional_rf_name');">
+			<select class="estruc" name="smn_estructura_organizacional_rf" id="smn_estructura_organizacional_rf" onchange="chgCombo(smn_estructura_organizacional_rf.options[smn_estructura_organizacional_rf.selectedIndex].text,'smn_estructura_organizacional_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_estructura_organizacional_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -94,6 +96,10 @@
 	onload = function()
 	{ 
 		addNew();
+
+		$('.aux').select2();
+		$('.centro').select2();
+		$('.estruc').select2();
 
 		if (id!="")
 			edit(id);

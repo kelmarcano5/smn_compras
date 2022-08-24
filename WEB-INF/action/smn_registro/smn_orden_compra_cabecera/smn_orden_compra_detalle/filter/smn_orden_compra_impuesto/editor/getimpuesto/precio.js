@@ -1,30 +1,17 @@
 var porcentaj =  "${fld:porccal}";
 var sustraend =  "${fld:sustrae}";
-var porcbase =  "${fld:porcbase}";
-var tipocod = "${fld:tipocod}";
-var base1 = 0.0;
-var montoBase = 0.0;
-var montoImpuesto = 0.0;
-var total = 0.0;
-
+//alert(porcentaj);
 document.getElementById('oci_porcentaje_impuesto').value = porcentaj;
 document.getElementById('oci_porcentaje_impuesto').disabled = true;
 document.getElementById('oci_sustraendo_ml').value = sustraend;
 document.getElementById('oci_sustraendo_ml').disabled = true;
 
-base1 = document.getElementById("oci_monto_base_ml").value;
+var base = document.getElementById("oci_monto_base_ml").value;
 //var excento = document.getElementById("pim_base_excenta_ml").value;
 
-montoBase = (base1*porcbase)/100;
-montoImpuesto = (montoBase*porcentaj)/100;
+total = parseFloat(base)*porcentaj/100;
 
-if(sustraend>0)
-	total = montoImpuesto-sustraend;
-else
-	total = montoImpuesto;
-
-if(tipocod == 'RE')
-	total = total*-1;
+//alert(total);
 
 document.getElementById("oci_monto_impuesto_ml").value = total;
 document.getElementById('oci_monto_impuesto_ml').disabled = true;

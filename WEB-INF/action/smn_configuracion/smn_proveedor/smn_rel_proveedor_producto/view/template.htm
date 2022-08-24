@@ -11,7 +11,6 @@
 	<col width='20%'/>
 	<col width='20%'/>
 
-
 	<!--toolbar-->
 	<tr>
 		<th colspan="9" id="encabezado_tabla">
@@ -24,11 +23,11 @@
 		<th></th>
 		<th></th>
 		<th></th>
-		<th class='sortable' onclick='sortBy("smn_proveedor_rf","query-smnrelproveedorproducto.sql")'>${lbl:b_providers}</th>
-		<th class='sortable' onclick='sortBy("rpp_tipo_producto","query-smnrelproveedorproducto.sql")'>${lbl:b_type_product}</th>
-		<th class='sortable' onclick='sortBy("rpp_id_producto","query-smnrelproveedorproducto.sql")'>${lbl:b_product}</th>
-		<th class='sortable' onclick='sortBy("smn_servicio_id","query-smnrelproveedorproducto.sql")'>${lbl:b_services}</th>
+		<th class='sortable' onclick='sortBy("rpp_producto","query-smnrelproveedorproducto.sql")'>${lbl:b_product}/${lbl:b_services}/${lbl:b_afijo}</th>
+		<th class='sortable' onclick='sortBy("rpp_existencia_proveedor","query-smnrelproveedorproducto.sql")'>${lbl:b_existence}</th>
+		<th class='sortable' onclick='sortBy("rpp_precio_ml","query-smnrelproveedorproducto.sql")'>${lbl:b_price_ml}</th>
 		<th class='sortable' onclick='sortBy("rpp_producto_alterno","query-smnrelproveedorproducto.sql")'>${lbl:b_product_altern}</th>
+		<th class='sortable' onclick='sortBy("rpp_fecha_valides","query-smnrelproveedorproducto.sql")'>${lbl:b_valid_date}</th>
 		<th class='sortable' onclick='sortBy("rpp_fecha_registro","query-smnrelproveedorproducto.sql")'>${lbl:b_store_date}</th>
 
 	</tr>
@@ -39,11 +38,11 @@
 		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_rel_proveedor_producto_id}')" title="${lbl:b_view_detail}"></td>
 		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_rel_proveedor_producto_id}')" title="${lbl:b_delete_button}"></td>
 		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_proveedor_producto_id}')" title="${lbl:b_edit_button}"></td>
-		<td>${fld:smn_proveedor_rf}</td>
-		<td align='left'>${fld:rpp_tipo_producto}</td>
-		<td>${fld:rpp_id_producto}</td>
-		<td>${fld:smn_servicio_id}</td>
-		<td align='left'>${fld:rpp_producto_alterno}</td>
+		<td>${fld:rpp_producto}</td>
+		<td>${fld:rpp_existencia_proveedor}</td>
+		<td>${fld:rpp_precio_ml@#,###,###}</td>
+		<td>${fld:rpp_producto_alterno}</td>
+		<td>${fld:rpp_fecha_valides@dd-MM-yyyy}</td>
 		<td>${fld:rpp_fecha_registro@dd-MM-yyyy}</td>
 
 	</tr>

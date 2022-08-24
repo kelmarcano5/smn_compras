@@ -1,0 +1,51 @@
+INSERT INTO smn_compras.smn_orden_compra_cabecera
+(
+	smn_orden_compra_cabecera_id,
+	smn_requisicion_cabecera_id,  
+	smn_entidad_rf,
+	smn_sucursal_rf,
+	smn_documento_id,  
+	occ_orden_compra_numero,
+	occ_descripcion,   
+	smn_proveedor_id, 
+	smn_auxiliar_rf,  
+	occ_fecha_elaboracion,
+	occ_fecha_orde_compra,
+	smn_forma_pago_rf,  
+	smn_condicion_pago_rf, 
+	occ_monto_ml,
+	occ_monto_neto_ml, 
+	occ_estatus,
+	occ_idioma,
+	occ_usuario,
+    occ_fecha_registro,
+	occ_hora  
+)
+VALUES
+(
+	nextval('smn_compras.seq_smn_orden_compra_cabecera'),
+	${fld:smn_requisicion_cabecera_id},
+	${fld:smn_entidad_id},
+	${fld:smn_sucursal_id},
+	${fld:smn_documento_id},
+	(SELECT 
+		COUNT(occ_orden_compra_numero)+1 
+	 FROM 
+		smn_compras.smn_orden_compra_cabecera
+	),
+	${fld:req_descripcion},
+	${fld:smn_proveedor_rf},
+	'0',/*smn_auxiliar_rf*/
+	${fld:fecha_actual},
+	${fld:fecha_actual},
+	${fld:smn_forma_pago_rf},
+	${fld:aux_cond_pago_rf},
+	'0.0',
+	'0.0',
+	'RE',
+	'${def:locale}',
+    '${def:user}',
+    {d '${def:date}'},
+    '${def:time}'
+)
+RETURNING smn_orden_compra_cabecera_id AS orden_compra_id;

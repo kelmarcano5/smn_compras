@@ -58,19 +58,7 @@
 			<input id="smn_sucursal_id_name" name="smn_sucursal_id_name" type="hidden">
 		</td>
 	</tr>
-	<!-- <tr>
-		<td>${lbl:b_solicitante}*</td>
-		<td>
-			<select name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo1(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
-				<option value="">[Cualquiera]</option>
-				<smn_auxiliar_rf_rows>
-				<option value="${fld:id}">${fld:item}</option>
 
-				</smn_auxiliar_rf_rows>
-			</select> 
-			<input id="smn_auxiliar_rf_name" name="smn_auxiliar_rf_name" type="hidden">
-		</td>
-	</tr> -->
 		<tr style="display:none">
 			<td>${lbl:b_version_headboard}*</td>
 			<td>
@@ -99,7 +87,7 @@
 		<td>${lbl:b_purchasing_documents_types}*</td>
 		<td>
 			<select name="smn_tipo_documento_id" id="smn_tipo_documento_id" onchange="chgCombo(smn_tipo_documento_id.options[smn_tipo_documento_id.selectedIndex].text,'smn_tipo_documento_id_name');">
-				<!-- <option value="">[Cualquiera]</option> -->
+				<option value="">[Cualquiera]</option>
 				<smn_tipo_documento_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
@@ -439,21 +427,21 @@
 		var combo = document.getElementById('smn_entidad_id');
 		var valueCombo = getSelectedIndex(combo);
 		geo_id1 = valueCombo.split("-").pop().trim();
-		var entidad_id = combo.value;
-
+		
 		//findLocation(geo_id0, '');
 		
-		if (entidad_id!=null && entidad_id!="") 
+		if (id!=null && id!="") 
 		{
 			return ajaxCall(	
 							httpMethod="GET", 
-							uri="${def:actionroot}/getsucursales?id=" + entidad_id, 
+							uri="${def:actionroot}/getsucursales?id=" + geo_id1, 
 							divResponse=null, 
 							divProgress="status", 
 							formName="form1", 
 							afterResponseFn=setElementFirstIndex('smn_sucursal_id'), //function 'setElementFirstIndex' select first element of combo list
-							onErrorFn=null);		
+							onErrorFn=null);				
 		}
+		
 	}
 
 	

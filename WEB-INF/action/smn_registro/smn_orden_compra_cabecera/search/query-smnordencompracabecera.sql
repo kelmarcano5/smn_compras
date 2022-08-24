@@ -1,4 +1,4 @@
-select DISTINCT
+select
 case
 	when smn_compras.smn_orden_compra_cabecera.occ_estatus='RE' then '${lbl:b_registrada}'
 	when smn_compras.smn_orden_compra_cabecera.occ_estatus='GE' then '${lbl:b_generada}'
@@ -18,23 +18,13 @@ case
 	smn_compras.smn_orden_compra_cabecera.occ_fecha_registro,
 	smn_compras.smn_orden_compra_cabecera.occ_descripcion,
 	smn_compras.smn_oferta.ofe_numero_documento,
-	smn_compras.smn_oferta.ofe_monto_ml,
-	smn_compras.smn_orden_compra_cabecera.occ_monto_ml,
-	smn_compras.smn_orden_compra_cabecera.occ_monto_neto_ml,
-	smn_compras.smn_orden_compra_cabecera.occ_monto_neto_ma
+	smn_compras.smn_oferta.ofe_monto_ml
 from
 	smn_compras.smn_orden_compra_cabecera
 	inner join 
 	smn_compras.smn_requisicion_cabecera on smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = smn_compras.smn_orden_compra_cabecera.smn_requisicion_cabecera_id
 	LEFT OUTER JOIN 
 	smn_compras.smn_oferta ON smn_compras.smn_orden_compra_cabecera.smn_oferta_id = smn_compras.smn_oferta.smn_oferta_id
-	INNER JOIN smn_seguridad.s_user ON smn_seguridad.s_user.userlogin = '${def:user}'
-	INNER JOIN smn_base.smn_usuarios ON smn_base.smn_usuarios.smn_user_rf = smn_seguridad.s_user.user_id
-	INNER JOIN smn_compras.smn_roles ON smn_compras.smn_roles.smn_usuarios_id = smn_base.smn_usuarios.smn_usuarios_id 
-where
-	smn_compras.smn_orden_compra_cabecera.occ_estatus='RE'
-	AND 
-	smn_compras.smn_roles.rol_tipo IN ('CO')
 order by smn_compras.smn_orden_compra_cabecera.occ_fecha_registro desc
 
 

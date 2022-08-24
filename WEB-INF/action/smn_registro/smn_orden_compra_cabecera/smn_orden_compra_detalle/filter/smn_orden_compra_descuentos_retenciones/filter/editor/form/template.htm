@@ -33,7 +33,7 @@
 		<col width="30%">
 
 		<!--campos-->
-		<tr id="ocd_id">
+		<tr>
 			<td>${lbl:b_smn_orden_compra_detalle_id}*</td>
 			<td>
 				<input id="smn_orden_compra_detalle_id" name="smn_orden_compra_detalle_id" type="text" maxlength="10" class="numeric">
@@ -128,11 +128,8 @@
 <!--codigo de soporte del template-->
 <script type="text/javascript">
 	var cantidad = '${fld:cantidad}';
-	var montoml ='${fld:montoml@#,###,###.00}';
-	var montoma = '${fld:montoma@#,###,###.00}';
-	var item = '${fld:smn_item_rf}';
-	var servicio = '${fld:smn_servicios_id}';
-
+	var montoml ='${fld:montoml}';
+	var montoma = '${fld:montoma}';
 	onload = function()
 	{ 
 		addNew();
@@ -142,27 +139,6 @@
 		if (id!="")
 			edit(id);
 	} 
-
-	function search(){
-		addNew();
-		
-		inicializar_valores();
-
-		// document.getElementById("smn_orden_compra_detalle_id").value = '${fld:id2}';
-		// document.form1.smn_orden_compra_detalle_id.disabled=true; 
-		if (id!="")
-			edit(id);
-	}
-
-	function formatear_monto(monto)
-	{
-		var base = monto;
-		base1 = base.replace('.','');
-		base = base1.replace('.','');
-		base1 = base.replace(',','.');
-
-		return base1;
-	}
 
 	function inicializar_valores() {
 		var mone = document.getElementById("smn_moneda_rf").value;
@@ -177,17 +153,13 @@
 			document.getElementById("mdesma").style.display='';
 		}
 
-		document.getElementById("ocd_monto_base").value = formatear_monto(montoml);
+		document.getElementById("ocd_monto_base").value = montoml;
 		document.form1.ocd_monto_base.disabled=true; 
-		document.getElementById("ocd_monto_base_ma").value = formatear_monto(montoma);
+		document.getElementById("ocd_monto_base_ma").value = montoma;
 		document.form1.ocd_monto_base_ma.disabled=true; 
 
 		document.getElementById("smn_orden_compra_detalle_id").value = '${fld:id2}';
-		document.form1.smn_orden_compra_detalle_id.disabled=true;
-		document.getElementById("ocd_id").style.display = 'none';
-
-		getRelDescuentoItem();
-		getRelDescuentoServicio();
+		document.form1.smn_orden_compra_detalle_id.disabled=true; 
 	}
 	
 	function chgCombo(text,id)
@@ -473,36 +445,8 @@
 
 	}
 
-	function getRelDescuentoItem()
-	{	
-		if (item!=null && item!="" && item>0) 
-		{
-			return ajaxCall(	
-							httpMethod="GET", 
-							uri="${def:actionroot}/getRelDescuentoItem?id=" + item, 
-							divResponse=null, 
-							divProgress="status", 
-							formName="form1", 
-							afterResponseFn=null, //function 'setElementFirstIndex' select first element of combo list
-							onErrorFn=null);	
-		}
-	}
 
-	function getRelDescuentoServicio()
-	{	
-		if (servicio!=null && servicio!="" && servicio>0) 
-		{
-			return ajaxCall(	
-							httpMethod="GET", 
-							uri="${def:actionroot}/getRelDescuentoServicio?id=" + servicio, 
-							divResponse=null, 
-							divProgress="status", 
-							formName="form1", 
-							afterResponseFn=null, //function 'setElementFirstIndex' select first element of combo list
-							onErrorFn=null);	
-		}
-	}
-
+	
 </script>	
 </body>
 </html>

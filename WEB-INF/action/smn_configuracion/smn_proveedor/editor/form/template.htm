@@ -2,14 +2,14 @@
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
-
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
 	<!--biblioteca generica JS/Dinamica-->
-	<script type="text/javascript" src="${def:context}/action/script">
-	</script>
-	<script type="text/javascript" src="${def:context}/action/jquery">
-	</script>
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
 		<tr>
 		<td>${lbl:b_class_auxiliary}*</td>
 		<td>
-			<select name="smn_clase_auxiliar_rf" id="smn_clase_auxiliar_rf" onchange="chgCombo0(smn_clase_auxiliar_rf.options[smn_clase_auxiliar_rf.selectedIndex].text,'smn_clase_auxiliar_rf_name');">
+			<select class="clase" name="smn_clase_auxiliar_rf" id="smn_clase_auxiliar_rf" onchange="chgCombo0(smn_clase_auxiliar_rf.options[smn_clase_auxiliar_rf.selectedIndex].text,'smn_clase_auxiliar_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_clase_auxiliar_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -56,7 +56,7 @@
 		<tr>
 		<td>${lbl:b_auxiliary}*</td>
 		<td>
-			<select name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
+			<select class="auxiliar" name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_auxiliar_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -76,7 +76,7 @@
 	<tr>
 		<td>${lbl:b_condicion_financiera}*</td>
 		<td>
-			<select name="smn_condicion_financiera_rf" id="smn_condicion_financiera_rf" onchange="chgCombo(smn_condicion_financiera_rf.options[smn_condicion_financiera_rf.selectedIndex].text,'smn_condicion_financiera_rf_name');">
+			<select class="condfin" name="smn_condicion_financiera_rf" id="smn_condicion_financiera_rf" onchange="chgCombo(smn_condicion_financiera_rf.options[smn_condicion_financiera_rf.selectedIndex].text,'smn_condicion_financiera_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_condicion_financiera_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -96,7 +96,7 @@
 	<tr>
 		<td>${lbl:b_taxes_codes}*</td>
 		<td>
-			<select name="smn_codigos_impuestos_rf" id="smn_codigos_impuestos_rf" onchange="chgCombo1(smn_codigos_impuestos_rf.options[smn_codigos_impuestos_rf.selectedIndex].text,'smn_codigos_impuestos_rf_name');">
+			<select class="codimp" name="smn_codigos_impuestos_rf" id="smn_codigos_impuestos_rf" onchange="chgCombo(smn_codigos_impuestos_rf.options[smn_codigos_impuestos_rf.selectedIndex].text,'smn_codigos_impuestos_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_codigos_impuestos_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -109,7 +109,7 @@
 	<tr>
 		<td>${lbl:b_way_pay}*</td>
 		<td>
-			<select name="smn_forma_pago_rf" id="smn_forma_pago_rf" onchange="chgCombo(smn_forma_pago_rf.options[smn_forma_pago_rf.selectedIndex].text,'smn_forma_pago_rf_name');">
+			<select class="formapag" name="smn_forma_pago_rf" id="smn_forma_pago_rf" onchange="chgCombo(smn_forma_pago_rf.options[smn_forma_pago_rf.selectedIndex].text,'smn_forma_pago_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_forma_pago_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -128,7 +128,7 @@
 	<tr>
 		<td>${lbl:b_clasification}*</td>
 		<td>
-			<select name="smn_clasificacion_abc_rf" id="smn_clasificacion_abc_rf" onchange="chgCombo(smn_clasificacion_abc_rf.options[smn_clasificacion_abc_rf.selectedIndex].text,'smn_clasificacion_abc_rf_name');">
+			<select class="clasabc" name="smn_clasificacion_abc_rf" id="smn_clasificacion_abc_rf" onchange="chgCombo(smn_clasificacion_abc_rf.options[smn_clasificacion_abc_rf.selectedIndex].text,'smn_clasificacion_abc_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_clasificacion_abc_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -156,9 +156,13 @@
 	</tr>
 	<tr>
 		<td>${lbl:b_date_vig}*</td>
+		<td style="display: none">
+				<input id="prv_fecha_vigencia_desde" name="prv_fecha_vigencia_desde" type="text" class="date">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('prv_fecha_vigencia_desde');" >
+		</td>
 		<td>
 			<input id="prv_fecha_vigencia" name="prv_fecha_vigencia" type="text" class="date" maxlength="10">
-			<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('prv_fecha_vigencia')">
+			<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('prv_fecha_vigencia','prv_fecha_vigencia_desde')">
 		</td>
 	</tr>
 	<tr >
@@ -261,6 +265,21 @@
 	onload = function()
 	{ 
 		addNew();
+
+		let current_datetime = new Date();
+		let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear();
+		//alert(formatted_date);
+
+		$('#prv_fecha_vigencia').val(formatted_date);
+
+		$(document).ready(function() {
+			$('.clase').select2();
+			$('.auxiliar').select2();
+			$('.formapag').select2();
+			$('.condfin').select2();
+			$('.codimp').select2();
+			$('.clasabc').select2();
+		});
 		
 		document.form1.smn_auxiliar_rf.disabled=true;
 		document.form1.smn_condicion_financiera_rf.disabled=true;
@@ -370,6 +389,12 @@
 							formName="form1", 
 							afterResponseFn=null, 
 							onErrorFn=retryAddnewOrEdit);	
+	}
+
+	var bdID;
+	function setID(id)
+	{
+		bdID = id;
 	}
 	
 		//Author     : SIMONE
@@ -531,9 +556,178 @@
 							onErrorFn=null);				
 		}
 	}
-	
+
+		//Author     : SIMONE
+	//Description: Add new value to combo box
+	//Return     : None
+	function addValueToCombo(code, description, field) 
+	{
+	    var combo = document.getElementById(field);	    
+	    insertComboBox(code, combo, description);
+	}
+
+	//Author     : SIMONE
+	//Description: Add new value to combo box
+	//Return     : None
+	function addValueToComboAux(code, description, field) 
+	{
+	    var combo = document.getElementById(field);	    
+
+	    insertComboBoxAux(code, combo, description);
+	}
+
+	//Author     : SIMONE
+	//Description: Insert new value into combo box
+	//Return     : None
+	/*function insertComboBox(code, combo, description, field) {
+		var valueText = description;
+		var bdID = code;	
+		var option = document.createElement("option");
+		option.text = valueText; 
+		option.value = bdID;
+		document.form1.cts_auxiliar.add(option, combo.options.length);	
+	}*/
+
 	
 
+	//Author     : SIMONE
+	//Description: Set value to combo box
+	//Parameters : code - it is code associated into each database table 
+	//             descripcion - it is description associated into each database table 
+	//             field - name combo field
+	//             id - identifier retrieved after transaction
+	//             linked - flag indicates 'true' when combos are linked and 'false' otherwise
+	//Return     : None
+	function setValueComboBoxAux(code, description, field, linked)
+	{
+		//add valur text to combo
+		addValueToComboAux(code,description,field);
+		//get select object 
+		var combo = document.getElementById(field);
+		//set element selected to field referenced
+		setSelectedIndexAux(code,combo, description);
+		//set text value to combo field
+		var valueText = getSelectedIndex(combo);		
+		//get hidden field in order to set any value
+		var combo = document.getElementById(field+'_name');	
+		//combo.text  = valueText;
+		//combo.value = bdID;
+
+		combo.text  = valueText;
+		combo.value = bdID;
+		
+		setSelectedIndexAux(bdID,combo, valueText);
+	}
+
+
+
+	//Author     : SIMONE
+	//Description: Insert new value into combo box
+	//Return     : None
+	function insertComboBox(code, combo, description) {
+		var valueText = code;
+		if (description != null)
+		{
+			valueText = valueText + ' - ' + description;
+		}
+		//alert("Insert Combo: "+valueText);
+        combo.options[combo.options.length] = new Option(valueText);
+	}
+	
+	//Author     : SIMONE
+    //Description: Insert new value into combo box
+    //Return     : None
+    function insertComboBoxAux(code, combo, description, field) {
+        var bdID = code;
+        var valueText = description;
+        if (description != null)
+        {
+            bdID = bdID;
+            valueText = valueText;
+        }
+        //alert("Text: "+valueText+" - bdID: "+bdID);
+                $('#smn_auxiliar_rf').append(new Option(valueText, bdID));
+         // var opt = document.createElement('option');
+         // opt.value = bdID;
+         // opt.text = valueText;
+         // combo.options.add(opt);
+    }
+	
+
+	
+	
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndex(code, combo, description) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+			var valueText = code;
+			if (description != null)
+			{
+				valueText = valueText + ' - ' + description;
+			}
+	        if (combo.options[i].text == valueText) 
+	        {
+	        	combo.options[i].selected = true;
+	            return;
+	        }
+	    }
+	}
+    
+	//Author     : SIMONE
+    //Description: Set selected index into combo box
+    //Return     : None
+    function setSelectedIndexAux(code, combo, description) 
+    {
+        for (var i = 0; i < combo.options.length; i++) 
+        {
+            var bdID = code;
+            var valueText = description;
+            if (description != null)
+            {
+                bdID = bdID;
+                valueText = valueText;
+            }
+            if (combo.options[i].text == valueText) 
+            {
+                //combo.options[i].value = bdID;
+                combo.options[i].selected = true;
+                return;
+            }
+        }
+    }
+	
+	//Author     : SIMONE
+	//Description: Set value to combo box
+	//Parameters : code - it is code associated into each database table 
+	//             descripcion - it is description associated into each database table 
+	//             field - name combo field
+	//             id - identifier retrieved after transaction
+	//             linked - flag indicates 'true' when combos are linked and 'false' otherwise
+	//Return     : None
+	function setValueComboBox(code, description, field, linked)
+	{
+		//add valur text to combo
+		addValueToCombo(code,description,field);
+
+		//get select object 
+		var combo = document.getElementById(field);
+		
+		//set element selected to field referenced
+		setSelectedIndex(code,combo, description);
+		
+		//set text value to combo field
+		var valueText = getSelectedIndex(combo);		
+		
+		//get hidden field in order to set any value
+		var combo = document.getElementById(field+'_name');
+		
+		combo.text  = valueText;
+		combo.value = bdID;
+	}
+	
 	function claseauxiliar(){
 		//alert ('Colocar su c?igo aqu?.')
 		var uri = "/smn_base/action/smn_configuracion/smn_auxiliares/smn_clase_auxiliar/editor/form";	
@@ -542,9 +736,11 @@
 
 	function auxiliar(){
 		//alert ('Colocar su código aquí­.')
-		var uri = "/smn_base/action/smn_configuracion/smn_auxiliares/smn_auxiliar_terceros/editor/form";	
-		openDialog("editor20", uri, 650, 580);
+		var uri = "/smn_compras/action/smn_configuracion/smn_proveedor/editor_aux/form?reference=true&source=proveedor";
+		console.log("RUTA: "+uri);	
+		openDialog("editorProv", uri, 650, 580);
 	}
+
 
 	function condicion_financiera(){
 		//alert ('Colocar su código aquí­.')

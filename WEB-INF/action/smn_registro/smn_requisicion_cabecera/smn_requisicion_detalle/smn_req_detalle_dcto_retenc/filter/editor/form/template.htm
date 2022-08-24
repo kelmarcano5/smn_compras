@@ -115,7 +115,7 @@
 
 		document.getElementById("smn_requisicion_detalle_id").value='${fld:id5}';
 		document.getElementById("smn_requisicion_detalle_id").disabled=true;
-			document.getElementById("drc_monto_base").value=formatear_monto('${fld:monto@#,###,##0.00}');
+			document.getElementById("drc_monto_base").value='${fld:monto}';
 		document.getElementById("drc_monto_base").disabled=true;
 
 		if (id!="")
@@ -335,7 +335,7 @@
 			//var valueCombo = getIDSelectedIndex(combo);
 			//desc = valueCombo;
 			var uri="${def:actionroot}/imp?id=" + valueCombo;
-			
+			alert(uri);
 			if (id!=null && id!="") {
 				 ajaxCall(	
 								httpMethod="GET", 
@@ -349,16 +349,7 @@
 		
 	}
 
-	function formatear_monto(monto)
-	{
-		var base = monto;
-		base1 = base.replace('.','');
-		base = base1.replace('.','');
-		base1 = base.replace(',','.');
-		
-		return base1;
-	}
-
+	
 </script>	
 </body>
 </html>

@@ -5,6 +5,7 @@
 	<parameter id='rpp_tipo_producto' type='varchar' required='true' label='${lbl:b_type_product}' maxlen='2'/>
 	<parameter id='rpp_producto_alterno' type='integer' required='false' label='${lbl:b_product_altern}' maxlen='60'/>
 	<parameter id='smn_servicio_id' type='integer' required='false' label='${lbl:b_services}' maxlen='10'/>
+	<parameter id='smn_afijos_rf' type='integer' required='false' label='${lbl:b_afijo}' maxlen='10'/>
 	<parameter id='rpp_codigo_proveedor' type='varchar' required='false' label='${lbl:b_product_code}' maxlen='25'/>
 	<parameter id='rpp_descripcion_proveedor' type='varchar' required='false' label='${lbl:b_occ_descripcion} ${lbl:b_product}' maxlen='250'/>
 	<parameter id='rpp_existencia_proveedor' type='double' required='false' label='${lbl:b_existence}' maxlen='10'/>

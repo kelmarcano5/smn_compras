@@ -4,10 +4,13 @@
 <head>
 
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
 	<!--biblioteca generica JS/Dinamica-->
-	<script type="text/javascript" src="${def:context}/action/script">
-	</script>
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -439,21 +442,21 @@
 		var combo = document.getElementById('smn_entidad_id');
 		var valueCombo = getSelectedIndex(combo);
 		geo_id1 = valueCombo.split("-").pop().trim();
-		var entidad_id = combo.value;
-
+		
 		//findLocation(geo_id0, '');
 		
-		if (entidad_id!=null && entidad_id!="") 
+		if (id!=null && id!="") 
 		{
 			return ajaxCall(	
 							httpMethod="GET", 
-							uri="${def:actionroot}/getsucursales?id=" + entidad_id, 
+							uri="${def:actionroot}/getsucursales?id=" + geo_id1, 
 							divResponse=null, 
 							divProgress="status", 
 							formName="form1", 
 							afterResponseFn=setElementFirstIndex('smn_sucursal_id'), //function 'setElementFirstIndex' select first element of combo list
-							onErrorFn=null);		
+							onErrorFn=null);				
 		}
+		
 	}
 
 	
