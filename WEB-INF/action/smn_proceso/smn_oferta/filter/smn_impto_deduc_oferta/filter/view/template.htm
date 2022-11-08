@@ -1,0 +1,55 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_oferta_id","query-smnimptodeducoferta.sql")'>${lbl:b_offer}</th>
+		<th class='sortable' onclick='sortBy("rio_cod_descuento","query-smnimptodeducoferta.sql")'>${lbl:b_code_tax_deduction}</th>
+		<th class='sortable' onclick='sortBy("rio_monto_impuesto_ml","query-smnimptodeducoferta.sql")'>${lbl:b_tax_amount_ml}</th>
+		<th class='sortable' onclick='sortBy("rio_cod_impuesto_deduc_id","query-smnimptodeducoferta.sql")'>${lbl:b_code_discount}</th>
+		<th class='sortable' onclick='sortBy("rio_monto_base_ml","query-smnimptodeducoferta.sql")'>${lbl:b_base_amount_ml}</th>
+		<th class='sortable' onclick='sortBy("rio_porcentaje_descuento","query-smnimptodeducoferta.sql")'>${lbl:b_porcentage_discount}</th>
+		<th class='sortable' onclick='sortBy("rio_monto_descuento_ml","query-smnimptodeducoferta.sql")'>${lbl:b_discount_amount_ml}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_impuest_deducc_oferta_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_impuest_deducc_oferta_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_impuest_deducc_oferta_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_oferta_id}</td>
+		<td>${fld:rio_cod_descuento}</td>
+		<td align='right'>${fld:rio_monto_impuesto_ml@#,###,##0.00}</td>
+		<td>${fld:rio_cod_impuesto_deduc_id}</td>
+		<td align='right'>${fld:rio_monto_base_ml@#,###,##0.00}</td>
+		<td align='right'>${fld:rio_porcentaje_descuento@#,###,##0.00}</td>
+		<td align='right'>${fld:rio_monto_descuento_ml@#,###,##0.00}</td>
+
+	</tr>
+	</rows>
+
+</table>

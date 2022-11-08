@@ -21,7 +21,7 @@ public class Aprobar extends GenericTransaction
 		String jndiName = (String)getContext().getAttribute("dinamica.security.datasource");
 		
 		if (jndiName==null)
-			throw new Throwable("Context attribute [dinamica.security.datasource] is null, check your security filter configuration.");
+			throw new Throwable("1Context attribute [dinamica.security.datasource] is null, check your security filter configuration.");
 		
 		//establecer la conexion con la base de datos.
 		
@@ -489,14 +489,22 @@ public class Aprobar extends GenericTransaction
 			if(rc == 0)
 			{
 				String sqlAprobarRequisicion   = getSQL(getResource("update-aprobar_requisicion.sql"),inputParams);
-				Recordset rsAprobarRequisicion = db.get(sqlAprobarRequisicion);
+                db.exec(sqlAprobarRequisicion);
+				/* Recordset rsAprobarRequisicion = db.get(sqlAprobarRequisicion); */
 					
 				str = "-Cambiando estatus de la requisicion...";	
 				bw.write(str);
 				bw.flush();
 				bw.newLine();
+
+                mensaje = "-*Requisicion aprobada exitosamente*";
+                rc = 0;
+                str = mensaje;	
+                bw.write(str);
+                bw.flush();
+                bw.newLine();
 				
-				if(rsAprobarRequisicion.getRecordCount()>0)
+				/* if(rsAprobarRequisicion.getRecordCount()>0)
 				{
 					mensaje = "-*Requisicion aprobada exitosamente*";
 					rc = 0;
@@ -508,12 +516,12 @@ public class Aprobar extends GenericTransaction
 				else
 				{
 					mensaje = "*Error, la requisicion no cambio estatus a aprobada*";
-					rc = 1; // la requisicion no cambio su estatus a aprobada.
+					rc = 1;
 					str = mensaje;	
 					bw.write(str);
 					bw.flush();
 					bw.newLine();
-				}
+				} */
 			}
 		}
 		catch(Throwable e)
@@ -771,9 +779,17 @@ public class Aprobar extends GenericTransaction
 								bw.newLine();
 								
 								String sqlAprobarRequisicion   = getSQL(getResource("update-aprobar_requisicion.sql"),inputParams);
-								Recordset rsAprobarRequisicion = db.get(sqlAprobarRequisicion);
+                                db.exec(sqlAprobarRequisicion);
+								/* Recordset rsAprobarRequisicion = db.get(sqlAprobarRequisicion); */
+
+                                mensaje = "*Requisicion aprobada exitosamente*";
+                                rc = 0;
+                                str = mensaje;	
+                                bw.write(str);
+                                bw.flush();
+                                bw.newLine();
 								
-								if(rsAprobarRequisicion.getRecordCount()>0)
+								/* if(rsAprobarRequisicion.getRecordCount()>0)
 								{
 									mensaje = "*Requisicion aprobada exitosamente*";
 									rc = 0;
@@ -790,7 +806,7 @@ public class Aprobar extends GenericTransaction
 									bw.write(str);
 									bw.flush();
 									bw.newLine();
-								}
+								} */
 							}
 							else
 							{
@@ -2045,14 +2061,22 @@ public class Aprobar extends GenericTransaction
 				if(rc == 0)
 				{
 					String sqlAprobarRequisicion   = getSQL(getResource("update-aprobar_requisicion.sql"),inputParams);
-					Recordset rsAprobarRequisicion = db.get(sqlAprobarRequisicion);
+                    db.exec(sqlAprobarRequisicion);
+					/* Recordset rsAprobarRequisicion = db.get(sqlAprobarRequisicion); */
 					
 					str = "*Actualizando requisicion...";
 					bw.write(str);
 					bw.flush();
 					bw.newLine();
+
+                    mensaje = "*Requisicion aprobada exitosamente*";
+                    rc = 0;
+                    str = mensaje;
+                    bw.write(str);
+                    bw.flush();
+                    bw.newLine();
 					
-					if(rsAprobarRequisicion.getRecordCount()>0)
+					/* if(rsAprobarRequisicion.getRecordCount()>0)
 					{
 						mensaje = "*Requisicion aprobada exitosamente*";
 						rc = 0;
@@ -2069,7 +2093,7 @@ public class Aprobar extends GenericTransaction
 						bw.write(str);
 						bw.flush();
 						bw.newLine();
-					}	
+					}	 */
 				}
 			}
 			else

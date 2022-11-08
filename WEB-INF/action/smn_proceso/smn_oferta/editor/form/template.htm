@@ -1,0 +1,664 @@
+<!doctype html>
+<html>
+
+<head>
+
+		<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_offer}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+			<tr style="display: none">
+		<td>${lbl:b_quotation}*</td>
+		<td>
+			<select name="smn_cotizacion_id" id="smn_cotizacion_id" onchange="chgCombo(smn_cotizacion_id.options[smn_cotizacion_id.selectedIndex].text,'smn_cotizacion_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_cotizacion_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_cotizacion_id_rows>
+			</select> 
+			<input id="smn_cotizacion_id_name" name="smn_cotizacion_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_purchasing_documents}*</td>
+		<td>
+			<select disabled name="smn_documento_id" id="smn_documento_id" onchange="chgCombo(smn_documento_id.options[smn_documento_id.selectedIndex].text,'smn_documento_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_documento_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_documento_id_rows>
+			</select> 
+			<input id="smn_documento_id_name" name="smn_documento_id_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>Numero Oferta*</td>
+			<td>
+				<input id="ofe_numero_documento" name="ofe_numero_documento" type="text" maxlength="10" class="numeric" disabled>
+			</td>
+		</tr>
+	<tr>
+	<tr>
+		<td>${lbl:b_smn_proveedor_id}</td>
+		<td>
+			<select disabled name="smn_proveedor_id" id="smn_proveedor_id" onchange="chgCombo(smn_proveedor_id.options[smn_proveedor_id.selectedIndex].text,'smn_proveedor_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_proveedor_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_proveedor_id_rows>
+			</select> 
+			<input id="smn_proveedor_id_name" name="smn_proveedor_id_name" type="hidden">
+		</td>
+	</tr>
+		<td>${lbl:b_item}</td>
+		<td>
+			<select name="smn_item_compras_id" id="smn_item_compras_id" onchange="chgCombo(smn_item_compras_id.options[smn_item_compras_id.selectedIndex].text,'smn_item_compras_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_item_compras_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_item_compras_id_rows>
+			</select> 
+			<input id="smn_item_compras_id_name" name="smn_item_compras_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_shopping_services}</td>
+		<td>
+			<select name="smn_servicios_compras_id" id="smn_servicios_compras_id" onchange="chgCombo(smn_servicios_compras_id.options[smn_servicios_compras_id.selectedIndex].text,'smn_servicios_compras_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_servicios_compras_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_servicios_compras_id_rows>
+			</select> 
+			<input id="smn_servicios_compras_id_name" name="smn_servicios_compras_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_actfij}</td>
+		<td>
+			<select name="smn_activo_fijo_compras_id" id="smn_activo_fijo_compras_id" onchange="chgCombo(smn_activo_fijo_compras_id.options[smn_activo_fijo_compras_id.selectedIndex].text,'smn_activo_fijo_compras_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_activo_fijo_compras_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_activo_fijo_compras_id_rows>
+			</select> 
+			<input id="smn_activo_fijo_compras_id_name" name="smn_activo_fijo_compras_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_condicion_financiera}</td>
+		<td>
+			<select name="smn_condicion_financiera_rf" id="smn_condicion_financiera_rf" onchange="chgCombo(smn_condicion_financiera_rf.options[smn_condicion_financiera_rf.selectedIndex].text,'smn_condicion_financiera_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_condicion_financiera_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_condicion_financiera_rf_rows>
+			</select> 
+			<input id="smn_condicion_financiera_rf_name" name="smn_condicion_financiera_rf_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_alternate_product}*</td>
+			<td>
+				<select name="ofe_producto_alterno" id="ofe_producto_alterno" onchange="mostrar_alterno();">
+				<option value="NO">${lbl:b_not}</option>
+				<option value="SI">${lbl:b_yes}</option>
+				</select> 
+			</td>
+		</tr>
+	<tr id = "ita" style="display: none">
+		<td>${lbl:b_item_alter}</td>
+		<td>
+			<select name="ofe_item_alter_prov" id="ofe_item_alter_prov" onchange="chgCombo(ofe_item_alter_prov.options[ofe_item_alter_prov.selectedIndex].text,'ofe_item_alter_prov_name');">
+				<option value="">[Cualquiera]</option>
+				<ofe_item_alter_prov_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ofe_item_alter_prov_rows>
+			</select> 
+			<input id="ofe_item_alter_prov_name" name="ofe_item_alter_prov_name" type="hidden">
+		</td>
+	</tr>
+	<tr id = "actfa" style="display: none">
+		<td>${lbl:b_actfij_alter}</td>
+		<td>
+			<select name="ofe_activo_fijo_alter_prov" id="ofe_activo_fijo_alter_prov" onchange="chgCombo(ofe_activo_fijo_alter_prov.options[ofe_activo_fijo_alter_prov.selectedIndex].text,'ofe_activo_fijo_alter_prov_name');">
+				<option value="">[Cualquiera]</option>
+				<ofe_activo_fijo_alter_prov_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ofe_activo_fijo_alter_prov_rows>
+			</select> 
+			<input id="ofe_activo_fijo_alter_prov_name" name="ofe_activo_fijo_alter_prov_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_quantity}*</td>
+			<td>
+				<input id="ofe_cantidad" name="ofe_cantidad" type="text" maxlength="10" class="numeric" onchange="calcularmonto();calcularMontoAnticipo();calcularPorcentajeAnticipo();">
+			</td>
+		</tr>
+		<tr>
+		<td>${lbl:b_coins}</td>
+		<td>
+			<select name="ofe_moneda_id" id="ofe_moneda_id" onchange="chgCombo(ofe_moneda_id.options[ofe_moneda_id.selectedIndex].text,'ofe_moneda_id_name');cambiartipomoneda();tasas();">
+				<option value="">[Cualquiera]</option>
+				<ofe_moneda_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ofe_moneda_id_rows>
+			</select> 
+			<input id="ofe_moneda_id_name" name="ofe_moneda_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr id="tasa" style="display: none;">
+		<td>${lbl:b_exchange_rate}</td>
+		<td>
+			<select disabled name="ofe_tasa" id="ofe_tasa" onchange="chgCombo(ofe_tasa.options[ofe_tasa.selectedIndex].text,'ofe_tasa_name');chgTasa();">
+				<option value="">[Cualquiera]</option>
+				<ofe_tasa_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ofe_tasa_rows>
+			</select> 
+			<input id="ofe_tasa_name" name="ofe_tasa_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_price} Unitario*</td>
+			<td>
+				<input id="ofe_precio_ml" name="ofe_precio_ml" type="text" maxlength="20" class="numeric" onchange="calcularmonto();calcularMontoAnticipo();calcularPorcentajeAnticipo();">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_amount}*</td>
+			<td>
+				<input id="ofe_monto_ml" name="ofe_monto_ml" type="text" maxlength="20" class="numeric">
+			</td>
+		</tr>
+	
+		<tr id = "pra" style="display: none;">
+			<td>${lbl:b_price_ma}</td>
+			<td>
+				<input id="ofe_precio_ma" disabled onchange="calcularmontoma()" name="ofe_precio_ma" type="text" maxlength="20" class="numeric">
+			</td>
+		</tr>
+		<tr id = "amoa" style="display: none;">
+			<td>${lbl:b_amount_ma} </td>
+			<td>
+				<input id="ofe_monto_ma" disabled name="ofe_monto_ma" type="text" maxlength="20" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_apply_advance}</td>
+			<td>
+				<select name="ofe_aplica_anticipo" id="ofe_aplica_anticipo" onchange="mostrarAnticipo(ofe_aplica_anticipo.options[ofe_aplica_anticipo.selectedIndex].value);">
+					<option value="NO">${lbl:b_not}</option>
+					<option value="SI">${lbl:b_yes}</option>
+				</select> 
+			</td>
+		</tr>
+		<tr id="porcAnticipo" style="display: none;">
+			<td>${lbl:b_advance_percentage}</td>
+			<td>
+				<input id="ofe_porcentaje_anticipo" name="ofe_porcentaje_anticipo" type="text" maxlength="20" class="numeric" onchange="calcularMontoAnticipo()">
+			</td>
+		</tr>
+		<tr id="montoAnticipo" style="display: none;">
+			<td>${lbl:b_advance_amount}</td>
+			<td>
+				<input id="ofe_monto_anticipo" name="ofe_monto_anticipo" type="text" maxlength="20" class="numeric" onchange="calcularPorcentajeAnticipo()">
+			</td>
+		</tr>
+		<tr id="montoAnticipoMA" style="display: none;">
+			<td>${lbl:b_advance_amount_ma}</td>
+			<td>
+				<input id="ofe_monto_anticipo_ma" name="ofe_monto_anticipo_ma" type="text" maxlength="20" class="numeric" onchange="calcularPorcentajeAnticipoMA()">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_observation}</td>
+			<td>
+				<textarea id="ofe_observaciones" name="ofe_observaciones" cols="30" rows="3"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_date_required}*</td>
+			<td>
+				<input id="ofe_fecha_de_requerido" name="ofe_fecha_de_requerido" type="text" class="date" maxlength="10">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('ofe_fecha_de_requerido')">
+			</td>
+		</tr>
+		<tr style="display: none;">
+			<td>${lbl:b_offer_status}*</td>
+			<td>
+				<select name="ofe_estatus" id="ofe_estatus">
+					<option value="RE">${lbl:b_registrada}</option>
+					<option value="AN">${lbl:b_analyzed}</option>
+					<option value="AP">${lbl:b_aprobated}</option>
+					<option value="RZ">${lbl:b_rejected}</option>
+					<option value="GE">${lbl:b_generated}</option>
+				</select> 
+			</td>
+		</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+
+		var ofe_moneda_id = document.getElementById('ofe_moneda_id').value;
+
+		if (id!="")
+			edit(id);
+	} 
+
+	function cambiartipomoneda() {
+		var mon = document.getElementById('ofe_moneda_id').value;
+
+		if(mon == '360' || mon == ''){
+			document.getElementById('tasa').style.display='none';
+			document.getElementById('pra').style.display='none';
+			document.getElementById('amoa').style.display='none';
+			document.getElementById('ofe_precio_ml').disabled=false;
+			document.getElementById("ofe_precio_ma").value = 0.0;
+			document.getElementById("ofe_monto_ma").value = 0.0;
+		}
+		else
+		{
+			document.getElementById('tasa').style.display='';
+			document.getElementById('pra').style.display='';
+			document.getElementById('amoa').style.display='';
+			document.getElementById('ofe_precio_ml').disabled = true;
+			document.getElementById('ofe_precio_ma').disabled = false;
+		}
+
+	}
+
+	function calcularMontoAnticipo() 
+	{
+		if(document.getElementById('ofe_aplica_anticipo').value == 'SI')
+		{
+			var montoBase = document.getElementById("ofe_monto_ml").value;
+			var porcentaje = document.getElementById("ofe_porcentaje_anticipo").value;
+			var calculo = 0;
+			
+			calculo = (parseFloat(montoBase)*parseFloat(porcentaje))/100;
+			document.getElementById("ofe_monto_anticipo").value = calculo.toFixed(2);
+
+			var tasa = document.getElementById("ofe_tasa");
+			if (tasa != 0 && tasa != "") 
+			{
+				var montoBase_ma = document.getElementById("ofe_monto_ma").value;
+				var calculo_ma = 0;
+			
+				calculo_ma = (parseFloat(montoBase_ma)*parseFloat(porcentaje))/100;
+				document.getElementById("ofe_monto_anticipo_ma").value = calculo_ma.toFixed(2);
+			}
+		}
+	}
+
+	function calcularPorcentajeAnticipo() 
+	{
+		if(document.getElementById('ofe_aplica_anticipo').value == 'SI')
+		{
+			var montoBase = document.getElementById("ofe_monto_ml").value;
+			var monto = document.getElementById("ofe_monto_anticipo").value;
+			var calculo = 0;
+			
+			calculo = (parseFloat(monto)*100)/parseFloat(montoBase);
+			document.getElementById("ofe_porcentaje_anticipo").value = calculo.toFixed(2);
+
+			var montoBase_ma = document.getElementById("ofe_monto_ma").value;
+			var porcentaje = document.getElementById("ofe_porcentaje_anticipo").value;
+			var calculo_ma = 0;
+			
+			calculo_ma = (parseFloat(montoBase_ma)*parseFloat(porcentaje))/100;
+			document.getElementById("ofe_monto_anticipo_ma").value = calculo_ma.toFixed(2);
+		}
+	}
+
+	function calcularPorcentajeAnticipoMA() 
+	{
+		if(document.getElementById('ofe_aplica_anticipo').value == 'SI')
+		{
+			var montoBase = document.getElementById("ofe_monto_ma").value;
+			var monto = document.getElementById("ofe_monto_anticipo_ma").value;
+			var calculo = 0;
+			
+			calculo = (parseFloat(monto)*100)/parseFloat(montoBase);
+			document.getElementById("ofe_porcentaje_anticipo").value = calculo.toFixed(2);
+
+			var montoBase = document.getElementById("ofe_monto_ml").value;
+			var porcentaje = document.getElementById("ofe_porcentaje_anticipo").value;
+			var calculo = 0;
+			
+			calculo = (parseFloat(montoBase)*parseFloat(porcentaje))/100;
+			document.getElementById("ofe_monto_anticipo").value = calculo.toFixed(2);
+		}
+	}
+
+	function calcularmonto() {
+		var cant = document.getElementById("ofe_cantidad").value;
+		var prec = document.getElementById("ofe_precio_ml").value;
+		var tot = 0;
+
+		tot = prec * cant;
+		//alert(tot);
+		document.getElementById("ofe_monto_ml").value= tot;
+		document.getElementById("ofe_monto_ml").disabled=true;
+	}
+
+	function calcularmontoma() {
+		var cant = document.getElementById("ofe_cantidad").value;
+		var precio  = document.getElementById("ofe_precio_ma").value;
+		var tasa_completa = document.getElementById("ofe_tasa_name").value;
+		var tasa_split = tasa_completa.split("->");
+		var tasa = parseFloat(tasa_split[1]);
+		var total=0;
+		var total_ml = 0;
+		var precio_ml = 0;
+
+		total = parseFloat(cant) * parseFloat(precio); 
+		total_ml = total*tasa;
+		precio_ml = tasa*precio;
+		
+		document.getElementById("ofe_monto_ma").value = total.toFixed(2);
+		document.getElementById("ofe_monto_ml").value = total_ml.toFixed(2);
+		document.getElementById('ofe_precio_ml').value = precio_ml.toFixed(2);
+	}
+
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+			document.getElementById("smn_item_compras_id").disabled=true;
+					document.getElementById("smn_servicios_compras_id").disabled=true;
+							document.getElementById("smn_activo_fijo_compras_id").disabled=true;
+									document.getElementById("ofe_monto_ml").disabled=true;
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+function mostrar_alterno() {
+	var p = document.getElementById('ofe_producto_alterno').value;
+
+	if (p == 'SI') {
+		document.getElementById('ita').style.display = '';
+		document.getElementById('actfa').style.display = '';
+		document.getElementById('pra').style.display = '';
+		document.getElementById('amoa').style.display = '';
+	
+	}else{
+		document.getElementById('ita').style.display = 'none';
+		document.getElementById('actfa').style.display = 'none';
+		document.getElementById('pra').style.display = 'none';
+		document.getElementById('amoa').style.display = 'none';
+		
+	}
+}
+	
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndex(code, combo, description) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+			var valueText = code;
+			if (description != null)
+			{
+				valueText = valueText + ' - ' + description;
+			}
+	        if (combo.options[i].text == valueText) 
+	        {
+	        	combo.options[i].selected = true;
+	            return;
+	        }
+	    }
+	}
+
+	//Author     : SIMONE
+	//Description: Get text valueof selected index
+	//Return     : Text associated to index
+	function getSelectedIndex(combo) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].text;
+	        }
+	    }
+	}
+
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndexValue(value, combo) 
+	{
+		for (var i = 0; i < combo.options.length; i++) 
+		{					
+			if (combo.options[i].text == value) 
+			{
+				combo.options[i].selected = true;
+				return;
+			}
+		} 
+	}
+
+	//Author     : SIMONE
+	//Description: Set first element as selected value
+	//Return     : None
+	function setElementFirstIndex(id)
+	{
+		var combo = document.getElementById(id);
+		combo.selectedIndex = 0;
+	}
+
+	var geo_id1 = null;
+	function tasas()
+	{		
+		document.form1.ofe_tasa.disabled=false;
+		var combo = document.getElementById('ofe_moneda_id');
+
+		var valueCombo = getSelectedIndex(combo);
+		geo_id1 = valueCombo.split("-").pop().trim();
+		var ofe_moneda_id = combo.value;
+
+		if (ofe_moneda_id!=null && ofe_moneda_id!="") 
+		{
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/tasas?ofe_moneda_id=" + ofe_moneda_id + "&smn_oferta_id=${fld:id}", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);	
+		}
+	}
+
+	function chgTasa()
+	{
+		var tasa_id = document.getElementById('ofe_tasa').value;
+	
+		if(tasa_id == null || tasa_id == "" || tasa_id == 0)
+		{
+			document.getElementById('ofe_monto_ml').value = 0.0;
+			document.getElementById('ofe_precio_ml').value = 0.0;
+		}
+		else
+		{
+			var cant = document.getElementById("ofe_cantidad").value;
+			var precio  = document.getElementById("ofe_precio_ma").value;
+			var tasa_completa = document.getElementById("ofe_tasa_name").value;
+			var tasa_split = tasa_completa.split("->");
+			var tasa = parseFloat(tasa_split[1]);
+			var total=0;
+			var total_ml = 0;
+			var precio_ml = 0;
+
+			total = parseFloat(cant) * parseFloat(precio); 
+			total_ml = total*tasa;
+			precio_ml = tasa*precio;
+
+			document.getElementById("ofe_monto_ma").value = total.toFixed(2);
+			document.getElementById("ofe_monto_ml").value = total_ml.toFixed(2);
+			document.getElementById('ofe_precio_ml').value = precio_ml.toFixed(2);
+		}	
+	}
+	
+	//Author     : Engellbert Torrealba
+	//Description: Muestra los campos de anticipo.
+	//Return     : None
+	function mostrarAnticipo(value)
+	{
+		if (value=='SI') 
+		{
+			document.getElementById('porcAnticipo').style.display = '';
+			document.getElementById('montoAnticipo').style.display = '';
+			document.getElementById('montoAnticipoMA').style.display = '';
+		}
+		else
+		{
+			document.getElementById('ofe_porcentaje_anticipo').value = '';
+			document.getElementById('ofe_monto_anticipo').value = '';
+			document.getElementById('ofe_monto_anticipo_ma').value = '';
+			document.getElementById('porcAnticipo').style.display = 'none';
+			document.getElementById('montoAnticipo').style.display = 'none';
+			document.getElementById('montoAnticipoMA').style.display = 'none';
+		}
+	}
+
+</script>	
+</body>
+</html>

@@ -36,19 +36,19 @@
 
 	<!--campos-->
 	<tr>
-		<td>${lbl:b_entities}*</td>
+		<td>${lbl:b_smn_proveedor_id}*</td>
 		<td>
-			<select class="entidad" name="smn_entidad_id" id="smn_entidad_id" onchange="chgCombo1(smn_entidad_id.options[smn_entidad_id.selectedIndex].text,'smn_entidad_id_name');">
+			<select class="proveedor" name="smn_proveedor_id" id="smn_proveedor_id" onchange="chgCombo(smn_proveedor_id.options[smn_proveedor_id.selectedIndex].text,'smn_proveedor_id_name');">
 				<option value="">[Cualquiera]</option>
-				<smn_entidad_id_rows>
+				<smn_proveedor_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
-				</smn_entidad_id_rows>
+				</smn_proveedor_id_rows>
 			</select> 
-			<input id="smn_entidad_id_name" name="smn_entidad_id_name" type="hidden">
+			<input id="smn_proveedor_id_name" name="smn_proveedor_id_name" type="hidden">
 		</td>
 	</tr>
-	<tr>
+	<!-- <tr>
 		<td>${lbl:b_solicitante}*</td>
 		<td>
 			<select class="auxiliar" name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo1(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
@@ -60,7 +60,7 @@
 			</select> 
 			<input id="smn_auxiliar_rf_name" name="smn_auxiliar_rf_name" type="hidden">
 		</td>
-	</tr>
+	</tr> -->
 		<tr>
 		<td>${lbl:b_quotation}*</td>
 		<td>
@@ -187,7 +187,7 @@
 	{ 
 		showFilter();
 
-		$('.entidad').select2();
+		$('.proveedor').select2();
 		$('.auxiliar').select2();
 		$('.cotizacion').select2();
 		$('.item').select2();
