@@ -4,11 +4,14 @@
 <head>
 
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
 
-<!--biblioteca generica JS/Dinamica-->
-<script type="text/javascript" src="${def:context}/action/script">
-</script>
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+	<script type="text/javascript" src="${def:context}/action/jquery">
+	</script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -36,7 +39,7 @@
 	<tr>
 		<td>${lbl:b_entities}*</td>
 		<td>
-			<select name="smn_entidad_id" id="smn_entidad_id" onchange="chgCombo1(smn_entidad_id.options[smn_entidad_id.selectedIndex].text,'smn_entidad_id_name');">
+			<select class="js-example-basic-single" name="smn_entidad_id" id="smn_entidad_id" onchange="chgCombo1(smn_entidad_id.options[smn_entidad_id.selectedIndex].text,'smn_entidad_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_entidad_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -49,7 +52,7 @@
 	<tr>
 		<td>${lbl:b_solicitante}*</td>
 		<td>
-			<select name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo1(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
+			<select class="js-example-basic-single" name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo1(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_auxiliar_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -74,7 +77,7 @@
 	<tr>
 		<td>${lbl:b_requisition_status}</td>
 		<td>
-			<select name="req_estatus" id="req_estatus">
+			<select class="js-example-basic-single" name="req_estatus" id="req_estatus">
 				<option value="">[Cualquiera]</option>
 				<option value="SO">${lbl:b_solicited}</option>
 				<option value="GE">${lbl:b_generated}</option>
@@ -157,6 +160,11 @@
 	onload = function()
 	{ 
 		showFilter();
+
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
+		
 		document.form1.req_fecha_registro_ini.onkeypress = keypressDate;
 	document.form1.req_fecha_registro_fin.onkeypress = keypressDate;
 

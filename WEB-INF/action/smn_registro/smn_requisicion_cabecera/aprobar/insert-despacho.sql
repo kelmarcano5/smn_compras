@@ -109,18 +109,16 @@ VALUES
 	${fld:req_descripcion},
 	${fld:smn_entidad_id},
 	${fld:smn_sucursal_id},
-	(SELECT 
-		smn_inventario.smn_caracteristica_almacen.smn_almacen_rf
-	 FROM
-	 	smn_inventario.smn_caracteristica_almacen
-	 INNER JOIN
-	 	smn_base.smn_almacen
-	 ON
-	 	smn_inventario.smn_caracteristica_almacen.smn_almacen_rf = smn_base.smn_almacen.smn_almacen_id
-	 INNER JOIN
-	 	smn_compras.smn_requisicion_cabecera
-	 ON
-	 	smn_compras.smn_requisicion_cabecera.smn_entidad_id = smn_base.smn_almacen.alm_empresa
+	(SELECT
+		smn_compras.smn_lineas.smn_almacen_consumo_rf AS smn_almacen_rf
+	FROM
+		smn_inventario.smn_caracteristica_almacen
+		INNER JOIN smn_base.smn_almacen ON smn_inventario.smn_caracteristica_almacen.smn_almacen_rf = smn_base.smn_almacen.smn_almacen_id
+		INNER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.smn_entidad_id = smn_base.smn_almacen.alm_empresa
+		INNER JOIN smn_compras.smn_requisicion_detalle ON smn_compras.smn_requisicion_detalle.smn_requisicion_cabecera_id = smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id
+		INNER JOIN smn_compras.smn_rel_linea_item ON smn_compras.smn_requisicion_detalle.smn_item_id = smn_compras.smn_rel_linea_item.smn_item_id
+		INNER JOIN smn_compras.smn_lineas ON smn_compras.smn_rel_linea_item.smn_lineas_id = smn_compras.smn_lineas.smn_lineas_id
+
 	 WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
 	 AND

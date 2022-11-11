@@ -4,10 +4,14 @@
 <head>
 
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+
 	<!--biblioteca generica JS/Dinamica-->
 	<script type="text/javascript" src="${def:context}/action/script">
 	</script>
+	<script type="text/javascript" src="${def:context}/action/jquery">
+	</script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -35,7 +39,7 @@
 		<tr>
 		<td>${lbl:b_entities}*</td>
 		<td>
-			<select name="smn_entidad_id" id="smn_entidad_id" onchange="chgCombo1(smn_entidad_id.options[smn_entidad_id.selectedIndex].text,'smn_entidad_id_name');">
+			<select class="js-example-basic-single" name="smn_entidad_id" id="smn_entidad_id" onchange="chgCombo1(smn_entidad_id.options[smn_entidad_id.selectedIndex].text,'smn_entidad_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_entidad_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -48,7 +52,7 @@
 	<tr>
 		<td>${lbl:b_subsidiaries}</td>
 		<td>
-			<select name="smn_sucursal_id" id="smn_sucursal_id" onchange="chgCombo(smn_sucursal_id.options[smn_sucursal_id.selectedIndex].text,'smn_sucursal_id_name');">
+			<select class="js-example-basic-single" name="smn_sucursal_id" id="smn_sucursal_id" onchange="chgCombo(smn_sucursal_id.options[smn_sucursal_id.selectedIndex].text,'smn_sucursal_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_sucursal_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -74,7 +78,7 @@
 		<tr style="display:none">
 			<td>${lbl:b_requisition_status}*</td>
 			<td>
-				<select name="req_estatus" id="req_estatus">
+				<select class="js-example-basic-single" name="req_estatus" id="req_estatus">
 				<!--<option value="">[Cualquiera]</option>-->
 				<option value="SO">${lbl:b_solicited}</option>
 				<!--<option value="GE">${lbl:b_generated}</option>
@@ -86,7 +90,7 @@
 	<tr>
 		<td>${lbl:b_purchasing_documents_types}*</td>
 		<td>
-			<select name="smn_tipo_documento_id" id="smn_tipo_documento_id" onchange="chgCombo(smn_tipo_documento_id.options[smn_tipo_documento_id.selectedIndex].text,'smn_tipo_documento_id_name');">
+			<select class="js-example-basic-single" name="smn_tipo_documento_id" id="smn_tipo_documento_id" onchange="chgCombo(smn_tipo_documento_id.options[smn_tipo_documento_id.selectedIndex].text,'smn_tipo_documento_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_tipo_documento_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -99,7 +103,7 @@
 	<tr>
 		<td>${lbl:b_purchasing_documents}*</td>
 		<td>
-			<select name="smn_documento_id" id="smn_documento_id" onchange="chgCombo(smn_documento_id.options[smn_documento_id.selectedIndex].text,'smn_documento_id_name');">
+			<select class="js-example-basic-single" name="smn_documento_id" id="smn_documento_id" onchange="chgCombo(smn_documento_id.options[smn_documento_id.selectedIndex].text,'smn_documento_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_documento_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -181,6 +185,10 @@
 	onload = function()
 	{ 
 		addNew();
+		
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
 		
 		//Disabled all combo linked
 
