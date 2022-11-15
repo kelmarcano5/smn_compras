@@ -123,6 +123,8 @@ VALUES
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
 	 AND
 	 	smn_inventario.smn_caracteristica_almacen.cal_tipo_almacen = 'DE'
+	 GROUP BY
+		smn_compras.smn_lineas.smn_almacen_consumo_rf
 	),
 	(SELECT 
 		smn_clase_auxiliar_rf
