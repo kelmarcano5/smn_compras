@@ -155,40 +155,22 @@ VALUES
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
 	),
 	(SELECT
-		smn_control_acceso.smn_personal.psl_estructura_organizacional_rf
-	 FROM 
-	 	smn_control_acceso.smn_personal
-	 INNER JOIN
-	 	smn_base.smn_usuarios
-	 ON
-	 	smn_control_acceso.smn_personal.psl_auxiliar_rf = smn_base.smn_usuarios.smn_auxiliar_rf
-	 INNER JOIN
-	 	smn_seguridad.s_user
-	 ON
-	 	smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
-	 INNER JOIN
-	 	smn_compras.smn_requisicion_cabecera
-	 ON
-	 	smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+		smn_compras.smn_rel_auxiliar_ceco_estorg.smn_estructura_organizacional_rf
+	FROM
+		smn_base.smn_usuarios
+		INNER JOIN smn_seguridad.s_user ON smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
+		INNER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+		INNER JOIN smn_compras.smn_rel_auxiliar_ceco_estorg ON smn_base.smn_usuarios.smn_auxiliar_rf = smn_compras.smn_rel_auxiliar_ceco_estorg.smn_auxiliar_rf
 	 WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
 	),
 	(SELECT
-		smn_control_acceso.smn_personal.psl_centro_costo_rf
-	 FROM 
-	 	smn_control_acceso.smn_personal
-	 INNER JOIN
-	 	smn_base.smn_usuarios
-	 ON
-	 	smn_control_acceso.smn_personal.psl_auxiliar_rf = smn_base.smn_usuarios.smn_auxiliar_rf
-	 INNER JOIN
-	 	smn_seguridad.s_user
-	 ON
-	 	smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
-	 INNER JOIN
-	 	smn_compras.smn_requisicion_cabecera
-	 ON
-	 	smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+		smn_compras.smn_rel_auxiliar_ceco_estorg.smn_centro_costo_rf
+	FROM
+		smn_base.smn_usuarios
+		INNER JOIN smn_seguridad.s_user ON smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
+		INNER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+		INNER JOIN smn_compras.smn_rel_auxiliar_ceco_estorg ON smn_base.smn_usuarios.smn_auxiliar_rf = smn_compras.smn_rel_auxiliar_ceco_estorg.smn_auxiliar_rf
 	 WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
 	),
