@@ -44,7 +44,7 @@ INSERT INTO smn_inventario.smn_despacho
 VALUES
 (
 	nextval('smn_inventario.seq_smn_despacho'),
-	${fld:smn_modulo_rf},
+	3,/*${fld:smn_modulo_rf}*/
 	${fld:smn_documento_id}, /*documento origen*/
 	${fld:req_numero},
 	(SELECT

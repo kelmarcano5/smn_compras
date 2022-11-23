@@ -16,8 +16,8 @@ CASE
         WHEN smn_compras.smn_requisicion_detalle.smn_naturaleza_id = 'AF' THEN
         smn_base.smn_activo_fijo.acf_codigo || ' - ' || smn_base.smn_activo_fijo.acf_nombre 
     END AS smn_item_id,
-    smn_compras.smn_requisicion_detalle.rrs_especificaciones_del_requerimiento
-    
+    smn_compras.smn_requisicion_detalle.rrs_especificaciones_del_requerimiento,
+    smn_compras.smn_requisicion_detalle.rrs_observaciones 
     
 FROM
     smn_compras.smn_requisicion_detalle

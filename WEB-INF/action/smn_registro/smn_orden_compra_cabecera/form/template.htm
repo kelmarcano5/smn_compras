@@ -143,6 +143,12 @@
 			uri = "${def:context}${def:actionroot}/aprobar?smn_orden_compra_cabecera_id="+ id_cabecera;
 			openDialog("dialog", uri, 1150, 700);
 		}
+
+		function openPDF_Orden_compra(id_cabecera) {
+		    var features = "height=1086,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		    var url = "${def:context}${def:actionroot}/pdf_export?id="+id_cabecera; 
+		    var w = window.open(url, null, features);
+		}
 	</script>
 	</script>
 

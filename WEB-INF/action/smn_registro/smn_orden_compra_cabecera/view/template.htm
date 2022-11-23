@@ -3,6 +3,7 @@
 
 	<col width='3%'/>
 	<col width='3%'/>
+	<col width='3%'/>
 	<!-- <col width='8%'/> -->
 	<col width='15%'/>
 	<col width='15%'/>
@@ -21,13 +22,14 @@
 
 	<!--toolbar-->
 	<tr>
-		<th colspan="13" id="encabezado_tabla">
+		<th colspan="14" id="encabezado_tabla">
 			${req:controls} 
 		</th>
 	</tr>
 
 	<!--encabezados-->
 	<tr>
+		<th></th>
 		<th></th>
 		<th></th>
 		<!-- <th class='sortable' onclick='sortBy("smn_requisicion_cabecera_id","query-smnordencompracabecera.sql")'>${lbl:b_requisition_number}</th> -->
@@ -48,6 +50,7 @@
 	<!--data-->
 	<rows>
 	<tr>
+		<td><img src="/smn_cobranzas/images/file-text.png" onclick="openPDF_Orden_compra('${fld:smn_orden_compra_cabecera_id}')" title="${lbl:b_print}" style="padding-right:3px;"></td>
 		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_orden_compra_cabecera_id}')" title="${lbl:b_view_detail}"></td>
 		<td><img src="${def:context}/images/accept.png" onclick="aprobar('${fld:smn_orden_compra_cabecera_id}')" title="Aprobar"></td>
 		<!-- <td>${fld:smn_requisicion_cabecera_id}</td> -->
