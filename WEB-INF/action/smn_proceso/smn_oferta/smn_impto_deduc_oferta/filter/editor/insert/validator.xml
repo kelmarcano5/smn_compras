@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_oferta_id' type='integer' required='true' label='${lbl:b_offer}' maxlen='10'/>
+	<parameter id='rio_monto_base_ml' type='double' required='false' label='${lbl:b_base_amount_ml}' maxlen='10'/>
+	<parameter id='rio_cod_impuesto_deduc_id' type='integer' required='false' label='${lbl:b_code_tax_deduction}' maxlen='10'/>
+	<parameter id='rio_porcentaje_deduc' type='double' required='false' label='${lbl:b_deduction_percentage}' maxlen='10'/>
+	<parameter id='rio_sustraendo' type='double' required='false' label='${lbl:b_subtrahend}' maxlen='10'/>
+	<parameter id='rio_monto_impuesto_ml' type='double' required='false' label='${lbl:b_tax_amount_ml}' maxlen='10'/>
+	<parameter id='rio_moneda_rf' type='integer' required='false' label='${lbl:b_coins}' maxlen='10'/>
+	<parameter id='rio_tasa_rf' type='integer' required='false' label='${lbl:b_exchange_rate}' maxlen='10'/>
+	<parameter id='rio_monto_impuesto_ma' type='double' required='false' label='${lbl:b_tax_amount_ma}' maxlen='10'/>
+	<parameter id='rio_cod_descuento' type='integer' required='false' label='${lbl:b_code_discount}' maxlen='10'/>
+	<parameter id='rio_monto_base_ml' type='double' required='false' label='${lbl:b_base_amount_ml}' maxlen='10'/>
+	<parameter id='rio_monto_base_ma' type='double' required='false' label='${lbl:b_base_amount_ma}' maxlen='10'/>
+	<parameter id='rio_porcentaje_descuento' type='double' required='false' label='${lbl:b_porcentage_discount}' maxlen='10'/>
+	<parameter id='rio_monto_descuento_ml' type='double' required='false' label='${lbl:b_discount_amount_ml}' maxlen='10'/>
+	<parameter id='rio_monto_descuento_ma' type='double' required='false' label='${lbl:b_discount_amount_ma}' maxlen='10'/>
+
+
+</validator>

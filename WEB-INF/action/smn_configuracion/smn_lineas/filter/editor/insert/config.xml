@@ -16,6 +16,7 @@
 			<colname>smn_tipo_linea_id</colname>
 			<colname>lin_codigo</colname>
 			<colname>lin_nombre</colname>
+			<colname>smn_almacen_consumo_rf</colname>
 		
 		</cols>
 		<table>smn_compras.smn_lineas</table>

@@ -28,14 +28,15 @@
 		filename='${lbl:b_smn_orden_compra_cabecera}.xls' 
 		date-format='dd-MM-yyyy'
 		header-background='true'>
-			<col id='smn_entidad_rf_combo' title='${lbl:b_entities}'  />
-			<col id='smn_sucursal_rf_combo' title='${lbl:b_smn_sucursal}' />
-			<col id='smn_documento_id_combo' title='${lbl:b_smn_documento_id}' />
+			<col id='smn_entidad_rf_combo' title='${lbl:b_entities}'/>
+			<col id='smn_sucursal_rf_combo' title='${lbl:b_smn_sucursal}'/>
+			<col id='smn_documento_id_combo' title='${lbl:b_smn_documento_id}'/>
 			<col id='occ_orden_compra_numero' title='${lbl:b_occ_orden_compra_numero}'/>
 			<col id='smn_proveedor_id_combo' title='${lbl:b_smn_proveedor_id}'/>
-			<col id='occ_fecha_orde_compra' title='${lbl:b_occ_fecha_orde_compra}' />
-			<col id='smn_forma_pago_rf_combo' title='${lbl:b_smn_forma_pago_rf}'  />
-			<col id='occ_fecha_registro' title='${lbl:b_store_date}' />
+			<col id='occ_fecha_orde_compra' title='${lbl:b_occ_fecha_orde_compra}'/>
+			<col id='smn_forma_pago_rf_combo' title='${lbl:b_smn_forma_pago_rf}'/>
+			<col id='occ_fecha_registro' title='${lbl:b_store_date}'/>
+
 	</excel>
 
 </config>

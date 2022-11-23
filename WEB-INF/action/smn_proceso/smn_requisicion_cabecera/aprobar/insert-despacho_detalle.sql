@@ -21,7 +21,7 @@ VALUES
 (
 	nextval('smn_inventario.seq_smn_despacho_detalle'),
 	${fld:smn_despacho_id},
-	${fld:smn_item_id},
+	${fld:smn_caracteristica_item_id},
 	${fld:rss_cantidad},
 	null,
 	${fld:rrs_monto},
@@ -30,7 +30,7 @@ VALUES
 	null,
 	null,
 	null,
-	'ER',
+	'RE',
 	'${def:locale}',
     '${def:user}',
     {d '${def:date}'},

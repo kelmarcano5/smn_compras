@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<!-- <parameter id='req_numero' type='integer' required='false' label='${lbl:b_requisition_number}' maxlen='10'/> -->
+	<parameter id='smn_proveedor_id' type='integer' required='false' label='${lbl:b_actfij}' maxlen='10'/>
+	<parameter id='smn_entidad_id' type='integer' required='false' label='${fld:smn_entidad_id}' maxlen='10' />
+	<parameter id='smn_sucursal_id' type='integer' required='false' label='${fld:smn_sucursal_id}' maxlen='10' />
+</validator>

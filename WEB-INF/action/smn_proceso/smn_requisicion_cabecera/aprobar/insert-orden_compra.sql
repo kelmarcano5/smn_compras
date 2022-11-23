@@ -35,7 +35,7 @@ VALUES
 	),
 	${fld:req_descripcion},
 	${fld:smn_proveedor_rf},
-	${fld:smn_auxiliar_rf}, 
+	'0',/*smn_auxiliar_rf*/
 	${fld:fecha_actual},
 	${fld:fecha_actual},
 	${fld:smn_forma_pago_rf},

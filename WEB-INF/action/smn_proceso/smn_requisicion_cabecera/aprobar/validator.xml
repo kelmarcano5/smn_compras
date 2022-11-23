@@ -6,13 +6,13 @@
 	<parameter id='smn_requisicion_cabecera_id' type='integer' required='true' label='${fld:smn_requisicion_cabecera_id}' maxlen='10' />
 	
 	<parameter id='req_fecha_requerido' type='date' required='false' label='${fld:req_fecha_requerido}' maxlen='10' />
-	<parameter id='smn_modulo_rf'       type='integer' required='false' label='${fld:smn_modulo_rf}' maxlen='10' />
-	<parameter id='req_numero'          type='integer' required='false' label='${fld:req_numero}' maxlen='10' />
-	<parameter id='smn_entidad_id'      type='integer' required='false' label='${fld:smn_entidad_id}' maxlen='10' />
-	<parameter id='smn_sucursal_id'     type='integer' required='false' label='${fld:smn_sucursal_id}' maxlen='10' />
-	<parameter id='req_descripcion'     type='varchar' required='false' label='${fld:req_descripcion}' maxlen='64' />
-	<parameter id='smn_proveedor_id'    type='integer' required='false' label='${fld:smn_proveedor_id}' maxlen='10' />
-	<parameter id='fecha_actual'        type='date' required='false' label='${fld:fecha_actual}' maxlen='10' />
+	<parameter id='smn_modulo_rf' type='integer' required='false' label='${fld:smn_modulo_rf}' maxlen='10' />
+	<parameter id='req_numero' type='integer' required='false' label='${fld:req_numero}' maxlen='10' />
+	<parameter id='smn_entidad_id' type='integer' required='false' label='${fld:smn_entidad_id}' maxlen='10' />
+	<parameter id='smn_sucursal_id' type='integer' required='false' label='${fld:smn_sucursal_id}' maxlen='10' />
+	<parameter id='req_descripcion' type='varchar' required='false' label='${fld:req_descripcion}' maxlen='64' />
+	<parameter id='smn_proveedor_id' type='integer' required='false' label='${fld:smn_proveedor_id}' maxlen='10' />
+	<parameter id='fecha_actual' type='date' required='false' label='${fld:fecha_actual}' maxlen='10' />
 	<parameter id='smn_orden_compra_cabecera_id' type='integer' required='false' label='${fld:smn_orden_compra_cabecera_id}' maxlen='10' />
 	<parameter id='smn_linea_id' type='integer' required='false' label='${fld:smn_linea_id}' maxlen='10' />
 	<parameter id='smn_servicio_id' type='integer' required='false' label='${fld:smn_servicio_id}' maxlen='10' />
@@ -66,51 +66,5 @@
 	<parameter id='smn_proveedor_rf' type='integer' required='false' label='${fld:smn_proveedor_rf}' maxlen='10' />
 	<parameter id='smn_forma_pago_rf' type='integer' required='false' label='${fld:smn_forma_pago_rf}' maxlen='10' />
 	<parameter id='aux_cond_pago_rf' type='integer' required='false' label='${fld:aux_cond_pago_rf}' maxlen='10' />
-	<parameter id='smn_unidad_medida_rf' type='integer' required='false' label='${fld:smn_unidad_medida_rf}' maxlen='10' />
-	<parameter id='req_usuario' type='varchar' required='false' label='${fld:req_usuario}' maxlen='10' />
-	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${fld:smn_auxiliar_rf}' maxlen='10' />
-	<parameter id='smn_naturaleza_id' type='varchar' required='false' label='${fld:smn_naturaleza_id}' maxlen='2' />
-	<parameter id='rss_estatus_existencia' type='varchar' required='false' label='${fld:rss_estatus_existencia}' maxlen='2' />
-	
-	<!-- valores de la tabla smn_inventario.smn_control_item -->
-	
-	<parameter id='coi_cantidad_reserva'            type='double'  required='false' label='${fld:coi_cantidad_reserva}'            maxlen='20' />
-	<parameter id='smn_control_item_id'             type='integer' required='false' label='${fld:smn_control_item_id}'             maxlen='10' />
-	<parameter id='coi_saldo_final_existencia'      type='double'  required='false' label='${fld:coi_saldo_final_existencia}'      maxlen='20' />
-	<parameter id='coi_fecha_movimiento'            type='date'    required='false' label='${fld:coi_fecha_movimiento}'            maxlen='10' />
-	<parameter id='smn_almacen_id'                  type='integer' required='false' label='${fld:smn_almacen_id}'                  maxlen='10' />
-	<parameter id='coi_precio'                      type='double'  required='false' label='${fld:coi_precio}'                      maxlen='20' />
-	<parameter id='coi_saldo_inicial_existencia'    type='double'  required='false' label='${fld:coi_saldo_inicial_existencia}'    maxlen='20' />
-	<parameter id='coi_cantidad_entradas'           type='double'  required='false' label='${fld:coi_cantidad_entradas}'           maxlen='20' />
-	<parameter id='coi_cantidad_salidas'            type='double'  required='false' label='${fld:coi_cantidad_salidas}'            maxlen='20' />
-	<parameter id='coi_valor_inicial'               type='double'  required='false' label='${fld:coi_valor_inicial}'               maxlen='20' />
-	<parameter id='coi_valor_entrada'               type='double'  required='false' label='${fld:coi_valor_entrada}'               maxlen='20' />
-	<parameter id='coi_valor_salida'                type='double'  required='false' label='${fld:coi_valor_salida}'                maxlen='20' />
-	<parameter id='coi_valor_final'                 type='double'  required='false' label='${fld:coi_valor_final}'                 maxlen='20' />
-	<parameter id='coi_costo_promedio'              type='double'  required='false' label='${fld:coi_costo_promedio}'              maxlen='20' />
-	<parameter id='coi_ultimo_costo'                type='double'  required='false' label='${fld:coi_ultimo_costo}'                maxlen='20' />
-	<parameter id='coi_costo_reposicion'            type='double'  required='false' label='${fld:coi_costo_reposicion}'            maxlen='20' />
-	<parameter id='coi_costo_mas_alto'              type='double'  required='false' label='${fld:coi_costo_mas_alto}'              maxlen='20' />
-	<parameter id='coi_costo_promedio_ponderado'    type='double'  required='false' label='${fld:coi_costo_promedio_ponderado}'    maxlen='20' />
-	<parameter id='coi_valor_inicial_ma'            type='double'  required='false' label='${fld:coi_valor_inicial_ma}'            maxlen='20' />
-	<parameter id='coi_compras_acordadas'           type='double'  required='false' label='${fld:coi_compras_acordadas}'           maxlen='20' />
-	<parameter id='coi_valor_entradas_ma'           type='double'  required='false' label='${fld:coi_valor_entradas_ma}'           maxlen='20' />
-	<parameter id='coi_valor_salidas_ma'            type='double'  required='false' label='${fld:coi_valor_salidas_ma}'            maxlen='20' />
-	<parameter id='coi_costo_promedio_ma'           type='double'  required='false' label='${fld:coi_costo_promedio_ma}'           maxlen='20' />
-	<parameter id='coi_ultimo_costo_ma'             type='double'  required='false' label='${fld:coi_ultimo_costo_ma}'             maxlen='20' />
-	<parameter id='coi_costo_reposicion_ma'         type='double'  required='false' label='${fld:coi_costo_reposicion_ma}'         maxlen='20' />
-	<parameter id='coi_costo_mas_alto_ma'           type='double'  required='false' label='${fld:coi_costo_mas_alto_ma}'           maxlen='20' />
-	<parameter id='coi_costo_promedio_ponderado_ma' type='double'  required='false' label='${fld:coi_costo_promedio_ponderado_ma}' maxlen='20' />
-	<parameter id='coi_precio_ma'                   type='double'  required='false' label='${fld:coi_precio_ma}'                   maxlen='20' />
-	<parameter id='coi_valor_final_ma'              type='double'  required='false' label='${fld:coi_valor_final_ma}'              maxlen='20' />
-	
-	<parameter id='secuencia' type='integer' required='false' label='secuencia' maxlen='10' />
-	<parameter id='rpp_producto_alterno' type='varchar' required='false' label='producto alterno' maxlen='250' />
-	<parameter id='rpp_precio_ml' type='double' required='false' label='precio ml' maxlen='20' />
-	<parameter id='ofe_monto_ml' type='double' required='false' label='monto ml' maxlen='20' />
-	<parameter id='rpp_precio_ma' type='double' required='false' label='precio ma' maxlen='20' />
-	<parameter id='ofe_monto_ma' type='double' required='false' label='monto ma' maxlen='20' />
-	<parameter id='rrs_observaciones' type='varchar' required='false' label='observacion' maxlen='256' />
-	<parameter id='smn_condicion_financiera_rf' type='integer' required='false' label='condicion financiera proveedor' maxlen='10' />
-	<parameter id='prv_anticipo' type='varchar' required='false' label='anticipo' maxlen='2' />
+	<parameter id='producto' type='integer' required='false' label='${fld:b_product}' maxlen='10' />
 </validator>

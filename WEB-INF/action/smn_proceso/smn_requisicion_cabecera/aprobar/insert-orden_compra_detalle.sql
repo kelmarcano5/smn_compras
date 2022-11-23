@@ -40,7 +40,13 @@ VALUES
 	${fld:ocd_descripcion},
 	${fld:rss_cantidad},
 	null, /* cantidad recibida */
-	${fld:smn_unidad_medida_rf},
+	(SELECT
+		smn_unidad_medida_compra_rf
+	 FROM
+	 	smn_inventario.smn_caracteristica_item
+	 WHERE
+	 	smn_item_rf = ${fld:smn_item_id}
+	),
 	${fld:rrs_precio},
 	${fld:rrs_monto},
 	${fld:rim_monto_impuesto},

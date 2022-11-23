@@ -3,11 +3,19 @@
 
 <head>
 
-	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
-
-	<script type="text/javascript" src="${def:context}/action/script">
-	</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="${def:context}/boostrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+    <link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+    <link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="${def:context}/sweetalert.css" />
+    <!--biblioteca generica JS/Dinamica-->
+    <script type="text/javascript" src="${def:context}/action/script"></script>
+    <script type="text/javascript" src="${def:context}/action/jquery"></script>
+    <script type="text/javascript" src="${def:context}/action/select2"></script>
+    <script type="text/javascript" src="${def:context}/action/sweetalert"></script>
+    <script type="text/javascript" src="${def:context}/action/lodash"></script>
+    <script type="text/javascript" src="${def:context}/action/boostrap"></script>
 
 	<!--codigo especifico de este modulo--> 
 	<script type="text/javascript">
@@ -142,6 +150,12 @@
 		{
 			uri = "${def:context}${def:actionroot}/aprobar?smn_orden_compra_cabecera_id="+ id_cabecera;
 			openDialog("dialog", uri, 1150, 700);
+		}
+
+		function openPDF_Orden_compra(id_cabecera) {
+		    var features = "height=1086,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		    var url = "${def:context}${def:actionroot}/pdf_export?id="+id_cabecera; 
+		    var w = window.open(url, null, features);
 		}
 	</script>
 	</script>

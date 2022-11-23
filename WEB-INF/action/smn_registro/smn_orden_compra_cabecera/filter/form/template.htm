@@ -3,12 +3,19 @@
 
 <head>
 
-	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
-
-<!--biblioteca generica JS/Dinamica-->
-<script type="text/javascript" src="${def:context}/action/script">
-</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="${def:context}/boostrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+    <link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+    <link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="${def:context}/sweetalert.css" />
+    <!--biblioteca generica JS/Dinamica-->
+    <script type="text/javascript" src="${def:context}/action/script"></script>
+    <script type="text/javascript" src="${def:context}/action/jquery"></script>
+    <script type="text/javascript" src="${def:context}/action/select2"></script>
+    <script type="text/javascript" src="${def:context}/action/sweetalert"></script>
+    <script type="text/javascript" src="${def:context}/action/lodash"></script>
+    <script type="text/javascript" src="${def:context}/action/boostrap"></script>
 
 </head>
 
@@ -154,8 +161,8 @@
 	onload = function()
 	{ 
 		showFilter();
-		document.form1.occ_fecha_registro_ini.onkeypress = keypressDate;
-	document.form1.occ_fecha_registro_fin.onkeypress = keypressDate;
+		//document.form1.occ_fecha_registro_ini.onkeypress = keypressDate;
+		//document.form1.occ_fecha_registro_fin.onkeypress = keypressDate;
 
 		search();
 	} 
@@ -214,7 +221,7 @@
 	function openPDF()
 	{
 		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
-		var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+		var url = "${def:context}${def:actionroot}/../pdf?random=" + Math.random();
 		var w = window.open(url, null, features);
 	}
 
@@ -222,27 +229,27 @@
 	function openExcel()
 	{
 		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
-		var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+		var url = "${def:context}${def:actionroot}/../excel?random=" + Math.random();
 		var w = window.open(url, null, features);
 	}
 	
 	//exportar a xml
 	function openXml() {
 		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
-		var url = "${def:context}${def:actionroot}/xml/search?random=" + Math.random();
+		var url = "${def:context}${def:actionroot}/../xml/search?random=" + Math.random();
 		var w = window.open(url, null, features);
 	}
 	
 	//exportar a texto
 	function openTxt() {
 		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
-		var url = "${def:context}${def:actionroot}/txt/search?random=" + Math.random();
+		var url = "${def:context}${def:actionroot}/../txt/search?random=" + Math.random();
 		var w = window.open(url, null, features);
 	}
 	
 	//envio de emails
 	function openEmails() {
-		var uri = "${def:context}${def:actionroot}/email/form";					
+		var uri = "${def:context}${def:actionroot}/../email/form";					
 		openDialog("editor0", uri, 950, 600);	
 	}
 	
@@ -251,7 +258,7 @@
 	{
 //		//alert('Colocar su código aquí.')
 		
-		var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
+		var uri = "${def:context}${def:actionroot}/../detail/form?id=" + id;
 		openDialog("dialog", uri, 650, 600);
 		
 	}
@@ -289,18 +296,22 @@
 	}
 
 	function detalle(id2, descripcion){
-			uri= "${def:context}${def:actionroot}/smn_orden_compra_detalle/form?id2="+id2+"&descripcion="+descripcion;
+			uri= "${def:context}${def:actionroot}/../smn_orden_compra_detalle/form?id2="+id2+"&descripcion="+descripcion;
 			//alert(uri);
 			openDialog("dialog",uri,1250,700);
 		}
 		function aprobar(id_cabecera)
 		{
-			uri = "${def:context}${def:actionroot}/aprobar?smn_orden_compra_cabecera_id="+ id_cabecera;
+			uri = "${def:context}${def:actionroot}/../aprobar?smn_orden_compra_cabecera_id="+ id_cabecera;
 			openDialog("dialog", uri, 1150, 700);
 		}
 
 
-			
+	function openPDF_Orden_compra(id_cabecera) {
+		    var features = "height=1086,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		    var url = "${def:context}${def:actionroot}/../pdf_export?id="+id_cabecera; 
+		    var w = window.open(url, null, features);
+		}		
 </script>
 
 </html>

@@ -3,4 +3,4 @@ SELECT --smn_modulo_rf
 FROM
 	smn_base.smn_modulos
 WHERE
-	mod_codigo = 'COM'
+	mod_codigo = 'SMN_COM'

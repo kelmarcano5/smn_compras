@@ -4,11 +4,14 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
-	
+		<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+
 	<!--biblioteca generica JS/Dinamica-->
 	<script type="text/javascript" src="${def:context}/action/script">
 	</script>
+	<script type="text/javascript" src="${def:context}/action/jquery">
+	</script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -36,7 +39,7 @@
 	<tr style="display:none">
 		<td>${lbl:b_headboard_requisition}*</td>
 		<td>
-			<select name="smn_requisicion_cabecera_id" id="smn_requisicion_cabecera_id" onchange="chgCombo(smn_requisicion_cabecera_id.options[smn_requisicion_cabecera_id.selectedIndex].text,'smn_requisicion_cabecera_id_name');">
+			<select class="js-example-basic-single" name="smn_requisicion_cabecera_id" id="smn_requisicion_cabecera_id" onchange="chgCombo(smn_requisicion_cabecera_id.options[smn_requisicion_cabecera_id.selectedIndex].text,'smn_requisicion_cabecera_id_name');">
 				<smn_requisicion_cabecera_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
@@ -48,7 +51,7 @@
 	<tr style="display: none">
 		<td>${lbl:b_version_headboard}*</td>
 		<td>
-			<select name="smn_cabecera_version_id" id="smn_cabecera_version_id" onchange="chgCombo(smn_cabecera_version_id.options[smn_cabecera_version_id.selectedIndex].text,'smn_cabecera_version_id_name');">
+			<select class="js-example-basic-single" name="smn_cabecera_version_id" id="smn_cabecera_version_id" onchange="chgCombo(smn_cabecera_version_id.options[smn_cabecera_version_id.selectedIndex].text,'smn_cabecera_version_id_name');">
 				<smn_cabecera_version_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
@@ -61,7 +64,7 @@
 	<tr id="linea" style="display: none;">
 		<td>${lbl:b_lines}*</td>
 		<td>
-			<select name="smn_linea_id" id="smn_linea_id" onchange="chgCombo(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');itemlinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');serviciolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');afijolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');">
+			<select class="js-example-basic-single" name="smn_linea_id" id="smn_linea_id" onchange="chgCombo(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');itemlinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');serviciolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');afijolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_linea_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -74,7 +77,7 @@
 	<tr id="naturaleza" style="display: none;">
 		<td>${lbl:b_nature}*</td>
 		<td>
-			<select name="smn_naturaleza_id" id="smn_naturaleza_id" onchange="validar();">
+			<select class="js-example-basic-single" name="smn_naturaleza_id" id="smn_naturaleza_id" onchange="validar();">
 			<option value="">[Cualquiera]</option>
 			<option value="IT">${lbl:b_item}</option>
 			<option value="SE">${lbl:b_services}</option>
@@ -86,7 +89,7 @@
 	<tr id="item" style="display: none;">
 		<td>${lbl:b_item}</td>
 		<td>
-			<select name="smn_item_id" id="smn_item_id" onchange="chgCombo(smn_item_id.options[smn_item_id.selectedIndex].text,'smn_item_id_name');">
+			<select class="js-example-basic-single" name="smn_item_id" id="smn_item_id" onchange="chgCombo(smn_item_id.options[smn_item_id.selectedIndex].text,'smn_item_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_item_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -99,7 +102,7 @@
 	<tr id="servicio" style="display: none;">
 		<td>${lbl:b_services}</td>
 		<td>
-			<select name="smn_servicio_id" id="smn_servicio_id" onchange="chgCombo(smn_servicio_id.options[smn_servicio_id.selectedIndex].text,'smn_servicio_id_name');">
+			<select class="js-example-basic-single" name="smn_servicio_id" id="smn_servicio_id" onchange="chgCombo(smn_servicio_id.options[smn_servicio_id.selectedIndex].text,'smn_servicio_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_servicio_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -112,7 +115,7 @@
 	<tr id="activo" style="display: none;">
 		<td>${lbl:b_actfij}</td>
 		<td>
-			<select name="smn_afijo_id" id="smn_afijo_id" onchange="chgCombo(smn_afijo_id.options[smn_afijo_id.selectedIndex].text,'smn_afijo_id_name');">
+			<select class="js-example-basic-single" name="smn_afijo_id" id="smn_afijo_id" onchange="chgCombo(smn_afijo_id.options[smn_afijo_id.selectedIndex].text,'smn_afijo_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_afijo_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -125,7 +128,7 @@
 	<tr>
 		<td>${lbl:b_products_found}*</td>
 		<td>
-			<select name="rrs_producto_encontrado" id="rrs_producto_encontrado" onchange="validarproducto();">
+			<select class="js-example-basic-single" name="rrs_producto_encontrado" id="rrs_producto_encontrado" onchange="validarproducto();">
 			<option value="">[Cualquiera]</option>
 			<option value="SI">${lbl:b_yes}</option>
 			<option value="NO">${lbl:b_not}</option>
@@ -137,7 +140,7 @@
 	<tr id="contrato" style="display:none">
 		<td>${lbl:b_contract}</td>
 		<td>
-			<select name="smn_contrato_id" id="smn_contrato_id" onchange="chgCombo(smn_contrato_id.options[smn_contrato_id.selectedIndex].text,'smn_contrato_id_name');">
+			<select class="js-example-basic-single" name="smn_contrato_id" id="smn_contrato_id" onchange="chgCombo(smn_contrato_id.options[smn_contrato_id.selectedIndex].text,'smn_contrato_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_contrato_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -156,7 +159,7 @@
 		<tr id="moneda" style="display:none">
 		<td>${lbl:b_coins}</td>
 		<td>
-			<select name="smn_moneda_id" id="smn_moneda_id" onchange="chgCombo(smn_moneda_id.options[smn_moneda_id.selectedIndex].text,'smn_moneda_id_name'); validarMoneda();">
+			<select class="js-example-basic-single" name="smn_moneda_id" id="smn_moneda_id" onchange="chgCombo(smn_moneda_id.options[smn_moneda_id.selectedIndex].text,'smn_moneda_id_name'); validarMoneda();">
 				<option value="">[Cualquiera]</option>
 				<smn_moneda_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -205,7 +208,7 @@
 	<tr id="proveedor" style="display:none">
 		<td>${lbl:b_providers}</td>
 		<td>
-			<select name="smn_proveedor_id" id="smn_proveedor_id" onchange="chgCombo(smn_proveedor_id.options[smn_proveedor_id.selectedIndex].text,'smn_proveedor_id_name');">
+			<select class="js-example-basic-single" name="smn_proveedor_id" id="smn_proveedor_id" onchange="chgCombo(smn_proveedor_id.options[smn_proveedor_id.selectedIndex].text,'smn_proveedor_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_proveedor_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -256,7 +259,10 @@
 	{ 
 		addNew();
 
-	
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
+		
 		// chgCombo7('${fld:entidad}');
 		document.form1.smn_item_id.disabled=true;
 		document.form1.smn_servicio_id.disabled=true;

@@ -70,7 +70,7 @@
 		//mostrar el detalle de un registro
 		function getDetail(id)
 		{
-//			//alert('Colocar su cÛdigo aquÌ.')
+//			//alert('Colocar su c√≥digo aqu√≠.')
 			
 			var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
 			openDialog("dialog", uri, 650, 580);			
@@ -79,9 +79,9 @@
 		//muestra un DIV+IFRAME con el formulario de CRUD
 		function showEditor(id,estatus)
 		{
-//			//alert('Colocar su cÛdigo aquÌ.')
+//			//alert('Colocar su c√≥digo aqu√≠.')
 						
-			//editor a nivel de panel iconogr·fico
+			//editor a nivel de panel iconogr√°fico
 			if (id == 'editor')
 			{					
 				var uri = "${def:context}${def:actionroot}/editor/form";					
@@ -104,8 +104,8 @@
 			}
 			else if (id == 'procesar')
 			{
-				var uri = "${def:context}${def:actionroot}/procesar";		
-				openDialog("editor4", uri, 950, 600);		
+				var uri = "${def:context}${def:actionroot}/procesar_ofertas/form";		
+				openDialog("editor4", uri, 950, 600);	 	
 			}
 			//editor a nivel de registros
 			else {		
@@ -128,7 +128,7 @@
 		}
 
 		function reverseRecord(id) {
-//			//alert('Colocar su cÛdigo aquÌ.')
+//			//alert('Colocar su c√≥digo aqu√≠.')
 			
 			alertBox('${lbl:b_reverse_record_button}', '${lbl:b_reverse_button}', '${lbl:b_cancel_button}', 'reverseRecordOK(' + id + ')')
 					

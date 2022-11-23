@@ -49,8 +49,27 @@
 		<td>
 			<img src="${def:context}/images/list-add2.png" align="left" class="button" onclick="tipodocumento()" title="${lbl:b_line_type}" >
 		</td>
-	</tr>
-	</tr>
+		</tr>
+		<!--control picklist de seleccion múltiple-
+		<tr>
+			<td>${lbl:b_line_type}*</td>
+			<td>
+				<!--listbox--
+				<select id="smn_tipo_linea_id_name" name="smn_tipo_linea_id_name" size="5" style="width: 95%;">
+				</select>
+				<br>
+		
+				<!--comandos del listbox--
+				<div style="float: right; margin-right: 12px; padding-top: 7px">
+				[<a href="javascript:pickSmnEspecialidadId()" title="Añadir items a la lista">Añadir</a>]
+				[<a href="javascript:removeSmnEspecialidadId()" title="Remover un item de la lista">Remover</a>]
+				</div>
+		
+				<!--almacena los IDs de los items separados por ";"--
+				<input type="hidden" name="smn_tipo_linea_id" id="smn_tipo_linea_id" />
+				<input type="hidden" name="smn_tipo_linea_id_text" id="smn_tipo_linea_id_text" />
+			</td>
+		</tr>-->
 		<tr>
 			<td>${lbl:b_code}*</td>
 			<td>
@@ -63,7 +82,19 @@
 				<input id="lin_nombre" name="lin_nombre" type="text" maxlength="64" >
 			</td>
 		</tr>
+		<tr>
+			<td>${lbl:b_consumer_warehouse}*</td>
+			<td>
+				<select name="smn_almacen_consumo_rf" id="smn_almacen_consumo_rf" onchange="chgCombo(smn_almacen_consumo_rf.options[smn_almacen_consumo_rf.selectedIndex].text,'smn_almacen_consumo_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_almacen_consumo_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
 
+				</smn_almacen_consumo_rf_rows>
+			</select> 
+			<input id="smn_almacen_consumo_rf_name" name="smn_almacen_consumo_rf_name" type="hidden">
+			</td>
+		</tr>
 
 	</table>
 
@@ -89,6 +120,26 @@
 		if (id!="")
 			edit(id);
 	} 
+
+		//desplegar picklist de seleccion multiple
+	function pickSmnTipoLineaId(){
+		var url = "${def:context}/action/picklist/smntipolinea/form";
+		pickOpen ('smn_tipo_linea_id_name','smn_tipo_linea_id',url, 500, 420);	
+	}	
+
+	//llamada por el picklist para añadir un item al listbox
+	function selectSmnTipoLineaId(id, title) {
+		listboxAddItem("smn_tipo_linea_id_name", id, title);
+	}
+	
+	//remover un item del listbox
+	function removeSmnTipoLineaId() {
+		if (document.getElementById("smn_tipo_linea_id_name").selectedIndex == -1) {
+			alertBox("Por favor seleccione el item de la lista que desea remover.","Continuar");
+			return;
+		}
+		listboxRemoveItem("smn_tipo_linea_id_name");
+	}
 	
 	function chgCombo(text,id)
 	{
@@ -176,6 +227,7 @@
 							afterResponseFn=null, 
 							onErrorFn=retryAddnewOrEdit);	
 	}
+
 	function tipodocumento()
 	{
 		//alert ('Colocar su código aquí­.')

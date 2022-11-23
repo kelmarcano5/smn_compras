@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html style="font-size: 12px !important;">
+<head>
+    <title>${lbl:b_orden_compra}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="${def:context}/boostrap.min.css">
+    <script type="text/javascript" src="${def:context}/action/script"></script>
+    <script type="text/javascript" src="${def:context}/action/jquery"></script>
+    <script type="text/javascript" src="${def:context}/action/jqueryi"></script>
+    <script type="text/javascript" src="${def:context}/action/boostrap"></script>
+
+</head>
+<body>
+    <form id="formData" style="width:510px; background: #fff;  box-shadow: 0px 0px 0px #fff; margin-top: 80px; margin-bottom: 80px;">
+        <!-- <div class="banner">
+            <section class="text-center">
+                <h2>${lbl:b_orden_compra}: ${fld:smn_orden_compra_cabecera_id} </h2>
+            </section>
+        </div> -->
+        <br>
+        <br>
+        <div id="ocCabecera">
+            <table>
+                <tr>
+                    <td>
+                        ${lbl:b_entities}: ${fld:smn_entidad_rf_combo}  
+                    </td>
+                    <td>
+                        ${lbl:b_smn_proveedor_id}:${fld:proveedor}  
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ${lbl:b_address}: ${fld:direccionempresa}  
+                    </td>
+                    <td>
+                        ${lbl:b_provider_address}: ${fld:direccionprovee} 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ${lbl:b_tax_id}: ${fld:rif} 
+                    </td>
+                    <td>
+                        ${lbl:b_provider_tax_id}: ${fld:rifproveedor} 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ${lbl:b_responsible}: ${fld:aprobador} 
+                    </td>
+                    <td>
+                        ${lbl:b_phone}: ${fld:tlf_provee} 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ${lbl:b_delivery_address}: ${fld:direccionempresa}  
+                    </td>
+                    <td>
+                        ${lbl:s_profile_email}: ${fld:email_provee} 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ${lbl:b_observations}: ${fld:occ_observacion} 
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            </table>                    
+        </div>
+        <br>
+        <br>
+        <div id="tbody">
+            <table style="width:100%" class="table table-striped table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th class="text-center">${lbl:b_description_item_service}</th>
+                        <th class="text-center">${lbl:b_amount}</th>
+                        <th class="text-center">${lbl:b_price}</th>
+                        <th class="text-center">${lbl:b_mount}</th>
+                        <th class="text-center">${lbl:b_tax}</th>
+                        <th class="text-center">${lbl:b_discount}</th>
+                        <th class="text-center">${lbl:b_ofe_fecha_entrega}</th>
+                        <th class="text-center">${lbl:b_quantity_delivery}</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <detalle_rows>
+                        <tr style='font-family:Arial;'>
+                            <td align='left' style='font-size: 12px; font-family:Arial;'>${fld:smn_servicios_id_combo} ${fld:smn_item_rf_combo}</td>
+                            <td align='left' style='font-size: 12px; font-family:Arial;'>${fld:ocd_cantidad_pedida@#,###,###}</td>
+                            <td align='left' style='font-size: 12px; font-family:Arial;'>${fld:ocd_costo_ml@#,###,##0.00}</td>
+                            <td align='right' style='font-size: 12px; font-family:Arial;'>${fld:ocd_monto_bruto_ml@#,###,##0.00}</td>
+                            <td align='right' style='font-size: 12px; font-family:Arial;'>${fld:ocd_monto_impuesto_ml@#,###,##0.00}</td>
+                            <td align='right' style='font-size: 12px; font-family:Arial;'>${fld:ocd_monto_desc_reten_ml@#,###,##0.00}</td>
+                            <td align='right' style='font-size: 12px; font-family:Arial;'>${fld:ocf_fecha_entrega}</td>
+                            <td align='right' style='font-size: 12px; font-family:Arial;'>${fld:ocf_cantidad@#,###,###}</td>
+                            <!-- <td align='right' style='font-size: 12px; font-family:Arial;'>${fld:monto_ma@#,###,##0.00}</td> -->
+                        </tr>
+                    </detalle_rows>
+                        <tr><td colspan="8"></td></tr>
+                        <tr><td colspan="8"></td></tr>
+                        <tr><td colspan="8"></td></tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <!-- <td></td>
+                        <td></td>
+                        <td></td>
+                         -->
+                        <td colspan="4" align="right"><strong>${lbl:b_occ_monto_ml}</strong></td>
+                        <td align='right' style='font-weight: bold; font-size: 12px; font-family:Arial;'>${fld:total_monto_bruto_ml@#,###,##0.00}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <!-- <td align='right' style='font-weight: bold; font-size: 12px; font-family:Arial;'>${fld:total_monto_ma@#,###,##0.00}</td> -->
+                    </tr>
+                    <tr>
+                        <!-- <td></td>
+                        <td></td>
+                        <td></td>
+                         -->
+                        <td colspan="4" align="right"><strong>${lbl:b_occ_monto_impuesto_ml}</strong></td>
+                        <td align='right' style='font-weight: bold; font-size: 12px; font-family:Arial;'>${fld:total_monto_impuesto_ml@#,###,##0.00}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <!-- <td align='right' style='font-weight: bold; font-size: 12px; font-family:Arial;'>${fld:total_monto_ma@#,###,##0.00}</td> -->
+                    </tr>
+                    <tr>
+                        <!-- <td></td>
+                        <td></td>
+                        <td></td>
+                         -->
+                        <td colspan="4" align="right"><strong>${lbl:b_occ_monto_desc_rete_ml}</strong></td>
+                        <td align='right' style='font-weight: bold; font-size: 12px; font-family:Arial;'>${fld:total_monto_desc_reten_ml@#,###,##0.00}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <!-- <td align='right' style='font-weight: bold; font-size: 12px; font-family:Arial;'>${fld:total_monto_ma@#,###,##0.00}</td> -->
+                    </tr>
+                    <!-- <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><strong>Anticipo</strong></td>
+                        <td align='right' style='font-weight: bold; font-size: 12px; font-family:Arial;'>${fld:total_monto_ml@#,###,##0.00}</td>
+                    </tr> -->
+                    <tr>
+                        <!-- <td></td>
+                        <td></td>
+                        <td></td> -->
+                        
+                        <td colspan="4" align="right"><strong>${lbl:b_occ_monto_neto_ml}</strong></td>
+                        <td align='right' style='font-weight: bold; font-size: 12px; font-family:Arial;'>${fld:total_monto_neto_ml@#,###,##0.00}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <!-- <td align='right' style='font-weight: bold; font-size: 12px; font-family:Arial;'>${fld:total_monto_ma@#,###,##0.00}</td> -->
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <br>
+        <br>
+    </form>
+</body>
+</html>
+
+<script type="text/javascript" >
+    total_monto_neto_ml = 0
+    total_monto_neto_ma = 0
+    onload = function() {
+
+        $('#formData').printThis({
+            debug: false,               // show the iframe for debugging
+            importCSS: true,            // import parent page css
+            importStyle: true,         // import style tags
+            printContainer: false,       // print outer container/$.selector
+            loadCSS: "/boostrap.min.css",                // path to additional css file - use an array [] for multiple
+            pageTitle: "Orden de Compra",              // add title to print page
+            removeInline: false,        // remove inline styles from print elements
+            removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+            printDelay: 333,            // variable print delay
+            header: null,               // prefix to html
+            footer: null,               // postfix to html
+            base: false,                // preserve the BASE tag or accept a string for the URL
+            formValues: false,           // preserve input/form values
+            canvas: false,              // copy canvas content
+            doctypeString: '...',       // enter a different doctype for older markup
+            removeScripts: false,       // remove script tags from print content
+            copyTagClasses: false,      // copy classes from the html & body tag
+            beforePrintEvent: null,     // function for printEvent in iframe
+            beforePrint: null,          // function called before iframe is filled
+            afterPrint: null            // function called before iframe is removed
+        });
+
+        /* let myTable="";
+        let total_monto_neto_ml=0;
+        let total_monto_neto_ma=0;
+        myTable+= '<table style="width:100%" class="table table-striped table-bordered">';
+        myTable+= '<thead>';
+        myTable+= '<tr>';
+        myTable+= '<th class="text-center">Forma de pago</th>';
+        myTable+= '<th class="text-center">banco</th>';
+        myTable+= '<th class="text-center">Ingreso</th>';
+        myTable+= '<th class="text-center">Contratante</th>';
+        myTable+= '<th class="text-center">Paciente</th>';
+        myTable+= '<th class="text-center">Número</th>';
+        myTable+= '<th class="text-center">Nº Forma pago</th>';
+        myTable+= '<th class="text-center">Monto Moneda Local</th>';
+        myTable+= '<th class="text-center">Monto Moneda Alterna</th>';
+        myTable+= '</tr>';
+        myTable+= '</thead>';
+        myTable+= '<tbody>';
+            <detalle_rows>
+                total_monto_neto_ml += parseFloat("${fld:monto_ml}");
+                total_monto_neto_ma += parseFloat("${fld:monto_ma}");
+                myTable+="<tr style='font-family:Arial;'>";
+                myTable+="<td align='left' style='font-size: 12px; font-family:Arial;'>${fld:fop_descripcion}</td>";
+                myTable+="<td align='left' style='font-size: 12px; font-family:Arial;'>${fld:cuenta_bancaria}</td>";
+                myTable+="<td align='left' style='font-size: 12px; font-family:Arial;'>${fld:smn_num_doc_origen_rf}</td>";
+                myTable+="<td align='right' style='font-size: 12px; font-family:Arial;'>${fld:contratante}</td>";
+                myTable+="<td align='right' style='font-size: 12px; font-family:Arial;'>${fld:smn_paciente}</td>";
+                myTable+="<td align='right' style='font-size: 12px; font-family:Arial;'>${fld:numero}</td>";
+                myTable+="<td align='right' style='font-size: 12px; font-family:Arial;'>${fld:doc_forma_pago}</td>";
+                myTable+="<td align='right' style='font-size: 12px; font-family:Arial;'>${fld:monto_ml@#,###,##0.00}</td>";
+                myTable+="<td align='right' style='font-size: 12px; font-family:Arial;'>${fld:monto_ma@#,###,##0.00}</td>";
+                myTable+="</tr>";
+            </detalle_rows>
+        myTable+= '</tbody>';
+        myTable+= '<tfoot>';
+        myTable+="<tr>";
+        myTable+="<td></td>";
+        myTable+="<td></td>";
+        myTable+="<td></td>";
+        myTable+="<td></td>";
+        myTable+="<td></td>";
+        myTable+="<td></td>";
+        myTable+="<td></td>";
+        myTable+="<td align='right' style='font-weight: bold; font-size: 12px; font-family:Arial;'>"+total_monto_neto_ml.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString()+"</td>";
+        myTable+="<td align='right' style='font-weight: bold; font-size: 12px; font-family:Arial;'>"+total_monto_neto_ma.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString()+"</td>";
+        myTable+="</tr>";
+        myTable+= '</tfoot>';
+        myTable+="</table>";
+        
+        document.getElementById('tbody').innerHTML = myTable; */
+    }
+</script>
+
+

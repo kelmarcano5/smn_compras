@@ -8,6 +8,9 @@ INSERT INTO smn_compras.smn_orden_compra_impuesto
 	oci_sustraendo_ml,
 	smn_tipo_impuesto_rf,
 	oci_monto_impuesto_ml,
+	smn_moneda,
+	smn_tasa,
+	oci_monto_impuesto_ma,
 	oci_idioma,
 	oci_usuario,
 	oci_fecha_registro,
@@ -21,8 +24,17 @@ VALUES
 	${fld:rim_monto_base},
 	${fld:smn_porcentaje_impuesto},
 	${fld:smn_sustraendo},
-	${fld:imp_tipo_codigo},
+	(SELECT 
+		imp_tipo_codigo
+	 FROM
+	 	smn_base.smn_codigos_impuestos
+	 WHERE
+	 	smn_codigos_impuestos_id = ${fld:smn_cod_impuesto_deduc_rf}
+	),
 	${fld:rim_monto_impuesto},
+	${fld:smn_moneda_rf},
+	${fld:smn_tasa_rf},
+	${fld:rim_monto_imp_moneda_alterna},
 	'${def:locale}',
     '${def:user}',
     {d '${def:date}'},

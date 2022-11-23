@@ -7,7 +7,8 @@ INSERT INTO smn_compras.smn_lineas
 	lin_idioma,
 	lin_usuario_id,
 	lin_fecha_registro,
-	lin_hora
+	lin_hora,
+	smn_almacen_consumo_rf
 )
 VALUES
 (
@@ -18,5 +19,6 @@ VALUES
 	'${def:locale}',
 	'${def:user}',
 	'${def:date}',
-	'${def:time}'
+	'${def:time}',
+	${fld:smn_almacen_consumo_rf}
 )
