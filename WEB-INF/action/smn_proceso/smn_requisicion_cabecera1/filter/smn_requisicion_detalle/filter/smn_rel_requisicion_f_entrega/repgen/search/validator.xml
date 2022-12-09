@@ -4,15 +4,15 @@
 	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
 	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
 	
-	<parameter id='smn_requisicion_detalle_id_name' type='varchar' required='false' label='${lbl:b_requisition_detail}'/>
-	<parameter id='smn_requisicion_detalle_id' type='integer' required='false' label='${lbl:b_requisition_detail}' maxlen='10'/>
-	<parameter id='cfe_consecutivo' type='integer' required='false' label='${lbl:b_consecutivel}' maxlen='10'/>
-	<parameter id='cfe_cantidad' type='integer' required='false' label='${lbl:b_quantity}' maxlen='10'/>
-	<parameter id='cfe_fecha_de_entrega' type='date' required='false' label='${lbl:b_delivery_date}' maxlen='10'/>
+	<parameter id='smn_oferta_id' type='integer' required='false' label='${lbl:b_quotation}' maxlen='10'/>
+	<parameter id='ofe_consecutivo' type='integer' required='false' label='${lbl:b_consecutivel}' maxlen='10'/>
+	<parameter id='ofe_cantidad' type='double' required='false' label='${lbl:b_quantity}' maxlen='10'/>
+	<parameter id='ofe_fecha_entrega' type='date' required='false' label='${lbl:b_delivery_date}' maxlen='10'/>
+	<parameter id='ofe_status' type='varchar' required='false' label='${lbl:b_offer_status}' maxlen='2'/>
 
 	<custom-validator
 		classname='dinamica.validators.SQLPatternTransformer'
-		parameter='smn_requisicion_detalle_id_name'
+		parameter='ofe_status'
 		rule='contains' />
 
 

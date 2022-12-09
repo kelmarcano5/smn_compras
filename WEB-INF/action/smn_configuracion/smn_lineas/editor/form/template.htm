@@ -82,7 +82,19 @@
 				<input id="lin_nombre" name="lin_nombre" type="text" maxlength="64" >
 			</td>
 		</tr>
+		<tr>
+			<td>${lbl:b_consumer_warehouse}*</td>
+			<td>
+				<select name="smn_almacen_consumo_rf" id="smn_almacen_consumo_rf" onchange="chgCombo(smn_almacen_consumo_rf.options[smn_almacen_consumo_rf.selectedIndex].text,'smn_almacen_consumo_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_almacen_consumo_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
 
+				</smn_almacen_consumo_rf_rows>
+			</select> 
+			<input id="smn_almacen_consumo_rf_name" name="smn_almacen_consumo_rf_name" type="hidden">
+			</td>
+		</tr>
 
 	</table>
 

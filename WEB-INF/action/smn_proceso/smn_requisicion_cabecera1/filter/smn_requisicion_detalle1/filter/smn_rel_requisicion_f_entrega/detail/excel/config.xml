@@ -20,19 +20,20 @@
 	</output>
 	
 	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
-	<title cellPosY="1" cellPosX="2" cellStep="0" name="${lbl:b_rel_requisition_date_delivery}"/>
+	<title cellPosY="1" cellPosX="3" cellStep="0" name="${lbl:b_offer}"/>
 	
 	<excel 
 		recordset='query.sql' 
-		sheetname='${lbl:b_rel_requisition_date_delivery}' 
-		filename='${lbl:b_rel_requisition_date_delivery}.xls' 
+		sheetname='${lbl:b_offer}' 
+		filename='${lbl:b_offer}.xls' 
 		date-format='dd-MM-yyyy'
 		header-background='true'>
-		<col id='smn_requisicion_detalle_id' label='${lbl:b_requisition_detail}' />
-		<col id='cfe_consecutivo' label='${lbl:b_consecutivel}' />
-		<col id='cfe_cantidad' label='${lbl:b_quantity}' />
-		<col id='cfe_fecha_de_entrega' label='${lbl:b_delivery_date}' />
-		<col id='cfe_fecha_registro' label='${lbl:b_store_date}' />
+		<col id='cot_numero_documento' label='${lbl:b_quotation}' />
+		<col id='smn_documento_id' label='${lbl:b_purchasing_documents}' />
+		<col id='ofe_numero_documento' label='${lbl:b_document_number}' />
+		<col id='smn_item_compras_id' label='${lbl:b_item}' />
+		<col id='smn_servicios_compras_id' label='${lbl:b_shopping_services}' />
+		<col id='ofe_fecha_registro' label='${lbl:b_store_date}' />
 
 	</excel>
 

@@ -2,7 +2,7 @@
 <config>
 
 	<summary>
-		${lbl:b_rel_requisition_date_delivery}
+		${lbl:b_offer}
 	</summary>
 
 	<log>false</log>
@@ -14,8 +14,10 @@
 		<validator>false</validator>
 		<transaction>false</transaction>
 		<jdbc-log>false</jdbc-log>
-		<recordset id='query-smn_requisicion_detalle_id.sql' source='sql' scope='transaction'/>
-					<recordset id="smn_fecha_id" source="session" scope="transaction" />
+		
+		<recordset id='query-smn_entidad_id.sql' source='sql' scope='transaction'/>
+		<recordset id='query-smn_sucursal_id.sql' source='sql' scope='transaction'/>
+		<recordset id='query-smn_proveedor_id.sql' source='sql' scope='transaction'/>
 	</transaction>
 
 	<output>
@@ -23,8 +25,10 @@
 		<template>template.htm</template>
 		<set-http-headers>true</set-http-headers>
 		<content-type>text/html</content-type>
-		<print mode='table' recordset='query-smn_requisicion_detalle_id.sql' tag='smn_requisicion_detalle_id_rows'/>
-			<print mode="form" recordset="smn_fecha_id"/>
+		
+		<print mode='table' recordset='query-smn_entidad_id.sql' tag='smn_entidad_id_rows'/>
+		<print mode='table' recordset='query-smn_sucursal_id.sql' tag='smn_sucursal_id_rows'/>
+		<print mode='table' recordset='query-smn_proveedor_id.sql' tag='smn_proveedor_id_rows'/>
 	</output>
 
 </config>

@@ -17,7 +17,7 @@
 	</transaction>
 
 	<output>
-		<classname>domain.repgen.smn_proceso.smn_req_detalle_dcto_retenc.ExcelReport</classname>
+		<classname>domain.repgen.smn_configuracion.smn_impto_deduc_oferta.ExcelReport</classname>
 	</output>
 
 </config>

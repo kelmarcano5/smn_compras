@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<config>
+<config nodb="true">
 
 	<summary>
-		Respuesta de un servicio XML cuando no hay data
+		Dinamica JavaScript Library
 	</summary>
 
 	<log>false</log>
@@ -13,13 +13,12 @@
 		<transaction>false</transaction>
 		<jdbc-log>false</jdbc-log>
 	</transaction>
-
 	<output>
 		<classname>dinamica.GenericOutput</classname>
-		<template>template.xml</template>
+		<template>lodash.js</template>
 		<set-http-headers>true</set-http-headers>
-		<content-type>text/xml</content-type>
-		<expiration>0</expiration>
+		<content-type>text/javascript</content-type>
+		<expiration>180</expiration>
 	</output>
 
 </config>

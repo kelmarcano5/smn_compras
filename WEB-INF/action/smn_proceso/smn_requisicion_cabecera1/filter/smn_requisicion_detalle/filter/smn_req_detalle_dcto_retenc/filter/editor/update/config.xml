@@ -13,14 +13,24 @@
 		<recordset></recordset>
 		<!--que campos extrae para el registro descriptivo-->
 		<cols>
-			<colname>smn_requisicion_detalle_id</colname>
-			<colname>smn_codigo_descuento_rf</colname>
-			<colname>drc_monto_base</colname>
-			<colname>drc_porcentaje</colname>
-			<colname>drc_monto_descuento</colname>
+			<colname>smn_oferta_id</colname>
+			<colname>rio_monto_base_ml</colname>
+			<colname>rio_cod_impuesto_deduc_id</colname>
+			<colname>rio_porcentaje_deduc</colname>
+			<colname>rio_sustraendo</colname>
+			<colname>rio_monto_impuesto_ml</colname>
+			<colname>rio_moneda_rf</colname>
+			<colname>rio_tasa_rf</colname>
+			<colname>rio_monto_impuesto_ma</colname>
+			<colname>rio_cod_descuento</colname>
+			<colname>rio_monto_base_ml</colname>
+			<colname>rio_monto_base_ma</colname>
+			<colname>rio_porcentaje_descuento</colname>
+			<colname>rio_monto_descuento_ml</colname>
+			<colname>rio_monto_descuento_ma</colname>
 		
 		</cols>
-		<table>smn_compras.smn_req_detalle_dcto_retenc</table>
+		<table>smn_compras.smn_impto_deduc_oferta</table>
 		<oper>ACTUALIZAR</oper>
 		<area>Carga de datos</area>
 		<!--

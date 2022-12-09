@@ -20,12 +20,21 @@
 	</output>
 	
 	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+<<<<<<<< HEAD:WEB-INF/action/smn_proceso/smn_requisicion_cabecera1/smn_requisicion_detalle/filter/smn_req_detalle_impuesto/importexcel/excel/config.xml
 	<title cellPosY="0" cellPosX="1" cellStep="0" name="${lbl:b_requisition_tax_detail}"/>
 	
 	<excel 
 			recordset='error.excel' 
 			sheetname='${lbl:b_requisition_tax_detail}' 
 			filename='${lbl:b_requisition_tax_detail}.xls' 
+========
+	<title cellPosY="0" cellPosX="1" cellStep="0" name="${lbl:b_smn_orden_compra_cabecera}"/>
+	
+	<excel 
+			recordset='error.excel' 
+			sheetname='${lbl:b_smn_orden_compra_cabecera}' 
+			filename='${lbl:b_smn_orden_compra_cabecera}.xls' 
+>>>>>>>> a57efee07d661d845df2ffc06524651f62dfc69e:WEB-INF/action/smn_registro/smn_orden_compra_cabecera/filter/importexcel/excel/config.xml
 			date-format='dd-MM-yyyy'
 			header-background='true'>
 		<col id='columna' label='${lbl:b_column}' />

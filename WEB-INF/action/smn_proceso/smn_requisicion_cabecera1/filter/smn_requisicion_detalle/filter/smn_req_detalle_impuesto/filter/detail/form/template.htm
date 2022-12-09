@@ -52,55 +52,75 @@
 
 	<!--banner-->
 	<div class="bannerDialog" id="encabezado_tabla">
-		${lbl:b_requisition_tax_detail}
+		${lbl:b_offer_deduction_tax}
 		<img src="${def:context}/images/pdf.png" onclick="openPDF()" title="${lbl:b_export_pdf}" style="cursor:pointer; margin-left:3px;"/>
 		<img src="${def:context}/images/excel.png" onclick="openExcel()" title="${lbl:b_export_excel}" style="cursor:pointer; margin-left:3px;"/>
-		<!-- <img src="${def:context}/images/file-xml4.png" onclick="openXml('${fld:smn_req_detalle_impuesto_id}')" title="${lbl:b_export_xml}" style="cursor:pointer; margin-left:3px;"/>
-		<img src="${def:context}/images/file-text.png" onclick="openTxt('${fld:smn_req_detalle_impuesto_id}')" title="${lbl:b_export_txt}" style="cursor:pointer; margin-left:3px;"/>
-		<img src="${def:context}/images/emails.png" onclick="openEmails()" title="${lbl:s_profile_email}" style="cursor:pointer; margin-left:3px;"/> -->
+		<img src="${def:context}/images/file-xml4.png" onclick="openXml('${fld:smn_impto_deduc_oferta_id}')" title="${lbl:b_export_xml}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/file-text.png" onclick="openTxt('${fld:smn_impto_deduc_oferta_id}')" title="${lbl:b_export_txt}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/emails.png" onclick="openEmails()" title="${lbl:s_profile_email}" style="cursor:pointer; margin-left:3px;"/>
 		<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="${lbl:b_close_button}" style="float:right; cursor:pointer;"/>
 	</div>
 
 	<table class="record" style="width:500px;">
 		<tr>
-			<td width="40%">${lbl:b_requisition_detail}</td>
-			<td style="background-color: white">${fld:smn_requisicion_detalle_id}</td>
+			<td width="40%">${lbl:b_offer}</td>
+			<td style="background-color: white">${fld:smn_oferta_id}</td>
 		</tr>
 		<tr>
-			<td width="40%">${lbl:b_base_amount}</td>
-			<td style="background-color: white">${fld:rim_monto_base@#,###,##0.00}</td>
+			<td width="40%">${lbl:b_base_amount_ml}</td>
+			<td style="background-color: white">${fld:rio_monto_base_ml@#,###,##0.00}</td>
 		</tr>
 		<tr>
 			<td width="40%">${lbl:b_code_tax_deduction}</td>
-			<td style="background-color: white">${fld:smn_cod_impuesto_deduc_rf}</td>
+			<td style="background-color: white">${fld:imp_descripcion}</td>
 		</tr>
 		<tr>
-			<td width="40%">${lbl:b_tax_percentage}</td>
-			<td style="background-color: white">${fld:smn_porcentaje_impuesto@#,###,##0.00}</td>
+			<td width="40%">${lbl:b_deduction_percentage}</td>
+			<td style="background-color: white">${fld:rio_porcentaje_deduc@#,###,##0.00}</td>
 		</tr>
 		<tr>
-			<td width="40%">${lbl:b_subtract}</td>
-			<td style="background-color: white">${fld:smn_sustraendo@#,###,##0.00}</td>
+			<td width="40%">${lbl:b_subtrahend}</td>
+			<td style="background-color: white">${fld:rio_sustraendo@#,###,##0.00}</td>
 		</tr>
 		<tr>
 			<td width="40%">${lbl:b_tax_amount_ml}</td>
-			<td style="background-color: white">${fld:rim_monto_impuesto@#,###,##0.00}</td>
+			<td style="background-color: white">${fld:rio_monto_impuesto_ml@#,###,##0.00}</td>
 		</tr>
 		<tr>
 			<td width="40%">${lbl:b_coins}</td>
-			<td style="background-color: white">${fld:smn_moneda_rf}</td>
+			<td style="background-color: white">${fld:mon_nombre}</td>
 		</tr>
 		<tr>
 			<td width="40%">${lbl:b_exchange_rate}</td>
-			<td style="background-color: white">${fld:smn_tasa_rf}</td>
+			<td style="background-color: white">${fld:tca_tasa_cambio}</td>
 		</tr>
 		<tr>
 			<td width="40%">${lbl:b_tax_amount_ma}</td>
-			<td style="background-color: white">${fld:rim_monto_imp_moneda_alterna@#,###,##0.00}</td>
+			<td style="background-color: white">${fld:rio_monto_impuesto_ma@#,###,##0.00}</td>
 		</tr>
 		<tr>
-			<td width="40%">${lbl:b_store_date}</td>
-			<td style="background-color: white">${fld:rim_fecha_registro@dd-MM-yyyy}</td>
+			<td width="40%">${lbl:b_code_discount}</td>
+			<td style="background-color: white">${fld:dct_nombre}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_base_amount_ml}</td>
+			<td style="background-color: white">${fld:rio_monto_base_ml@#,###,##0.00}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_base_amount_ma}</td>
+			<td style="background-color: white">${fld:rio_monto_base_ma@#,###,##0.00}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_porcentage_discount}</td>
+			<td style="background-color: white">${fld:rio_porcentaje_descuento@#,###,##0.00}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_discount_amount_ml}</td>
+			<td style="background-color: white">${fld:rio_monto_descuento_ml@#,###,##0.00}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_discount_amount_ma}</td>
+			<td style="background-color: white">${fld:rio_monto_descuento_ma@#,###,##0.00}</td>
 		</tr>
 
 	</table>

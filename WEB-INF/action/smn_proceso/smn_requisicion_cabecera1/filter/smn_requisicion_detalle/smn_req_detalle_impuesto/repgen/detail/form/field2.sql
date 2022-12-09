@@ -16,6 +16,6 @@ from
 where
 	smn_base.fields.field_id in ${fields}
 	and
-	smn_base.fields.action_root = ''
+	smn_base.fields.action_root = '/action/smn_configuracion/smn_oferta_f_entrega/repgen'
 order by
 		smn_base.fields.orden asc

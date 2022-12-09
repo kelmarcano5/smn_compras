@@ -53,11 +53,11 @@
 
 	<!--banner-->
 	<div class="bannerDialog" id="encabezado_tabla">
-		${lbl:b_requisition_tax_detail}
+		${lbl:b_smn_orden_compra_cabecera}
 		<img src="${def:context}/images/pdf.png" onclick="openPDF()" title="${lbl:b_export_pdf}" style="cursor:pointer; margin-left:3px;"/>
 		<img src="${def:context}/images/excel.png" onclick="openExcel()" title="${lbl:b_export_excel}" style="cursor:pointer; margin-left:3px;"/>
-		<img src="${def:context}/images/file-xml4.png" onclick="openXml('${fld:smn_req_detalle_impuesto_id}')" title="${lbl:b_export_xml}" style="cursor:pointer; margin-left:3px;"/>
-		<img src="${def:context}/images/file-text.png" onclick="openTxt('${fld:smn_req_detalle_impuesto_id}')" title="${lbl:b_export_txt}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/file-xml4.png" onclick="openXml('${fld:smn_orden_compra_cabecera_id}')" title="${lbl:b_export_xml}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/file-text.png" onclick="openTxt('${fld:smn_orden_compra_cabecera_id}')" title="${lbl:b_export_txt}" style="cursor:pointer; margin-left:3px;"/>
 		<img src="${def:context}/images/emails.png" onclick="openEmails()" title="${lbl:s_profile_email}" style="cursor:pointer; margin-left:3px;"/>
 		<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="${lbl:b_close_button}" style="float:right; cursor:pointer;"/>
 	</div>
@@ -71,81 +71,97 @@
 
 	<!--campos-->
 			<tr>
-		<td>${lbl:b_base_amount}*</td>
+		<td>${lbl:b_entities}</td>
 		<td>
-			<input id="rim_monto_base" name="rim_monto_base" type="text" maxlength="10" class="numeric" disabled >
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_code_tax_deduction}*</td>
-		<td>
-			<select name="smn_cod_impuesto_deduc_rf" id="smn_cod_impuesto_deduc_rf" onchange="chgCombo(smn_cod_impuesto_deduc_rf.options[smn_cod_impuesto_deduc_rf.selectedIndex].text,'smn_cod_impuesto_deduc_rf_name');" disabled >
+			<select name="smn_entidad_rf" id="smn_entidad_rf" onchange="chgCombo(smn_entidad_rf.options[smn_entidad_rf.selectedIndex].text,'smn_entidad_rf_name');" disabled >
 				<option value="">[Cualquiera]</option>
-				<smn_cod_impuesto_deduc_rf_rows>
+				<smn_entidad_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
-				</smn_cod_impuesto_deduc_rf_rows>
+				</smn_entidad_rf_rows>
 			</select> 
-			<input id="smn_cod_impuesto_deduc_rf_name" name="smn_cod_impuesto_deduc_rf_name" type="hidden" disabled >
+			<input id="smn_entidad_rf_name" name="smn_entidad_rf_name" type="hidden" disabled >
 		</td>
 	</tr>
 	<tr>
-		<td>${lbl:b_tax_percentage}*</td>
+		<td>${lbl:b_smn_sucursal}</td>
 		<td>
-			<select name="smn_porcentaje_impuesto" id="smn_porcentaje_impuesto" onchange="chgCombo(smn_porcentaje_impuesto.options[smn_porcentaje_impuesto.selectedIndex].text,'smn_porcentaje_impuesto_name');" disabled >
+			<select name="smn_sucursal_rf" id="smn_sucursal_rf" onchange="chgCombo(smn_sucursal_rf.options[smn_sucursal_rf.selectedIndex].text,'smn_sucursal_rf_name');" disabled >
 				<option value="">[Cualquiera]</option>
-				<smn_porcentaje_impuesto_rows>
+				<smn_sucursal_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
-				</smn_porcentaje_impuesto_rows>
+				</smn_sucursal_rf_rows>
 			</select> 
-			<input id="smn_porcentaje_impuesto_name" name="smn_porcentaje_impuesto_name" type="hidden" disabled >
+			<input id="smn_sucursal_rf_name" name="smn_sucursal_rf_name" type="hidden" disabled >
 		</td>
 	</tr>
 	<tr>
-		<td>${lbl:b_subtract}*</td>
+		<td>${lbl:b_smn_documento_id}</td>
 		<td>
-			<select name="smn_sustraendo" id="smn_sustraendo" onchange="chgCombo(smn_sustraendo.options[smn_sustraendo.selectedIndex].text,'smn_sustraendo_name');" disabled >
+			<select name="smn_documento_id" id="smn_documento_id" onchange="chgCombo(smn_documento_id.options[smn_documento_id.selectedIndex].text,'smn_documento_id_name');" disabled >
 				<option value="">[Cualquiera]</option>
-				<smn_sustraendo_rows>
+				<smn_documento_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
-				</smn_sustraendo_rows>
+				</smn_documento_id_rows>
 			</select> 
-			<input id="smn_sustraendo_name" name="smn_sustraendo_name" type="hidden" disabled >
+			<input id="smn_documento_id_name" name="smn_documento_id_name" type="hidden" disabled >
 		</td>
 	</tr>
 	<tr>
-		<td>${lbl:b_tax_amount_ml}*</td>
+		<td>${lbl:b_occ_orden_compra_numero}</td>
 		<td>
-			<input id="rim_monto_impuesto" name="rim_monto_impuesto" type="text" maxlength="10" class="numeric" disabled >
+			<input id="occ_orden_compra_numero" name="occ_orden_compra_numero" type="text" maxlength="10" class="numeric" disabled >
 		</td>
 	</tr>
 	<tr>
-		<td>${lbl:b_coins}*</td>
+		<td>${lbl:b_smn_proveedor_id}</td>
 		<td>
-			<select name="smn_moneda_rf" id="smn_moneda_rf" onchange="chgCombo(smn_moneda_rf.options[smn_moneda_rf.selectedIndex].text,'smn_moneda_rf_name');" disabled >
+			<select name="smn_proveedor_id" id="smn_proveedor_id" onchange="chgCombo(smn_proveedor_id.options[smn_proveedor_id.selectedIndex].text,'smn_proveedor_id_name');" disabled >
 				<option value="">[Cualquiera]</option>
-				<smn_moneda_rf_rows>
+				<smn_proveedor_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
-				</smn_moneda_rf_rows>
+				</smn_proveedor_id_rows>
 			</select> 
-			<input id="smn_moneda_rf_name" name="smn_moneda_rf_name" type="hidden" disabled >
+			<input id="smn_proveedor_id_name" name="smn_proveedor_id_name" type="hidden" disabled >
 		</td>
 	</tr>
 	<tr>
-		<td>${lbl:b_store_date}@{${def:date}}*</td>
+		<td>${lbl:b_occ_fecha_orde_compra}</td>
 		<td>
-			<input id="rim_fecha_registro_ini" name="rim_fecha_registro_ini" type="text" class="date" maxlength="10" disabled >
-			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('rim_fecha_registro_ini')">
+			<input id="occ_fecha_orde_compra" name="occ_fecha_orde_compra" type="text" class="date" maxlength="10" disabled >
+			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('occ_fecha_orde_compra')">
 		</td>
 	</tr>
 	<tr>
-		<td>${lbl:b_store_date}@{${def:date}}*</td>
+		<td>${lbl:b_smn_forma_pago_rf}</td>
 		<td>
-			<input id="rim_fecha_registro_fin" name="rim_fecha_registro_fin" type="text" class="date" maxlength="10" disabled >
-			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('rim_fecha_registro_fin')">
+			<select name="smn_forma_pago_rf" id="smn_forma_pago_rf" onchange="chgCombo(smn_forma_pago_rf.options[smn_forma_pago_rf.selectedIndex].text,'smn_forma_pago_rf_name');" disabled >
+				<option value="">[Cualquiera]</option>
+				<smn_forma_pago_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_forma_pago_rf_rows>
+			</select> 
+			<input id="smn_forma_pago_rf_name" name="smn_forma_pago_rf_name" type="hidden" disabled >
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_store_date}@{${def:date}}
+</td>
+		<td>
+			<input id="occ_fecha_registro_ini" name="occ_fecha_registro_ini" type="text" class="date" maxlength="10" disabled >
+			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('occ_fecha_registro_ini')">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_store_date}@{${def:date}}
+</td>
+		<td>
+			<input id="occ_fecha_registro_fin" name="occ_fecha_registro_fin" type="text" class="date" maxlength="10" disabled >
+			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('occ_fecha_registro_fin')">
 		</td>
 	</tr>
 

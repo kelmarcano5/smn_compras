@@ -53,11 +53,11 @@
 
 	<!--banner-->
 	<div class="bannerDialog" id="encabezado_tabla">
-		${lbl:b_requisition_detail_discount_retention}
+		${lbl:b_offer_deduction_tax}
 		<img src="${def:context}/images/pdf.png" onclick="openPDF()" title="${lbl:b_export_pdf}" style="cursor:pointer; margin-left:3px;"/>
 		<img src="${def:context}/images/excel.png" onclick="openExcel()" title="${lbl:b_export_excel}" style="cursor:pointer; margin-left:3px;"/>
-		<img src="${def:context}/images/file-xml4.png" onclick="openXml('${fld:smn_req_detalle_dcto_retenc_id}')" title="${lbl:b_export_xml}" style="cursor:pointer; margin-left:3px;"/>
-		<img src="${def:context}/images/file-text.png" onclick="openTxt('${fld:smn_req_detalle_dcto_retenc_id}')" title="${lbl:b_export_txt}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/file-xml4.png" onclick="openXml('${fld:smn_impto_deduc_oferta_id}')" title="${lbl:b_export_xml}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/file-text.png" onclick="openTxt('${fld:smn_impto_deduc_oferta_id}')" title="${lbl:b_export_txt}" style="cursor:pointer; margin-left:3px;"/>
 		<img src="${def:context}/images/emails.png" onclick="openEmails()" title="${lbl:s_profile_email}" style="cursor:pointer; margin-left:3px;"/>
 		<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="${lbl:b_close_button}" style="float:right; cursor:pointer;"/>
 	</div>
@@ -71,55 +71,66 @@
 
 	<!--campos-->
 			<tr>
+		<td>${lbl:b_offer}*</td>
+		<td>
+			<select name="smn_oferta_id" id="smn_oferta_id" onchange="chgCombo(smn_oferta_id.options[smn_oferta_id.selectedIndex].text,'smn_oferta_id_name');" disabled >
+				<option value="">[Cualquiera]</option>
+				<smn_oferta_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_oferta_id_rows>
+			</select> 
+			<input id="smn_oferta_id_name" name="smn_oferta_id_name" type="hidden" disabled >
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_code_tax_deduction}*</td>
+		<td>
+			<select name="imp_descripcion" id="imp_descripcion" onchange="chgCombo(imp_descripcion.options[imp_descripcion.selectedIndex].text,'imp_descripcion_name');" disabled >
+				<option value="">[Cualquiera]</option>
+				<rio_cod_impuesto_deduc_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</rio_cod_impuesto_deduc_id_rows>
+			</select> 
+			<input id="imp_descripcion_name" name="imp_descripcion_name" type="hidden" disabled >
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_tax_amount_ml}*</td>
+		<td>
+			<input id="rio_monto_impuesto_ml" name="rio_monto_impuesto_ml" type="text" maxlength="10" class="numeric" disabled >
+		</td>
+	</tr>
+	<tr>
 		<td>${lbl:b_code_discount}*</td>
 		<td>
-			<select name="smn_codigo_descuento_rf" id="smn_codigo_descuento_rf" onchange="chgCombo(smn_codigo_descuento_rf.options[smn_codigo_descuento_rf.selectedIndex].text,'smn_codigo_descuento_rf_name');" disabled >
+			<select name="dct_nombre" id="dct_nombre" onchange="chgCombo(dct_nombre.options[dct_nombre.selectedIndex].text,'dct_nombre_name');" disabled >
 				<option value="">[Cualquiera]</option>
-				<smn_codigo_descuento_rf_rows>
+				<rio_cod_descuento_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
-				</smn_codigo_descuento_rf_rows>
+				</rio_cod_descuento_rows>
 			</select> 
-			<input id="smn_codigo_descuento_rf_name" name="smn_codigo_descuento_rf_name" type="hidden" disabled >
+			<input id="dct_nombre_name" name="dct_nombre_name" type="hidden" disabled >
 		</td>
 	</tr>
 	<tr>
-		<td>${lbl:b_base_amount}*</td>
+		<td>${lbl:b_base_amount_ml}*</td>
 		<td>
-			<input id="drc_monto_base" name="drc_monto_base" type="text" maxlength="10" class="numeric" disabled >
+			<input id="rio_monto_base_ml" name="rio_monto_base_ml" type="text" maxlength="10" class="numeric" disabled >
 		</td>
 	</tr>
 	<tr>
-		<td>${lbl:b_percentage}*</td>
+		<td>${lbl:b_porcentage_discount}*</td>
 		<td>
-			<select name="drc_porcentaje" id="drc_porcentaje" onchange="chgCombo(drc_porcentaje.options[drc_porcentaje.selectedIndex].text,'drc_porcentaje_name');" disabled >
-				<option value="">[Cualquiera]</option>
-				<drc_porcentaje_rows>
-				<option value="${fld:id}">${fld:item}</option>
-
-				</drc_porcentaje_rows>
-			</select> 
-			<input id="drc_porcentaje_name" name="drc_porcentaje_name" type="hidden" disabled >
+			<input id="rio_porcentaje_descuento" name="rio_porcentaje_descuento" type="text" maxlength="10" class="numeric" disabled >
 		</td>
 	</tr>
 	<tr>
-		<td>${lbl:b_discount_amount}*</td>
+		<td>${lbl:b_discount_amount_ml}*</td>
 		<td>
-			<input id="drc_monto_descuento" name="drc_monto_descuento" type="text" maxlength="10" class="numeric" disabled >
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_store_date}@{${def:date}}*</td>
-		<td>
-			<input id="drc_fecha_registro_ini" name="drc_fecha_registro_ini" type="text" class="date" maxlength="10" disabled >
-			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('drc_fecha_registro_ini')">
-		</td>
-	</tr>
-	<tr>
-		<td>${lbl:b_store_date}@{${def:date}}*</td>
-		<td>
-			<input id="drc_fecha_registro_fin" name="drc_fecha_registro_fin" type="text" class="date" maxlength="10" disabled >
-			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('drc_fecha_registro_fin')">
+			<input id="rio_monto_descuento_ml" name="rio_monto_descuento_ml" type="text" maxlength="10" class="numeric" disabled >
 		</td>
 	</tr>
 

@@ -17,7 +17,7 @@
 	</transaction>
 
 	<output>
-		<classname>domain.repgen.smn_proceso.smn_req_detalle_impuesto.XmlReport</classname>
+		<classname>domain.repgen.smn_configuracion.smn_oferta_f_entrega.XmlReport</classname>
 		<template>template.txt</template>
 		<set-http-headers>true</set-http-headers>
 		<content-type>text/xml</content-type>

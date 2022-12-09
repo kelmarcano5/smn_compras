@@ -20,7 +20,7 @@
 		<template>sucursales.js</template>
 		<set-http-headers>true</set-http-headers>
 		<content-type>text/javascript</content-type>
-		<print mode="table" recordset="query.sql" tag="smn_item_id_rows"/>
+		<print mode="table" recordset="query.sql" tag="smn_sucursal_id_rows"/>
 	</output>
 
 </config>

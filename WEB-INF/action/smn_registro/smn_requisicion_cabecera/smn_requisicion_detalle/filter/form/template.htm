@@ -4,12 +4,22 @@
 <head>
 
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+<<<<<<< HEAD
 	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
 	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
 	
 	<!--biblioteca generica JS/Dinamica-->
 	<script type="text/javascript" src="${def:context}/action/script"></script>
 	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+=======
+		<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+	<script type="text/javascript" src="${def:context}/action/jquery">
+	</script>
+>>>>>>> a57efee07d661d845df2ffc06524651f62dfc69e
 	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
@@ -141,6 +151,10 @@
 	{ 
 		showFilter();
 
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
+		
 		$(document).ready(function() {	
 		    $('.js-example-basic-single').select2();
 		});

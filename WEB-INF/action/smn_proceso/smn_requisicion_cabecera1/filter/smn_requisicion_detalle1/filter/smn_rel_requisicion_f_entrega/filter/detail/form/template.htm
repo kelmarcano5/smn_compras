@@ -3,8 +3,8 @@
 
 <head>
 
-	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
 	
 	<script type="text/javascript" src="${def:context}/action/script">
 	</script>
@@ -52,35 +52,35 @@
 
 	<!--banner-->
 	<div class="bannerDialog" id="encabezado_tabla">
-		${lbl:b_rel_requisition_date_delivery}
+		${lbl:b_offer_delivery_date}
 		<img src="${def:context}/images/pdf.png" onclick="openPDF()" title="${lbl:b_export_pdf}" style="cursor:pointer; margin-left:3px;"/>
 		<img src="${def:context}/images/excel.png" onclick="openExcel()" title="${lbl:b_export_excel}" style="cursor:pointer; margin-left:3px;"/>
-		<!-- <img src="${def:context}/images/file-xml4.png" onclick="openXml('${fld:smn_rel_requisicion_f_entrega_id}')" title="${lbl:b_export_xml}" style="cursor:pointer; margin-left:3px;"/>
-		<img src="${def:context}/images/file-text.png" onclick="openTxt('${fld:smn_rel_requisicion_f_entrega_id}')" title="${lbl:b_export_txt}" style="cursor:pointer; margin-left:3px;"/>
+		<!-- <img src="${def:context}/images/file-xml4.png" onclick="openXml('${fld:smn_oferta_f_entrega_id}')" title="${lbl:b_export_xml}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/file-text.png" onclick="openTxt('${fld:smn_oferta_f_entrega_id}')" title="${lbl:b_export_txt}" style="cursor:pointer; margin-left:3px;"/>
 		<img src="${def:context}/images/emails.png" onclick="openEmails()" title="${lbl:s_profile_email}" style="cursor:pointer; margin-left:3px;"/> -->
 		<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="${lbl:b_close_button}" style="float:right; cursor:pointer;"/>
 	</div>
 
 	<table class="record" style="width:500px;">
 		<tr>
-			<td width="40%">${lbl:b_requisition_detail}</td>
-			<td style="background-color: white">${fld:smn_requisicion_detalle_id}</td>
+			<td width="40%">${lbl:b_quotation}</td>
+			<td style="background-color: white">${fld:smn_oferta_id}</td>
 		</tr>
 		<tr>
 			<td width="40%">${lbl:b_consecutivel}</td>
-			<td style="background-color: white">${fld:cfe_consecutivo}</td>
+			<td style="background-color: white">${fld:ofe_consecutivo}</td>
 		</tr>
 		<tr>
 			<td width="40%">${lbl:b_quantity}</td>
-			<td style="background-color: white">${fld:cfe_cantidad}</td>
+			<td style="background-color: white">${fld:ofe_cantidad@#,###,##0.00}</td>
 		</tr>
 		<tr>
 			<td width="40%">${lbl:b_delivery_date}</td>
-			<td style="background-color: white">${fld:cfe_fecha_de_entrega@dd-MM-yyyy}</td>
+			<td style="background-color: white">${fld:ofe_fecha_entrega@dd-MM-yyyy}</td>
 		</tr>
 		<tr>
-			<td width="40%">${lbl:b_store_date}</td>
-			<td style="background-color: white">${fld:cfe_fecha_registro}</td>
+			<td width="40%">${lbl:b_offer_status}</td>
+			<td style="background-color: white">${fld:ofe_status}</td>
 		</tr>
 
 	</table>

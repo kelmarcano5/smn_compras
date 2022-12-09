@@ -16,6 +16,10 @@ from
 where
 	smn_base.fields.field_id in ${fields}
 	and
+<<<<<<<< HEAD:WEB-INF/action/smn_proceso/smn_requisicion_cabecera1/repgen/detail/form/field2.sql
 	smn_base.fields.action_root = '/action/smn_registro/smn_requisicion_cabecera/repgen'
+========
+	smn_base.fields.action_root = '/action/smn_registro/smn_orden_compra_cabecera/repgen'
+>>>>>>>> a57efee07d661d845df2ffc06524651f62dfc69e:WEB-INF/action/smn_registro/smn_orden_compra_cabecera/filter/repgen/detail/form/field2.sql
 order by
 		smn_base.fields.orden asc

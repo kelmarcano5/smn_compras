@@ -15,6 +15,7 @@
 		<transaction>false</transaction>
 		<jdbc-log>false</jdbc-log>
 		<recordset id='query-smn_tipo_linea_id.sql' source='sql' scope='transaction'/>
+		<recordset id='query-lin_almacen_consumo.sql' source='sql' scope='transaction'/>
 	</transaction>
 
 	<output>
@@ -23,6 +24,7 @@
 		<set-http-headers>true</set-http-headers>
 		<content-type>text/html</content-type>
 		<print mode='table' recordset='query-smn_tipo_linea_id.sql' tag='smn_tipo_linea_id_rows'/>
+		<print mode='table' recordset='query-lin_almacen_consumo.sql' tag='smn_almacen_consumo_rf_rows'/>
 		<print mode="form" recordset="_request" /> 
 	</output>
 

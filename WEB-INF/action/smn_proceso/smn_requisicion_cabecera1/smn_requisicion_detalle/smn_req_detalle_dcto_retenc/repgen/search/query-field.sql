@@ -16,7 +16,11 @@ from
 where
 	smn_base.fields.field_id in ${fields}
 and
+<<<<<<<< HEAD:WEB-INF/action/smn_proceso/smn_requisicion_cabecera1/smn_requisicion_detalle/smn_req_detalle_dcto_retenc/repgen/search/query-field.sql
 	smn_base.fields.action_root = ''
+========
+	smn_base.fields.action_root = '/action/smn_registro/smn_orden_compra_cabecera/repgen'
+>>>>>>>> a57efee07d661d845df2ffc06524651f62dfc69e:WEB-INF/action/smn_registro/smn_orden_compra_cabecera/filter/repgen/search/query-field.sql
 order by
 	smn_base.fields.orden asc
 limit

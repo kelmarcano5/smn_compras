@@ -36,7 +36,7 @@ CASE
 	CASE
 		when smn_compras.smn_requisicion_cabecera.req_version_descripcion is null then 'Descripcion de la version sin definir' else smn_compras.smn_requisicion_cabecera.req_version_descripcion
 	end as req_version_descripcion,
-	smn_compras.smn_requisicion_cabecera.req_usuario 
+	smn_compras.smn_requisicion_cabecera.req_usuario
 FROM
 	smn_compras.smn_requisicion_cabecera
 	LEFT OUTER JOIN smn_compras.smn_documentos ON smn_compras.smn_documentos.smn_documentos_id = smn_compras.smn_requisicion_cabecera.smn_documento_id

@@ -17,7 +17,7 @@
 	</transaction>
 
 	<output>
-		<classname>domain.repgen.smn_proceso.smn_rel_requisicion_f_entrega.TextReport</classname>
+		<classname>domain.repgen.smn_configuracion.smn_impto_deduc_oferta.TextReport</classname>
 		<template>template.txt</template>
 		<set-http-headers>true</set-http-headers>
 		<content-type>text/plain</content-type>

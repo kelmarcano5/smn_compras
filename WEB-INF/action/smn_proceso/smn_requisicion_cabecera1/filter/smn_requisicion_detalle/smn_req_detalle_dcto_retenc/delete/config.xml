@@ -2,7 +2,7 @@
 <config>
 
 	<summary>
-		Eliminar registro de una tabla
+		Actualiza valores de un formulario en una tabla
 	</summary>
 
 	<log>false</log>
@@ -14,7 +14,7 @@
 		<jdbc-log>false</jdbc-log>
 	</transaction>
 
-	<query>delete.sql</query>
+	<query>update.sql</query>
 
 	<output>
 		<classname>dinamica.GenericOutput</classname>

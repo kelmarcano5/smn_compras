@@ -21,7 +21,7 @@
 	</transaction>
 
 	<output>
-		<classname>domain.repgen.smn_proceso.smn_req_detalle_impuesto.PDFlReportDetail</classname>
+		<classname>domain.repgen.smn_registro.smn_orden_compra_cabecera.PDFlReportDetail</classname>
 	</output>
 
 </config>

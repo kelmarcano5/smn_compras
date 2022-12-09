@@ -38,7 +38,7 @@
 		<tr>
 		<td>${lbl:b_entities}*</td>
 		<td>
-			<select name="smn_entidad_id" id="smn_entidad_id" onchange="chgCombo1(smn_entidad_id.options[smn_entidad_id.selectedIndex].text,'smn_entidad_id_name');">
+			<select class="js-example-basic-single" name="smn_entidad_id" id="smn_entidad_id" onchange="chgCombo1(smn_entidad_id.options[smn_entidad_id.selectedIndex].text,'smn_entidad_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_entidad_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -51,7 +51,7 @@
 	<tr>
 		<td>${lbl:b_subsidiaries}</td>
 		<td>
-			<select name="smn_sucursal_id" id="smn_sucursal_id" onchange="chgCombo(smn_sucursal_id.options[smn_sucursal_id.selectedIndex].text,'smn_sucursal_id_name');">
+			<select class="js-example-basic-single" name="smn_sucursal_id" id="smn_sucursal_id" onchange="chgCombo(smn_sucursal_id.options[smn_sucursal_id.selectedIndex].text,'smn_sucursal_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_sucursal_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -89,7 +89,7 @@
 		<tr style="display:none">
 			<td>${lbl:b_requisition_status}*</td>
 			<td>
-				<select name="req_estatus" id="req_estatus">
+				<select class="js-example-basic-single" name="req_estatus" id="req_estatus">
 				<!--<option value="">[Cualquiera]</option>-->
 				<option value="SO">${lbl:b_solicited}</option>
 				<!--<option value="GE">${lbl:b_generated}</option>

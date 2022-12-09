@@ -44,7 +44,7 @@ INSERT INTO smn_inventario.smn_despacho
 VALUES
 (
 	nextval('smn_inventario.seq_smn_despacho'),
-	${fld:smn_modulo_rf},
+	3, /*${fld:smn_modulo_rf},*/
 	${fld:smn_documento_id}, /*documento origen*/
 	${fld:req_numero},
 	(SELECT
@@ -109,22 +109,22 @@ VALUES
 	${fld:req_descripcion},
 	${fld:smn_entidad_id},
 	${fld:smn_sucursal_id},
-	(SELECT 
-		smn_inventario.smn_caracteristica_almacen.smn_almacen_rf
-	 FROM
-	 	smn_inventario.smn_caracteristica_almacen
-	 INNER JOIN
-	 	smn_base.smn_almacen
-	 ON
-	 	smn_inventario.smn_caracteristica_almacen.smn_almacen_rf = smn_base.smn_almacen.smn_almacen_id
-	 INNER JOIN
-	 	smn_compras.smn_requisicion_cabecera
-	 ON
-	 	smn_compras.smn_requisicion_cabecera.smn_entidad_id = smn_base.smn_almacen.alm_empresa
+	(SELECT
+		smn_compras.smn_lineas.smn_almacen_consumo_rf AS smn_almacen_rf
+	FROM
+		smn_inventario.smn_caracteristica_almacen
+		INNER JOIN smn_base.smn_almacen ON smn_inventario.smn_caracteristica_almacen.smn_almacen_rf = smn_base.smn_almacen.smn_almacen_id
+		INNER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.smn_entidad_id = smn_base.smn_almacen.alm_empresa
+		INNER JOIN smn_compras.smn_requisicion_detalle ON smn_compras.smn_requisicion_detalle.smn_requisicion_cabecera_id = smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id
+		INNER JOIN smn_compras.smn_rel_linea_item ON smn_compras.smn_requisicion_detalle.smn_item_id = smn_compras.smn_rel_linea_item.smn_item_id
+		INNER JOIN smn_compras.smn_lineas ON smn_compras.smn_rel_linea_item.smn_lineas_id = smn_compras.smn_lineas.smn_lineas_id
+
 	 WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
 	 AND
 	 	smn_inventario.smn_caracteristica_almacen.cal_tipo_almacen = 'DE'
+	 GROUP BY
+		smn_compras.smn_lineas.smn_almacen_consumo_rf
 	),
 	(SELECT 
 		smn_clase_auxiliar_rf
@@ -157,40 +157,22 @@ VALUES
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
 	),
 	(SELECT
-		smn_control_acceso.smn_personal.psl_estructura_organizacional_rf
-	 FROM 
-	 	smn_control_acceso.smn_personal
-	 INNER JOIN
-	 	smn_base.smn_usuarios
-	 ON
-	 	smn_control_acceso.smn_personal.psl_auxiliar_rf = smn_base.smn_usuarios.smn_auxiliar_rf
-	 INNER JOIN
-	 	smn_seguridad.s_user
-	 ON
-	 	smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
-	 INNER JOIN
-	 	smn_compras.smn_requisicion_cabecera
-	 ON
-	 	smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+		smn_compras.smn_rel_auxiliar_ceco_estorg.smn_estructura_organizacional_rf
+	FROM
+		smn_base.smn_usuarios
+		INNER JOIN smn_seguridad.s_user ON smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
+		INNER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+		INNER JOIN smn_compras.smn_rel_auxiliar_ceco_estorg ON smn_base.smn_usuarios.smn_auxiliar_rf = smn_compras.smn_rel_auxiliar_ceco_estorg.smn_auxiliar_rf
 	 WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
 	),
 	(SELECT
-		smn_control_acceso.smn_personal.psl_centro_costo_rf
-	 FROM 
-	 	smn_control_acceso.smn_personal
-	 INNER JOIN
-	 	smn_base.smn_usuarios
-	 ON
-	 	smn_control_acceso.smn_personal.psl_auxiliar_rf = smn_base.smn_usuarios.smn_auxiliar_rf
-	 INNER JOIN
-	 	smn_seguridad.s_user
-	 ON
-	 	smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
-	 INNER JOIN
-	 	smn_compras.smn_requisicion_cabecera
-	 ON
-	 	smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+		smn_compras.smn_rel_auxiliar_ceco_estorg.smn_centro_costo_rf
+	FROM
+		smn_base.smn_usuarios
+		INNER JOIN smn_seguridad.s_user ON smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
+		INNER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+		INNER JOIN smn_compras.smn_rel_auxiliar_ceco_estorg ON smn_base.smn_usuarios.smn_auxiliar_rf = smn_compras.smn_rel_auxiliar_ceco_estorg.smn_auxiliar_rf
 	 WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
 	),

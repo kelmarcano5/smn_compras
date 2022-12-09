@@ -17,7 +17,12 @@ CASE
         smn_base.smn_activo_fijo.acf_codigo || ' - ' || smn_base.smn_activo_fijo.acf_nombre 
     END AS smn_item_id,
     smn_compras.smn_requisicion_detalle.rrs_especificaciones_del_requerimiento,
+<<<<<<< HEAD
     smn_compras.smn_documentos.dcc_recurrente
+=======
+    smn_compras.smn_requisicion_detalle.rrs_observaciones 
+    
+>>>>>>> a57efee07d661d845df2ffc06524651f62dfc69e
 FROM
     smn_compras.smn_requisicion_detalle
     LEFT OUTER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = smn_compras.smn_requisicion_detalle.smn_requisicion_cabecera_id

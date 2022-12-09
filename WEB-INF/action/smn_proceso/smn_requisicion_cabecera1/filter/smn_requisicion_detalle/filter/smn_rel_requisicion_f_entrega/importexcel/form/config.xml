@@ -2,26 +2,27 @@
 <config nodb="true">
 
 	<summary>
-		${lbl:b_rel_requisition_date_delivery}
+		Respuesta del validator a un POST vía Ajax
 	</summary>
 
 	<log>false</log>
-	
-	<set-request-attribute id="progress" value="file:/WEB-INF/action/progress/progress.htm"/>
 
 	<transaction>
-		<classname>dinamica.GenericTransaction</classname>
+		<classname>proceso.Aprobar</classname>
 		<validator>false</validator>
 		<transaction>false</transaction>
 		<jdbc-log>false</jdbc-log>
+		<recordset id="dinamica.errors" source="request" scope="transaction" />
 	</transaction>
 
 	<output>
 		<classname>dinamica.GenericOutput</classname>
-		<template>template.htm</template>
+		<template>validation.js</template>
 		<set-http-headers>true</set-http-headers>
-		<content-type>text/html</content-type>
+		<http-status>400</http-status>
+		<content-type>text/javascript</content-type>
 		<expiration>0</expiration>
+		<print mode="table" recordset="dinamica.errors" tag="rows" />
 	</output>
 
 </config>

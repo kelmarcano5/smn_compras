@@ -9,7 +9,7 @@
 	<log>false</log>
 
 	<!--configura el control de paginacion-->
-	<set-request-attribute id="paging.recordset" value="query-smnreqdetalleimpuesto.sql" />
+	<set-request-attribute id="paging.recordset" value="query-smnofertafentrega.sql" />
 	<set-request-attribute id="paging.pagesize" value="10" />
 
 	<!--soporte de auditoria-->
@@ -18,19 +18,21 @@
 		<recordset></recordset>
 		<!--que campos extrae para el registro descriptivo-->
 		<cols>
-			<colname>smn_cod_impuesto_deduc_rf</colname>
-			<colname>rim_fecha_registro_ini</colname>
-			<colname>rim_fecha_registro_fin</colname>
+			<colname>smn_oferta_id</colname>
+			<colname>ofe_consecutivo</colname>
+			<colname>ofe_cantidad</colname>
+			<colname>ofe_fecha_entrega</colname>
+			<colname>ofe_status</colname>
 		
 		</cols>
-		<table>smn_compras.smn_req_detalle_impuesto</table>
+		<table>smn_compras.smn_oferta_f_entrega</table>
 		<oper>CONSULTA</oper>
 		<area>Consulta</area>
 		<!-- 
  			para auditoria de consulta permite obtener la cantidad de registro obtenidos
  			de la busqueda (opcional)
  		-->
-		<recordCount recordset="query-smnreqdetalleimpuesto.sql"/>
+		<recordCount recordset="query-smnofertafentrega.sql"/>
 	</audit>
 
 	<transaction>
@@ -40,7 +42,7 @@
 		<jdbc-log>false</jdbc-log>
 	</transaction>
 	
-	<searchCols>smn_cod_impuesto_deduc_rf;rim_fecha_registro_fin;rim_fecha_registro_ini;</searchCols>
+	<searchCols>ofe_fecha_entrega;ofe_cantidad;ofe_consecutivo;smn_oferta_id;ofe_status;</searchCols>
 
 	<on-exit return-code="0" forward-to="/action/initview" />
 	<on-exit return-code="1" forward-to="${def:actionroot}/notfound" />
