@@ -8,7 +8,7 @@ setComboValue('rrs_producto_encontrado','${fld:rrs_producto_encontrado}','form1'
 setComboValue('smn_contrato_id','${fld:smn_contrato_id}','form1');
 document.form1.rrs_motivo_variacion.value='${fld:rrs_motivo_variacion@js}';
 document.form1.rrs_porcentaje.value='${fld:rrs_porcentaje@#,###,##0.00}';
-document.form1.rss_cantidad.value='${fld:rss_cantidad@#,###,###}';
+document.form1.rss_cantidad.value='${fld:rss_cantidad@#,###,##0.00}';
 document.form1.rrs_precio.value='${fld:rrs_precio@#,###,##0.00}';
 document.form1.rrs_monto.value='${fld:rrs_monto@#,###,##0.00}';
 setComboValue('smn_moneda_id','${fld:smn_moneda_id}','form1');

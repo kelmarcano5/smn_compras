@@ -1,5 +1,6 @@
 UPDATE smn_compras.smn_requisicion_detalle SET
 	smn_requisicion_cabecera_id=${fld:smn_requisicion_cabecera_id},
+	smn_cabecera_version_id=${fld:smn_cabecera_version_id},
 	smn_linea_id=${fld:smn_linea_id},
 	smn_naturaleza_id=${fld:smn_naturaleza_id},
 	smn_servicio_id=${fld:smn_servicio_id},

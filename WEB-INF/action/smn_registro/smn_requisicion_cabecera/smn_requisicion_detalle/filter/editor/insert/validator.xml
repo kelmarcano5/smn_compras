@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <validator onerror='/action/error/validation/ajax'>
 	<parameter id='smn_requisicion_cabecera_id' type='integer' required='false' label='${lbl:b_headboard_requisition}' maxlen='10'/>
+	<parameter id='smn_cabecera_version_id' type='integer' required='false' label='${lbl:b_version_headboard}' maxlen='10'/>
 	<parameter id='smn_linea_id' type='integer' required='true' label='${lbl:b_lines}' maxlen='10'/>
 	<parameter id='smn_naturaleza_id' type='varchar' required='true' label='${lbl:b_nature}' maxlen='2'/>
 	<parameter id='smn_servicio_id' type='integer' required='false' label='${lbl:b_services}' maxlen='10'/>
@@ -10,7 +11,7 @@
 	<parameter id='smn_contrato_id' type='integer' required='false' label='${lbl:b_contract}' maxlen='10'/>
 	<parameter id='rrs_motivo_variacion' type='varchar' required='false' label='${lbl:b_var_motive}' maxlen='100'/>
 	<parameter id='rrs_porcentaje' type='double' required='false' label='${lbl:b_percentage}' maxlen='10'/>
-	<parameter id='rss_cantidad' type='integer' required='false' label='${lbl:b_quantity}' maxlen='10'/>
+	<parameter id='rss_cantidad' type='integer' required='true' label='${lbl:b_quantity}' maxlen='10'/>
 	<parameter id='rrs_precio' type='double' required='false' label='${lbl:b_price}' maxlen='10'/>
 	<parameter id='rrs_monto' type='double' required='false' label='${lbl:b_mount}' maxlen='10'/>
 	<parameter id='smn_moneda_id' type='integer' required='false' label='${lbl:b_coins}' maxlen='10'/>
@@ -21,5 +22,5 @@
 	<parameter id='rrs_fecha_de_requerido' type='date' required='true' label='${lbl:b_date_required}' maxlen='10'/>
 	<parameter id='rrs_observaciones' type='varchar' required='false' label='${lbl:b_observations}' maxlen='256'/>
 
-
+	
 </validator>

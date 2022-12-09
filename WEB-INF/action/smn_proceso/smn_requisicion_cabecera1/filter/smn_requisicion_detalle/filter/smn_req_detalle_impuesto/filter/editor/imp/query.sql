@@ -1,0 +1,3 @@
+select smn_base.smn_codigos_impuestos.imp_monto_sustraendo as sustraendo, smn_base.smn_codigos_impuestos.imp_porcentaje_base as base, smn_base.smn_codigos_impuestos.imp_porcentaje_calculo as calculo from smn_base.smn_codigos_impuestos
+inner join smn_base.smn_rel_item_cod_impuesto on smn_base.smn_rel_item_cod_impuesto.smn_codigos_impuestos_id = smn_base.smn_codigos_impuestos.smn_codigos_impuestos_id
+where smn_base.smn_rel_item_cod_impuesto.smn_codigos_impuestos_id=${fld:id}

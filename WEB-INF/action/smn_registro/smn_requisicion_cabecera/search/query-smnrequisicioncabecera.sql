@@ -17,6 +17,7 @@ CASE
 		WHEN smn_compras.smn_requisicion_cabecera.req_estatus = 'VE' THEN
 		'${lbl:b_versioned}' 
 	END AS req_estatus,
+	smn_compras.smn_requisicion_cabecera.req_estatus as estatus,
 	smn_compras.smn_tipo_documento.tdc_codigo || '-' || smn_compras.smn_tipo_documento.tdc_nombre AS smn_tipo_documento_id,
 	smn_compras.smn_documentos.dcc_codigo || ' - ' || smn_compras.smn_documentos.dcc_nombre AS smn_documento_id,
 CASE
@@ -47,8 +48,8 @@ FROM
 	INNER JOIN smn_base.smn_usuarios ON smn_base.smn_usuarios.smn_user_rf = smn_seguridad.s_user.user_id
 	INNER JOIN smn_compras.smn_roles ON smn_compras.smn_roles.smn_usuarios_id = smn_base.smn_usuarios.smn_usuarios_id 
 WHERE
-	smn_compras.smn_requisicion_cabecera.req_estatus IN ( 'AP', 'GE', 'SO' ) 
-	AND smn_compras.smn_roles.rol_tipo IN ('SO','AP') 
+	smn_compras.smn_requisicion_cabecera.req_estatus IN ('GE', 'SO') 
+	AND smn_compras.smn_roles.rol_tipo IN ('SO') 
 	AND smn_compras.smn_requisicion_cabecera.req_usuario = '${def:user}' 
 ORDER BY
-	req_fecha_registro DESC
+	req_fecha_registro DESC, req_numero DESC

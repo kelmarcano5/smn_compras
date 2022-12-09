@@ -101,7 +101,7 @@
 	<tr>
 		<td>${lbl:b_purchasing_documents_types}*</td>
 		<td>
-			<select name="smn_tipo_documento_id" id="smn_tipo_documento_id" onchange="chgCombo(smn_tipo_documento_id.options[smn_tipo_documento_id.selectedIndex].text,'smn_tipo_documento_id_name');">
+			<select class="js-example-basic-single" name="smn_tipo_documento_id" id="smn_tipo_documento_id" onchange="chgCombo(smn_tipo_documento_id.options[smn_tipo_documento_id.selectedIndex].text,'smn_tipo_documento_id_name');">
 				<!-- <option value="">[Cualquiera]</option> -->
 				<smn_tipo_documento_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -114,7 +114,7 @@
 	<tr>
 		<td>${lbl:b_purchasing_documents}*</td>
 		<td>
-			<select name="smn_documento_id" id="smn_documento_id" onchange="chgCombo(smn_documento_id.options[smn_documento_id.selectedIndex].text,'smn_documento_id_name');">
+			<select class="js-example-basic-single" name="smn_documento_id" id="smn_documento_id" onchange="chgCombo(smn_documento_id.options[smn_documento_id.selectedIndex].text,'smn_documento_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_documento_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -140,7 +140,7 @@
 		<tr style="display:none">
 			<td>${lbl:b_status_rute}*</td>
 			<td>
-				<select name="req_estatus_ruta" id="req_estatus_ruta">
+				<select class="js-example-basic-single" name="req_estatus_ruta" id="req_estatus_ruta">
 				<option value="SO">${lbl:b_solicited}</option>
 				<!--	<option value="">[Cualquiera]</option>
 				<option value="AP">${lbl:b_aprobated}</option>-->
@@ -196,6 +196,11 @@
 	onload = function()
 	{ 
 		addNew();
+		
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
+		
 		
 		//Disabled all combo linked
 

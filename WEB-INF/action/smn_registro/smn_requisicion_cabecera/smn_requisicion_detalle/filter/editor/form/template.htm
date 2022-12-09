@@ -58,7 +58,7 @@
 		</td>
 	</tr>
 	
-	<tr id="linea" style="display: none;">
+	<tr id="linea">
 		<td>${lbl:b_lines}*</td>
 		<td>
 			<select name="smn_linea_id" id="smn_linea_id" onchange="chgCombo(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');itemlinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');serviciolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');afijolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');">
@@ -71,11 +71,10 @@
 			<input id="smn_linea_id_name" name="smn_linea_id_name" type="hidden">
 		</td>
 	</tr>
-	<tr id="naturaleza" style="display: none;">
+	<tr id="naturaleza">
 		<td>${lbl:b_nature}*</td>
 		<td>
-			<select name="smn_naturaleza_id" id="smn_naturaleza_id" onchange="validar();">
-			<option value="">[Cualquiera]</option>
+			<select name="smn_naturaleza_id" id="smn_naturaleza_id" onchange="validar();itemlinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');serviciolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');afijolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');">
 			<option value="IT">${lbl:b_item}</option>
 			<option value="SE">${lbl:b_services}</option>
 			<option value="AF">${lbl:b_actfij}</option>
@@ -83,10 +82,10 @@
 			</select> 
 		</td>
 	</tr>
-	<tr id="item" style="display: none;">
+	<tr id="item">
 		<td>${lbl:b_item}</td>
 		<td>
-			<select name="smn_item_id" id="smn_item_id" onchange="chgCombo(smn_item_id.options[smn_item_id.selectedIndex].text,'smn_item_id_name');">
+			<select name="smn_item_id" id="smn_item_id" onchange="chgCombo(smn_item_id.options[smn_item_id.selectedIndex].text,'smn_item_id_name');validarProdEncontrado(smn_item_id.options[smn_item_id.selectedIndex].value);">
 				<option value="">[Cualquiera]</option>
 				<smn_item_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -95,11 +94,14 @@
 			</select> 
 			<input id="smn_item_id_name" name="smn_item_id_name" type="hidden">
 		</td>
+		<td style="display: none;" id="buscarItem">
+			<img src="${def:context}/images/search.png" onclick="getItem()" title="Buscar">
+		</td>
 	</tr>
-	<tr id="servicio" style="display: none;">
+	<tr id="servicio">
 		<td>${lbl:b_services}</td>
 		<td>
-			<select name="smn_servicio_id" id="smn_servicio_id" onchange="chgCombo(smn_servicio_id.options[smn_servicio_id.selectedIndex].text,'smn_servicio_id_name');">
+			<select name="smn_servicio_id" id="smn_servicio_id" onchange="chgCombo(smn_servicio_id.options[smn_servicio_id.selectedIndex].text,'smn_servicio_id_name');validarProdEncontrado(smn_servicio_id.options[smn_servicio_id.selectedIndex].value);">
 				<option value="">[Cualquiera]</option>
 				<smn_servicio_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -109,10 +111,10 @@
 			<input id="smn_servicio_id_name" name="smn_servicio_id_name" type="hidden">
 		</td>
 	</tr>
-	<tr id="activo" style="display: none;">
+	<tr id="activo">
 		<td>${lbl:b_actfij}</td>
 		<td>
-			<select name="smn_afijo_id" id="smn_afijo_id" onchange="chgCombo(smn_afijo_id.options[smn_afijo_id.selectedIndex].text,'smn_afijo_id_name');">
+			<select name="smn_afijo_id" id="smn_afijo_id" onchange="chgCombo(smn_afijo_id.options[smn_afijo_id.selectedIndex].text,'smn_afijo_id_name');validarProdEncontrado(smn_afijo_id.options[smn_afijo_id.selectedIndex].value);">
 				<option value="">[Cualquiera]</option>
 				<smn_afijo_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -125,15 +127,13 @@
 	<tr>
 		<td>${lbl:b_products_found}*</td>
 		<td>
-			<select name="rrs_producto_encontrado" id="rrs_producto_encontrado" onchange="validarproducto();">
-			<option value="">[Cualquiera]</option>
+			<select disabled name="rrs_producto_encontrado" id="rrs_producto_encontrado">
 			<option value="SI">${lbl:b_yes}</option>
 			<option value="NO">${lbl:b_not}</option>
 
 			</select> 
 		</td>
 	</tr>
-	
 	<tr id="contrato" style="display:none">
 		<td>${lbl:b_contract}</td>
 		<td>
@@ -219,13 +219,18 @@
 			<td>${lbl:b_requirement_specification}</td>
 			<td>
 				<textarea id="rrs_especificaciones_del_requerimiento" name="rrs_especificaciones_del_requerimiento" cols="30" rows="3"></textarea>
+				<div id="msjEspecificaciones" style="color: red;"></div>
 			</td>
 		</tr>
 		<tr>
 			<td>${lbl:b_date_required}*</td>
+			<td style="display: none;">
+				<input id="req_fecha_registro" name="req_fecha_registro" type="text" class="date" maxlength="10">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('req_fecha_registro')">
+			</td>
 			<td>
 				<input id="rrs_fecha_de_requerido" name="rrs_fecha_de_requerido" type="text" class="date" maxlength="10">
-				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('rrs_fecha_de_requerido')">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('rrs_fecha_de_requerido','req_fecha_registro')">
 			</td>
 		</tr>
 		<tr>
@@ -250,43 +255,80 @@
 
 <!--codigo de soporte del template-->
 <script type="text/javascript">
-	//var entidad = '${fld:entidad}';
+
 	var recurre = '${fld:recurrente}';
+
 	onload = function()
 	{ 
 		addNew();
 
-	
+		<req_fecha_requerido_rows>
+		document.form1.rrs_fecha_de_requerido.value = "${fld:req_fecha_requerido}";
+		document.form1.req_fecha_registro.value = "${fld:req_fecha_registro}"
+		</req_fecha_requerido_rows>
+
 		// chgCombo7('${fld:entidad}');
-		document.form1.smn_item_id.disabled=true;
+		document.form1.smn_item_id.disabled=false;
 		document.form1.smn_servicio_id.disabled=true;
 		document.form1.smn_afijo_id.disabled=true;
-		//document.getElementById("rrs_precio").disabled=true;
+		
 		document.getElementById("rrs_monto").disabled=true;
-		// alert('${fld:recurrente}')
-		validarproducto();
+
+		//Inicia el producto encontrado con valor 'NO'
+		document.form1.rrs_producto_encontrado.selectedIndex = 1; 
+
 		recurrente(recurre);
-		// if('${fld:source}' = = 'smn_detalle'){ 
-		document.getElementById('smn_requisicion_cabecera_id').value = 	'${fld:id2}';
-		document.getElementById('smn_cabecera_version_id').value = 	'${fld:id3}';			
-			//var combo = document.getElementById('smn_requisicion_cabecera_id');
-			//setSelectedIndexValue('${fld:id2}', combo);
-			//document.form1.smn_requisicion_cabecera_id.disabled=true;
-
-			
-		//alert(entidad)
-			
-		// alert('${fld:id2}');
-			//var combo = document.getElementById('smn_cabecera_version_id');
-			//setSelectedIndexValue('${fld:id3}', combo);
-			//document.form1.smn_cabecera_version_id.disabled=true;
-		//}
-
+		
+		document.getElementById('smn_requisicion_cabecera_id').value = '${fld:id2}';
+		document.getElementById('smn_cabecera_version_id').value = '${fld:id3}';
 
 		if (id!="")
 			edit(id);
 	} 
 
+	function search()
+	{
+		addNew();
+
+		<req_fecha_requerido_rows>
+		document.form1.rrs_fecha_de_requerido.value = "${fld:req_fecha_requerido}";
+		document.form1.req_fecha_registro.value = "${fld:req_fecha_registro}"
+		</req_fecha_requerido_rows>
+
+		// chgCombo7('${fld:entidad}');
+		document.form1.smn_item_id.disabled=false;
+		document.form1.smn_servicio_id.disabled=true;
+		document.form1.smn_afijo_id.disabled=true;
+		//document.form1.smn_item_id.value='';
+		//document.form1.smn_servicio_id.value='';
+		//document.form1.smn_afijo_id.value='';
+		setSelectedIndexValue('[Cualquiera]', smn_item_id);
+		setSelectedIndexValue('[Cualquiera]', smn_servicio_id);
+		setSelectedIndexValue('[Cualquiera]', smn_afijo_id);
+
+		document.getElementById("rrs_monto").disabled=true;
+
+		//Inicia el producto encontrado con valor 'NO'
+		document.form1.rrs_producto_encontrado.selectedIndex = 1; 
+
+		recurrente(recurre);
+		
+		document.getElementById('smn_requisicion_cabecera_id').value = '${fld:id2}';
+		document.getElementById('smn_cabecera_version_id').value = '${fld:id3}';
+
+		if (id!="")
+			edit(id);
+	}
+
+	//Funcion para determinar si un producto(item,servicio o afijo fue encontrado).
+	//Creada por Engellbert Torrealba.
+	function validarProdEncontrado(value)
+	{		
+		if(value != '' && value != 0)
+			document.form1.rrs_producto_encontrado.selectedIndex = 0; //SI
+		else
+			document.form1.rrs_producto_encontrado.selectedIndex = 1; //NO
+	}
 	
 	//var geo_id7 = null;
 	function chgCombo7(id)
@@ -311,15 +353,31 @@
 		var naturaleza = document.getElementById("smn_naturaleza_id").value;
 		var pencontrado = document.getElementById("rrs_producto_encontrado").value;
 		
-		if(naturaleza == "IT" && pencontrado == 'SI'){
-		
+		/*if(naturaleza == "IT" && pencontrado == 'SI')
+		{
 			document.getElementById("smn_item_id").disabled=false;
+			document.getElementById("buscarItem").style.display = "initial";
 			
 		}else{
-			document.getElementById("smn_item_id").disabled=true;
+			document.getElementById("smn_item_id").disabled=false;
+			document.getElementById("buscarItem").style.display = "initial";
 		//	document.getElementById("smn_item_id").value="";
-		} 
+		} */
 		
+		if(naturaleza == "IT")
+		{		
+			document.getElementById("smn_item_id").disabled=false;
+			document.getElementById("buscarItem").style.display = '';
+		}
+		else
+		{
+			document.getElementById("smn_item_id").disabled=true;
+			setSelectedIndexValue('[Cualquiera]', smn_item_id);
+			document.getElementById("buscarItem").style.display = 'none';
+			//El producto encontrado = 'NO'
+			document.form1.rrs_producto_encontrado.selectedIndex = 1; 
+		}
+
 		if(naturaleza == "SE" ){
 			
 			document.getElementById("smn_servicio_id").disabled=false;
@@ -329,7 +387,10 @@
 		}else {
 		
 			document.getElementById("smn_servicio_id").disabled=true;
+			setSelectedIndexValue('[Cualquiera]', smn_servicio_id);
 			document.getElementById("smn_servicio_id").value="";
+			//El producto encontrado = 'NO'
+			document.form1.rrs_producto_encontrado.selectedIndex = 1;
 		}
 		
 		if(naturaleza == "AF"){
@@ -338,8 +399,10 @@
 		
 		}else {
 			document.getElementById("smn_afijo_id").disabled=true;
+			setSelectedIndexValue('[Cualquiera]', smn_afijo_id);
 			document.getElementById("smn_afijo_id").value="";	
-		
+			//El producto encontrado = 'NO'
+			document.form1.rrs_producto_encontrado.selectedIndex = 1;
 		}
 
 		
@@ -592,6 +655,17 @@
 	//grabar el formulario
 	function save()
 	{
+		var prodEncontrado = document.form1.rrs_producto_encontrado.value;
+		var especificaciones = document.form1.rrs_especificaciones_del_requerimiento.value;
+
+		if (prodEncontrado == 'NO' && especificaciones == '') 
+		{
+			msjEspecificaciones.innerHTML="Este valor DEBE ser ingresado";
+			return false;
+		}
+		else
+			msjEspecificaciones.innerHTML="";
+
 		//determina si es un insert o un update
 		if (document.form1.id.value=="")
 			return insert();
@@ -820,11 +894,13 @@
 		}	
 	}
 
-	function validarproducto() {
+	/*function validarproducto() {
 		var encontrado = document.getElementById("rrs_producto_encontrado").value;
+		var naturaleza = document.getElementById('smn_naturaleza_id').value;
 
 		if (encontrado == 'NO') {
 			document.getElementById("smn_item_id").disabled=true;
+			document.getElementById("buscarItem").style.display = "none";
 			// document.getElementById("smn_naturaleza_id")..disabled=false;
 			// document.getElementById("smn_servicio_id")..disabled=false;
 			// document.getElementById("smn_afijo_id")..disabled=false;
@@ -834,7 +910,15 @@
 			document.getElementById("item").style.display='';
 			document.getElementById("servicio").style.display='';
 			document.getElementById("activo").style.display='';
-		}else{
+		}
+		else
+		if(encontrado == 'SI' && naturaleza == 'IT')
+		{
+			document.getElementById("smn_item_id").disabled=false;
+			document.getElementById("buscarItem").style.display = "initial";
+		}
+		else
+		{
 			document.getElementById("linea").style.display='';
 			document.getElementById("naturaleza").style.display='';
 			document.getElementById("item").style.display='';
@@ -842,7 +926,7 @@
 			document.getElementById("activo").style.display='';
 
 		}
-	}
+	}*/
 
 	
 	function recurrente(id){
@@ -871,7 +955,11 @@
 
 	}
 
-
+	function getItem()
+	{
+		var uri = "${def:context}${def:actionroot}/getItem/form";
+		pickOpen('smn_item_id_name','smn_item_id',uri,650,500);
+	}
 	
 </script>	
 </body>

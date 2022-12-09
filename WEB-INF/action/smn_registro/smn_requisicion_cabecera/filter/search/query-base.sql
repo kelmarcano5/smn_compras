@@ -12,6 +12,7 @@ select distinct
 		when smn_compras.smn_requisicion_cabecera.req_estatus='AP' then '${lbl:b_aprobated}'
 		when smn_compras.smn_requisicion_cabecera.req_estatus='VE' then '${lbl:b_versioned}'
 	end as req_estatus,
+	smn_compras.smn_requisicion_cabecera.req_estatus as estatus,
 	smn_compras.smn_tipo_documento.tdc_codigo||'-'||smn_compras.smn_tipo_documento.tdc_nombre as smn_tipo_documento_id,
 	smn_compras.smn_documentos.dcc_codigo|| ' - ' || smn_compras.smn_documentos.dcc_nombre as smn_documento_id,
 	case
@@ -40,9 +41,12 @@ from
    inner join smn_compras.smn_roles on smn_compras.smn_roles.smn_usuarios_id = smn_base.smn_usuarios.smn_usuarios_id
 where
 
-	smn_requisicion_cabecera_id is not null --AND 
-    --smn_compras.smn_requisicion_cabecera.req_estatus IN ('AP','GE', 'SO')
+	smn_requisicion_cabecera_id is not null 
+	AND 
+	smn_compras.smn_roles.rol_tipo IN ('SO') 
+	AND 
+    smn_compras.smn_requisicion_cabecera.req_estatus IN ('VE','GE','SO')
 	${filter}
 order by 
-	req_fecha_registro 
-desc
+	req_fecha_registro DESC, 
+	req_numero DESC

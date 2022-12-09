@@ -1,0 +1,1 @@
+select smn_compras.smn_requisicion_detalle.smn_requisicion_detalle_id as id, smn_compras.smn_requisicion_detalle.smn_requisicion_detalle_id as item from smn_compras.smn_requisicion_detalle
