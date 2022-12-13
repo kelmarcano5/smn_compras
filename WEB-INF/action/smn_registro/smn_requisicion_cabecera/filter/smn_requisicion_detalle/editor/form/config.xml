@@ -23,7 +23,8 @@
 		<recordset id='query-smn_moneda_id.sql' source='sql' scope='transaction'/>
 		<recordset id='query-smn_proveedor_id.sql' source='sql' scope='transaction'/>
 		<recordset id='query-smn_linea_id.sql' source='sql' scope='transaction'/>
-		<!-- <recordset id='query-compras_recurrente.sql' source='sql' scope='transaction'/> -->
+		<recordset id='query-req_fecha_requerido.sql' source='sql' scope='transaction'/>
+		<!--<recordset id='query-compras_recurrente.sql' source='sql' scope='transaction'/> -->
 		<!-- <recordset id='query-requiere_moneda.sql' source='sql' scope='transaction'/> -->
 		<!-- <recordset id='query-servicio_contrato.sql' source='sql' scope='transaction'/> -->
 	</transaction>
@@ -42,6 +43,7 @@
 		<print mode='table' recordset='query-smn_moneda_id.sql' tag='smn_moneda_id_rows'/>
 		<print mode='table' recordset='query-smn_proveedor_id.sql' tag='smn_proveedor_id_rows'/>
 		<print mode='table' recordset='query-smn_linea_id.sql' tag='smn_linea_id_rows'/>
+		<print mode='table' recordset='query-req_fecha_requerido.sql' tag='req_fecha_requerido_rows'/>
 		<!-- <print mode="form" recordset="query-compras_recurrente.sql" /> -->
 		<!-- <print mode="form" recordset="query-requiere_moneda.sql" /> -->
 		<!-- <print mode="form" recordset="query-servicio_contrato.sql" /> -->

@@ -13,8 +13,6 @@
 		<transaction>false</transaction>
 		<jdbc-log>false</jdbc-log>
 		<recordset id="query.sql" source="sql" scope="transaction"/>
-		<recordset id="query2.sql" source="sql" scope="transaction"/>
-		<recordset id="modalidad.sql" source="sql" scope="transaction"/>
 	</transaction>
 
 	<output>
@@ -23,8 +21,6 @@
 		<set-http-headers>true</set-http-headers>
 		<content-type>text/javascript</content-type>
 		<print mode="table" recordset="query.sql" tag="smn_item_id_rows"/>
-		<print mode="table" recordset="query2.sql" tag="query2_rows"/>
-		<print mode="form" recordset="modalidad.sql" />
 	</output>
 
 </config>

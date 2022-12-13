@@ -5,7 +5,7 @@
 	<col width='3%'/>
 	<col width='3%'/>
 	<col width='3%'/>
-	<col width='3%'/>
+	<!--<col width='3%'/>-->
 	<col width='12%'/>
 	<col width='8%'/>
 	<col width='8%'/>
@@ -28,7 +28,7 @@
 		<th></th>
 		<th></th>
 		<th>GE</th>
-		<th>AP</th>
+		<!--<th>AP</th>-->
 		<th class='sortable' onclick='sortBy("smn_documento_id","query-smnrequisicioncabecera.sql")'>${lbl:b_purchasing_documents}</th>
 		<th class='sortable' onclick='sortBy("req_numero","query-smnrequisicioncabecera.sql")'>${lbl:b_requisition_number}</th>
 		<th class='sortable' onclick='sortBy("req_cabecera_version","query-smnrequisicioncabecera.sql")'>Version de la Requisicion</th>
@@ -46,10 +46,10 @@
 	<rows>
 	<tr>
 		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_requisicion_cabecera_id}')" title="${lbl:b_view_detail}"></td>
-		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_requisicion_cabecera_id}','${fld:smn_modulo_rf}')" title="${lbl:b_delete_button}"></td>
-		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_requisicion_cabecera_id}','${fld:smn_modulo_rf}')" title="${lbl:b_edit_button}"></td>
-		<td><img src="${def:context}/images/icongrid/Generar.png" onclick="generar('${fld:smn_requisicion_cabecera_id}','${fld:smn_cabecera_version_id}')" title="Generar"></td>
-		<td><img src="${def:context}/images/accept.png" onclick="aprobar('${fld:smn_requisicion_cabecera_id}')" title="Aprobar"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_requisicion_cabecera_id}','${fld:smn_modulo_rf}','${fld:estatus}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_requisicion_cabecera_id}','${fld:smn_modulo_rf}','${fld:estatus}')" title="${lbl:b_edit_button}"></td>
+		<td><img src="${def:context}/images/icongrid/Generar.png" onclick="generar('${fld:smn_requisicion_cabecera_id}','${fld:smn_cabecera_version_id}','${fld:estatus}')" title="Generar"></td>
+		<!--<td><img src="${def:context}/images/accept.png" onclick="aprobar('${fld:smn_requisicion_cabecera_id}')" title="Aprobar"></td>-->
 		<td>${fld:smn_documento_id}</td>
 		<td>${fld:req_numero}</td>
 		<td>${fld:req_cabecera_version}-${fld:req_version_descripcion}</td>

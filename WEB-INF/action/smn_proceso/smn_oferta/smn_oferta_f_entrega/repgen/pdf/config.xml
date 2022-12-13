@@ -21,7 +21,11 @@
 	</transaction>
 
 	<output>
+<<<<<<<< HEAD:WEB-INF/action/smn_registro/smn_orden_compra_cabecera/filter/repgen/pdf/config.xml
+		<classname>domain.repgen.smn_registro.smn_orden_compra_cabecera.PDFReport</classname>
+========
 		<classname>domain.repgen.smn_configuracion.smn_oferta_f_entrega.PDFReport</classname>
+>>>>>>>> a57efee07d661d845df2ffc06524651f62dfc69e:WEB-INF/action/smn_proceso/smn_oferta/smn_oferta_f_entrega/repgen/pdf/config.xml
 	</output>
 
 </config>

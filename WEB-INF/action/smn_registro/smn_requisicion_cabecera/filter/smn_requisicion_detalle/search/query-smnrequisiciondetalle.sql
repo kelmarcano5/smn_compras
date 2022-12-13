@@ -16,9 +16,8 @@ CASE
         WHEN smn_compras.smn_requisicion_detalle.smn_naturaleza_id = 'AF' THEN
         smn_base.smn_activo_fijo.acf_codigo || ' - ' || smn_base.smn_activo_fijo.acf_nombre 
     END AS smn_item_id,
-    smn_compras.smn_requisicion_detalle.rrs_especificaciones_del_requerimiento
-    
-    
+    smn_compras.smn_requisicion_detalle.rrs_especificaciones_del_requerimiento,
+    smn_compras.smn_documentos.dcc_recurrente
 FROM
     smn_compras.smn_requisicion_detalle
     LEFT OUTER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = smn_compras.smn_requisicion_detalle.smn_requisicion_cabecera_id
@@ -27,6 +26,7 @@ FROM
     LEFT OUTER JOIN smn_base.smn_item ON smn_base.smn_item.smn_item_id = smn_compras.smn_requisicion_detalle.smn_item_id
     LEFT OUTER JOIN smn_compras.smn_servicio ON smn_compras.smn_servicio.smn_servicio_id = smn_compras.smn_requisicion_detalle.smn_servicio_id
     LEFT OUTER JOIN smn_base.smn_activo_fijo ON smn_base.smn_activo_fijo.smn_afijo_id = smn_compras.smn_requisicion_detalle.smn_afijo_id 
+    LEFT OUTER JOIN smn_compras.smn_documentos ON smn_compras.smn_documentos.smn_documentos_id = smn_compras.smn_requisicion_cabecera.smn_documento_id
 WHERE
     smn_compras.smn_requisicion_detalle.smn_requisicion_cabecera_id = ${fld:id2}
 ORDER BY

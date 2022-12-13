@@ -4,6 +4,14 @@
 <head>
 
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+<<<<<<< HEAD
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+=======
 		<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
 
 	<!--biblioteca generica JS/Dinamica-->
@@ -11,6 +19,7 @@
 	</script>
 	<script type="text/javascript" src="${def:context}/action/jquery">
 	</script>
+>>>>>>> a57efee07d661d845df2ffc06524651f62dfc69e
 	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
@@ -141,6 +150,10 @@
 	onload = function()
 	{ 
 		showFilter();
+
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
 		
 		$(document).ready(function() {	
 		    $('.js-example-basic-single').select2();
@@ -405,19 +418,19 @@
 	function showEditor(id)
 	{
 //		//alert('Colocar su código aquí.')
-		
+		var st = '${fld:status}';
 		if (st == 'Generada') {
 
 			alertBox('No se pueden añadir requisiciones con estatus generado', 'Aceptar', null, null)
 		}else{
 			var uri = "";
 				if (id==null){
-					var uri = "${def:context}${def:actionroot}/editor/form?id2=${fld:id2}&descripcion=${fld:descripcion}&source=smn_detalle&id3=${fld:id3}";
+					var uri = "${def:context}${def:actionroot}/../editor/form?id2=${fld:id2}&descripcion=${fld:descripcion}&source=smn_detalle&id3=${fld:id3}";
 				 	//uri = "${def:context}${def:actionroot}/editor/form";
 				 	openDialog("editor", uri, 650, 600);
 				
 				}else{
-					var uri = "${def:context}${def:actionroot}/editor/form?id2=${fld:id2}&descripcion=${fld:descripcion}&source=smn_detalle&id3=${fld:id3}";
+					var uri = "${def:context}${def:actionroot}/../editor/form?id2=${fld:id2}&descripcion=${fld:descripcion}&source=smn_detalle&id3=${fld:id3}";
 					//uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
 					openDialog("editor", uri, 650, 600);
 				}
@@ -460,27 +473,41 @@
 			}
 		}
 
-		function detalleimpuesto(id3){
+		function detalleimpuesto(id3, monto, recurrente){
 			//&source=smn_clase_auxiliar_rf  alert(id,clase);
 			// alert(id3);
 			var st = '${fld:status}';
 			if (st == 'Generada' || st == 'Aprobada') {
-						alertBox('No se permite agregar con estatus generado o aprobado', 'Aceptar', null, null)
+						alertBox('No se permite agregar con estatus generado o aprobado', 'Aceptar', null, null);
 			}else{
-				uri = "${def:context}${def:actionroot}/smn_req_detalle_impuesto/form?id3="+ id3;	
-				openDialog("dialog", uri, 1150, 700);
+				if(recurrente == 'SI')
+				{
+					uri = "${def:context}${def:actionroot}/smn_req_detalle_impuesto/form?id3="+ id3 + "&monto="+ monto;	
+					openDialog("dialog", uri, 1150, 700);
+				}
+				else
+				{
+					alertBox('La requisicion no es recurrente', 'Aceptar', null, null);
+				}
 			}
 		}
 		
-		function detalledescuento(id5){
+		function detalledescuento(id5, monto, recurrente){
 			//&source=smn_clase_auxiliar_rf  alert(id,clase);
 			// alert(id5);
 			var st = '${fld:status}';
 			if (st == 'Generada' || st == 'Aprobada') {
-						alertBox('No se permite agregar con estatus generado o aprobado', 'Aceptar', null, null)
+				alertBox('No se permite agregar con estatus generado o aprobado', 'Aceptar', null, null)
 			}else{
-				uri = "${def:context}${def:actionroot}/smn_req_detalle_dcto_retenc/form?id5="+ id5;	
-				openDialog("dialog", uri, 1150, 700);
+				if (recurrente == 'SI') 
+				{
+					uri = "${def:context}${def:actionroot}/smn_req_detalle_dcto_retenc/form?id5="+ id5 + "&monto="+ monto;	
+					openDialog("dialog", uri, 1150, 700);
+				}
+				else
+				{
+					alertBox('La requisicion no es recurrente', 'Aceptar', null, null);
+				}
 			}
 		}
 

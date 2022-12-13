@@ -68,25 +68,24 @@
 		
 		//mostrar el detalle de un registro
 		function getDetail(id)
-
 		{
 			// alert (id);
-//			//alert('Colocar su código aquí.')
+//			//alert('Colocar su cï¿½digo aquï¿½.')
 			
 			var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
 			openDialog("dialog", uri, 650, 540);			
 		}
-		
+
 		//muestra un DIV+IFRAME con el formulario de CRUD
-		function showEditor(id, modulo)
+		function showEditor(id, modulo,estatus)
 		{
-//			//alert('Colocar su código aquí.')
+//			//alert('Colocar su cï¿½digo aquï¿½.')
 			//alert(modulo);		
-			//editor a nivel de panel iconográfico
+			//editor a nivel de panel iconogrï¿½fico
 			if (id == 'editor')
-			{					
-				var uri = "${def:context}${def:actionroot}/editor/form";					
-				openDialog("editor1", uri, 650, 540);					
+			{		
+				var uri = "${def:context}${def:actionroot}/editor/form";	
+				openDialog("editor1", uri, 650, 540);				
 			}
 			else if (id == 'filter')
 			{
@@ -105,14 +104,19 @@
 			}
 			//editor a nivel de registros
 			else {	
-				
+				if(estatus == 'GE' || estatus == 'AP')
+				{
+					alertBox('No se puede modificar porque no tiene estatus solicitado', 'Aceptar', null, null);
+				}
+				else
+				{
 					var uri = "";
 					if (id==null){
 						uri = "${def:context}${def:actionroot}/editor/form";
 						openDialog("editor5", uri, 650, 540);
 					}
 					else{
-						if (modulo != 'COM') {
+						if (modulo != 'SMN_COM') {
 						//alert(modulo);			
 							alertBox('No se puede modificar ya que no proviene del modulo de compras', 'Aceptar', null, null)
 						}else{
@@ -120,16 +124,24 @@
 							openDialog("editor5", uri, 650, 540);
 						}
 					}
+				}
 			}
 		}
 
-		function deleteRecord(id, modulo) {
-//			//alert('Colocar su código aquí.')
+		function deleteRecord(id, modulo,estatus) {
+//			//alert('Colocar su cï¿½digo aquï¿½.')
 				
 			if (modulo != 'COM') {
 					alertBox('No se puede modificar ya que no proviene del modulo de compras', 'Aceptar', null, null)
 			}else{
-				alertBox('${lbl:b_delete_record_button}', '${lbl:b_delete_button}', '${lbl:b_cancel_button}', 'deleteRecordOK(' + id + ')')
+				if(estatus == 'GE' || estatus == 'AP')
+				{
+					alertBox('No se puede eliminar porque no tiene estatus solicitado', 'Aceptar', null, null);
+				}
+				else
+				{
+					alertBox('${lbl:b_delete_record_button}', '${lbl:b_delete_button}', '${lbl:b_cancel_button}', 'deleteRecordOK(' + id + ')')
+				}
 			}		
 		}
 		
@@ -155,22 +167,31 @@
 		}
 
 
-		function generar(id2,descripcion){
-			//&source=smn_clase_auxiliar_rf  alert(id,clase);
-			// alert("ID2: "+id2);
-		//alert(id2);
-		//	uri = "${def:context}${def:actionroot}/smn_requisicion_detalle/form?id2="+ id2 + "&id3=" + id3;	
-		uri = "${def:context}${def:actionroot}/procesar?smn_requisicion_cabecera_id="+ id2; // "&id3=" + id3/;
-		openDialog("dialog", uri, 1150, 700);
+		function generar(id2,descripcion,estatus)
+		{
+			if(estatus == 'GE' || estatus == 'AP')
+			{
+				alertBox('No se puede generar porque no tiene estatus solicitado', 'Aceptar', null, null);
+			}
+			else
+			{
+				uri = "${def:context}${def:actionroot}/procesar?smn_requisicion_cabecera_id="+ id2; 
+				openDialog("dialog", uri, 1150, 700);
+			}
 		}
 
-		function aprobar(id_cabecera)
+		function aprobar(id_cabecera,estatus)
 		{
-			// alert(id_cabecera);
-			uri = "${def:context}${def:actionroot}/aprobar?smn_requisicion_cabecera_id="+ id_cabecera + "&mensaje="+id_cabecera;
-			//alert(uri);
-			openDialog("dialog", uri, 1150, 700);
-
+			if(estatus == 'GE' || estatus == 'AP')
+			{
+				alertBox('No se puede generar porque no tiene estatus solicitado', 'Aceptar', null, null);
+			}
+			else
+			{
+				uri = "${def:context}${def:actionroot}/aprobar?smn_requisicion_cabecera_id="+ id_cabecera + "&mensaje="+id_cabecera;
+			
+				openDialog("dialog", uri, 1150, 700);
+			}
 		}		
 
 	</script>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnrequisiciondetalle.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_requisition_detail}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_requisition_detail}">
+				<col id='smn_requisicion_cabecera_id' label='${lbl:b_headboard_requisition}' />
+		<col id='smn_cabecera_version_id' label='${lbl:b_version_headboard}' />
+		<col id='smn_linea_id' label='${lbl:b_lines}' />
+		<col id='smn_naturaleza_id' label='${lbl:b_nature}' />
+		<col id='smn_servicio_id' label='${lbl:b_services}' />
+		<col id='smn_item_id' label='${lbl:b_item}' />
+		<col id='smn_afijo_id' label='${lbl:b_actfij}' />
+		<col id='rrs_producto_encontrado' label='${lbl:b_products_found}' />
+		<col id='smn_contrato_id' label='${lbl:b_contract}' />
+		<col id='rrs_motivo_variacion' label='${lbl:b_var_motive}' />
+		<col id='rrs_porcentaje' label='${lbl:b_percentage}' />
+		<col id='rss_cantidad' label='${lbl:b_quantity}' />
+		<col id='rrs_precio' label='${lbl:b_price}' />
+		<col id='rrs_monto' label='${lbl:b_mount}' />
+		<col id='smn_moneda_id' label='${lbl:b_coins}' />
+		<col id='rrs_precio_moneda_alterna' label='${lbl:b_coins_price_altern}' />
+		<col id='rrs_monto_moneda_alterna' label='${lbl:b_coins_mount_altern}' />
+		<col id='smn_proveedor_id' label='${lbl:b_providers}' />
+		<col id='rrs_especificaciones_del_requerimiento' label='${lbl:b_requirement_specification}' />
+		<col id='rrs_fecha_de_requerido' label='${lbl:b_date_required}' />
+		<col id='rrs_observaciones' label='${lbl:b_observations}' />
+		<col id='rrs_idioma' label='${lbl:s_profile_lang}' />
+		<col id='rrs_usuario' label='${lbl:b_users}' />
+		<col id='rrs_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

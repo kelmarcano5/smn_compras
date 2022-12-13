@@ -55,8 +55,8 @@
 		<td>${fld:rrs_fecha_registro}</td>
 		<td>${fld:rrs_observaciones}</td>
 		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="fechaentrega('${fld:smn_requisicion_detalle_id}','${fld:rss_cantidad}')" title="${lbl:b_rel_requisition_date_delivery}"></td>
-		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalleimpuesto('${fld:smn_requisicion_detalle_id}','${fld:rrs_monto}')" title="${lbl:b_requisition_tax_detail}"></td>
-		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalledescuento('${fld:smn_requisicion_detalle_id}','${fld:rrs_monto}')" title="${lbl:b_requisition_detail_discount_retention}">
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalleimpuesto('${fld:smn_requisicion_detalle_id}','${fld:rrs_monto}','${fld:dcc_recurrente}')" title="${lbl:b_requisition_tax_detail}"></td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalledescuento('${fld:smn_requisicion_detalle_id}','${fld:rrs_monto}','${fld:dcc_recurrente}')" title="${lbl:b_requisition_detail_discount_retention}">
 	</tr>
 	</rows>
 

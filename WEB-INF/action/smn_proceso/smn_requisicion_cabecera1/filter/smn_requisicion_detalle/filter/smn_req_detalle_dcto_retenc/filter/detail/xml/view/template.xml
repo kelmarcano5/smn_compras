@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_req_detalle_dcto_retenc>
+	<detail>
+		<rows>		
+		<record drc_fecha_registro="${fld:drc_fecha_registro}"    drc_monto_descuento="${fld:drc_monto_descuento}"    drc_porcentaje="${fld:drc_porcentaje}"    drc_monto_base="${fld:drc_monto_base}"    smn_codigo_descuento_rf="${fld:smn_codigo_descuento_rf}"    smn_requisicion_detalle_id="${fld:smn_requisicion_detalle_id}"    />
+		</rows>
+	</detail>
+</smn_req_detalle_dcto_retenc>

@@ -17,7 +17,11 @@
 	</transaction>
 
 	<output>
+<<<<<<<< HEAD:WEB-INF/action/smn_registro/smn_orden_compra_cabecera/filter/repgen/excel/config.xml
+		<classname>domain.repgen.smn_registro.smn_orden_compra_cabecera.ExcelReport</classname>
+========
 		<classname>domain.repgen.smn_configuracion.smn_oferta_f_entrega.ExcelReport</classname>
+>>>>>>>> a57efee07d661d845df2ffc06524651f62dfc69e:WEB-INF/action/smn_proceso/smn_oferta/filter/smn_oferta_f_entrega/repgen/excel/config.xml
 	</output>
 
 </config>

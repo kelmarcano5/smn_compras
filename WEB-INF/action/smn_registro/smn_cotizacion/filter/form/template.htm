@@ -77,7 +77,7 @@
 	<tr>
 	<td>${lbl:b_item}*</td>
 		<td>
-			<select name="smn_item_rf" id="smn_item_rf" onchange="chgCombo1(smn_item_rf.options[smn_item_rf.selectedIndex].text,'smn_item_rf_name');">
+			<select class="js-example-basic-single" name="smn_item_rf" id="smn_item_rf" onchange="chgCombo1(smn_item_rf.options[smn_item_rf.selectedIndex].text,'smn_item_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_item_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -141,6 +141,10 @@
 		showFilter();
 		//document.form1.cot_fecha_registro_ini.onkeypress = keypressDate;
 	    //document.form1.cot_fecha_registro_fin.onkeypress = keypressDate;
+
+	    $(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
 
 		search();
 	} 

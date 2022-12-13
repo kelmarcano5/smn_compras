@@ -3,14 +3,14 @@
 
 <head>
 
-		<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
 	
 	<!--biblioteca generica JS/Dinamica-->
-	<script type="text/javascript" src="${def:context}/action/script">
-	</script>
+	<script type="text/javascript" src="${def:context}/action/script"></script>
 	<script type="text/javascript" src="${def:context}/action/jquery"></script>
-	</script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -103,7 +103,7 @@
 	<tr>
 		<td>${lbl:b_item}*</td>
 		<td>
-			<select name="smn_item_rf" id="smn_item_rf" onchange="chgCombo(smn_item_rf.options[smn_item_rf.selectedIndex].text,'smn_item_rf_name');">
+			<select class="js-example-basic-single" name="smn_item_rf" id="smn_item_rf" onchange="chgCombo(smn_item_rf.options[smn_item_rf.selectedIndex].text,'smn_item_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_item_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -149,6 +149,10 @@
 	onload = function()
 	{ 
 		addNew();
+
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
 
 		if (id!="")
 			edit(id);

@@ -4,14 +4,18 @@
 		name="jdbc/dinamica" 
 		auth="Container" 
 		type="javax.sql.DataSource"
-		initialSize="2" 
-		maxActive="2" 
-		maxIdle="2" 
-		maxWait="5000"
+		initialSize="5" 
+		maxActive="500" 
+		maxIdle="10" 
+		maxWait="10000"
 		username="postgres" 
 		password="postgres" 
 		driverClassName="org.postgresql.Driver"
+<<<<<<< HEAD
+		url="jdbc:postgresql://localhost:5432/simonedb_qa" 
+=======
 		url="jdbc:postgresql://localhost/simonedb_qa_10003" 
+>>>>>>> a57efee07d661d845df2ffc06524651f62dfc69e
 		validationQuery="select 1" 
 		testOnBorrow="true"/>
 
