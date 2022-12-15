@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
-<validator id='filter.params' onerror='/action/error/validation/ajax'>
-	<parameter id='smn_requisicion_detalle_id_name' type='varchar' required='false' label='${lbl:b_requisition_detail}'/>
-	<parameter id='smn_requisicion_detalle_id' type='integer' required='false' label='${lbl:b_requisition_detail}' maxlen='10'/>
-	<parameter id='cfe_fecha_registro_ini' type='integer' required='false' label='${lbl:b_store_date}' maxlen='10'/>
-	<custom-validator classname='dinamica.validators.IntegerRangeValidator' on-error-label='[${lbl:b_store_date} mayor o igual que] no puede ser mayor que [${lbl:b_store_date} menor o igual que].' value1='cfe_fecha_registro_ini' value2='cfe_fecha_registro_fin' id='cfe_fecha_registro_ini' />
-	<parameter id='cfe_fecha_registro_fin' type='integer' required='false' label='${lbl:b_store_date}' maxlen='10'/>
-</validator>

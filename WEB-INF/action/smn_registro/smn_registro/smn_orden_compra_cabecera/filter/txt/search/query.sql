@@ -1,0 +1,23 @@
+select
+		smn_compras.smn_orden_compra_cabecera.smn_orden_compra_cabecera_id,
+select
+		smn_compras.smn_orden_compra_cabecera.smn_orden_compra_cabecera_id,
+select
+		smn_compras.smn_orden_compra_cabecera.smn_orden_compra_cabecera_id,
+select
+		smn_compras.smn_orden_compra_cabecera.smn_orden_compra_cabecera_id,
+select
+		smn_compras.smn_orden_compra_cabecera.smn_orden_compra_cabecera_id,
+select
+		smn_compras.smn_orden_compra_cabecera.smn_orden_compra_cabecera_id,
+	smn_compras.smn_orden_compra_cabecera.smn_entidad_rf,
+	smn_compras.smn_orden_compra_cabecera.smn_sucursal_rf,
+	smn_compras.smn_orden_compra_cabecera.smn_documento_id,
+	smn_compras.smn_orden_compra_cabecera.occ_orden_compra_numero,
+	smn_compras.smn_orden_compra_cabecera.smn_proveedor_id,
+	smn_compras.smn_orden_compra_cabecera.occ_fecha_orde_compra,
+	smn_compras.smn_orden_compra_cabecera.smn_forma_pago_rf,
+	smn_compras.smn_orden_compra_cabecera.occ_fecha_registro
+	
+from
+	smn_compras.smn_orden_compra_cabecera

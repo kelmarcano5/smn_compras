@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnordencompracabecera.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="15" cellStep="0" name="${lbl:b_smn_orden_compra_cabecera}"/>
+	
+	<excel 
+		recordset='query-smnordencompracabecera.sql' 
+		sheetname='${lbl:b_smn_orden_compra_cabecera}' 
+		filename='${lbl:b_smn_orden_compra_cabecera}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+			<col id='smn_entidad_rf_combo' title='${lbl:b_entities}'/>
+			<col id='smn_sucursal_rf_combo' title='${lbl:b_smn_sucursal}'/>
+			<col id='smn_documento_id_combo' title='${lbl:b_smn_documento_id}'/>
+			<col id='occ_orden_compra_numero' title='${lbl:b_occ_orden_compra_numero}'/>
+			<col id='smn_proveedor_id_combo' title='${lbl:b_smn_proveedor_id}'/>
+			<col id='occ_fecha_orde_compra' title='${lbl:b_occ_fecha_orde_compra}'/>
+			<col id='smn_forma_pago_rf_combo' title='${lbl:b_smn_forma_pago_rf}'/>
+			<col id='occ_fecha_registro' title='${lbl:b_store_date}'/>
+
+	</excel>
+
+</config>

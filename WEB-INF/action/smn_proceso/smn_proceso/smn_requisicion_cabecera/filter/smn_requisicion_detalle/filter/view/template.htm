@@ -1,0 +1,60 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<!--toolbar-->
+	<tr>
+		<th colspan="11" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<!-- <th class='sortable' onclick='sortBy("smn_requisicion_cabecera_id","query-smnrequisiciondetalle.sql")'>${lbl:b_headboard_requisition}</th> -->
+		<th class='sortable' onclick='sortBy("smn_linea_id","query-smnrequisiciondetalle.sql")'>${lbl:b_lines}</th>
+		<th class='sortable' onclick='sortBy("smn_item_id","query-smnrequisiciondetalle.sql")'>Item/Servicio/Act Fijo</th>
+		<th class='sortable' onclick='sortBy("rrs_especificaciones_del_requerimiento","query-smnrequisiciondetalle.sql")'>${lbl:b_requirement_specification}</th>
+		<th class='sortable' onclick='sortBy("rss_cantidad","query-smnrequisiciondetalle.sql")'>${lbl:b_quantity}</th>
+		<!-- <th class='sortable' onclick='sortBy("rrs_monto","query-smnrequisiciondetalle.sql")'>${lbl:b_mount}</th> -->
+		<th class='sortable' onclick='sortBy("rrs_fecha_registro","query-smnrequisiciondetalle.sql")'>${lbl:b_store_date}</th>
+		<th>FE</th>
+		<th>RDI</th>
+		<th>RDDR</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_requisicion_detalle_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_requisicion_detalle_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_requisicion_detalle_id}')" title="${lbl:b_edit_button}"></td>
+		<!-- <td>${fld:smn_requisicion_cabecera_id}</td> -->
+		<td>${fld:smn_linea_id}</td>
+		<td>${fld:smn_item_id}</td>
+		<td>${fld:rrs_especificaciones_del_requerimiento}</td>
+		<td>${fld:rss_cantidad}</td>
+		<!-- <td align='right'>${fld:rrs_precio@#,###,##0.00}</td>
+		<td align='right'>${fld:rrs_monto@#,###,##0.00}</td> -->
+		<td>${fld:rrs_fecha_registro}</td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="fechaentrega('${fld:smn_requisicion_detalle_id}','${fld:rss_cantidad}')" title="${lbl:b_rel_requisition_date_delivery}"></td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalleimpuesto('${fld:smn_requisicion_detalle_id}','${fld:rrs_monto}')" title="${lbl:b_requisition_tax_detail}"></td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalledescuento('${fld:smn_requisicion_detalle_id}','${fld:rrs_monto}')" title="${lbl:b_requisition_detail_discount_retention}">
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,1 @@
+select smn_compras.smn_cotizacion.smn_oferta_id as id, smn_compras.smn_cotizacion.smn_oferta_id as item from smn_compras.smn_cotizacion

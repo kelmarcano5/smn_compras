@@ -1,3 +1,0 @@
-<rows>
-ofe_status="${fld:ofe_status}"    ofe_fecha_entrega="${fld:ofe_fecha_entrega}"    ofe_cantidad="${fld:ofe_cantidad}"    ofe_consecutivo="${fld:ofe_consecutivo}"    smn_oferta_id="${fld:smn_oferta_id}"    smn_oferta_f_entrega="${fld:smn_oferta_f_entrega}"    
-</rows>

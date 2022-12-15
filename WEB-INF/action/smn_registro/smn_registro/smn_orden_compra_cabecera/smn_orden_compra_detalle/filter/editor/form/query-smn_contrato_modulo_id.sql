@@ -1,0 +1,1 @@
+select smn_compras.smn_contrato_modulo.smn_contrato_modulo_id as id, smn_compras.smn_contrato_modulo.ctm_cantidad|| ' - ' || smn_compras.smn_contrato_modulo.ctm_precio as item from smn_compras.smn_contrato_modulo

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_req_detalle_impuesto>
+	<detail>
+		<rows>		
+		<record rim_fecha_registro="${fld:rim_fecha_registro}"    rim_monto_imp_moneda_alterna="${fld:rim_monto_imp_moneda_alterna}"    smn_tasa_rf="${fld:smn_tasa_rf}"    smn_moneda_rf="${fld:smn_moneda_rf}"    rim_monto_impuesto="${fld:rim_monto_impuesto}"    smn_sustraendo="${fld:smn_sustraendo}"    smn_porcentaje_impuesto="${fld:smn_porcentaje_impuesto}"    smn_cod_impuesto_deduc_rf="${fld:smn_cod_impuesto_deduc_rf}"    rim_monto_base="${fld:rim_monto_base}"    smn_requisicion_detalle_id="${fld:smn_requisicion_detalle_id}"    />
+		</rows>
+	</detail>
+</smn_req_detalle_impuesto>
