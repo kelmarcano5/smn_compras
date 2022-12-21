@@ -18,6 +18,7 @@
 		<recordset id='query-smn_documento_id.sql' source='sql' scope='transaction'/>
 		<recordset id='query-smn_entidad_id.sql' source='sql' scope='transaction'/>
 		<recordset id='query-smn_sucursal_id.sql' source='sql' scope='transaction'/>
+		<recordset id='query-smn_almacen_rf.sql' source='sql' scope='transaction'/>
 		<!-- <recordset id='query-smn_auxiliar_rf.sql' source='sql' scope='transaction'/> -->
 	</transaction>
 
@@ -30,6 +31,7 @@
 		<print mode='table' recordset='query-smn_documento_id.sql' tag='smn_documento_id_rows'/>
 		<print mode='table' recordset='query-smn_entidad_id.sql' tag='smn_entidad_id_rows'/>
 		<print mode='table' recordset='query-smn_sucursal_id.sql' tag='smn_sucursal_id_rows'/>
+		<print mode='table' recordset='query-smn_almacen_rf.sql' tag='smn_almacen_solicitante_rf_rows'/>
 		<!-- <print mode='table' recordset='query-smn_auxiliar_rf.sql' tag='smn_auxiliar_rf_rows'/> -->
 		<print mode="form" recordset="_request" /> 
 	</output>

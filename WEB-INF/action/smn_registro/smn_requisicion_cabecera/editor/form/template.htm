@@ -5,9 +5,15 @@
 
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
 		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+
 	<!--biblioteca generica JS/Dinamica-->
 	<script type="text/javascript" src="${def:context}/action/script">
 	</script>
+	<script type="text/javascript" src="${def:context}/action/jquery">
+	</script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -111,7 +117,7 @@
 	<tr>
 		<td>${lbl:b_purchasing_documents}*</td>
 		<td>
-			<select name="smn_documento_id" id="smn_documento_id" onchange="chgCombo(smn_documento_id.options[smn_documento_id.selectedIndex].text,'smn_documento_id_name');">
+			<select name="smn_documento_id" id="smn_documento_id" onchange="chgCombo(smn_documento_id.options[smn_documento_id.selectedIndex].text,'smn_documento_id_name');verificarModalidad();">
 				<option value="">[Cualquiera]</option>
 				<smn_documento_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -121,6 +127,20 @@
 			<input id="smn_documento_id_name" name="smn_documento_id_name" type="hidden">
 		</td>
 	</tr>
+	<tr id="almacen_solicitante">
+		<td>${lbl:b_applicant_warehouse}*</td>
+		<td>
+			<select class="js-example-basic-single" name="smn_almacen_solicitante_rf" id="smn_almacen_solicitante_rf" onchange="chgCombo(smn_almacen_solicitante_rf.options[smn_almacen_solicitante_rf.selectedIndex].text,'smn_almacen_solicitante_rf_name');" disabled>
+				<option value="">[Cualquiera]</option>
+				<smn_almacen_solicitante_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_almacen_solicitante_rf_rows>
+			</select> 
+			<input id="smn_almacen_solicitante_rf_name" name="smn_almacen_solicitante_rf_name" type="hidden">
+		</td>
+	</tr>
+
 		<tr>
 			<td>${lbl:b_requisition_description}*</td>
 			<td>
@@ -193,6 +213,10 @@
 	onload = function()
 	{ 
 		addNew();
+
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
 		
 		//Disabled all combo linked
 
@@ -210,6 +234,22 @@
 	function chgCombo(text,id)
 	{
 		document.getElementById(id).value = text;
+	}
+
+	function verificarModalidad(){
+		
+		var combo = document.getElementById('smn_documento_id');
+			//var valueCombo = getIDSelectedIndex(combo);
+			var valueCombo = combo.options[smn_documento_id.selectedIndex].text;
+			geo_id1 = valueCombo.split("-").pop().trim();
+
+			
+		if (geo_id1=="AU")
+		{				
+			document.getElementById('smn_almacen_solicitante_rf').disabled=false;		
+		}else{
+			document.getElementById('smn_almacen_solicitante_rf').disabled=true;
+		}
 	}
 	
 	//configurar formulario para ingresar registro nuevo
@@ -456,7 +496,21 @@
 		}
 	}
 
-	
+	// function chgComboDocumento()
+	// {		
+		
+	// 	var id= document.getElementById('smn_documento_id').value;
+		
+	// 	return ajaxCall(	
+	// 					httpMethod="GET", 
+	// 					uri="${def:actionroot}/getalmacen?id=" + id, 
+	// 					divResponse=null, 
+	// 					divProgress="status", 
+	// 					formName="form1", 
+	// 					afterResponseFn=setElementFirstIndex('smn_almacen_solicitante_rf'), //function 'setElementFirstIndex' select first element of combo list
+	// 					onErrorFn=null);		
+		
+	// }
 </script>	
 </body>
 </html>

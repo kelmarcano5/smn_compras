@@ -4,10 +4,14 @@
 <head>
 
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica.css" />
-	
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+
 	<!--biblioteca generica JS/Dinamica-->
 	<script type="text/javascript" src="${def:context}/action/script">
 	</script>
+	<script type="text/javascript" src="${def:context}/action/jquery">
+	</script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -55,7 +59,7 @@
 	<tr>
 		<td>${lbl:b_users}*</td>
 		<td>
-			<select name="smn_usuarios_id" id="smn_usuarios_id" onchange="chgCombo(smn_usuarios_id.options[smn_usuarios_id.selectedIndex].text,'smn_usuarios_id_name');">
+			<select class="js-example-basic-single" name="smn_usuarios_id" id="smn_usuarios_id" onchange="chgCombo(smn_usuarios_id.options[smn_usuarios_id.selectedIndex].text,'smn_usuarios_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_usuarios_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -93,6 +97,10 @@
 	onload = function()
 	{ 
 		addNew();
+
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
 
 		//alert("'${fld:codigo}'-'${fld:descripcion}'");
 			if('${fld:source}' == 'smn_relacion'){ 
