@@ -3,12 +3,15 @@
 
 <head>
 
-<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
-	
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+
 	<!--biblioteca generica JS/Dinamica-->
 	<script type="text/javascript" src="${def:context}/action/script">
 	</script>
+	<script type="text/javascript" src="${def:context}/action/jquery">
+	</script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -58,10 +61,10 @@
 		</td>
 	</tr>
 	
-	<tr id="linea" style="display: none;">
+	<tr id="linea">
 		<td>${lbl:b_lines}*</td>
 		<td>
-			<select name="smn_linea_id" id="smn_linea_id" onchange="chgCombo(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');itemlinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');serviciolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');afijolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');">
+			<select class="js-example-basic-single" name="smn_linea_id" id="smn_linea_id" onchange="chgCombo(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');itemlinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');serviciolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');afijolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_linea_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -71,11 +74,10 @@
 			<input id="smn_linea_id_name" name="smn_linea_id_name" type="hidden">
 		</td>
 	</tr>
-	<tr id="naturaleza" style="display: none;">
+	<tr id="naturaleza">
 		<td>${lbl:b_nature}*</td>
 		<td>
-			<select name="smn_naturaleza_id" id="smn_naturaleza_id" onchange="validar();">
-			<option value="">[Cualquiera]</option>
+			<select name="smn_naturaleza_id" id="smn_naturaleza_id" onchange="validar();itemlinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');serviciolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');afijolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');">
 			<option value="IT">${lbl:b_item}</option>
 			<option value="SE">${lbl:b_services}</option>
 			<option value="AF">${lbl:b_actfij}</option>
@@ -83,21 +85,10 @@
 			</select> 
 		</td>
 	</tr>
-	<tr>
-		<td>${lbl:b_products_found}*</td>
-		<td>
-			<select name="rrs_producto_encontrado" id="rrs_producto_encontrado" onchange="validarproducto();">
-			<option value="">[Cualquiera]</option>
-			<option value="SI">${lbl:b_yes}</option>
-			<option value="NO">${lbl:b_not}</option>
-
-			</select> 
-		</td>
-	</tr>
-	<tr id="item" style="display: none;">
+	<tr id="item">
 		<td>${lbl:b_item}</td>
 		<td>
-			<select name="smn_item_id" id="smn_item_id" onchange="chgCombo(smn_item_id.options[smn_item_id.selectedIndex].text,'smn_item_id_name');">
+			<select class="js-example-basic-single" name="smn_item_id" id="smn_item_id" onchange="chgCombo(smn_item_id.options[smn_item_id.selectedIndex].text,'smn_item_id_name');validarProdEncontrado(smn_item_id.options[smn_item_id.selectedIndex].value);">
 				<option value="">[Cualquiera]</option>
 				<smn_item_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -110,10 +101,10 @@
 			<img src="${def:context}/images/search.png" onclick="getItem()" title="Buscar">
 		</td>
 	</tr>
-	<tr id="servicio" style="display: none;">
+	<tr id="servicio">
 		<td>${lbl:b_services}</td>
 		<td>
-			<select name="smn_servicio_id" id="smn_servicio_id" onchange="chgCombo(smn_servicio_id.options[smn_servicio_id.selectedIndex].text,'smn_servicio_id_name');">
+			<select name="smn_servicio_id" id="smn_servicio_id" onchange="chgCombo(smn_servicio_id.options[smn_servicio_id.selectedIndex].text,'smn_servicio_id_name');validarProdEncontrado(smn_servicio_id.options[smn_servicio_id.selectedIndex].value);">
 				<option value="">[Cualquiera]</option>
 				<smn_servicio_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -123,10 +114,10 @@
 			<input id="smn_servicio_id_name" name="smn_servicio_id_name" type="hidden">
 		</td>
 	</tr>
-	<tr id="activo" style="display: none;">
+	<tr id="activo">
 		<td>${lbl:b_actfij}</td>
 		<td>
-			<select name="smn_afijo_id" id="smn_afijo_id" onchange="chgCombo(smn_afijo_id.options[smn_afijo_id.selectedIndex].text,'smn_afijo_id_name');">
+			<select name="smn_afijo_id" id="smn_afijo_id" onchange="chgCombo(smn_afijo_id.options[smn_afijo_id.selectedIndex].text,'smn_afijo_id_name');validarProdEncontrado(smn_afijo_id.options[smn_afijo_id.selectedIndex].value);">
 				<option value="">[Cualquiera]</option>
 				<smn_afijo_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -136,8 +127,16 @@
 			<input id="smn_afijo_id_name" name="smn_afijo_id_name" type="hidden">
 		</td>
 	</tr>
-	
-	
+	<tr>
+		<td>${lbl:b_products_found}*</td>
+		<td>
+			<select disabled name="rrs_producto_encontrado" id="rrs_producto_encontrado">
+			<option value="SI">${lbl:b_yes}</option>
+			<option value="NO">${lbl:b_not}</option>
+
+			</select> 
+		</td>
+	</tr>
 	<tr id="contrato" style="display:none">
 		<td>${lbl:b_contract}</td>
 		<td>
@@ -223,6 +222,7 @@
 			<td>${lbl:b_requirement_specification}</td>
 			<td>
 				<textarea id="rrs_especificaciones_del_requerimiento" name="rrs_especificaciones_del_requerimiento" cols="30" rows="3"></textarea>
+				<div id="msjEspecificaciones" style="color: red;"></div>
 			</td>
 		</tr>
 		<tr>
@@ -258,8 +258,9 @@
 
 <!--codigo de soporte del template-->
 <script type="text/javascript">
-	//var entidad = '${fld:entidad}';
+
 	var recurre = '${fld:recurrente}';
+
 	onload = function()
 	{ 
 		addNew();
@@ -270,35 +271,71 @@
 		</req_fecha_requerido_rows>
 
 		// chgCombo7('${fld:entidad}');
-		document.form1.smn_item_id.disabled=true;
+		document.form1.smn_item_id.disabled=false;
 		document.form1.smn_servicio_id.disabled=true;
 		document.form1.smn_afijo_id.disabled=true;
-		//document.getElementById("rrs_precio").disabled=true;
+		
 		document.getElementById("rrs_monto").disabled=true;
-		// alert('${fld:recurrente}')
-		validarproducto();
+
+		//Inicia el producto encontrado con valor 'NO'
+		document.form1.rrs_producto_encontrado.selectedIndex = 1; 
+
 		recurrente(recurre);
-		// if('${fld:source}' = = 'smn_detalle'){ 
-		document.getElementById('smn_requisicion_cabecera_id').value = 	'${fld:id2}';
-		document.getElementById('smn_cabecera_version_id').value = 	'${fld:id3}';			
-			//var combo = document.getElementById('smn_requisicion_cabecera_id');
-			//setSelectedIndexValue('${fld:id2}', combo);
-			//document.form1.smn_requisicion_cabecera_id.disabled=true;
+		
+		document.getElementById('smn_requisicion_cabecera_id').value = '${fld:id2}';
+		document.getElementById('smn_cabecera_version_id').value = '${fld:id3}';
 
-			
-		//alert(entidad)
-			
-		// alert('${fld:id2}');
-			//var combo = document.getElementById('smn_cabecera_version_id');
-			//setSelectedIndexValue('${fld:id3}', combo);
-			//document.form1.smn_cabecera_version_id.disabled=true;
-		//}
-
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
 
 		if (id!="")
 			edit(id);
 	} 
 
+	function search()
+	{
+		addNew();
+
+		<req_fecha_requerido_rows>
+		document.form1.rrs_fecha_de_requerido.value = "${fld:req_fecha_requerido}";
+		document.form1.req_fecha_registro.value = "${fld:req_fecha_registro}"
+		</req_fecha_requerido_rows>
+
+		// chgCombo7('${fld:entidad}');
+		document.form1.smn_item_id.disabled=false;
+		document.form1.smn_servicio_id.disabled=true;
+		document.form1.smn_afijo_id.disabled=true;
+		//document.form1.smn_item_id.value='';
+		//document.form1.smn_servicio_id.value='';
+		//document.form1.smn_afijo_id.value='';
+		setSelectedIndexValue('[Cualquiera]', smn_item_id);
+		setSelectedIndexValue('[Cualquiera]', smn_servicio_id);
+		setSelectedIndexValue('[Cualquiera]', smn_afijo_id);
+
+		document.getElementById("rrs_monto").disabled=true;
+
+		//Inicia el producto encontrado con valor 'NO'
+		document.form1.rrs_producto_encontrado.selectedIndex = 1; 
+
+		recurrente(recurre);
+		
+		document.getElementById('smn_requisicion_cabecera_id').value = '${fld:id2}';
+		document.getElementById('smn_cabecera_version_id').value = '${fld:id3}';
+
+		if (id!="")
+			edit(id);
+	}
+
+	//Funcion para determinar si un producto(item,servicio o afijo fue encontrado).
+	//Creada por Engellbert Torrealba.
+	function validarProdEncontrado(value)
+	{		
+		if(value != '' && value != 0)
+			document.form1.rrs_producto_encontrado.selectedIndex = 0; //SI
+		else
+			document.form1.rrs_producto_encontrado.selectedIndex = 1; //NO
+	}
 	
 	//var geo_id7 = null;
 	function chgCombo7(id)
@@ -334,12 +371,18 @@
 		//	document.getElementById("smn_item_id").value="";
 		} */
 		
-		if(naturaleza != "IT")
+		if(naturaleza == "IT")
+		{		
+			document.getElementById("smn_item_id").disabled=false;
+			document.getElementById("buscarItem").style.display = '';
+		}
+		else
 		{
-			//document.getElementById("smn_item_id").disabled=false;
-			//document.getElementById("buscarItem").style.display = "initial";		
 			document.getElementById("smn_item_id").disabled=true;
-			document.getElementById("buscarItem").style.display = "none";
+			setSelectedIndexValue('[Cualquiera]', smn_item_id);
+			document.getElementById("buscarItem").style.display = 'none';
+			//El producto encontrado = 'NO'
+			document.form1.rrs_producto_encontrado.selectedIndex = 1; 
 		}
 
 		if(naturaleza == "SE" ){
@@ -351,7 +394,10 @@
 		}else {
 		
 			document.getElementById("smn_servicio_id").disabled=true;
+			setSelectedIndexValue('[Cualquiera]', smn_servicio_id);
 			document.getElementById("smn_servicio_id").value="";
+			//El producto encontrado = 'NO'
+			document.form1.rrs_producto_encontrado.selectedIndex = 1;
 		}
 		
 		if(naturaleza == "AF"){
@@ -360,8 +406,10 @@
 		
 		}else {
 			document.getElementById("smn_afijo_id").disabled=true;
+			setSelectedIndexValue('[Cualquiera]', smn_afijo_id);
 			document.getElementById("smn_afijo_id").value="";	
-		
+			//El producto encontrado = 'NO'
+			document.form1.rrs_producto_encontrado.selectedIndex = 1;
 		}
 
 		
@@ -614,6 +662,17 @@
 	//grabar el formulario
 	function save()
 	{
+		var prodEncontrado = document.form1.rrs_producto_encontrado.value;
+		var especificaciones = document.form1.rrs_especificaciones_del_requerimiento.value;
+
+		if (prodEncontrado == 'NO' && especificaciones == '') 
+		{
+			msjEspecificaciones.innerHTML="Este valor DEBE ser ingresado";
+			return false;
+		}
+		else
+			msjEspecificaciones.innerHTML="";
+
 		//determina si es un insert o un update
 		if (document.form1.id.value=="")
 			return insert();
@@ -842,7 +901,7 @@
 		}	
 	}
 
-	function validarproducto() {
+	/*function validarproducto() {
 		var encontrado = document.getElementById("rrs_producto_encontrado").value;
 		var naturaleza = document.getElementById('smn_naturaleza_id').value;
 
@@ -874,7 +933,7 @@
 			document.getElementById("activo").style.display='';
 
 		}
-	}
+	}*/
 
 	
 	function recurrente(id){

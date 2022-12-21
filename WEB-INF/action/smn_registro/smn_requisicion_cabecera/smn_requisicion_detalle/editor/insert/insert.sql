@@ -24,7 +24,8 @@ INSERT INTO smn_compras.smn_requisicion_detalle
 	rrs_idioma,
 	rrs_usuario,
 	rrs_fecha_registro,
-	rrs_hora
+	rrs_hora,
+	rrs_estatus_existencia
 )
 VALUES
 (
@@ -52,5 +53,6 @@ VALUES
 	'${def:locale}',
 	'${def:user}',
 	{d '${def:date}'},
-	'${def:time}'
+	'${def:time}',
+	'SO'
 )

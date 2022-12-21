@@ -36,6 +36,7 @@
 		<th class='sortable' onclick='sortBy("smn_documento_id","query-smncotizacion.sql")'>${lbl:b_purchasing_documents}</th>
 		<th class='sortable' onclick='sortBy("numero_requisicion","query-smncotizacion.sql")'>Numero Requisicion</th>
 		<th class='sortable' onclick='sortBy("smn_item_rf","query-smncotizacion.sql")'>${lbl:b_item}</th>
+		<th class='sortable' onclick='sortBy("especificaciones","query-smncotizacion.sql")'>${lbl:b_requirement_specification}</th>
 		<th class='sortable' onclick='sortBy("cantidad","query-smncotizacion.sql")'>Cantidad</th>
 		<th class='sortable' onclick='sortBy("fecha_requerida","query-smncotizacion.sql")'>Fecha Requerida</th>
 		<th class='sortable' onclick='sortBy("numero_cotizacion","query-smncotizacion.sql")'>Numero Cotizacion</th>
@@ -44,7 +45,6 @@
 		<th class='sortable' onclick='sortBy("cot_fecha_registro","query-smncotizacion.sql")'>${lbl:b_store_date}</th>
 		<th>RCP</th>	
 		<th>CFE</th>		
-
 	</tr>
 
 	<!--data-->
@@ -59,6 +59,7 @@
 		<td>${fld:smn_documento_id}</td>
 		<td>${fld:numero_requisicion}</td>
 		<td>${fld:smn_item_rf}</td>
+		<td>${fld:especificaciones}</td>
 		<td>${fld:cantidad}</td>
 		<td>${fld:fecha_requerida@dd-MM-yyyy}</td>
 		<td>${fld:numero_cotizacion}</td>

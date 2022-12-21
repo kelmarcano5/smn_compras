@@ -1,4 +1,4 @@
-select 
+select distinct
     smn_base.smn_item.smn_item_id as id, 
     smn_base.smn_item.itm_nombre as item 
 from 

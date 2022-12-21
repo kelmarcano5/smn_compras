@@ -1,6 +1,7 @@
 setComboValue('smn_requisicion_cabecera_id','${fld:smn_requisicion_cabecera_id}','form1');
-document.form1.smn_linea_id.value='${fld:smn_linea_id@#,###,###}';
+//document.form1.smn_linea_id.value='${fld:smn_linea_id@#,###,###}';
 setComboValue('smn_naturaleza_id','${fld:smn_naturaleza_id}','form1');validar();
+setComboValue('smn_linea_id','${fld:smn_linea_id}','form1');
 setComboValue('smn_servicio_id','${fld:smn_servicio_id}','form1');
 setComboValue('smn_item_id','${fld:smn_item_id}','form1');
 setComboValue('smn_afijo_id','${fld:smn_afijo_id}','form1');

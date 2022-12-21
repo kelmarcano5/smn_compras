@@ -17,7 +17,19 @@ CASE
         smn_base.smn_activo_fijo.acf_codigo || ' - ' || smn_base.smn_activo_fijo.acf_nombre 
     END AS smn_item_id,
     smn_compras.smn_requisicion_detalle.rrs_especificaciones_del_requerimiento,
-    smn_compras.smn_documentos.dcc_recurrente
+    smn_compras.smn_documentos.dcc_recurrente,
+    smn_compras.smn_requisicion_detalle.smn_requisicion_detalle_id,
+    CASE
+        
+        WHEN smn_compras.smn_requisicion_detalle.rrs_estatus_existencia = 'SO' THEN
+        '${lbl:b_solicited}' 
+        WHEN smn_compras.smn_requisicion_detalle.rrs_estatus_existencia = 'GE' THEN
+        '${lbl:b_generated}' 
+        WHEN smn_compras.smn_requisicion_detalle.rrs_estatus_existencia = 'AP' THEN
+        '${lbl:b_aprobated}' 
+        WHEN smn_compras.smn_requisicion_detalle.rrs_estatus_existencia = 'VE' THEN
+        '${lbl:b_versioned}' 
+    END AS rrs_estatus_existencia
 FROM
     smn_compras.smn_requisicion_detalle
     LEFT OUTER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = smn_compras.smn_requisicion_detalle.smn_requisicion_cabecera_id

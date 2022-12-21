@@ -4,11 +4,14 @@
 <head>
 
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
 
-<!--biblioteca generica JS/Dinamica-->
-<script type="text/javascript" src="${def:context}/action/script">
-</script>
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+	<script type="text/javascript" src="${def:context}/action/jquery">
+	</script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -62,7 +65,7 @@
 	<tr>
 		<td>${lbl:b_item}*</td>
 		<td>
-			<select name="smn_item_rf" id="smn_item_rf" onchange="chgCombo(smn_item_rf.options[smn_item_rf.selectedIndex].text,'smn_item_rf_name');">
+			<select class="js-example-basic-single" name="smn_item_rf" id="smn_item_rf" onchange="chgCombo(smn_item_rf.options[smn_item_rf.selectedIndex].text,'smn_item_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_item_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -75,7 +78,7 @@
 	<tr>
 		<td>${lbl:b_lines}*</td>
 		<td>
-			<select name="smn_linea_id" id="smn_linea_id" onchange="chgCombo(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');">
+			<select class="js-example-basic-single" name="smn_linea_id" id="smn_linea_id" onchange="chgCombo(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_linea_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -157,6 +160,10 @@
 			setSelectedIndexValue('${fld:id3}', combo);
 			document.form1.smn_cabecera_version_id.disabled=true;
 		}
+
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
 	} 
 
 	

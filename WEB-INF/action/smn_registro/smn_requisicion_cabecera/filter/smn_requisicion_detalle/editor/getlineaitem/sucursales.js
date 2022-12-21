@@ -1,7 +1,7 @@
 listboxClear("smn_item_id");
 
 var optionChoose = document.createElement("option");
-optionChoose.text = '[${lbl:b_choose}]';
+optionChoose.text = '[${lbl:b_any}]';
 optionChoose.value = "0";
 document.form1.smn_item_id.add(optionChoose, 0);
 

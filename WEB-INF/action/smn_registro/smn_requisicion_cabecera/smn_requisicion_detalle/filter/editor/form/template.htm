@@ -3,12 +3,15 @@
 
 <head>
 
-<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
-	
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+
 	<!--biblioteca generica JS/Dinamica-->
 	<script type="text/javascript" src="${def:context}/action/script">
 	</script>
+	<script type="text/javascript" src="${def:context}/action/jquery">
+	</script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
 
 </head>
 
@@ -61,7 +64,7 @@
 	<tr id="linea">
 		<td>${lbl:b_lines}*</td>
 		<td>
-			<select name="smn_linea_id" id="smn_linea_id" onchange="chgCombo(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');itemlinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');serviciolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');afijolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');">
+			<select class="js-example-basic-single" name="smn_linea_id" id="smn_linea_id" onchange="chgCombo(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');itemlinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');serviciolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');afijolinea(smn_linea_id.options[smn_linea_id.selectedIndex].text,'smn_linea_id_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_linea_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -85,7 +88,7 @@
 	<tr id="item">
 		<td>${lbl:b_item}</td>
 		<td>
-			<select name="smn_item_id" id="smn_item_id" onchange="chgCombo(smn_item_id.options[smn_item_id.selectedIndex].text,'smn_item_id_name');validarProdEncontrado(smn_item_id.options[smn_item_id.selectedIndex].value);">
+			<select class="js-example-basic-single" name="smn_item_id" id="smn_item_id" onchange="chgCombo(smn_item_id.options[smn_item_id.selectedIndex].text,'smn_item_id_name');validarProdEncontrado(smn_item_id.options[smn_item_id.selectedIndex].value);">
 				<option value="">[Cualquiera]</option>
 				<smn_item_id_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -257,10 +260,17 @@
 <script type="text/javascript">
 
 	var recurre = '${fld:recurrente}';
-
+	var id = "${fld:id}" 
+	
 	onload = function()
 	{ 
+		
+
 		addNew();
+		
+		$(document).ready(function() {	
+		    $('.js-example-basic-single').select2();
+		});
 
 		<req_fecha_requerido_rows>
 		document.form1.rrs_fecha_de_requerido.value = "${fld:req_fecha_requerido}";
@@ -281,6 +291,8 @@
 		
 		document.getElementById('smn_requisicion_cabecera_id').value = '${fld:id2}';
 		document.getElementById('smn_cabecera_version_id').value = '${fld:id3}';
+
+		
 
 		if (id!="")
 			edit(id);
@@ -650,7 +662,7 @@
 		setFocusOnForm("form1");		
 	}
 	
-	var id = "${fld:id}"
+	
 	
 	//grabar el formulario
 	function save()

@@ -18,7 +18,8 @@ select distinct
 	smn_compras.smn_cotizacion.cot_fecha_registro,
 	smn_compras.smn_requisicion_detalle.rss_cantidad as cantidad,
 	smn_base.smn_item.itm_codigo ||' - '|| smn_base.smn_item.itm_nombre as smn_item_rf,
-	usuarios.aux_descripcion as smn_solicitante
+	usuarios.aux_descripcion as smn_solicitante,
+	smn_compras.smn_requisicion_detalle.rrs_especificaciones_del_requerimiento as especificaciones
 from
 	smn_compras.smn_cotizacion
 	left outer join smn_compras.smn_requisicion_detalle on smn_compras.smn_requisicion_detalle.smn_requisicion_detalle_id = smn_compras.smn_cotizacion.smn_requisicion_detalle_id
