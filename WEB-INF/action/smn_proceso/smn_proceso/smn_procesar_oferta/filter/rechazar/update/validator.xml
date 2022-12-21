@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
-<validator onerror='/action/error/validation/ajax'>
-	<parameter id='id' type='integer' required='true' label='${lbl:b_offer}' maxlen='10'/>
-	<parameter id='ofe_motivo_rechazo' type='varchar' required='true' label='${lbl:b_reason_rejection}' maxlen='100'/>
-</validator>

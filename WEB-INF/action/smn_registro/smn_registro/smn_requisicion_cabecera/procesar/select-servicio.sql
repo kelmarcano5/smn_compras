@@ -1,1 +1,0 @@
-SELECT * FROM smn_compras.smn_servicio WHERE smn_servicio_id = ${fld:smn_servicio_id}

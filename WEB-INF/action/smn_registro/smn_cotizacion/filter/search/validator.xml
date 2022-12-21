@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_entidad_id' type='integer' required='false' label='${lbl:b_entities}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_solicitante}' maxlen='10'/>
+	<parameter id='smn_item_rf' type='integer' required='false' label='${lbl:b_item}' maxlen='10'/>
+	<parameter id='cot_secuencia' type='integer' required='false' label='${lbl:b_sequence}' maxlen='10'/>
+	<parameter id='smn_requisicion_detalle_id' type='integer' required='false' label='${lbl:b_requisition_detail}' maxlen='10'/>
+	<parameter id='cot_estatus' type='varchar' required='false' label='${lbl:b_requisition_status}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='cot_estatus' rule='like' />
+	<parameter id='cot_fecha_registro_fin' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<parameter id='cot_fecha_registro_ini' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

@@ -1,1 +1,0 @@
-select smn_centro_costo_id as id, cco_codigo || ' - ' || cco_descripcion_corta as item from smn_base.smn_centro_costo

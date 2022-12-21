@@ -1,3 +1,0 @@
-<rows>
-req_fecha_registro="${fld:req_fecha_registro}"    smn_sucursal_id="${fld:smn_sucursal_id}"    smn_entidad_id="${fld:smn_entidad_id}"    req_estatus_ruta="${fld:req_estatus_ruta}"    req_fecha_requerido="${fld:req_fecha_requerido}"    req_descripcion="${fld:req_descripcion}"    smn_documento_id="${fld:smn_documento_id}"    smn_tipo_documento_id="${fld:smn_tipo_documento_id}"    req_estatus="${fld:req_estatus}"    req_numero="${fld:req_numero}"    smn_cabecera_version_id="${fld:smn_cabecera_version_id}"    
-</rows>

@@ -1,0 +1,49 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="8" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('smn_cotizacion_id','query-smncotizacionfentrega.sql')" >${lbl:b_quotation}</th>
+		<th class='sortable' onclick="sortBy('cfe_consecutivo','query-smncotizacionfentrega.sql')" >${lbl:b_consecutivel}</th>
+		<th class='sortable' onclick="sortBy('cfe_cantidad','query-smncotizacionfentrega.sql')" >${lbl:b_quantity}</th>
+		<th class='sortable' onclick="sortBy('cfe_fecha_entrega','query-smncotizacionfentrega.sql')" >${lbl:b_delivery_date}</th>
+		<th class='sortable' onclick="sortBy('cfe_status','query-smncotizacionfentrega.sql')" >${lbl:b_status}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_cotizacion_f_entrega_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_cotizacion_f_entrega_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_cotizacion_f_entrega_id}')" title="${lbl:b_edit_button}"></td>
+		<td align="center">${fld:smn_cotizacion_id}</td>
+		<td align="center">${fld:cfe_consecutivo}</td>
+		<td align="right">${fld:cfe_cantidad@#,###,##0.00}</td>
+		<td align="center">${fld:cfe_fecha_entrega@dd-MM-yyyy}</td>
+		<td align="left">${fld:cfe_status}</td>
+
+	</tr>
+	</rows>
+
+</table>

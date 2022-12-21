@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert">
+	<parameter id='id4' type='integer' required='false' label='${lbl:b_delivery_date_quote}' maxlen='10'/>
+	<!-- <parameter id='id3' type='integer' required='false' label='${lbl:b_requisition_tax_detail}' maxlen='10'/>
+	<parameter id='id5' type='integer' required='false' label='${lbl:b_requisition_detail_discount_retention}' maxlen='10'/> -->
+</validator>

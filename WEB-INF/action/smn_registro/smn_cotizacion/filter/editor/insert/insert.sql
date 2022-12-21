@@ -1,0 +1,34 @@
+INSERT INTO smn_compras.smn_cotizacion
+(
+	smn_cotizacion_id,
+	smn_requisicion_detalle_id,
+	cot_secuencia,
+	smn_documento_id,
+	cot_numero_documento,
+	/*smn_proveedor_id,*/
+	cot_fecha_envio,
+	cot_fecha_requerido,
+	smn_item_id,
+	cot_estatus,
+	cot_idioma,
+	cot_usuario,
+	cot_fecha_registro,
+	cot_hora
+)
+VALUES
+(
+	${seq:currval@smn_compras.seq_smn_cotizacion},
+	${fld:smn_requisicion_detalle_id},
+	${fld:cot_secuencia},
+	${fld:smn_documento_id},
+	${fld:cot_numero_documento},
+	/*${fld:smn_proveedor_id},*/
+	${fld:cot_fecha_envio},
+	${fld:cot_fecha_requerido},
+	${fld:smn_item_rf},
+	${fld:cot_estatus},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

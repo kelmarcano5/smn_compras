@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_oferta_id' type='integer' required='false' label='${lbl:b_quotation}' maxlen='10'/>
+	<parameter id='ofe_consecutivo' type='integer' required='false' label='${lbl:b_consecutivel}' maxlen='10'/>
+	<parameter id='ofe_cantidad' type='double' required='false' label='${lbl:b_quantity}' maxlen='10'/>
+	<parameter id='ofe_fecha_entrega' type='date' required='false' label='${lbl:b_delivery_date}' maxlen='10'/>
+	<parameter id='ofe_status' type='varchar' required='false' label='${lbl:b_offer_status}' maxlen='2'/>
+
+
+</validator>

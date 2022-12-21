@@ -1,2 +1,0 @@
-search();
-alert('${fld:mensaje}');

@@ -1,0 +1,3 @@
+<rows>
+cfe_fecha_registro="${fld:cfe_fecha_registro}"    cfe_fecha_de_entrega="${fld:cfe_fecha_de_entrega}"    cfe_cantidad="${fld:cfe_cantidad}"    cfe_consecutivo="${fld:cfe_consecutivo}"    smn_requisicion_detalle_id="${fld:smn_requisicion_detalle_id}"    
+</rows>

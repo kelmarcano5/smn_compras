@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnreqdetalleimpuesto.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_requisition_tax_detail}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_requisition_tax_detail}">
+				<col id='smn_requisicion_detalle_id' label='${lbl:b_requisition_detail}' />
+		<col id='rim_monto_base' label='${lbl:b_base_amount}' />
+		<col id='smn_cod_impuesto_deduc_rf' label='${lbl:b_code_tax_deduction}' />
+		<col id='smn_porcentaje_impuesto' label='${lbl:b_tax_percentage}' />
+		<col id='smn_sustraendo' label='${lbl:b_subtract}' />
+		<col id='rim_monto_impuesto' label='${lbl:b_tax_amount_ml}' />
+		<col id='smn_moneda_rf' label='${lbl:b_coins}' />
+		<col id='smn_tasa_rf' label='${lbl:b_exchange_rate}' />
+		<col id='rim_monto_imp_moneda_alterna' label='${lbl:b_tax_amount_ma}' />
+		<col id='rim_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

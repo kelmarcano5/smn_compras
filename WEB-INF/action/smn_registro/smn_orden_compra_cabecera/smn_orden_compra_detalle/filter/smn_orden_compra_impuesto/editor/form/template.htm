@@ -1,0 +1,480 @@
+<!doctype html>
+<html>
+
+<head>
+
+		<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_smn_orden_compra_impuesto}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+			<tr>
+			<td>${lbl:b_smn_orden_compra_detalle}*</td>
+			<td>
+				<input id="smn_orden_compra_detalle_id" name="smn_orden_compra_detalle_id" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_taxes_codes}*</td>
+		<td>
+			<select name="smn_cod_impuesto_deduc_rf" id="smn_cod_impuesto_deduc_rf" onchange="chgCombo1(smn_cod_impuesto_deduc_rf.options[smn_cod_impuesto_deduc_rf.selectedIndex].text,'smn_cod_impuesto_deduc_rf_name');getTipoImpuesto(smn_cod_impuesto_deduc_rf.options[smn_cod_impuesto_deduc_rf.selectedIndex].text,'smn_cod_impuesto_deduc_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_cod_impuesto_deduc_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_cod_impuesto_deduc_rf_rows>
+			</select> 
+			<input id="smn_cod_impuesto_deduc_rf_name" name="smn_cod_impuesto_deduc_rf_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_oci_monto_base_ml}*</td>
+			<td>
+				<input id="oci_monto_base_ml" name="oci_monto_base_ml" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_oci_porcentaje_impuesto}*</td>
+			<td>
+				<input id="oci_porcentaje_impuesto" name="oci_porcentaje_impuesto" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_oci_sustraendo_ml}</td>
+			<td>
+				<input id="oci_sustraendo_ml" name="oci_sustraendo_ml" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+	<tr style="display: none;">
+		<td>${lbl:b_smn_tipo_impuesto_rf}*</td>
+		<td>
+			<select name="smn_tipo_impuesto_rf" id="smn_tipo_impuesto_rf" onchange="chgCombo(smn_tipo_impuesto_rf.options[smn_tipo_impuesto_rf.selectedIndex].text,'smn_tipo_impuesto_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_tipo_impuesto_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_tipo_impuesto_rf_rows>
+			</select> 
+			<input id="smn_tipo_impuesto_rf_name" name="smn_tipo_impuesto_rf_name" type="hidden">
+		</td>
+	</tr>
+		<tr id="montoimpml" style="display: none">
+			<td>${lbl:b_oci_monto_impuesto_ml}*</td>
+			<td>
+				<input id="oci_monto_impuesto_ml" name="oci_monto_impuesto_ml" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_smn_moneda_rf}</td>
+		<td>
+			<select name="smn_moneda" id="smn_moneda" onchange="chgCombo(smn_moneda.options[smn_moneda.selectedIndex].text,'smn_moneda_name');cambiarmoneda();">
+				<option value="">[Cualquiera]</option>
+				<smn_moneda_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_moneda_rows>
+			</select> 
+			<input id="smn_moneda_name" name="smn_moneda_name" type="hidden">
+		</td>
+	</tr>
+	<tr id="tasa" style="display: none">
+		<td>${lbl:b_smn_tasa_rf}</td>
+		<td>
+			<select name="smn_tasa" id="smn_tasa" onchange="chgCombo(smn_tasa.options[smn_tasa.selectedIndex].text,'smn_tasa_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_tasa_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_tasa_rows>
+			</select> 
+			<input id="smn_tasa_name" name="smn_tasa_name" type="hidden">
+		</td>
+	</tr>
+		<tr id="montoimpma" style="display: none">
+			<td>${lbl:b_oci_monto_impuesto_ma}</td>
+			<td>
+				<input id="oci_monto_impuesto_ma" name="oci_monto_impuesto_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+	var cantidad = '${fld:cantidad}';
+	var montoml ='${fld:montoml}';
+	var montoma = '${fld:montoma}';
+	onload = function()
+	{ 
+		addNew();
+		
+		inicializar_valores();
+
+		// document.getElementById("smn_orden_compra_detalle_id").value = '${fld:id2}';
+		// document.form1.smn_orden_compra_detalle_id.disabled=true; 
+		if (id!="")
+			edit(id);
+	} 
+
+
+
+	function inicializar_valores() {
+		var mone = document.getElementById("smn_moneda").value;
+		
+		if (mone=="" || mone=="360") {
+			document.getElementById("tasa").style.display='none';
+			document.getElementById("montoimpma").style.display='none';
+		}else{
+			document.getElementById("tasa").style.display='';
+			document.getElementById("montoimpma").style.display='';
+		}
+
+		document.getElementById("oci_monto_base_ml").value = montoml;
+		document.form1.oci_monto_base_ml.disabled=true; 
+		document.getElementById("oci_monto_impuesto_ma").value = montoma;
+		document.form1.oci_monto_impuesto_ma.disabled=true; 
+
+		document.getElementById("smn_orden_compra_detalle_id").value = '${fld:id2}';
+		document.form1.smn_orden_compra_detalle_id.disabled=true; 
+	}
+	
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+	function getIDSelectedIndex(combo) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].value;
+	        }
+	    }
+	}
+
+	var geo_id1 = null;
+	function getTipoImpuesto(text,id)
+	{	
+		var combo = document.getElementById('smn_cod_impuesto_deduc_rf');
+		var valueCombo = getIDSelectedIndex(combo);
+		
+		geo_id1 = valueCombo.split("-").pop().trim();
+
+		if (geo_id1!=null && geo_id1!="") 
+		{
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/getTipoImpuesto?id=" + geo_id1, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);	
+		}
+	}
+
+
+			//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+		function setSelectedIndex(code, combo, description) 
+		{
+			//alert(code, combo, descripcion);
+			//alert('text = ' + combo.options[i].text + ' value = ' + combo.options[i].value)
+		    for (var i = 0; i < combo.options.length; i++) 
+		    {
+				var valueText = code;
+				if (description != null)
+				{
+					valueText = valueText + ' - ' + description;
+				}
+	    	    if (combo.options[i].text == valueText) 
+				{
+	        	//alert('text = ' + combo.options[i].text + ' value = ' + combo.options[i].value)
+	        	combo.options[i].selected = true;
+				return;
+	        	}
+	    	}  
+		}
+
+	//Author     : SIMONE
+	//Description: Set first element as selected value
+	//Return     : None
+	function setElementFirstIndex(id)
+		{
+			var combo = document.getElementById(id); combo.selectedIndex = 0;
+		}
+
+	//Author     : SIMONE
+	 //Description: Insert new value into combo box
+	 //Return     : None
+	 function insertComboBox(code, combo, description, field) 
+		{
+		 	var valueText = code;
+			if (description != null)
+			{
+				valueText = valueText + ' - ' + description;
+			}
+			var option = document.createElement("option");
+			option.text = valueText; 
+			option.value = bdID;
+			//alert(field)		
+			if (field == 'smn_presupuesto_id')
+			{
+				document.form1.smn_presupuesto_id.add(option, combo.options.length); 
+			}							
+		}
+	 
+	//Author     : SIMONE
+	//Description: Add new value to combo box
+	//Return     : None
+	function addValueToCombo(code, description, field) 
+		{	
+			var combo = document.getElementById(field);	    
+			insertComboBox(code, combo, description, field); 
+		}
+	
+		
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndexValue(value, combo) 
+			{
+				for (var i = 0; i < combo.options.length; i++) 
+				{					
+					if (combo.options[i].text == value) 
+					{
+						combo.options[i].selected = true;
+						return;
+					}
+				} 
+			}
+	
+	//Author     : SIMONE
+	//Description: Get text valueof selected index
+	//Return     : Text associated to index
+	function getSelectedIndex(combo) 
+			{
+				for (var i = 0; i < combo.options.length; i++) 
+				{
+					if (combo.options[i].selected == true) 
+					{
+						return combo.options[i].text; 
+					}
+				} 	
+			}
+	
+	function getIDSelectedIndex(combo) 
+			{
+				for (var i = 0; i < combo.options.length; i++)  
+				{
+					if (combo.options[i].selected == true) 
+					{
+						return combo.options[i].value; 
+					} 
+				}
+			}
+	
+	var bdID;
+	function setID(id)
+	{
+		bdID = id; 
+	}
+
+	//Author     : SIMONE
+	//Description: Set value to combo box
+	//Parameters: 	code 		– (it is code associated into each database table) 
+	//             	description 	- it is description associated into each database table 
+	//             	field 		- name combo field
+	//             	id 		- identifier retrieved after transaction
+	//             	linked 		- flag indicates 'true' when combos are linked.
+	//Return     : None
+	function setValueComboBox(code, description, field, linked)
+			{
+				//add value text to combo
+				addValueToCombo(code,description,field);
+				//get select object 
+				var combo = document.getElementById(field);
+				//set element selected to field referenced
+				setSelectedIndex(code,combo, description);
+				//set text value to combo field
+				var valueText = getSelectedIndex(combo);		
+				//get hidden field in order to set any value
+				var combo = document.getElementById(field+'_name');
+		
+				combo.text  = valueText;
+				combo.value = bdID; 
+			}
+	
+
+
+		//Este codigo fue creado por SIMONE y ajustado en este crud por Kelvin Marcano
+	var geo_idt = null;
+	function chgCombo1(text,id)
+	{				
+		//document.form1.smn_tasa_rf.disabled=false;
+		var combo = document.getElementById("smn_cod_impuesto_deduc_rf");
+		var valueCombo = getIDSelectedIndex(combo);
+		//geo_idt = valueCombo.split("-").pop().trim();
+		//alert(valueCombo);
+		if (id!=null && id!="") 
+		{	
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/getimpuesto?id=" + valueCombo, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null); 				
+		}
+	}
+
+	function cambiarmoneda() {
+		var mon = document.getElementById('smn_moneda').value;
+		//alert(mon);
+		if (mon == '360') {
+			document.getElementById('tasa').style.display='none';
+			document.getElementById('montoimpml').style.display='none';
+			document.getElementById('montoimpma').style.display='none';
+		}else{
+			document.getElementById('tasa').style.display='';
+			document.getElementById('montoimpml').style.display='';
+			document.getElementById('montoimpma').style.display='';
+		}
+
+		if (mon == 0 ) {
+			document.getElementById('tasa').style.display='none';
+			document.getElementById('basei').style.display='none';
+			document.getElementById('basee').style.display='none';
+
+		}
+	}
+
+
+
+</script>	
+</body>
+</html>
