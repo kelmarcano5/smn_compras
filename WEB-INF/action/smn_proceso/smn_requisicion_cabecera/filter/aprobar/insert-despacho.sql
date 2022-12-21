@@ -39,12 +39,13 @@ INSERT INTO smn_inventario.smn_despacho
 	des_idioma,
     des_usuario,
     des_fecha_registro,
-    des_hora
+    des_hora,
+    smn_almacen_solicitante
 )
 VALUES
 (
 	nextval('smn_inventario.seq_smn_despacho'),
-	${fld:smn_modulo_rf},
+	3,/*${fld:smn_modulo_rf}*/
 	${fld:smn_documento_id}, /*documento origen*/
 	${fld:req_numero},
 	(SELECT
@@ -61,7 +62,6 @@ VALUES
 	 	smn_seguridad.s_user.userlogin = smn_compras.smn_requisicion_cabecera.req_usuario
 	 WHERE	
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
-	 limit 1
 	),
 	(SELECT 
 		smn_inventario.smn_documento.smn_documento_id
@@ -81,7 +81,6 @@ VALUES
 		smn_base.smn_documentos_generales.smn_documentos_generales_id = smn_inventario.smn_documento.smn_documento_general_rf
 	WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
-	 	limit 1
 	),
 	(SELECT 
 		(doc_secuencia+1)
@@ -106,30 +105,12 @@ VALUES
 			smn_base.smn_documentos_generales.smn_documentos_generales_id = smn_inventario.smn_documento.smn_documento_general_rf
 		WHERE
 		 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
-		limit 1	
 	 	)
-	 	limit 1
 	),
 	${fld:req_descripcion},
 	${fld:smn_entidad_id},
 	${fld:smn_sucursal_id},
-	(SELECT 
-		smn_inventario.smn_caracteristica_almacen.smn_almacen_rf
-	 FROM
-	 	smn_inventario.smn_caracteristica_almacen
-	 INNER JOIN
-	 	smn_base.smn_almacen
-	 ON
-	 	smn_inventario.smn_caracteristica_almacen.smn_almacen_rf = smn_base.smn_almacen.smn_almacen_id
-	 INNER JOIN
-	 	smn_compras.smn_requisicion_cabecera
-	 ON
-	 	smn_compras.smn_requisicion_cabecera.smn_entidad_id = smn_base.smn_almacen.alm_empresa
-	 WHERE
-	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
-	 AND
-	 	smn_inventario.smn_caracteristica_almacen.cal_tipo_almacen = 'DE'
-	 	limit 1
+	(select smn_almacen_proveedor_rf from smn_inventario.smn_caracteristica_almacen where smn_almacen_rf = (select smn_almacen_solicitante_rf FROM  smn_compras.smn_requisicion_cabecera where smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}) limit 1
 	),
 	(SELECT 
 		smn_clase_auxiliar_rf
@@ -145,7 +126,6 @@ VALUES
 	 	smn_seguridad.s_user.userlogin = smn_compras.smn_requisicion_cabecera.req_usuario
 	 WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
-	 	limit 1
 	),
 	(SELECT 
 		smn_auxiliar_rf
@@ -161,47 +141,26 @@ VALUES
 	 	smn_seguridad.s_user.userlogin = smn_compras.smn_requisicion_cabecera.req_usuario
 	 WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
-	 	limit 1
 	),
 	(SELECT
 		smn_compras.smn_rel_auxiliar_ceco_estorg.smn_estructura_organizacional_rf
-	 FROM 
-	 	smn_compras.smn_rel_auxiliar_ceco_estorg
-	 INNER JOIN
-	 	smn_base.smn_usuarios
-	 ON
-	 	smn_compras.smn_rel_auxiliar_ceco_estorg.smn_auxiliar_rf = smn_base.smn_usuarios.smn_auxiliar_rf
-	 INNER JOIN
-	 	smn_seguridad.s_user
-	 ON
-	 	smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
-	 INNER JOIN
-	 	smn_compras.smn_requisicion_cabecera
-	 ON
-	 	smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+	FROM
+		smn_base.smn_usuarios
+		INNER JOIN smn_seguridad.s_user ON smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
+		INNER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+		INNER JOIN smn_compras.smn_rel_auxiliar_ceco_estorg ON smn_base.smn_usuarios.smn_auxiliar_rf = smn_compras.smn_rel_auxiliar_ceco_estorg.smn_auxiliar_rf
 	 WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
-	 	limit 1
 	),
 	(SELECT
 		smn_compras.smn_rel_auxiliar_ceco_estorg.smn_centro_costo_rf
-	 FROM 
-	 	smn_compras.smn_rel_auxiliar_ceco_estorg
-	 INNER JOIN
-	 	smn_base.smn_usuarios
-	 ON
-	 	smn_compras.smn_rel_auxiliar_ceco_estorg.smn_auxiliar_rf = smn_base.smn_usuarios.smn_auxiliar_rf
-	 INNER JOIN
-	 	smn_seguridad.s_user
-	 ON
-	 	smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
-	 INNER JOIN
-	 	smn_compras.smn_requisicion_cabecera
-	 ON
-	 	smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+	FROM
+		smn_base.smn_usuarios
+		INNER JOIN smn_seguridad.s_user ON smn_seguridad.s_user.user_id = smn_base.smn_usuarios.smn_user_rf
+		INNER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.req_usuario = smn_seguridad.s_user.userlogin
+		INNER JOIN smn_compras.smn_rel_auxiliar_ceco_estorg ON smn_base.smn_usuarios.smn_auxiliar_rf = smn_compras.smn_rel_auxiliar_ceco_estorg.smn_auxiliar_rf
 	 WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
-	 	limit 1
 	),
 	null,
 	null,
@@ -223,7 +182,6 @@ VALUES
 	 	smn_compras.smn_requisicion_detalle.smn_requisicion_detalle_id = smn_compras.smn_req_detalle_impuesto.smn_requisicion_detalle_id
 	 WHERE
 	 	smn_compras.smn_requisicion_detalle.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
-	 	limit 1
 	),
 	(SELECT
 		SUM(drc_monto_descuento)
@@ -235,7 +193,6 @@ VALUES
 	 	smn_compras.smn_requisicion_detalle.smn_requisicion_detalle_id = smn_compras.smn_req_detalle_dcto_retenc.smn_requisicion_detalle_id
 	 WHERE
 	 	smn_compras.smn_requisicion_detalle.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
-	 	limit 1
 	),
 	null, /*monto bonificacion*/
 	null, /*monto neto*/
@@ -249,7 +206,8 @@ VALUES
 	'${def:locale}',
     '${def:user}',
     {d '${def:date}'},
-    '${def:time}'
+    '${def:time}',
+    (select smn_almacen_solicitante_rf FROM  smn_compras.smn_requisicion_cabecera where smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id})
 )
 
 RETURNING smn_despacho_id;

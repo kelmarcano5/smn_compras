@@ -16,7 +16,8 @@ INSERT INTO smn_compras.smn_requisicion_cabecera (
  	req_hora,
   	req_cabecera_version,
   	smn_modulo_rf,
-  	req_version_descripcion
+  	req_version_descripcion,
+    smn_almacen_solicitante_rf
 )VALUES(
 	nextval('smn_compras.seq_smn_requisicion_cabecera'),
 	${fld:smn_requisicion_cabecera_id},
@@ -47,7 +48,9 @@ INSERT INTO smn_compras.smn_requisicion_cabecera (
      WHERE
      	mod_codigo = 'COM'
     ),
-    ${fld:req_version_descripcion} --req_version_descripcion
+    ${fld:req_version_descripcion}, --req_version_descripcion
+    (select smn_almacen_solicitante_rf from smn_compras.smn_requisicion_cabecera where smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id})
+
 )
 
 RETURNING smn_requisicion_cabecera_id as id_cabecera;

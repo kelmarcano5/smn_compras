@@ -39,7 +39,8 @@ INSERT INTO smn_inventario.smn_despacho
 	des_idioma,
     des_usuario,
     des_fecha_registro,
-    des_hora
+    des_hora,
+    smn_almacen_solicitante
 )
 VALUES
 (
@@ -109,22 +110,7 @@ VALUES
 	${fld:req_descripcion},
 	${fld:smn_entidad_id},
 	${fld:smn_sucursal_id},
-	(SELECT
-		smn_compras.smn_lineas.smn_almacen_consumo_rf AS smn_almacen_rf
-	FROM
-		smn_inventario.smn_caracteristica_almacen
-		INNER JOIN smn_base.smn_almacen ON smn_inventario.smn_caracteristica_almacen.smn_almacen_rf = smn_base.smn_almacen.smn_almacen_id
-		INNER JOIN smn_compras.smn_requisicion_cabecera ON smn_compras.smn_requisicion_cabecera.smn_entidad_id = smn_base.smn_almacen.alm_empresa
-		INNER JOIN smn_compras.smn_requisicion_detalle ON smn_compras.smn_requisicion_detalle.smn_requisicion_cabecera_id = smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id
-		INNER JOIN smn_compras.smn_rel_linea_item ON smn_compras.smn_requisicion_detalle.smn_item_id = smn_compras.smn_rel_linea_item.smn_item_id
-		INNER JOIN smn_compras.smn_lineas ON smn_compras.smn_rel_linea_item.smn_lineas_id = smn_compras.smn_lineas.smn_lineas_id
-
-	 WHERE
-	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
-	 AND
-	 	smn_inventario.smn_caracteristica_almacen.cal_tipo_almacen = 'DE'
-	 GROUP BY
-		smn_compras.smn_lineas.smn_almacen_consumo_rf
+	(select smn_almacen_proveedor_rf from smn_inventario.smn_caracteristica_almacen where smn_almacen_rf = (select smn_almacen_solicitante_rf FROM  smn_compras.smn_requisicion_cabecera where smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}) limit 1
 	),
 	(SELECT 
 		smn_clase_auxiliar_rf
@@ -220,7 +206,8 @@ VALUES
 	'${def:locale}',
     '${def:user}',
     {d '${def:date}'},
-    '${def:time}'
+    '${def:time}',
+    (select smn_almacen_solicitante_rf FROM  smn_compras.smn_requisicion_cabecera where smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id})
 )
 
 RETURNING smn_despacho_id;

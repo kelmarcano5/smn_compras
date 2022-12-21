@@ -4,7 +4,11 @@ SELECT
 	smn_item_id,
 	smn_servicio_id,
 	smn_afijo_id,
-	smn_naturaleza_id
+	CASE
+		WHEN smn_naturaleza_id = 'IT' THEN smn_item_id
+		WHEN smn_naturaleza_id = 'SE' THEN smn_servicio_id
+		ELSE smn_afijo_id
+	END AS producto
 FROM 
 	smn_compras.smn_requisicion_detalle 
 WHERE 

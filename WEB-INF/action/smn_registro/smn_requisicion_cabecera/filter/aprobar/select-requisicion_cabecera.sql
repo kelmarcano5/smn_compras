@@ -7,6 +7,7 @@ SELECT
 	req_descripcion,
 	smn_modulo_rf,
 	req_fecha_requerido,
+    smn_almacen_solicitante_rf,
 	smn_compras.smn_requisicion_detalle.smn_proveedor_id
 FROM 
 	smn_compras.smn_requisicion_cabecera

@@ -67,4 +67,5 @@
 	<parameter id='smn_forma_pago_rf' type='integer' required='false' label='${fld:smn_forma_pago_rf}' maxlen='10' />
 	<parameter id='aux_cond_pago_rf' type='integer' required='false' label='${fld:aux_cond_pago_rf}' maxlen='10' />
 	<parameter id='producto' type='integer' required='false' label='${fld:b_product}' maxlen='10' />
+	<parameter id='smn_almacen_rf' type='integer' required='false' label='${fld:b_product}' maxlen='10' />
 </validator>

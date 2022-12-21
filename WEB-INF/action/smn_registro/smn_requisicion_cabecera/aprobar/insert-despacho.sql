@@ -39,7 +39,8 @@ INSERT INTO smn_inventario.smn_despacho
 	des_idioma,
     des_usuario,
     des_fecha_registro,
-    des_hora
+    des_hora,
+    smn_almacen_solicitante
 )
 VALUES
 (
@@ -124,7 +125,7 @@ VALUES
 	 WHERE
 	 	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}
 	 AND
-	 	smn_inventario.smn_caracteristica_almacen.cal_tipo_almacen = 'DE'
+	 	smn_inventario.smn_caracteristica_almacen.cal_tipo_almacen = 'DE' limit 1
 	),
 	(SELECT 
 		smn_clase_auxiliar_rf
@@ -238,7 +239,8 @@ VALUES
 	'${def:locale}',
     '${def:user}',
     {d '${def:date}'},
-    '${def:time}'
+    '${def:time}',
+    (select smn_almacen_solicitante_rf FROM  smn_compras.smn_requisicion_cabecera where smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id})
 )
 
 RETURNING smn_despacho_id;
