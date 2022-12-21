@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_requisicion_cabecera_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_cabecera_version_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_linea_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_naturaleza_id' type='varchar' required='true' maxlen='2'/>
+	<parameter id='smn_servicio_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_item_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_afijo_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='rrs_producto_encontrado' type='varchar' required='true' maxlen='2'/>
+	<parameter id='smn_contrato_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='rrs_motivo_variacion' type='varchar' required='false' maxlen='100'/>
+	<parameter id='rrs_porcentaje' type='double' required='false' maxlen='10'/>
+	<parameter id='rss_cantidad' type='integer' required='true' maxlen='10'/>
+	<parameter id='rrs_precio' type='double' required='true' maxlen='10'/>
+	<parameter id='rrs_monto' type='double' required='true' maxlen='10'/>
+	<parameter id='smn_moneda_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='rrs_precio_moneda_alterna' type='double' required='false' maxlen='10'/>
+	<parameter id='rrs_monto_moneda_alterna' type='double' required='false' maxlen='10'/>
+	<parameter id='smn_proveedor_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='rrs_especificaciones_del_requerimiento' type='varchar' required='false' maxlen='256'/>
+	<parameter id='rrs_fecha_de_requerido' type='date' required='true' maxlen='10'/>
+	<parameter id='rrs_observaciones' type='varchar' required='false' maxlen='256'/>
+
+
+
+</validator>

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_cotizacion_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='cfe_consecutivo' type='integer' required='false' maxlen='10'/>
+	<parameter id='cfe_cantidad' type='double' required='false' maxlen='10'/>
+	<parameter id='cfe_fecha_entrega' type='date' required='false' maxlen='10'/>
+	<parameter id='cfe_status' type='varchar' required='false' maxlen='2'/>
+
+
+
+</validator>

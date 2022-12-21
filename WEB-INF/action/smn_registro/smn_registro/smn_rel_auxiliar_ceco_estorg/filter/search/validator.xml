@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
-<validator id='filter.params' onerror='/action/error/validation/ajax'>
-	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliar}' maxlen='10'/>
-	<parameter id='smn_centro_costo_rf' type='integer' required='false' label='${lbl:b_center_cost}' maxlen='10'/>
-	<parameter id='smn_estructura_organizacional_rf' type='integer' required='false' label='${lbl:b_organizational_structure}' maxlen='10'/>
-	<parameter id='rac_fecha_registro_desde' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
-	<custom-validator classname='dinamica.validators.DateRangeValidator' on-error-label='[${lbl:b_store_date}@{${def:date}} mayor o igual que] no puede ser mayor que [${lbl:b_store_date}@{${def:date}} menor o igual que].' date1='rac_fecha_registro_desde' date2='rac_fecha_registro_hasta' id='rac_fecha_registro_desde' />
-	<parameter id='rac_fecha_registro_hasta' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
-</validator>

@@ -1,7 +1,0 @@
-SELECT
-	smn_compras.smn_requisicion_cabecera.req_cabecera_version,
-	smn_compras.smn_requisicion_cabecera.req_estatus
-FROM
-	smn_compras.smn_requisicion_cabecera
-WHERE
-	smn_compras.smn_requisicion_cabecera.smn_requisicion_cabecera_id = ${fld:smn_requisicion_cabecera_id}

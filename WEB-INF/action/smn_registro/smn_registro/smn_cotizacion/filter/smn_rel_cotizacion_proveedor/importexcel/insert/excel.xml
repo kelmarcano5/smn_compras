@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
-<validator maxErrors='20'>
-	<parameter id='smn_cotizacion_id' type='integer' required='true' maxlen='10'/>
-	<parameter id='smn_proveedor_id' type='integer' required='false' maxlen='10'/>
-
-
-
-</validator>

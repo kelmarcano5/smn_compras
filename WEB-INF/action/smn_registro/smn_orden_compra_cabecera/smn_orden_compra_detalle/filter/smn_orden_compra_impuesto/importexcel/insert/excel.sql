@@ -1,0 +1,38 @@
+INSERT INTO smn_compras.smn_orden_compra_impuesto
+(
+	smn_impuesto_oc_id,
+	smn_orden_compra_detalle_id,
+	smn_cod_impuesto_deduc_rf,
+	oci_monto_base_ml,
+	oci_porcentaje_impuesto,
+	oci_sustraendo_ml,
+	smn_tipo_impuesto_rf,
+	oci_monto_impuesto_ml,
+	smn_moneda,
+	smn_tasa,
+	oci_monto_impuesto_ma,
+	idioma,
+	usuario,
+	fecha_registro,
+	hora
+)
+VALUES
+(
+	${seq:nextval@smn_compras.seq_smn_orden_compra_impuesto},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'${def:locale
+}',
+	'${def:user
+}',
+	{d '${def:date}'},
+	'${def:time}'
+)

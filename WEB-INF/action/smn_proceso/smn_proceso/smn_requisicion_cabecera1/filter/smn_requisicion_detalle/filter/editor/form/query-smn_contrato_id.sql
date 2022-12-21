@@ -1,1 +1,0 @@
-select smn_base.smn_contrato_base.smn_contrato_base_id as id, smn_base.smn_contrato_base.ctr_codigo ||' - '||  smn_base.smn_contrato_base.ctr_nombre as item from smn_base.smn_contrato_base

@@ -1,0 +1,11 @@
+select
+		smn_compras.smn_rel_auxiliar_ceco_estorg.smn_auxiliar_rf,
+	smn_compras.smn_rel_auxiliar_ceco_estorg.smn_centro_costo_rf,
+	smn_compras.smn_rel_auxiliar_ceco_estorg.smn_estructura_organizacional_rf,
+	smn_compras.smn_rel_auxiliar_ceco_estorg.rac_fecha_registro
+from 
+	smn_compras.smn_rel_auxiliar_ceco_estorg
+where
+	smn_compras.smn_rel_auxiliar_ceco_estorg.smn_rel_auxiliar_ceco_estorg_id=${fld:id}
+order by 
+	smn_compras.smn_rel_auxiliar_ceco_estorg.smn_rel_auxiliar_ceco_estorg_id

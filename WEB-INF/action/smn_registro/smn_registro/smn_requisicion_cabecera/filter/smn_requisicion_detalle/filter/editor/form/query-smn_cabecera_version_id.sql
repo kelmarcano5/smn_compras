@@ -1,3 +1,0 @@
-select smn_compras.smn_requisicion_cabecera.smn_cabecera_version_id as id, 
-smn_compras.smn_requisicion_cabecera.smn_cabecera_version_id as item 
-from smn_compras.smn_requisicion_cabecera
