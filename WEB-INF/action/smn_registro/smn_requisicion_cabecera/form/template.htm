@@ -77,7 +77,7 @@
 		}
 
 		//muestra un DIV+IFRAME con el formulario de CRUD
-		function showEditor(id, modulo,estatus)
+		function showEditor(id,modulo,estatus)
 		{
 //			//alert('Colocar su c�digo aqu�.')
 			//alert(modulo);		
@@ -116,7 +116,7 @@
 						openDialog("editor5", uri, 650, 540);
 					}
 					else{
-						if (modulo != 'COM') {
+						if (modulo != 'SMN_COM') {
 						//alert(modulo);			
 							alertBox('No se puede modificar ya que no proviene del modulo de compras', 'Aceptar', null, null)
 						}else{
@@ -131,7 +131,7 @@
 		function deleteRecord(id, modulo,estatus) {
 //			//alert('Colocar su c�digo aqu�.')
 				
-			if (modulo != 'COM') {
+			if (modulo != 'SMN_COM') {
 					alertBox('No se puede modificar ya que no proviene del modulo de compras', 'Aceptar', null, null)
 			}else{
 				if(estatus == 'GE' || estatus == 'AP')

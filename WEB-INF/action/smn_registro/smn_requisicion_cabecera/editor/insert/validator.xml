@@ -10,7 +10,7 @@
 	<parameter id='req_estatus_ruta' type='varchar' required='true' label='${lbl:b_status_rute}' maxlen='2'/>
 	<parameter id='smn_entidad_id' type='integer' required='true' label='${lbl:b_entities}' maxlen='10'/>
 	<parameter id='smn_sucursal_id' type='integer' required='false' label='${lbl:b_subsidiaries}' maxlen='10'/>
-
+	<parameter id='smn_almacen_solicitante_rf' type='integer' required='false' label='${lbl:b_applicant_warehouse}' maxlen='10'/>
 	<custom-validator
 		classname='dinamica.validators.DuplicatedKeyValidator'
 			on-error-label='${lbl:b_record_not_duplicated}.'

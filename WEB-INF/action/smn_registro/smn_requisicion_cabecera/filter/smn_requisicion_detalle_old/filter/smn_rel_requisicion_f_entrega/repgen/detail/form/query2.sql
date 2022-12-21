@@ -1,0 +1,10 @@
+select
+		smn_compras.smn_rel_requisicion_f_entrega.smn_requisicion_detalle_id,
+	smn_compras.smn_rel_requisicion_f_entrega.cfe_consecutivo,
+	smn_compras.smn_rel_requisicion_f_entrega.cfe_cantidad,
+	smn_compras.smn_rel_requisicion_f_entrega.cfe_fecha_de_entrega,
+	smn_compras.smn_rel_requisicion_f_entrega.cfe_fecha_registro
+from
+	smn_compras.smn_rel_requisicion_f_entrega 
+where
+	smn_compras.smn_rel_requisicion_f_entrega.smn_rel_requisicion_f_entrega_id = ${fld:id}

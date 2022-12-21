@@ -12,7 +12,8 @@ UPDATE smn_compras.smn_requisicion_cabecera SET
 	req_idioma='${def:locale}',
 	req_usuario='${def:user}',
 	req_fecha_registro={d '${def:date}'},
-	req_hora='${def:time}'
+	req_hora='${def:time}',
+	smn_almacen_solicitante_rf=${fld:smn_almacen_solicitante_rf}
 
 WHERE
 	smn_requisicion_cabecera_id=${fld:id}

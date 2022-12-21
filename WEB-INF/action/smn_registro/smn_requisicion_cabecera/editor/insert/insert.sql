@@ -14,7 +14,9 @@ INSERT INTO smn_compras.smn_requisicion_cabecera
 	req_idioma,
 	req_usuario,
 	req_fecha_registro,
-	req_hora
+	req_hora, 
+	smn_modulo_rf,
+	smn_almacen_solicitante_rf
 )
 VALUES
 (
@@ -32,5 +34,7 @@ VALUES
 	'${def:locale}',
 	'${def:user}',
 	{d '${def:date}'},
-	'${def:time}'
+	'${def:time}',
+	3,
+	${fld:smn_almacen_solicitante_rf}
 )
