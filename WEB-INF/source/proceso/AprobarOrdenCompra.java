@@ -685,7 +685,6 @@ public class AprobarOrdenCompra extends GenericTransaction
                 inputParams.setValue("occ_monto_neto_ma", 0.0);
                 inputParams.setValue("smn_moneda_rf", 0);
                 inputParams.setValue("smn_tasa_rf", 0);
-                inputParams.setValue("occ_fecha_orde_compra", 0);
 
                 if(rsOrdenCompra.getString("smn_documento_id") != null)
                     inputParams.setValue("smn_documento_id", rsOrdenCompra.getInt("smn_documento_id"));
