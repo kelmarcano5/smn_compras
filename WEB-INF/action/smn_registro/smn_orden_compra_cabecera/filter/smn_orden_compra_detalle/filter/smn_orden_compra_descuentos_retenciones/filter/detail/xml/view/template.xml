@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_orden_compra_descuentos_retenciones>
+	<detail>
+		<rows>		
+		<record fecha_registro="${fld:fecha_registro}"    ocd_monto_descuento_ma="${fld:ocd_monto_descuento_ma}"    ocd_monto_base_ma="${fld:ocd_monto_base_ma}"    smn_tasa_rf="${fld:smn_tasa_rf}"    smn_moneda_rf="${fld:smn_moneda_rf}"    ocd_monto_descuento="${fld:ocd_monto_descuento}"    ocd_porcentaje="${fld:ocd_porcentaje}"    ocd_monto_base="${fld:ocd_monto_base}"    smn_codigo_descuento_rf="${fld:smn_codigo_descuento_rf}"    smn_orden_compra_detalle_id="${fld:smn_orden_compra_detalle_id}"    smn_descuento_retencion_oc_id="${fld:smn_descuento_retencion_oc_id}"    />
+		</rows>
+	</detail>
+</smn_orden_compra_descuentos_retenciones>

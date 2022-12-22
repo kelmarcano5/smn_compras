@@ -1,0 +1,55 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_cod_impuesto_deduc_rf_combo","query-smnordencompraimpuesto.sql")'>${lbl:b_smn_cod_impuesto_deduc_rf}</th>
+		<th class='sortable' onclick='sortBy("oci_monto_base_ml","query-smnordencompraimpuesto.sql")'>${lbl:b_oci_monto_base_ml}</th>
+		<th class='sortable' onclick='sortBy("oci_porcentaje_impuesto","query-smnordencompraimpuesto.sql")'>${lbl:b_oci_porcentaje_impuesto}</th>
+		<th class='sortable' onclick='sortBy("oci_sustraendo_ml","query-smnordencompraimpuesto.sql")'>${lbl:b_oci_sustraendo_ml}</th>
+		<th class='sortable' onclick='sortBy("smn_tipo_impuesto_rf_combo","query-smnordencompraimpuesto.sql")'>${lbl:b_smn_tipo_impuesto_rf}</th>
+		<th class='sortable' onclick='sortBy("oci_monto_impuesto_ml","query-smnordencompraimpuesto.sql")'>${lbl:b_oci_monto_impuesto_ml}</th>
+		<th class='sortable' onclick='sortBy("oci_fecha_registro","query-smnordencompraimpuesto.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_impuesto_oc_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_impuesto_oc_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_impuesto_oc_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_cod_impuesto_deduc_rf_combo}</td>
+		<td align='right'>${fld:oci_monto_base_ml@#,###,##0.00}</td>
+		<td>${fld:oci_porcentaje_impuesto}</td>
+		<td align='right'>${fld:oci_sustraendo_ml@#,###,##0.00}</td>
+		<td>${fld:smn_tipo_impuesto_rf_combo}</td>
+		<td align='right'>${fld:oci_monto_impuesto_ml@#,###,##0.00}</td>
+		<td>${fld:oci_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

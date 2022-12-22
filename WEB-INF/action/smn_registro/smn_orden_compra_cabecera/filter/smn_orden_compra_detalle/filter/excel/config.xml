@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnordencompradetalle.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="13" cellStep="0" name="${lbl:b_smn_orden_compra_detalle}"/>
+	
+	<excel 
+		recordset='query-smnordencompradetalle.sql' 
+		sheetname='${lbl:b_smn_orden_compra_detalle}' 
+		filename='${lbl:b_smn_orden_compra_detalle}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='occ_descripcion_pl0' label='${lbl:b_smn_orden_compra_cabecera_id}' />
+		<col id='smn_linea_id_combo' label='${lbl:b_smn_linea_id}' />
+		<col id='smn_servicios_id_combo' label='${lbl:b_smn_servicios_id}' />
+		<col id='smn_item_rf_combo' label='${lbl:b_smn_item_rf}' />
+		<col id='smn_afijo_rf_combo' label='${lbl:b_smn_afijo_rf}' />
+		<col id='smn_contrato_modulo_id_combo' label='${lbl:b_smn_contrato_modulo_id}' />
+		<col id='ocd_descripcion' label='${lbl:b_ocd_descripcion}' />
+		<col id='ocd_cantidad_pedida' label='${lbl:b_ocd_cantidad_pedida}' />
+		<col id='ocd_cantidad_recibida' label='${lbl:b_ocd_cantidad_recibida}' />
+		<col id='smn_unidad_medida_rf_combo' label='${lbl:b_smn_unidad_medida_rf}' />
+		<col id='ocd_costo_ml' label='${lbl:b_ocd_costo_ml}' />
+		<col id='ocd_monto_bruto_ml' label='${lbl:b_ocd_monto_bruto_ml}' />
+		<col id='ocd_monto_impuesto_ml' label='${lbl:b_ocd_monto_impuesto_ml}' />
+		<col id='ocd_monto_desc_reten_ml' label='${lbl:b_ocd_monto_desc_reten_ml}' />
+		<col id='ocd_monto_neto_ml' label='${lbl:b_ocd_monto_neto_ml}' />
+		<col id='smn_moneda_rf_combo' label='${lbl:b_smn_moneda_rf}' />
+		<col id='smn_tasa_rf_combo' label='${lbl:b_smn_tasa_rf}' />
+		<col id='ocd_costo_ma' label='${lbl:b_ocd_costo_ma}' />
+		<col id='ocd_monto_bruto_ma' label='${lbl:b_ocd_monto_bruto_ma}' />
+		<col id='ocd_monto_impuesto_ma' label='${lbl:b_ocd_monto_impuesto_ma}' />
+		<col id='ocd_monto_desc_reten_ma' label='${lbl:b_ocd_monto_desc_reten_ma}' />
+		<col id='ocd_monto_neto_ma' label='${lbl:b_ocd_monto_neto_ma}' />
+		<col id='ocd_estatus_combo' label='${lbl:b_status}' />
+		<col id='ocd_idioma' label='${lbl:s_profile_lang}' />
+		<col id='ocd_usuario' label='${lbl:b_users}' />
+		<col id='ocd_fecha_registro' label='${lbl:b_store_date}' />
+		<col id='ocd_hora' label='${lbl:s_loginhist_col2}' />
+
+	</excel>
+
+</config>

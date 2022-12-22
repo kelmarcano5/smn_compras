@@ -1,0 +1,34 @@
+INSERT INTO smn_compras.smn_orden_compra_descuentos_retenciones
+(
+	smn_descuento_retencion_oc_id,
+	smn_orden_compra_detalle_id,
+	smn_codigo_descuento_rf,
+	ocd_monto_base,
+	ocd_porcentaje,
+	ocd_monto_descuento,
+	smn_moneda_rf,
+	smn_tasa_rf,
+	ocd_monto_base_ma,
+	ocd_monto_descuento_ma,
+	ocd_idioma,
+	ocd_usuario,
+	ocd_fecha_registro,
+	ocd_hora
+)
+VALUES
+(
+	${seq:currval@smn_compras.seq_smn_orden_compra_descuentos_retenciones},
+	${fld:smn_orden_compra_detalle_id},
+	${fld:smn_codigo_descuento_rf},
+	${fld:ocd_monto_base},
+	${fld:ocd_porcentaje},
+	${fld:ocd_monto_descuento},
+	${fld:smn_moneda_rf},
+	${fld:smn_tasa_rf},
+	${fld:ocd_monto_base_ma},
+	${fld:ocd_monto_descuento_ma},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

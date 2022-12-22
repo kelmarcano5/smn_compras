@@ -3,19 +3,12 @@
 
 <head>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<link rel="stylesheet" type="text/css" href="${def:context}/boostrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
-    <link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
-    <link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
-    <link rel="stylesheet" type="text/css" href="${def:context}/sweetalert.css" />
-    <!--biblioteca generica JS/Dinamica-->
-    <script type="text/javascript" src="${def:context}/action/script"></script>
-    <script type="text/javascript" src="${def:context}/action/jquery"></script>
-    <script type="text/javascript" src="${def:context}/action/select2"></script>
-    <script type="text/javascript" src="${def:context}/action/sweetalert"></script>
-    <script type="text/javascript" src="${def:context}/action/lodash"></script>
-    <script type="text/javascript" src="${def:context}/action/boostrap"></script>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+
+<!--biblioteca generica JS/Dinamica-->
+<script type="text/javascript" src="${def:context}/action/script">
+</script>
 
 </head>
 
@@ -161,8 +154,8 @@
 	onload = function()
 	{ 
 		showFilter();
-		//document.form1.occ_fecha_registro_ini.onkeypress = keypressDate;
-		//document.form1.occ_fecha_registro_fin.onkeypress = keypressDate;
+		document.form1.occ_fecha_registro_ini.onkeypress = keypressDate;
+	document.form1.occ_fecha_registro_fin.onkeypress = keypressDate;
 
 		search();
 	} 
@@ -204,7 +197,7 @@
 	//mostrar una pagina del grid
 	function viewPage()
 	{
-		var url = "${def:actionroot}/view";
+		var url = "${def:actionroot}/../view";
 		//llama a la funcion para ir a la pagina indicada 
 		gotoPage(url);
 	}		
@@ -296,7 +289,7 @@
 	}
 
 	function detalle(id2, descripcion){
-			uri= "${def:context}${def:actionroot}/../smn_orden_compra_detalle/form?id2="+id2+"&descripcion="+descripcion;
+			uri= "${def:context}${def:actionroot}/smn_orden_compra_detalle/form?id2="+id2+"&descripcion="+descripcion;
 			//alert(uri);
 			openDialog("dialog",uri,1250,700);
 		}
