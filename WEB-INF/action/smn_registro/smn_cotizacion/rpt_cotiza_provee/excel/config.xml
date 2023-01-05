@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnrelcotizacionproveedor.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="1" cellStep="0" name="${lbl:b_relationship_cotizacion_proveedor}"/>
+	
+	<excel 
+		recordset='query-smnrelcotizacionproveedor.sql' 
+		sheetname='${lbl:b_relationship_cotizacion_proveedor}' 
+		filename='${lbl:b_relationship_cotizacion_proveedor}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_proveedor_id' label='${lbl:b_providers}' />
+		<col id='numero_cotizacion' label='${lbl:b_quotation}' />
+		<col id='smn_item_rf' label='${lbl:b_item}'/>
+		<col id='cantidad' label='${lbl:b_quantity}'/>
+		<!-- <col id='cfe_fecha_entrega' label='${lbl:b_delivery_date}'/> -->
+		<col id='cot_fecha_requerido' label='${lbl:b_date_required}'/>
+
+	</excel>
+
+</config>

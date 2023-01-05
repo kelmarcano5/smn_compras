@@ -30,10 +30,11 @@ from
 	inner join smn_compras.smn_roles on smn_compras.smn_roles.smn_usuarios_id = smn_base.smn_usuarios.smn_usuarios_id
 	left outer join smn_base.smn_auxiliar usuarios on usuarios.smn_auxiliar_id = smn_base.smn_usuarios.smn_auxiliar_rf
 	left join smn_base.smn_item on smn_base.smn_item.smn_item_id = smn_compras.smn_cotizacion.smn_item_id
-	--LEFT OUTER JOIN smn_compras.smn_rel_cotizacion_proveedor on smn_compras.smn_rel_cotizacion_proveedor.smn_cotizacion_id = smn_compras.smn_cotizacion.smn_cotizacion_id
-	--left outer join smn_compras.smn_proveedor on smn_compras.smn_proveedor.smn_proveedor_id = smn_compras.smn_rel_cotizacion_proveedor.smn_proveedor_id
-	--left outer join smn_base.smn_auxiliar on smn_base.smn_auxiliar.smn_auxiliar_id = smn_compras.smn_proveedor.smn_auxiliar_rf
+	INNER JOIN smn_compras.smn_rel_usuario_documento ON smn_compras.smn_rel_usuario_documento.smn_documento_id=smn_compras.smn_cotizacion.smn_documento_id
+	INNER JOIN smn_base.smn_usuarios DOCUSU ON DOCUSU.smn_usuarios_id = smn_compras.smn_rel_usuario_documento.smn_usuario_id
+	INNER JOIN smn_seguridad.s_user UL ON UL.user_id = DOCUSU.smn_user_rf	
 where 
 	smn_compras.smn_cotizacion.cot_estatus='RE'
+	AND UL.userlogin = '${def:user}'
 order by 
 	smn_compras.smn_cotizacion.cot_fecha_registro desc

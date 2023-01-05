@@ -1,0 +1,40 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<!-- <col width='11%'/> -->
+	<col width='11%'/>
+	
+	<!--toolbar-->
+	<tr>
+		<th colspan="5" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th class='sortable' onclick='sortBy("smn_proveedor_id","query-smnrelcotizacionproveedor.sql")'>${lbl:b_providers}</th>
+		<th class='sortable' onclick='sortBy("numero_cotizacion","query-smnrelcotizacionproveedor.sql")'>${lbl:b_quotation}</th>
+		<th class='sortable' onclick='sortBy("smn_item_rf","query-smnrelcotizacionproveedor.sql")'>${lbl:b_item}</th>
+		<th class='sortable' onclick='sortBy("cantidad","query-smnrelcotizacionproveedor.sql")'>${lbl:b_quantity}</th>
+		<!-- <th class='sortable' onclick='sortBy("cfe_fecha_entrega","query-smnrelcotizacionproveedor.sql")'>${lbl:b_delivery_date}</th> -->
+		<th class='sortable' onclick='sortBy("cot_fecha_requerido","query-smnrelcotizacionproveedor.sql")'>${lbl:b_date_required}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td>${fld:smn_proveedor_id}</td>
+		<td>${fld:numero_cotizacion}</td>
+		<td>${fld:smn_item_rf}</td>
+		<td>${fld:cantidad}</td>
+		<!-- <td>${fld:cfe_fecha_entrega@dd-MM-yyyy}</td> -->
+		<td>${fld:cot_fecha_requerido@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>
